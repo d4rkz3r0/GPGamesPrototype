@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private GameObject paladinSword;
     private GameObject staffOfPain;
 
+    //Skills
+    private WarriorCharge chargeAction;
+
 
     //Early Guarenteed Initialization
     void Awake()
@@ -44,12 +47,15 @@ public class PlayerController : MonoBehaviour
         paladinSword = transform.FindChild("Paladin_J_Nordstrom_Sword").gameObject;
         staffOfPain = transform.FindChild("StaffOfPain").gameObject;
 
+        if (GetComponent<WarriorCharge>())
+            chargeAction = GetComponent<WarriorCharge>();
     }
 
     //Delayed Initialization (Called upon *First* Script Enable)
     void Start()
     {
         CheckWeapon();
+
     }
 
     void Update()
@@ -145,6 +151,11 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (Input.GetButtonDown("Roll"))
+        {
+            chargeAction.firstFrameActivation = true;
         }
     }
 
