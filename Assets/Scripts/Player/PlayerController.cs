@@ -1,185 +1,188 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-//Automatically adds default components as dependencies.
+//Restricts Multiple GameObject Script Attachment
+[DisallowMultipleComponent]
+
+//Automatically adds default components as dependencies if none are present.
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
+
+
 
 public class PlayerController : MonoBehaviour
 {
-    //Tweakables
-    public float animSpeed = 1.5f;
-    public float lookSmoother = 3.0f;
-    public bool useCurves = true;
-    public float useCurvesHeight = 0.5f;
+    public enum CharacterState
+    {
+        MeleeWarrior,
+        RangedMage
+    }
 
-    public float forwardMovementSpeed = 7.0f;
-    public float backwardMovementSpeed = 2.0f;
-    public float rotationRate = 2.0f;
-    public float jumpPower = 3.0f;
+    //Inspector
+    public CharacterState playerClass = CharacterState.MeleeWarrior;
+
 
     //References
-    private CapsuleCollider capColl;
-    private Rigidbody rgbd;
     private Animator anim;
-    private AnimatorStateInfo currentBaseState;
+    private Rigidbody rgbd;
+    private CapsuleCollider capColl;
 
-    //Private Vars
-    private float capColStartHeight;
-    private Vector3 playerVelocity;
-    private Vector3 capColStartOffset;
+    //Weapons
+    private GameObject paladinSword;
+    private GameObject staffOfPain;
 
 
-    //Animation IDs from String
-    static int idleAnimationID = Animator.StringToHash("Base Layer.Idle");
-    static int runningAnimationID = Animator.StringToHash("Base Layer.Running");
-    static int jumpingAnimationID = Animator.StringToHash("Base Layer.Jump");
-    static int restingAnimationID = Animator.StringToHash("Base Layer.Rest");
-
-    void Start()
+    //Early Guarenteed Initialization
+    void Awake()
     {
         //Auto-Hook
         anim = GetComponent<Animator>();
         rgbd = GetComponent<Rigidbody>();
         capColl = GetComponent<CapsuleCollider>();
 
-        //Cache collider starting values
-        capColStartHeight = capColl.height;
-        capColStartOffset = capColl.center;
+        paladinSword = transform.FindChild("Paladin_J_Nordstrom_Sword").gameObject;
+        staffOfPain = transform.FindChild("StaffOfPain").gameObject;
+
+    }
+
+    //Delayed Initialization (Called upon *First* Script Enable)
+    void Start()
+    {
+        CheckWeapon();
     }
 
     void Update()
     {
+        MovePlayer();
+        UpdatePlayerClass();
+        UpdateAttacks();
 
     }
 
-    //Collecting UserInput in FixedUpdate to sync with physics engine.
-    void FixedUpdate()
+    private void MovePlayer()
     {
-        //Get Analog Input [-1, +1]
-        float hInput = Input.GetAxis("Horizontal");
+        //Read Analog Input [-1, +1]
         float vInput = Input.GetAxis("Vertical");
+        float hInput = Input.GetAxis("Horizontal");
 
-        //Update Animator Parameters
+        //-Animation Based Movement-//
         anim.SetFloat("Speed", vInput);
-        anim.SetFloat("Direction", hInput);
-        anim.speed = animSpeed;
-        currentBaseState = anim.GetCurrentAnimatorStateInfo(0);
-        rgbd.useGravity = true;
+        anim.SetFloat("PivotRate", hInput);
+    }
 
-        //Forward & Backward Movement
-        playerVelocity = new Vector3(0.0f, 0.0f, vInput);
-        playerVelocity = transform.TransformDirection(playerVelocity);
-        if (vInput > 0.1)
+    private void UpdatePlayerClass()
+    {
+        if (Input.GetButtonDown("SwitchClass"))
         {
-            playerVelocity *= forwardMovementSpeed;
-        }
-        else if (vInput < -0.1)
-        {
-            playerVelocity *= backwardMovementSpeed;
-        }
+            anim.Play(Animator.StringToHash("Base Layer.ClassChange"));
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (currentBaseState.fullPathHash == runningAnimationID)
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.ClassChange"))
             {
-                if (!anim.IsInTransition(0))
+                switch (playerClass)
                 {
-                    rgbd.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);
-                    anim.SetBool("Jump", true);
-                }
-            }
-        }
-        transform.localPosition += playerVelocity * Time.fixedDeltaTime;
-
-        //Rotation
-        transform.Rotate(0, hInput * rotationRate, 0);
-
-        //Running
-        if (currentBaseState.fullPathHash == runningAnimationID)
-        {
-            if (useCurves)
-            {
-               resetCollider();
-            }
-        }
-        //Jump
-        else if (currentBaseState.fullPathHash == jumpingAnimationID)
-        {
-            if (!anim.IsInTransition(0))
-            {
-                if (useCurves)
-                {
-                    float jumpHeight = anim.GetFloat("JumpHeight");
-                    float gravityControl = anim.GetFloat("GravityControl");
-                    if (gravityControl > 0)
+                    case CharacterState.MeleeWarrior:
                     {
-                        rgbd.useGravity = false;
+                        playerClass = CharacterState.RangedMage;
+                        break;
                     }
-
-                    Ray ray = new Ray(transform.position + Vector3.up, -Vector3.up);
-                    RaycastHit hitInfo = new RaycastHit();
-
-                    if (Physics.Raycast(ray, out hitInfo))
+                    case CharacterState.RangedMage:
                     {
-                        if (hitInfo.distance > useCurvesHeight)
-                        {
-                            capColl.height = capColStartHeight - jumpHeight;
-                            float adjCenterY = capColStartOffset.y + jumpHeight;
-                            capColl.center = new Vector3(0, adjCenterY, 0);
-                        }
-                        else
-                        {
-                            resetCollider();
-                        }
+                        playerClass = CharacterState.MeleeWarrior;
+                        break;
+                    }
+                    default:
+                    {
+                        Debug.Log("Invalid Char Class!");
+                        break;
                     }
                 }
-                anim.SetBool("Jump", false);
-            }
-        }
-        //Idle
-        else if (currentBaseState.fullPathHash == idleAnimationID)
-        {
-            if (useCurves)
-            {
-                resetCollider();
-            }
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                anim.SetBool("Rest", true);
-            }
-        }
-
-        else if (currentBaseState.fullPathHash == restingAnimationID)
-        {
-            if (!anim.IsInTransition(0))
-            {
-                anim.SetBool("Rest", false);
             }
         }
     }
 
-    //Info Box
-    void OnGUI()
+    private void CheckWeapon()
     {
-        GUI.Box(new Rect(Screen.width - 260, 10, 250, 260), "GamePad Control Scheme");
-        GUI.Label(new Rect(Screen.width - 225, 30, 250, 30), "Left Analog Stick: Movement");
-        GUI.Label(new Rect(Screen.width - 225, 50, 250, 60), "Right Analog Stick: Manual Camera\nRotation");
-        GUI.Label(new Rect(Screen.width - 225, 85, 250, 30), "A: Jump *While Moving");
-        GUI.Label(new Rect(Screen.width - 225, 105, 250, 30), "A: Quick Rest *While Stationary");
-        GUI.Label(new Rect(Screen.width - 225, 125, 250, 30), "X: Attack");
-        GUI.Label(new Rect(Screen.width - 225, 145, 250, 30), "B: Dash");
-        GUI.Label(new Rect(Screen.width - 225, 165, 250, 30), "Y: Interact");
-        GUI.Label(new Rect(Screen.width - 225, 185, 250, 30), "LB: Toggle Attack Mode");
-        GUI.Label(new Rect(Screen.width - 225, 205, 250, 30), "LT: ???");
-        GUI.Label(new Rect(Screen.width - 225, 225, 250, 30), "RT: Look Behind You");
-        GUI.Label(new Rect(Screen.width - 225, 245, 250, 30), "DPAD: Ability Select");
+        switch (playerClass)
+        {
+            case CharacterState.MeleeWarrior:
+            {
+                paladinSword.SetActive(true);
+                staffOfPain.SetActive(false);
+                break;
+            }
+            case CharacterState.RangedMage:
+            {
+                paladinSword.SetActive(false);
+                staffOfPain.SetActive(true);
+                break;
+            }
+        }
     }
 
-    void resetCollider()
+    private void UpdateAttacks()
     {
-        capColl.height = capColStartHeight;
-        capColl.center = capColStartOffset;
+        if (Input.GetButtonDown("Attack"))
+        {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.MeleeAttack"))
+            {
+                switch (playerClass)
+                {
+                    case CharacterState.MeleeWarrior:
+                    {
+                        anim.Play(Animator.StringToHash("Base Layer.MeleeAttack"));
+                        break;
+                    }
+                    case CharacterState.RangedMage:
+                    {
+                        anim.Play(Animator.StringToHash("Base Layer.RangedAttack"));
+                        break;
+                    }
+                    default:
+                    {
+                        Debug.Log("Invalid Attack!");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    void MeleeStrike()
+    {
+        
+
+    }
+
+
+    //-Animation Events-//
+    void WeaponSwap()
+    {
+        switch (playerClass)
+        {
+            case CharacterState.MeleeWarrior:
+            {
+                paladinSword.SetActive(true);
+                staffOfPain.SetActive(false);
+                break;
+            }
+            case CharacterState.RangedMage:
+            {
+                paladinSword.SetActive(false);
+                staffOfPain.SetActive(true);
+                break;
+            }
+        }
     }
 }
+
+
+/*Misc Snippets
+ * Converts enum to integral type
+ * (int)Convert.ChangeType(currState, currState.GetTypeCode()) 
+ * 
+ * 
+*/

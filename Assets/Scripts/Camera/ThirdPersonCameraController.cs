@@ -32,20 +32,9 @@ public class ThirdPersonCameraController : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-        if (Input.GetAxis("LookBehind") != 0)
-		{	
-			setCameraInFrontView();
-		}
-
-        else if (Input.GetAxis("LookUnder") != 0)
-        {
-            setCameraUnderView();
-        }
-		
-		else
-		{	
+        
 			setCameraDefaultView();
-		}
+		
 	}
 
 	void setCameraDefaultView()
