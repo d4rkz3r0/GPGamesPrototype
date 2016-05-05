@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     EnemySlotScript tempSlotScript;
     public float yPos;
     Vector3 straffDir;
+    public GameObject attackBox;
     // Use this for initialization
     void Start()
     {
@@ -79,7 +80,7 @@ public class EnemyController : MonoBehaviour
             else if (distance <= meleeRange)
             {
                 if (slotted == 1)
-                    myAnimation.SetInteger("state", 2);
+                    Attack();
                 else
                     Debug.Log("Slot was not 1");
             }
@@ -121,7 +122,13 @@ public class EnemyController : MonoBehaviour
     }
     void Attack()
     {
-        myAnimation.SetInteger("state", 2);
+        if (!decidedAttack)
+        {
+            attackBox.SetActive(true);
+            myAnimation.SetInteger("state", 2);
+            decidedAttack = true;
+            Invoke("ResetAttack", decesionTimer);
+        }
     }
     void OnCollisionEnter(Collision other)
     {
