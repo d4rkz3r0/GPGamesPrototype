@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarriorChargeCollider : MonoBehaviour {
+public class WarriorChargeCollider : MonoBehaviour
+{
 
     CapsuleCollider playerCollider;
     //CapsuleCollider chargeCollider;

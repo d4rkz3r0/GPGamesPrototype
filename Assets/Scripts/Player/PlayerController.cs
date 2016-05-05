@@ -88,20 +88,20 @@ public class PlayerController : MonoBehaviour
                 switch (playerClass)
                 {
                     case CharacterState.MeleeWarrior:
-                    {
-                        playerClass = CharacterState.RangedMage;
-                        break;
-                    }
+                        {
+                            playerClass = CharacterState.RangedMage;
+                            break;
+                        }
                     case CharacterState.RangedMage:
-                    {
-                        playerClass = CharacterState.MeleeWarrior;
-                        break;
-                    }
+                        {
+                            playerClass = CharacterState.MeleeWarrior;
+                            break;
+                        }
                     default:
-                    {
-                        Debug.Log("Invalid Char Class!");
-                        break;
-                    }
+                        {
+                            Debug.Log("Invalid Char Class!");
+                            break;
+                        }
                 }
             }
         }
@@ -112,17 +112,17 @@ public class PlayerController : MonoBehaviour
         switch (playerClass)
         {
             case CharacterState.MeleeWarrior:
-            {
-                paladinSword.SetActive(true);
-                staffOfPain.SetActive(false);
-                break;
-            }
+                {
+                    paladinSword.SetActive(true);
+                    staffOfPain.SetActive(false);
+                    break;
+                }
             case CharacterState.RangedMage:
-            {
-                paladinSword.SetActive(false);
-                staffOfPain.SetActive(true);
-                break;
-            }
+                {
+                    paladinSword.SetActive(false);
+                    staffOfPain.SetActive(true);
+                    break;
+                }
         }
     }
 
@@ -135,20 +135,20 @@ public class PlayerController : MonoBehaviour
                 switch (playerClass)
                 {
                     case CharacterState.MeleeWarrior:
-                    {
-                        anim.Play(Animator.StringToHash("Base Layer.MeleeAttack"));
-                        break;
-                    }
+                        {
+                            anim.Play(Animator.StringToHash("Base Layer.MeleeAttack"));
+                            break;
+                        }
                     case CharacterState.RangedMage:
-                    {
-                        anim.Play(Animator.StringToHash("Base Layer.RangedAttack"));
-                        break;
-                    }
+                        {
+                            anim.Play(Animator.StringToHash("Base Layer.RangedAttack"));
+                            break;
+                        }
                     default:
-                    {
-                        Debug.Log("Invalid Attack!");
-                        break;
-                    }
+                        {
+                            Debug.Log("Invalid Attack!");
+                            break;
+                        }
                 }
             }
         }
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
     void MeleeStrike()
     {
-        
+
 
     }
 
@@ -175,17 +175,17 @@ public class PlayerController : MonoBehaviour
         switch (playerClass)
         {
             case CharacterState.MeleeWarrior:
-            {
-                paladinSword.SetActive(true);
-                staffOfPain.SetActive(false);
-                break;
-            }
+                {
+                    paladinSword.SetActive(true);
+                    staffOfPain.SetActive(false);
+                    break;
+                }
             case CharacterState.RangedMage:
-            {
-                paladinSword.SetActive(false);
-                staffOfPain.SetActive(true);
-                break;
-            }
+                {
+                    paladinSword.SetActive(false);
+                    staffOfPain.SetActive(true);
+                    break;
+                }
         }
     }
 }

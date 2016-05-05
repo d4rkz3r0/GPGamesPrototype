@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarriorCharge : AbilityScript {
+public class WarriorCharge : AbilityScript
+{
 
     public const float fowardVel = 20.0f;
     public const float actionDuration = 0.4f;
@@ -90,7 +91,7 @@ public class WarriorCharge : AbilityScript {
             capsuleCollider.enabled = false;
             rBody.useGravity = true;
             playerCollider.enabled = true;
-            playerController.enabled = true;    
+            playerController.enabled = true;
         }
         else
         {
