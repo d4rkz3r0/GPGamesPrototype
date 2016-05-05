@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 5f2bc79e469cad44fbfefc661f692a90
+timeCreated: 1462368811
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body1
+    100002: Body2
+    100004: Body3
+    100006: Hips
+    100008: joint18
+    100010: joint19
+    100012: L_Ankle
+    100014: L_Clav
+    100016: L_Elbow
+    100018: L_Hand
+    100020: L_Heel
+    100022: L_Knee
+    100024: L_Leg
+    100026: L_Shoulder
+    100028: L_Toe
+    100030: Neck
+    100032: R_Ankle
+    100034: R_Clav
+    100036: R_Elbow
+    100038: R_Hand
+    100040: R_Heel
+    100042: R_Knee
+    100044: R_Leg
+    100046: R_Shoulder
+    100048: R_Toe
+    100050: Root
+    100052: Sprinter
+    100054: //RootNode
+    100056: Waist
+    400000: Body1
+    400002: Body2
+    400004: Body3
+    400006: Hips
+    400008: joint18
+    400010: joint19
+    400012: L_Ankle
+    400014: L_Clav
+    400016: L_Elbow
+    400018: L_Hand
+    400020: L_Heel
+    400022: L_Knee
+    400024: L_Leg
+    400026: L_Shoulder
+    400028: L_Toe
+    400030: Neck
+    400032: R_Ankle
+    400034: R_Clav
+    400036: R_Elbow
+    400038: R_Hand
+    400040: R_Heel
+    400042: R_Knee
+    400044: R_Leg
+    400046: R_Shoulder
+    400048: R_Toe
+    400050: Root
+    400052: Sprinter
+    400054: //RootNode
+    400056: Waist
+    4300000: Sprinter
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Sprinter
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Hips
+        weight: 1
+      - path: Root/Hips/Body1
+        weight: 1
+      - path: Root/Hips/Body1/Body2
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/L_Clav
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/L_Clav/L_Shoulder
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/L_Clav/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/L_Clav/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/Neck
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/Neck/joint18
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/Neck/joint18/joint19
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/R_Clav
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/R_Clav/R_Shoulder
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/R_Clav/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Root/Hips/Body1/Body2/Body3/R_Clav/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Root/Waist
+        weight: 1
+      - path: Root/Waist/L_Leg
+        weight: 1
+      - path: Root/Waist/L_Leg/L_Knee
+        weight: 1
+      - path: Root/Waist/L_Leg/L_Knee/L_Ankle
+        weight: 1
+      - path: Root/Waist/L_Leg/L_Knee/L_Ankle/L_Heel
+        weight: 1
+      - path: Root/Waist/L_Leg/L_Knee/L_Ankle/L_Heel/L_Toe
+        weight: 1
+      - path: Root/Waist/R_Leg
+        weight: 1
+      - path: Root/Waist/R_Leg/R_Knee
+        weight: 1
+      - path: Root/Waist/R_Leg/R_Knee/R_Ankle
+        weight: 1
+      - path: Root/Waist/R_Leg/R_Knee/R_Ankle/R_Heel
+        weight: 1
+      - path: Root/Waist/R_Leg/R_Knee/R_Ankle/R_Heel/R_Toe
+        weight: 1
+      - path: Sprinter
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
