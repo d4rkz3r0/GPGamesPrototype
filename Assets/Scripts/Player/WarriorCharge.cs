@@ -4,8 +4,8 @@ using System.Collections;
 public class WarriorCharge : AbilityScript
 {
 
-    public const float fowardVel = 20.0f;
-    public const float actionDuration = 0.4f;
+    private const float fowardVel = 20.0f;
+    private const float actionDuration = 0.4f;
     public const float cooldownDuration = 1.5f;
     public bool firstFrameActivation;
 
