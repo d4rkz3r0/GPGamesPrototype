@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         {
             whirlwindAction.firstFrameActivation = true;
         }
-        if (Input.GetButtonDown("Right Trigger"))
+        if (Input.GetAxis("Right Trigger") == 1)
         {
             slamAction.firstFrameActivation = true;
         }
