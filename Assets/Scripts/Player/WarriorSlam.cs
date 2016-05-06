@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarriorSlam : MonoBehaviour {
+public class WarriorSlam : AbilityScript {
 
     public float cooldownDuration = 12.0f;
     public float actionDuration = 2.0f;
@@ -57,7 +57,7 @@ public class WarriorSlam : MonoBehaviour {
             ActivateAction();
         else if (inUse_ready_onCooldown == 1)
         {
-            if (!colliderActivated && actionTimer > (actionDuration * .8f))
+            if (!colliderActivated && actionTimer > 1.25)
             {
                 slamCollider.enabled = true;
                 colliderActivated = true;
@@ -71,6 +71,8 @@ public class WarriorSlam : MonoBehaviour {
         cooldownTimer = 0.0f;
         actionTimer = 0.0f;
 
+        anim.Play(Animator.StringToHash("Base Layer.LeapAttack"));
+
         playerController.enabled = false;
     }
 
@@ -80,6 +82,7 @@ public class WarriorSlam : MonoBehaviour {
         slamCollider.enabled = false;
         cooldownTimer = 0.0f;
         actionTimer = 0.0f;
+        colliderActivated = false;
 
         playerController.enabled = true;
     }
