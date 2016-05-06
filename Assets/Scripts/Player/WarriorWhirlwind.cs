@@ -11,11 +11,12 @@ public class WarriorWhirlwind : MonoBehaviour {
     Quaternion targetRotation;
     BoxCollider whirlwindCollider;
     Transform whirlwindTransform;
-    //GameObject whirlwindGameObject;
     PlayerController playerController;
     float cooldownTimer;
     float actionTimer;
     int inUse_ready_onCooldown;
+
+    Animator anim;
 
     void Start()
     {        
@@ -39,6 +40,9 @@ public class WarriorWhirlwind : MonoBehaviour {
         }
         else
             Debug.LogError("The unit with this script attached needs to have a player controller.");
+
+        if (GetComponent<Animator>())
+            anim = GetComponent<Animator>();
 
         targetRotation = whirlwindTransform.rotation;
 
@@ -72,7 +76,9 @@ public class WarriorWhirlwind : MonoBehaviour {
     {
         inUse_ready_onCooldown = 1;
         whirlwindCollider.enabled = true;
-        firstFrameActivation = false;
+        firstFrameActivation = false;   
+
+        anim.Play(Animator.StringToHash("Base Layer.Whirlwind 1"));
 
         playerController.enabled = false;
     }

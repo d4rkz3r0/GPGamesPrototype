@@ -14,6 +14,8 @@ public class WarriorSlam : MonoBehaviour {
     int inUse_ready_onCooldown;
     bool colliderActivated;
 
+    Animator anim;
+
     void Start()
     {
         colliderActivated = false;
@@ -31,6 +33,9 @@ public class WarriorSlam : MonoBehaviour {
         {
             playerController = GetComponent<PlayerController>();
         }
+
+        if (GetComponent<Animator>())
+            anim = GetComponent<Animator>();
     }
 
     void Update()
