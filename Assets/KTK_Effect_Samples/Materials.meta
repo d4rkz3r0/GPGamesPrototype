@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/KTK_Effect_Samples/Materials.meta
 guid: feb6289f8faf9fd4db90366d991483d3
 folderAsset: yes
 timeCreated: 1462545126
+=======
+guid: 93688e912153cc043b945f029a781704
+folderAsset: yes
+timeCreated: 1462511255
+>>>>>>> 0a10904b1f0f6b5d78c876dd6cbfea7cdda96163:Assets/KTK_Effect_Samples/Materials.meta
 licenseType: Free
 DefaultImporter:
   userData: 

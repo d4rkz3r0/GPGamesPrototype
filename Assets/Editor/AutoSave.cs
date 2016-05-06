@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 [InitializeOnLoad]
 public class AutoSave
@@ -13,10 +15,7 @@ public class AutoSave
 
             if (EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isPlaying)
             {
-
-                Debug.Log("Auto-Saving scene before entering Play mode: " + EditorApplication.currentScene);
-
-                EditorApplication.SaveScene();
+                EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
                 EditorApplication.SaveAssets();
             }
 
