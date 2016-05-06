@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance < 20 && slotSpotOuter == Vector3.zero)
             {
-                if (tempSlotScript.SlotAvaible())
+                if (tempSlotScript && tempSlotScript.SlotAvaible())
                 {
                     tempSlotScript.InsertIntoSlot(gameObject);
                     slotted = 1;
