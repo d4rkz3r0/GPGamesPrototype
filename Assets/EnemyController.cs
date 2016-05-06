@@ -14,17 +14,14 @@ public class EnemyController : MonoBehaviour
     Rigidbody myRigid;
     EnemySlotScript tempSlotScript;
     public float yPos;
-    Vector3 straffDir;
+    Vector3 slotSpotOuter;
     public GameObject attackBox;
     // Use this for initialization
     void Start()
     {
         myAnimation = GetComponent<Animator>();
         myRigid = GetComponent<Rigidbody>();
-        if (Random.value < 0.5f)
-            straffDir = Vector3.left;
-        else
-            straffDir = Vector3.right;
+        slotSpotOuter = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -32,57 +29,48 @@ public class EnemyController : MonoBehaviour
     {
         if (player)
         {
-            transform.LookAt(player.transform.position);
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance < 7)
+            if (distance < 20 && slotSpotOuter == Vector3.zero)
             {
-                if (slotted == 0 || slotted == -1)
+                if (tempSlotScript.SlotAvaible())
                 {
-                    if (tempSlotScript.SlotAvaible())
-                    {
-                        tempSlotScript.InsertIntoSlot(gameObject);
-                        slotted = 1;
-                    }
-                    else
-                    {
-                        slotted = -1;
-                    }
+                    tempSlotScript.InsertIntoSlot(gameObject);
+                    slotted = 1;
+                    slotSpotOuter = Vector3.one;
+                }
+                else
+                {
+                    slotted = -1;
+                    slotSpotOuter = tempSlotScript.GetOuterSlotPosition();
                 }
             }
-            if (distance > meleeRange && distance < 5 && slotted == -1)
+            transform.LookAt(player.transform.position);
+            if (distance <= meleeRange)
             {
-                bool hit = Physics.Raycast(transform.position, transform.forward, 3);
-                if (hit)
-                {
-                    Vector3 tempPos = transform.position;
-                    tempPos += straffDir * Time.deltaTime;
-                    transform.position = tempPos;
-                }
-                myAnimation.SetInteger("state", 1);
+                Attack();
             }
-            else if (distance > targetRange)
+            else if (slotSpotOuter == Vector3.zero)
             {
                 myAnimation.SetInteger("state", 0);
-                slotted = 0;
             }
-            else if (distance > meleeRange)
+            else if (slotted == 1)
             {
-                if (distance > 3 && slotted == 1)
-                {
-                    tempSlotScript.RemoveSlot(gameObject);
-                    slotted = 0;
-                }
                 myAnimation.SetInteger("state", 1);
                 float step = speed * Time.deltaTime;
-                //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
                 myRigid.velocity = transform.forward * speed;
             }
-            else if (distance <= meleeRange)
+            else if (slotted == -1)
             {
-                if (slotted == 1)
-                    Attack();
-                else
-                    Debug.Log("Slot was not 1");
+                Vector3 outerSlotVector = (slotSpotOuter + player.transform.position);
+                if (Vector3.Distance(transform.position, outerSlotVector) > 1)
+                {
+                    float step = speed * Time.deltaTime;
+                    transform.LookAt(outerSlotVector);
+                    outerSlotVector.Normalize();
+                    transform.Translate((outerSlotVector) * speed * Time.deltaTime);
+                    transform.LookAt(player.transform.position);
+                }
+                myAnimation.SetInteger("state", 1);
             }
         }
     }
@@ -136,7 +124,13 @@ public class EnemyController : MonoBehaviour
         {
             Vector3 temp = -(other.transform.position - transform.position);
             temp.y = 0;
+            temp.Normalize();
             transform.Translate(temp * Time.deltaTime);
         }
+    }
+    void OnDisable()
+    {
+        slotSpotOuter = Vector3.zero;
+        slotted = 0;
     }
 }
