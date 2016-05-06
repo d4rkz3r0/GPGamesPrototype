@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarriorWhirlwind : MonoBehaviour {
+public class WarriorWhirlwind : AbilityScript {
 
     public float rotationVel = 720.0f;
     public float actionDuration = 1.0f;
@@ -78,7 +78,7 @@ public class WarriorWhirlwind : MonoBehaviour {
         whirlwindCollider.enabled = true;
         firstFrameActivation = false;   
 
-        anim.Play(Animator.StringToHash("Base Layer.Whirlwind 1"));
+        anim.Play(Animator.StringToHash("Base Layer.Whirlwind1"));
 
         playerController.enabled = false;
     }

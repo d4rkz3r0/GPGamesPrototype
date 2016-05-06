@@ -77,6 +77,11 @@ public class PlayerController : MonoBehaviour
     public AttackCombo meleeAttackCombo;
     public AttackCombo rangedAttackCombo;
 
+    //Combo Active Abilities
+    private AbilityScript rightTriggerAbility;
+    private AbilityScript rightBumperAbility;
+    private AbilityScript dodgeAbility;
+
     private void Awake()
     {
         //Player
@@ -88,6 +93,13 @@ public class PlayerController : MonoBehaviour
 
         //Weapons
         paladinSword = transform.FindChild("Sword").gameObject;
+
+        if (GetComponent<WarriorSlam>())
+            rightTriggerAbility = GetComponent<WarriorSlam>();
+        if (GetComponent<WarriorWhirlwind>())
+            rightBumperAbility = GetComponent<WarriorWhirlwind>();
+        if (GetComponent<WarriorCharge>())
+            dodgeAbility = GetComponent<WarriorCharge>();
     }
 
     private void Start()
@@ -370,6 +382,12 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilites()
     {
         //Ability Code Here
+        if (Input.GetButton("B Button"))
+            ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
+        else if (Input.GetButton("Right Bumper"))
+            ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
+        else if (Input.GetAxis("Right Trigger") == 1)
+            ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
     }
 
     public void UpdateBuffs()
