@@ -9,7 +9,7 @@ public class CameraOrbit : MonoBehaviour {
     public GameObject target;
     public Transform camTransform;
     public Transform characterTransform;
-    //CharacterController characterController;
+    CharacterController characterController;
 
     private Camera cam;
 
@@ -37,8 +37,8 @@ public class CameraOrbit : MonoBehaviour {
             currentX = characterTransform.rotation.eulerAngles.y;
             currentY = 15;
             distance = 5;
-            //characterController = characterTransform.GetComponent<CharacterController>();
-            //camTransform.position = characterController.transform.position - characterController.transform.InverseTransformDirection(transform.forward);
+            characterController = characterTransform.GetComponent<CharacterController>();
+            camTransform.position = characterController.transform.position - characterController.transform.InverseTransformDirection(transform.forward);
             //transform.position = characterTransform.position - characterTransform.InverseTransformDirection(transform.forward);
             Debug.Log("Button Recognized");
 
