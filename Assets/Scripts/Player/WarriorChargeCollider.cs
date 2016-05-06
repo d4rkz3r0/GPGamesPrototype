@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarriorChargeCollider : MonoBehaviour {
+public class WarriorChargeCollider : MonoBehaviour
+{
 
     CapsuleCollider playerCollider;
-    CapsuleCollider chargeCollider;
+    //CapsuleCollider chargeCollider;
     Rigidbody playerRigidBody;
+    int numEnemiesInCollision;
 
 
     void Start()
@@ -30,12 +32,7 @@ public class WarriorChargeCollider : MonoBehaviour {
         else
             Debug.LogError("There needs to be an object tagged as player.");
 
-        if (GetComponent<CapsuleCollider>())
-        {
-            chargeCollider = GetComponent<CapsuleCollider>();
-        }
-        else
-            Debug.LogError("This object needs a capsule collider.");
+        numEnemiesInCollision = 0;
 
     }
 
@@ -45,10 +42,25 @@ public class WarriorChargeCollider : MonoBehaviour {
         {
             playerCollider.enabled = false;
             playerRigidBody.useGravity = false;
+            numEnemiesInCollision++;
         }
-        else if (other.CompareTag("Wall"))
+        else
         {
+            playerCollider.enabled = true;
+            playerRigidBody.useGravity = true;
+        }
+    }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            numEnemiesInCollision--;
+            if (numEnemiesInCollision == 0)
+            {
+                playerCollider.enabled = true;
+                playerRigidBody.useGravity = true;
+            }
         }
     }
 }

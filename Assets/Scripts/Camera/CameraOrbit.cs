@@ -44,7 +44,7 @@ public class CameraOrbit : MonoBehaviour {
 
         }
 
-        if (Input.GetButton("Left Bumper"))
+        if (Input.GetButton("SwitchClass"))
         {
             Debug.Log("Left Bumper");
         }
@@ -54,13 +54,13 @@ public class CameraOrbit : MonoBehaviour {
         }
 
 
-        if (Input.GetButton("Left Bumper") && Input.GetButton("Right Bumper") && Input.GetButtonDown("Y Button"))
+        if (Input.GetButton("SwitchClass") && Input.GetButton("Right Bumper") && Input.GetButtonDown("Y Button"))
         {
             camSensitivity += .25f;
             Debug.Log("camSensitivity is " + camSensitivity.ToString());
             Debug.Log("test");
         }
-        if (Input.GetButton("Left Bumper") && Input.GetButton("Right Bumper") && Input.GetButtonDown("A Button"))
+        if (Input.GetButton("SwitchClass") && Input.GetButton("Right Bumper") && Input.GetButtonDown("A Button"))
         {
             camSensitivity -= .25f;
             Debug.Log("camSensitivity is " + camSensitivity.ToString());
