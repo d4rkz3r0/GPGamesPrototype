@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WarriorWhirlwind : MonoBehaviour {
 
-    public float rotationVel = -270.0f;
+    public float rotationVel = 720.0f;
     public float actionDuration = 1.0f;
     public float cooldownDuration = 5.0f;
     public bool firstFrameActivation;
