@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     //Skills
     private WarriorCharge chargeAction;
     private WarriorWhirlwind whirlwindAction;
-    private WarriorSlam slamAction;
+    //private WarriorSlam slamAction;
 
 
     //Early Guarenteed Initialization
@@ -53,8 +53,8 @@ public class PlayerController : MonoBehaviour
             chargeAction = GetComponent<WarriorCharge>();
         if (GetComponent<WarriorWhirlwind>())
             whirlwindAction = GetComponent<WarriorWhirlwind>();
-        if (GetComponent<WarriorSlam>())
-            slamAction = GetComponent<WarriorSlam>();
+        //if (GetComponent<WarriorSlam>())
+            //slamAction = GetComponent<WarriorSlam>();
     }
 
     //Delayed Initialization (Called upon *First* Script Enable)
@@ -165,11 +165,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Right Bumper"))
         {
-            whirlwindAction.firstFrameActivation = true;
+            //whirlwindAction.firstFrameActivation = true;
         }
         if (Input.GetAxis("Right Trigger") == 1)
         {
-            slamAction.firstFrameActivation = true;
+            //slamAction.firstFrameActivation = true;
         }
     }
 
