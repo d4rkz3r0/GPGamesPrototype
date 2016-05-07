@@ -777,7 +777,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.979355, y: 1.3208118e-15, z: -59.48408}
+  m_LocalPosition: {x: -13.98, y: 1.3208118e-15, z: -69.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472270}
@@ -1002,9 +1002,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 163500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  ObjectPlayer: {fileID: 0}
+  MaxHealth: 0
+  CurHealth: 0
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1016,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed775f87af07a7409303f7ba26bf833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   meleeRange: 1.5
   targetRange: 20
   decesionTimer: 2

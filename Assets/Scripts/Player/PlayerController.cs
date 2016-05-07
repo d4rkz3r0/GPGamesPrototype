@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             velocity *= bMoveSpeed;
         }
         transform.localPosition += velocity * Time.fixedDeltaTime;
-        transform.Rotate(0.0f, hInput * turnRate, 0.0f);
+        transform.Rotate(0.0f, hInput * turnRate * Time.deltaTime, 0.0f);
     }
 
     private void UpdatePlayerClass()
