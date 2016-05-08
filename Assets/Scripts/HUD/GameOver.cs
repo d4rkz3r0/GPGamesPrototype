@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameOver : MonoBehaviour {
+public class GameOver : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () 
+    public Canvas WinScreen;
+    void Start()
     {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        WinScreen.enabled = false;
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-	
-	}
+        if (GetComponent<PlayerHealth>().CurHealth <= 0)
+        {
+            WinScreen.enabled = true;
+
+
+        }
+    }
 }
