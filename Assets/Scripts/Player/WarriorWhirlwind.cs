@@ -78,7 +78,7 @@ public class WarriorWhirlwind : AbilityScript {
         whirlwindCollider.enabled = true;
         firstFrameActivation = false;   
 
-        anim.Play(Animator.StringToHash("Base Layer.Whirlwind1"));
+        //anim.Play(Animator.StringToHash("Base Layer.Whirlwind1"));
 
         playerController.enabled = false;
     }

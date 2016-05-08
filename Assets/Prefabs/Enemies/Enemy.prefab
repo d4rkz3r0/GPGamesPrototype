@@ -1020,12 +1020,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed775f87af07a7409303f7ba26bf833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackBox: {fileID: 147984}
   speed: 4
   meleeRange: 1.5
   targetRange: 20
   decesionTimer: 2
   yPos: 0
-  attackBox: {fileID: 147984}
+  isPlayerInRange: 0
 --- !u!114 &11471360
 MonoBehaviour:
   m_ObjectHideFlags: 1

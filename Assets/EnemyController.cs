@@ -4,19 +4,27 @@ using System.Collections;
 public class EnemyController : MonoBehaviour
 {
     Animator myAnimation = null;
+    public GameObject attackBox;
     GameObject player = null;
+
     public int speed = 5;
+    int slotted = 0;
+
     public float meleeRange = 5;
     public float targetRange = 50;
-    bool decidedAttack = false;
     public float decesionTimer = 2.0f;
-    int slotted = 0;
-    Rigidbody myRigid;
-    EnemySlotScript tempSlotScript;
     public float yPos;
+    bool decidedAttack = false;
+
+
+    Rigidbody myRigid;
     Vector3 slotSpotOuter;
-    public GameObject attackBox;
-    // Use this for initialization
+    EnemySlotScript tempSlotScript;
+
+
+
+
+
     void Start()
     {
         myAnimation = GetComponent<Animator>();
@@ -118,6 +126,7 @@ public class EnemyController : MonoBehaviour
             Invoke("ResetAttack", decesionTimer);
         }
     }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Enemy")
