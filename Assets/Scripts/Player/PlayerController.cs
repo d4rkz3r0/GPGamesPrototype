@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
         RangedMage
     }
 
+
     public class AttackCombo
     {
         public enum AttackState
@@ -71,7 +72,12 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider coll;
 
     //Weapons
-    private GameObject paladinSword;
+    private SwordController paladinSword;
+
+    //Warrior Spells (Prototype Only)
+    public GameObject fireBall;
+    public GameObject lightningBolt;
+    public Transform abilityPoint;
 
     //Basic Attack Chains
     public AttackCombo meleeAttackCombo;
@@ -92,7 +98,8 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<CapsuleCollider>();
 
         //Weapons
-        paladinSword = transform.FindChild("Sword").gameObject;
+        paladinSword = GetComponentInChildren<SwordController>();
+        //meleeEndComboTimer = meleeEndComboTimerDuration;
 
         if (GetComponent<WarriorSlam>())
             rightTriggerAbility = GetComponent<WarriorSlam>();
@@ -188,6 +195,12 @@ public class PlayerController : MonoBehaviour
 
     public void MeleeAttackChain()
     {
+        ////Melee End Combo SFX Buffer
+        //if (startBuffer)
+        //{
+        //    if (meleeEndComboTimer > 0.0f) { meleeEndComboTimer -= Time.deltaTime; }
+        //}
+        
         if (meleeAttackCombo.currAttackState == AttackCombo.AttackState.NotAttacking && meleeAttackCombo.isComboOver)
         {
             ResetCombo();
@@ -221,6 +234,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //public void StartAttack()
+    //{
+    //    paladinSword.EnableCollider();
+    //}
+
+    //public void EndAttack()
+    //{
+    //    paladinSword.DisableCollider();
+    //}
 
     public void UpdateMeleeCombo()
     {
@@ -262,9 +284,10 @@ public class PlayerController : MonoBehaviour
                 }
                 case AttackCombo.AttackState.ThirdAttack:
                 {
-                    if (AnimatorIsPlaying("MeleeSlash2"))
+                    if (AnimatorIsPlaying("MeleeSlash2"))// && meleeEndComboTimer < 0.0f)
                     {
                         anim.SetTrigger("MSlash3");
+                           
                         meleeAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
                     }
                     else
@@ -362,6 +385,7 @@ public class PlayerController : MonoBehaviour
                         {
                             anim.SetTrigger("RCast3");
                             rangedAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
+                            //startBuffer = true;
                         }
                         else
                         {
@@ -414,12 +438,10 @@ public class PlayerController : MonoBehaviour
         {
             case CharacterClass.MeleeWarrior:
                 {
-                    paladinSword.SetActive(true);
                     break;
                 }
             case CharacterClass.RangedMage:
                 {
-                    paladinSword.SetActive(false);
                     break;
                 }
         }
@@ -448,7 +470,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool AnimatorIsPlaying(string stateName)
+    public bool AnimatorIsPlaying(string stateName)
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }
@@ -460,15 +482,27 @@ public class PlayerController : MonoBehaviour
         {
             case CharacterClass.MeleeWarrior:
             {
-                paladinSword.SetActive(true);
+                //paladinSword.SetActive(true);
                 break;
             }
             case CharacterClass.RangedMage:
             {
-                paladinSword.SetActive(false);
+               // paladinSword.SetActive(false);
                 break;
             }
         }
+    }
+
+    void SpawnFireBall()
+    {
+        Instantiate(fireBall, abilityPoint.position, abilityPoint.rotation);
+    }
+
+    void SpawnLightning()
+    {
+        Instantiate(lightningBolt, abilityPoint.position - new Vector3(3.0f, 0.0f, 0.0f), abilityPoint.rotation);
+        Instantiate(lightningBolt, abilityPoint.position, abilityPoint.rotation);
+        Instantiate(lightningBolt, abilityPoint.position + new Vector3(3.0f, 0.0f, 0.0f), abilityPoint.rotation);
     }
 
     public void ResetCombo()
@@ -478,6 +512,9 @@ public class PlayerController : MonoBehaviour
             meleeAttackCombo.amComboing = false;
             meleeAttackCombo.canStartCombo = true;
             meleeAttackCombo.isComboOver = true;
+            paladinSword.ResetSlashes();
+            //meleeEndComboTimer = meleeEndComboTimerDuration;
+            //if(meleeEndComboTimer < 0.0f) { paladinSword.ResetSlashes(); }
         }
         else
         {
