@@ -15,6 +15,7 @@ TagManager:
   - AttackBuffParticle
   - DefenseBuffParticle
   - VampireBuffParticle
+  - ZombieAttack
   layers:
   - Default
   - TransparentFX

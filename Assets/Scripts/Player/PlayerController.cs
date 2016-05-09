@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
     private ParticleSystem defenseParticleSystem;
     private ParticleSystem vamprisimParticleSystem;
 
+    private PlayerHealth healthManager;
+
     private void Awake()
     {
         //Player
@@ -146,6 +148,9 @@ public class PlayerController : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("VampireBuffParticle"))
             if (GameObject.FindGameObjectWithTag("VampireBuffParticle").GetComponent<ParticleSystem>())
                 vamprisimParticleSystem = GameObject.FindGameObjectWithTag("VampireBuffParticle").GetComponent<ParticleSystem>();
+
+        if (GetComponent<PlayerHealth>())
+            healthManager = GetComponent<PlayerHealth>();
 
     }
 
@@ -604,6 +609,17 @@ public class PlayerController : MonoBehaviour
             rangedAttackCombo.amComboing = false;
             rangedAttackCombo.canStartCombo = true;
             rangedAttackCombo.isComboOver = true;
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.CompareTag("ZombieAttack"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(10.0f);
+            else
+                healthManager.DecreaseHealth(20.0f);
         }
     }
 }
