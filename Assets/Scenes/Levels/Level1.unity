@@ -196,7 +196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 13583628, guid: 291130f1315379047bc88cf375545e93, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6597598, guid: 291130f1315379047bc88cf375545e93, type: 2}
       propertyPath: m_Enabled
@@ -879,19 +879,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dda610bfc024d45802682dd91697dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 2800000, guid: 7dbacd0889bcc33428a984ee09a1c4f2, type: 3}
-  AttackFire: {fileID: 2800000, guid: 63e9dac51efaf6f4991bf3f5d9321628, type: 3}
-  AttackDark: {fileID: 2800000, guid: fd02c086b884bb74f9eb64379c91cffa, type: 3}
-  AttackLighting: {fileID: 2800000, guid: 3559c67477231b64a9e35833460706d1, type: 3}
-  AttackIce: {fileID: 2800000, guid: eca6c1ac147829840a48d2181ffacd48, type: 3}
   Atk: {fileID: 1802012917}
   Def: {fileID: 962556926}
   VAMP: {fileID: 1589781096}
   BUFFS: {fileID: 1100161825}
-  Vamp: {fileID: 2800000, guid: f8e18b4ccfac8f04285ec2d30a0ba8d5, type: 3}
-  Defense: {fileID: 2800000, guid: a7fb63991fd75df46b9c722f267fc6fe, type: 3}
-  Attack3: {fileID: 2800000, guid: b4570bd96e853f348b253848c3560b71, type: 3}
-  Attack4: {fileID: 2800000, guid: 84b49811c138b5742b367d5eb15c65c6, type: 3}
 --- !u!114 &658772187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,6 +2791,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
+  addedForce: 10
 --- !u!114 &1720125535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,6 +3212,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 1958553825}
   MaxHealth: 0
   CurHealth: 0
+  addedForce: 10
 --- !u!1 &1990751349
 GameObject:
   m_ObjectHideFlags: 0
