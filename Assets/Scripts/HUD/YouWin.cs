@@ -6,7 +6,7 @@ public class YouWin : MonoBehaviour {
 	// Use this for initialization
 
     public Canvas WinScreen;
-    public 
+ 
 	void Start () {
         WinScreen.enabled = false;
 	}
