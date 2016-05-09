@@ -302,7 +302,6 @@ GameObject:
   - 95: {fileID: 9540680}
   - 54: {fileID: 5446444}
   - 65: {fileID: 6541232}
-  - 135: {fileID: 13583628}
   - 114: {fileID: 11470836}
   - 114: {fileID: 11471360}
   m_Layer: 2
@@ -777,7 +776,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.98, y: 1.3208118e-15, z: -69.48}
+  m_LocalPosition: {x: -13.98, y: 0, z: -58.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472270}
@@ -914,7 +913,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &6541232
 BoxCollider:
@@ -1009,6 +1008,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
+  addedForce: 10
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   meleeRange: 1.5
   targetRange: 20
   decesionTimer: 2
+  detectionRange: 25
   yPos: 0
 --- !u!114 &11471360
 MonoBehaviour:
@@ -1041,6 +1042,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 157532}
   MaxHealth: 4
   CurHealth: 0
+  addedForce: 625
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1095,18 +1097,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!135 &13583628
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10.085911
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &13775258
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

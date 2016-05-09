@@ -58,8 +58,13 @@ public class EnemyHealth : MonoBehaviour
             {
                 Vector3 temp = -(other.transform.position - transform.position);
                 temp.y = 0;
-                Vector3 leftVector = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
-                temp = temp * 0.25f + leftVector * 0.75f;
+                Vector3 dirVec;
+                float angle = Vector3.Dot(Player.transform.forward, temp);
+                if(angle < 0)
+                    dirVec = Quaternion.AngleAxis(-90, Vector3.up) * transform.forward;
+                else
+                    dirVec = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
+                temp = temp * 0.25f + dirVec * 0.75f;
                 temp.Normalize();
                 myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
                 CurHealth -= 100;
@@ -67,32 +72,32 @@ public class EnemyHealth : MonoBehaviour
                 Invoke("ResetCharge", 0.3f);
             }
         }
-        if (other.tag == "WarriorWhirlwindCollider")
+        else if (other.tag == "WarriorWhirlwindCollider")
         {
             if (!hitByCharged)
             {
                 Vector3 temp = -(transform.forward);
                 temp.y = 0;
-                myRigidBudy.AddForce(temp.normalized * addedForce);
+                myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
                 CurHealth -= 80;
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
         }
-        if (other.tag == "WarriorSlamCollider")
+        else if (other.tag == "WarriorSlamCollider")
         {
             if (!hitByCharged)
             {
-                myRigidBudy.AddForce(Vector3.up * addedForce);
+                myRigidBudy.AddForce(Vector3.up * addedForce * myRigidBudy.mass);
                 CurHealth -= 150;
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
         }
-        if (other.tag == "WarriorSword")
+        else if (other.tag == "WarriorSword")
         {
-            CurHealth -= 50;
-            Invoke("ResetCharge", 0.3f);
+            //CurHealth -= 50;
+            //Invoke("ResetCharge", 0.3f);
         }
         if (CurHealth <= 00)
         {

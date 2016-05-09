@@ -86,6 +86,8 @@ public class EnemyController : MonoBehaviour
                     myAnimation.SetInteger("state", 1);
                 }
             }
+            else
+                myAnimation.SetInteger("state", 0);
         }
     }
     void OnTriggerStay(Collider other)
@@ -115,6 +117,7 @@ public class EnemyController : MonoBehaviour
     }
     void ResetAttack()
     {
+        attackBox.SetActive(false);
         decidedAttack = false;
     }
     void Attack()
@@ -147,13 +150,21 @@ public class EnemyController : MonoBehaviour
     {
         if (other.tag == "WarriorChargeCollider")
         {
+            ResetAttack();
             canDoStuff = false;
             Invoke("CanAttack", 0.5f);
         }
         if (other.tag == "WarriorSlamCollider")
         {
+            ResetAttack();
             canDoStuff = false;
-            Invoke("CanAttack", 3.0f);
+            Invoke("CanAttack", 2.5f);
+        }
+        if (other.tag == "WarriorWhirlwindCollider")
+        {
+            ResetAttack();
+            canDoStuff = false;
+            Invoke("CanAttack", 0.5f);
         }
     }
     void CanAttack()
