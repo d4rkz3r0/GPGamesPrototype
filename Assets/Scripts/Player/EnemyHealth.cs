@@ -56,6 +56,7 @@ public class EnemyHealth : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         PlayerHealth tempHealth = bitchAssPlayer.GetComponent<PlayerHealth>();
+        FuryMeter tempFury = bitchAssPlayer.GetComponent<FuryMeter>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
         {
@@ -117,12 +118,26 @@ public class EnemyHealth : MonoBehaviour
         }
         else if (other.tag == "WarriorSword")
         {
-            //CurHealth -= 50;
-            //Invoke("ResetCharge", 0.3f);
+            if (!hitByCharged)
+            {
+                Vector3 temp = -(transform.forward);
+                temp.y = 0;
+                myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
+                if (buff != -1)
+                    CurHealth -= 50;
+                else
+                    CurHealth -= 100;
+                if (buff == 1)
+                    tempHealth.ReGenHealth(25);
+                Invoke("ResetCharge", 0.75f);
+                hitByCharged = true;
+                tempFury.GainFury(20); 
+            }
         }
         if (CurHealth <= 00)
         {
-            CurHealth = 200;
+            ProgressBar.killed++;
+            Destroy(gameObject);
         }
     }
     void ResetCharge()

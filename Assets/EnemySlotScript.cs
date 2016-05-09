@@ -16,9 +16,9 @@ public class EnemySlotScript : MonoBehaviour
         float degrees = 0;
         for (int i = 0; i < 40; i++, degrees += 360 / 40)
         {
-            outerSlots[i].x = Mathf.Cos(degrees * Mathf.Deg2Rad) * 3;
+            outerSlots[i].x = Mathf.Cos(degrees * Mathf.Deg2Rad) * 2;
             outerSlots[i].y = 0;
-            outerSlots[i].z = Mathf.Sin(degrees * Mathf.Deg2Rad) * 3;
+            outerSlots[i].z = Mathf.Sin(degrees * Mathf.Deg2Rad) * 2;
         }
     }
 
@@ -29,9 +29,9 @@ public class EnemySlotScript : MonoBehaviour
     }
     public bool SlotAvaible()
     {
-        if (slotCount < maxSlots)
-            return true;
-        return false;
+        //if (slotCount < maxSlots)
+        //    return true;
+        return (slotCount < maxSlots);
     }
     public void InsertIntoSlot(GameObject _enemy)
     {
@@ -53,7 +53,7 @@ public class EnemySlotScript : MonoBehaviour
         nextAvaibleSlot++;
         return temp;
     }
-    void ResetSlots()
+    public void ResetSlots()
     {
         arrayList.Clear();
         slotCount = 0;

@@ -21,6 +21,8 @@ public class SwordController : MonoBehaviour
     public int meleeSlash3Damage = 2;
     public float meleeSlash3PushBack = 200.0f;
 
+    public bool dynamicCollider;
+
     //Internal
     private bool firstStrike = true;
     private bool secondStrike = true;
@@ -35,12 +37,22 @@ public class SwordController : MonoBehaviour
         swordMeshCollider = GetComponent<MeshCollider>();
 
         currSwordMesh = new Mesh();
-        DisableCollider();
+        dynamicCollider = false;
     }
 
     void Update()
     {
-        RenderMeshToCollisionMesh();
+        if (dynamicCollider)
+        {
+            RenderMeshToCollisionMesh();
+        }
+        else
+        {
+            DisableCollider();
+        }
+
+        
+        
 
         //Melee End Combo SFX Buffer
         if (meleeEndComboTimer > 0.0f) { meleeEndComboTimer -= Time.deltaTime; }
@@ -59,10 +71,6 @@ public class SwordController : MonoBehaviour
             case 1:
                 {
                     swordSoundEffects[0].Play();
-                    Debug.Log("First Strike!");
-                    //player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
-                    //anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash1PushBack, meleeSlash1PushBack, meleeSlash1PushBack));
-                    //anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash1Damage);
                     firstStrike = false;
                     break;
                 }
@@ -71,20 +79,12 @@ public class SwordController : MonoBehaviour
             case 2:
                 {
                     swordSoundEffects[1].Play();
-                    Debug.Log("Second Strike!");
-                    //player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
-                    //anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash2PushBack, meleeSlash2PushBack, meleeSlash2PushBack));
-                    //anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash2Damage);
                     secondStrike = false;
                     break;
                 }
             case 3:
                 {
                     swordSoundEffects[2].Play();
-                    Debug.Log("Third Strike!");
-                    //player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
-                    //anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash3PushBack, meleeSlash3PushBack, meleeSlash3PushBack));
-                    //anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash3Damage);
                     thirdStrike = false;
 
                     break;
@@ -129,29 +129,29 @@ public class SwordController : MonoBehaviour
         }
     }
 
+    public void ResetSlash()
+    {
+        DisableCollider();
+    }
 
     public void ResetSlashes()
     {
+        DisableCollider();
         firstStrike = true;
         secondStrike = true;
         thirdStrike = true;
         meleeEndComboTimer = meleeEndComboTimerDuration;
     }
 
-    public void EnableCollider()
-    {
-        swordMeshCollider.enabled = true;
-    }
-
     public void DisableCollider()
     {
-        swordMeshCollider.enabled = false;
+        swordMeshCollider.sharedMesh = null;
     }
 
     //Reduce Enemy HP
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Sword has registered a collision event with: " + other.gameObject.tag + ".");
+        //Debug.Log("Sword has registered a collision event with: " + other.gameObject.tag + ".");
 
         switch (other.tag)
         {

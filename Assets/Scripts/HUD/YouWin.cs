@@ -21,7 +21,7 @@ public class YouWin : MonoBehaviour {
 
 
     }
-    Debug.Log(Input.GetButton("StartButton").ToString());
+    //Debug.Log(Input.GetButton("StartButton").ToString());
 
     if (Input.GetButton("StartButton") && WinScreen.enabled == true)
         {

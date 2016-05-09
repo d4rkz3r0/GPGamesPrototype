@@ -51,7 +51,7 @@ public class FuryMeter : MonoBehaviour {
 
     public void GainFury(float amountToGain)
     {
-        Currentmeter += 0.5f;
+        Currentmeter += amountToGain;
         GreenHealthbar.fillAmount += 0.005f;
     }
 

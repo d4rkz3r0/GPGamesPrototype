@@ -21,13 +21,14 @@ public class EnemyManager : MonoBehaviour
     {
 
     }
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             foreach (GameObject enemy in enemies)
             {
-                enemy.SetActive(true);
+                if (enemy)
+                    enemy.SetActive(true);
             }
         }
     }
@@ -37,8 +38,11 @@ public class EnemyManager : MonoBehaviour
         {
             for (int i = 0; i < enemies.Length; i++)
             {
-                enemies[i].transform.position = enemyPos[i];
-                enemies[i].SetActive(false);
+                if (enemies[i])
+                {
+                    enemies[i].transform.position = enemyPos[i];
+                    enemies[i].SetActive(false);
+                }
             }
         }
     }

@@ -41,15 +41,15 @@ public class EnemyController : MonoBehaviour
             distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance < detectionRange && canDoStuff)
             {
-                if (distance < 20 && slotSpotOuter == Vector3.zero)
+                if (distance < 20)
                 {
-                    if (tempSlotScript && tempSlotScript.SlotAvaible())
+                    if (tempSlotScript && tempSlotScript.SlotAvaible() && slotted != 1)
                     {
                         tempSlotScript.InsertIntoSlot(gameObject);
                         slotted = 1;
                         slotSpotOuter = Vector3.one;
                     }
-                    else
+                    else if(slotted == 0)
                     {
                         slotted = -1;
                         slotSpotOuter = tempSlotScript.GetOuterSlotPosition();
@@ -66,11 +66,13 @@ public class EnemyController : MonoBehaviour
                 {
                     myAnimation.SetInteger("state", 0);
                 }
-                else if (slotted == 1)
+                else if (slotted == 1 || distance > 7)
                 {
                     myAnimation.SetInteger("state", 1);
                     float step = speed * Time.deltaTime;
                     myRigid.velocity = (transform.forward) * speed;
+                    if (transform.position.y > 0)
+                        myRigid.velocity += Vector3.down;
                 }
                 else if (slotted == -1)
                 {
@@ -158,6 +160,8 @@ public class EnemyController : MonoBehaviour
         {
             ResetAttack();
             canDoStuff = false;
+            if (slotted == 1)
+                tempSlotScript.RemoveSlot(gameObject);
             Invoke("CanAttack", 2.5f);
         }
         if (other.tag == "WarriorWhirlwindCollider")
@@ -170,5 +174,12 @@ public class EnemyController : MonoBehaviour
     void CanAttack()
     {
         canDoStuff = true;
+    }
+    void OnDestroy()
+    {
+        if (slotted == 1)
+            tempSlotScript.RemoveSlot(gameObject);
+        else
+            tempSlotScript.ResetSlots();
     }
 }

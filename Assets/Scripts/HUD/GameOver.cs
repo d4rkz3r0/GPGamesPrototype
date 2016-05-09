@@ -23,13 +23,13 @@ public class GameOver : MonoBehaviour
 
         if (Input.GetButton("StartButton") && WinScreen.enabled == true)
         {
-            Debug.Log(Input.GetButton("StartButton").ToString());
+            //Debug.Log(Input.GetButton("StartButton").ToString());
             SceneManager.LoadScene(0);
         }
 
 
 
-        Debug.Log((Input.GetButton("SelectButton").ToString()));
+        //Debug.Log((Input.GetButton("SelectButton").ToString()));
         if (Input.GetButton("SelectButton") && WinScreen.enabled == true)
         {
             Application.Quit();

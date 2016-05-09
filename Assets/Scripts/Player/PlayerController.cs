@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
 
         //Weapons
-        //paladinSword = transform.FindChild("Sword").gameObject;
+        paladinSword = GameObject.Find("Sword");
 
         if (GetComponent<WarriorSlam>())
             rightTriggerAbility = GetComponent<WarriorSlam>();
@@ -257,7 +257,6 @@ public class PlayerController : MonoBehaviour
         {
             RangedAttackChain();
         }
-
     }
 
 
@@ -266,6 +265,16 @@ public class PlayerController : MonoBehaviour
         if (meleeAttackCombo.currAttackState == AttackCombo.AttackState.NotAttacking && meleeAttackCombo.isComboOver)
         {
             ResetCombo();
+        }
+
+        if (meleeAttackCombo.amComboing &&
+            !meleeAttackCombo.canStartCombo &&
+            !meleeAttackCombo.isComboOver 
+            && (meleeAttackCombo.currAttackState == AttackCombo.AttackState.SecondAttack
+            || meleeAttackCombo.currAttackState == AttackCombo.AttackState.ThirdAttack)
+            && AnimatorIsPlaying("Idle2Running"))
+        {
+            paladinSword.GetComponent<MeshCollider>().sharedMesh = null;
         }
 
         if (Input.GetButtonDown("Attack"))
@@ -290,6 +299,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (meleeAttackCombo.amComboing)
                 {
+                    //paladinSword.GetComponent<SwordController>().dynamicCollider = false;
                     UpdateMeleeCombo();
                 }
             }
@@ -313,6 +323,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (AnimatorIsPlaying("Idle2Running"))
                         {
+                            paladinSword.GetComponent<SwordController>().dynamicCollider = true;
                             anim.SetTrigger("MSlash1");
                             meleeAttackCombo.currAttackState = AttackCombo.AttackState.SecondAttack;
                         }
@@ -326,6 +337,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (AnimatorIsPlaying("MeleeSlash1"))
                         {
+                            paladinSword.GetComponent<SwordController>().dynamicCollider = true;
                             anim.SetTrigger("MSlash2");
                             meleeAttackCombo.currAttackState = AttackCombo.AttackState.ThirdAttack;
                         }
@@ -339,6 +351,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (AnimatorIsPlaying("MeleeSlash2"))
                         {
+                            paladinSword.GetComponent<SwordController>().dynamicCollider = true;
                             anim.SetTrigger("MSlash3");
                             meleeAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
                         }
@@ -600,6 +613,7 @@ public class PlayerController : MonoBehaviour
     {
         if (IsWarrior())
         {
+            paladinSword.GetComponent<SwordController>().ResetSlashes();
             meleeAttackCombo.amComboing = false;
             meleeAttackCombo.canStartCombo = true;
             meleeAttackCombo.isComboOver = true;
