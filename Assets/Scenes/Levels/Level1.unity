@@ -5100,6 +5100,7 @@ GameObject:
   - 114: {fileID: 875126234}
   - 114: {fileID: 875126233}
   - 114: {fileID: 875126241}
+  - 114: {fileID: 875126242}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5252,6 +5253,23 @@ MonoBehaviour:
   furycast: 0
   GreenHealthbar: {fileID: 1447747844}
   HealthText: {fileID: 631264078}
+--- !u!114 &875126242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875126232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f76ec46f15aa34799b729b6578cf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  ObjectPlayer: {fileID: 0}
+  HealthText: {fileID: 0}
+  MaxHealth: 0
+  CurHealth: 0
+  GreenHealthbar: {fileID: 0}
 --- !u!1 &885768353
 GameObject:
   m_ObjectHideFlags: 0
