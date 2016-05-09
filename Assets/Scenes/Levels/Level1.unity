@@ -405,7 +405,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 13583628, guid: 291130f1315379047bc88cf375545e93, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6597598, guid: 291130f1315379047bc88cf375545e93, type: 2}
       propertyPath: m_Enabled
@@ -3306,6 +3306,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
+  addedForce: 10
 --- !u!114 &1720125535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3726,6 +3727,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 1958553825}
   MaxHealth: 0
   CurHealth: 0
+  addedForce: 10
 --- !u!1 &1990751349
 GameObject:
   m_ObjectHideFlags: 0
