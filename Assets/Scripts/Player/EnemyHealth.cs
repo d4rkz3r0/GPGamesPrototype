@@ -95,6 +95,10 @@ public class EnemyHealth : MonoBehaviour
                 Invoke("ResetCharge", 0.3f);
             }
         }
+        if (other.tag == "WarriorSword")
+        {
+            Debug.Log("Shit Happened");
+        }
         if (CurHealth <= 00)
         {
             CurHealth = 200;
