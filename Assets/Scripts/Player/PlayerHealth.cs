@@ -28,8 +28,8 @@ public class PlayerHealth : MonoBehaviour {
         GreenHealthbar.fillAmount = CurHealth * 0.01f;
         SetHealth(CurHealth / MaxHealth);
 
-        if (CurHealth <= 0)
-            Application.LoadLevel(0);
+        
+            
       
 	}
 
@@ -49,7 +49,8 @@ public class PlayerHealth : MonoBehaviour {
     public void ReGenHealth(float _amount)
     {
         CurHealth += _amount;
-
+        float temp = CurHealth / MaxHealth;
+        SetHealth(temp);
     }
 
    void SetHealth(float health )

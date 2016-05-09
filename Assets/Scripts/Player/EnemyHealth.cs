@@ -13,14 +13,17 @@ public class EnemyHealth : MonoBehaviour
     Rigidbody myRigidBudy;
     bool hitByCharged = false;
     public float addedForce = 10.0f;
+    GameObject bitchAssPlayer;
+    PlayerController playerCon;
     void Start()
     {
         MaxHealth = 200f;
         CurHealth = MaxHealth;
         myRigidBudy = GetComponent<Rigidbody>();
+        bitchAssPlayer = GameObject.Find("Player");
         //   HealthText.text = CurHealth + "/" + MaxHealth;
         // GreenHealthbar.fillAmount = CurHealth;
-
+        playerCon = bitchAssPlayer.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -52,9 +55,11 @@ public class EnemyHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        PlayerHealth tempHealth = Player.GetComponent<PlayerHealth>();
+        PlayerHealth tempHealth = bitchAssPlayer.GetComponent<PlayerHealth>();
+        int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
         {
+            Debug.Log(buff);
             if (!hitByCharged)
             {
                 Vector3 temp = -(other.transform.position - transform.position);
@@ -68,8 +73,12 @@ public class EnemyHealth : MonoBehaviour
                 temp = temp * 0.25f + dirVec * 0.75f;
                 temp.Normalize();
                 myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
-                CurHealth -= 100;
-                tempHealth.ReGenHealth(50);
+                if (buff != -1)
+                    CurHealth -= 100;
+                else
+                    CurHealth -= 200;
+                if (buff == 1)
+                    tempHealth.ReGenHealth(50);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
@@ -81,7 +90,11 @@ public class EnemyHealth : MonoBehaviour
                 Vector3 temp = -(transform.forward);
                 temp.y = 0;
                 myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
-                CurHealth -= 80;
+                if (buff != -1)
+                    CurHealth -= 80;
+                else
+                    CurHealth -= 160;
+                if(buff == 1)
                 tempHealth.ReGenHealth(80);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
@@ -92,8 +105,12 @@ public class EnemyHealth : MonoBehaviour
             if (!hitByCharged)
             {
                 myRigidBudy.AddForce(Vector3.up * addedForce * myRigidBudy.mass);
-                CurHealth -= 150;
-                tempHealth.ReGenHealth(75);
+                if (buff != -1)
+                    CurHealth -= 150;
+                else
+                    CurHealth -= 300;
+                if (buff == 1)
+                    tempHealth.ReGenHealth(75);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }

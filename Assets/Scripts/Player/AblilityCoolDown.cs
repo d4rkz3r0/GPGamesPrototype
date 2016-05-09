@@ -22,7 +22,7 @@ public class AblilityCoolDown : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.GetButtonDown("B Button") && GetComponent<FuryMeter>().Currentmeter > 0 && timerAblility1 >= 300)
+        if (Input.GetButtonDown("B Button") && GetComponent<WarriorCharge>().cooldownTimer == 0)
     {
         timerAblility1 = 0;
 
@@ -32,7 +32,7 @@ public class AblilityCoolDown : MonoBehaviour {
     }
 
 
-        if (Input.GetButtonDown("Y Button") && GetComponent<FuryMeter>().Currentmeter > 0 && timerAbility2 >= 300)
+        if (Input.GetButtonDown("Y Button") && GetComponent<WarriorSlam>().cooldownTimer == 0)
     {
         timerAbility2 = 0;
 
@@ -42,7 +42,7 @@ public class AblilityCoolDown : MonoBehaviour {
     }
 
 
-    if (Input.GetButtonDown("A Button") && GetComponent<FuryMeter>().Currentmeter > 0 && timerAblility3 >= 300)
+        if (Input.GetButtonDown("A Button") && GetComponent<WarriorWhirlwind>().cooldownTimer == 0)
     {
         timerAblility3 = 0;
 
@@ -52,10 +52,10 @@ public class AblilityCoolDown : MonoBehaviour {
     }
 
 
-    if (timerAblility1 <= 300)
+    if (GetComponent<WarriorCharge>().cooldownTimer <= 3)
     {
         timerAblility1 += 1f;
-        CoolDownPictureAbillity1.color = new Color(1, 1, 1, timerAblility1 * 0.003f);
+        CoolDownPictureAbillity1.color = new Color(1, 1, 1, timerAblility1 * 0.006f);
     }
 
 
@@ -63,10 +63,10 @@ public class AblilityCoolDown : MonoBehaviour {
 
 
 
-    if (timerAbility2 <= 300)
+    if (GetComponent<WarriorSlam>().cooldownTimer <= 3)
     {
         timerAbility2 += 1f;
-        CoolDownPictureAbillity2.color = new Color(1, 1, 1, timerAbility2 * 0.003f);
+        CoolDownPictureAbillity2.color = new Color(1, 1, 1, timerAbility2 * 0.006f);
     }
 
 
@@ -75,10 +75,10 @@ public class AblilityCoolDown : MonoBehaviour {
 
 
 
-    if (timerAblility3 <= 300)
+    if (GetComponent<WarriorWhirlwind>().cooldownTimer <= 0)
     {
         timerAblility3 += 1f;
-        CoolDownPictureAbillity3.color = new Color(1, 1, 1, timerAblility3 * 0.003f);
+        CoolDownPictureAbillity3.color = new Color(1, 1, 1, timerAblility3 * 0.006f);
     }
        
 	}

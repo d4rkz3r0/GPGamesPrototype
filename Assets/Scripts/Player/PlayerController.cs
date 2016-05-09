@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     //Player Info
     private Vector3 velocity;
     public CharacterClass playerClass = CharacterClass.MeleeWarrior;
-    public int attkBuff_defBuff_vampBuff_onCD_rdy;
+    public int attkBuff_defBuff_vampBuff_onCD_rdy = 10;
     public float cooldownDuration;
     public float cooldownTimer;
     public float activeDuration;
