@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
         RangedMage
     }
 
-
     public class AttackCombo
     {
         public enum AttackState
@@ -62,7 +61,16 @@ public class PlayerController : MonoBehaviour
     public float fMoveSpeed = 4.0f;
     public float bMoveSpeed = 3.0f;
     public float turnRate = 1.0f;
+    float hInput;
+    float vInput;
     private float animationSpeed;
+
+    //Camera Information
+    private Transform cameraTransform;
+    private Transform forwardTransform;
+    Quaternion cameraForward;
+    Quaternion playerForward;
+    float inputAngle;
 
     //References
     private Animator anim;
@@ -72,7 +80,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider coll;
 
     //Weapons
-    private SwordController paladinSword;
+    private GameObject paladinSword;
 
     //Warrior Spells (Prototype Only)
     public GameObject fireBall;
@@ -98,8 +106,7 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<CapsuleCollider>();
 
         //Weapons
-        paladinSword = GetComponentInChildren<SwordController>();
-        //meleeEndComboTimer = meleeEndComboTimerDuration;
+        paladinSword = transform.FindChild("Sword").gameObject;
 
         if (GetComponent<WarriorSlam>())
             rightTriggerAbility = GetComponent<WarriorSlam>();
@@ -107,6 +114,13 @@ public class PlayerController : MonoBehaviour
             rightBumperAbility = GetComponent<WarriorWhirlwind>();
         if (GetComponent<WarriorCharge>())
             dodgeAbility = GetComponent<WarriorCharge>();
+        if (GameObject.FindGameObjectWithTag("MainCamera"))
+            if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>())
+                cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        if (GameObject.FindGameObjectWithTag("CameraForward"))
+            if (GameObject.FindGameObjectWithTag("CameraForward").GetComponent<Transform>())
+                forwardTransform = GameObject.FindGameObjectWithTag("CameraForward").GetComponent<Transform>();
+
     }
 
     private void Start()
@@ -128,25 +142,48 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        float hInput = Input.GetAxis("Horizontal");
-        float vInput = Input.GetAxis("Vertical");
+        hInput = Input.GetAxis("Horizontal");
+        vInput = Input.GetAxis("Vertical");
 
-        anim.SetFloat("Speed", vInput);
-        anim.SetFloat("PivotRate", hInput);
-
-        velocity = new Vector3(0.0f, 0.0f, vInput);
-        velocity = transform.TransformDirection(velocity);
-
-        if (vInput > 0.1f)
+        //Find camera direction
+        if (Mathf.Abs(hInput) > 0.1f || Mathf.Abs(vInput) > 0.1f)
         {
+            cameraForward = cameraTransform.rotation;
+
+            //Vector3 somewhereInFrontOfTheCamera = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 1);
+
+            Vector3 theory67 = new Vector3((forwardTransform.position).x,
+                cameraTransform.position.y, (forwardTransform.position).z);
+            
+            cameraForward.SetLookRotation(theory67 - cameraTransform.position, Vector3.up);
+
+            //cameraForward = Quaternion.LookRotation(somewhereInFrontOfTheCamera);
+
+            playerForward = cameraForward;
+
+
+            inputAngle = Mathf.Atan2(hInput, vInput);  // Radian!!!!!
+
+
+            playerForward *= Quaternion.AngleAxis(((Mathf.Rad2Deg * inputAngle)), Vector3.up);
+
+            //float temp = Mathf.Atan2(-1, 1);
+
+            anim.SetFloat("Speed", Mathf.Clamp((Mathf.Abs(vInput) + Mathf.Abs(hInput)), 0, 1));
+
+            transform.rotation = playerForward;
+
+            velocity = new Vector3(0.0f, 0.0f, Mathf.Clamp((Mathf.Abs(vInput) + Mathf.Abs(hInput)), 0, 1));
+            velocity = transform.TransformDirection(velocity);
+
             velocity *= fMoveSpeed;
+            transform.localPosition += velocity * Time.fixedDeltaTime;
         }
-        else if (vInput < -0.1f)
+
+        else
         {
-            velocity *= bMoveSpeed;
+            anim.SetFloat("Speed", 0);
         }
-        transform.localPosition += velocity * Time.fixedDeltaTime;
-        transform.Rotate(0.0f, hInput * turnRate * Time.deltaTime, 0.0f);
     }
 
     private void UpdatePlayerClass()
@@ -195,12 +232,6 @@ public class PlayerController : MonoBehaviour
 
     public void MeleeAttackChain()
     {
-        ////Melee End Combo SFX Buffer
-        //if (startBuffer)
-        //{
-        //    if (meleeEndComboTimer > 0.0f) { meleeEndComboTimer -= Time.deltaTime; }
-        //}
-        
         if (meleeAttackCombo.currAttackState == AttackCombo.AttackState.NotAttacking && meleeAttackCombo.isComboOver)
         {
             ResetCombo();
@@ -234,15 +265,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //public void StartAttack()
-    //{
-    //    paladinSword.EnableCollider();
-    //}
-
-    //public void EndAttack()
-    //{
-    //    paladinSword.DisableCollider();
-    //}
 
     public void UpdateMeleeCombo()
     {
@@ -284,10 +306,9 @@ public class PlayerController : MonoBehaviour
                 }
                 case AttackCombo.AttackState.ThirdAttack:
                 {
-                    if (AnimatorIsPlaying("MeleeSlash2"))// && meleeEndComboTimer < 0.0f)
+                    if (AnimatorIsPlaying("MeleeSlash2"))
                     {
                         anim.SetTrigger("MSlash3");
-                           
                         meleeAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
                     }
                     else
@@ -385,7 +406,6 @@ public class PlayerController : MonoBehaviour
                         {
                             anim.SetTrigger("RCast3");
                             rangedAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
-                            //startBuffer = true;
                         }
                         else
                         {
@@ -438,10 +458,12 @@ public class PlayerController : MonoBehaviour
         {
             case CharacterClass.MeleeWarrior:
                 {
+                    paladinSword.SetActive(true);
                     break;
                 }
             case CharacterClass.RangedMage:
                 {
+                    paladinSword.SetActive(false);
                     break;
                 }
         }
@@ -482,12 +504,12 @@ public class PlayerController : MonoBehaviour
         {
             case CharacterClass.MeleeWarrior:
             {
-                //paladinSword.SetActive(true);
+                paladinSword.SetActive(true);
                 break;
             }
             case CharacterClass.RangedMage:
             {
-               // paladinSword.SetActive(false);
+                paladinSword.SetActive(false);
                 break;
             }
         }
@@ -512,9 +534,6 @@ public class PlayerController : MonoBehaviour
             meleeAttackCombo.amComboing = false;
             meleeAttackCombo.canStartCombo = true;
             meleeAttackCombo.isComboOver = true;
-            paladinSword.ResetSlashes();
-            //meleeEndComboTimer = meleeEndComboTimerDuration;
-            //if(meleeEndComboTimer < 0.0f) { paladinSword.ResetSlashes(); }
         }
         else
         {

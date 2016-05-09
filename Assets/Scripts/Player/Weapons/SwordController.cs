@@ -29,11 +29,6 @@ public class SwordController : MonoBehaviour
     private float meleeEndComboTimer = 0.15f;
     private float meleeEndComboTimerDuration = 0.15f;
 
-    //Testing
-    public float scale = 1.0f;
-    public List<Vector3> baseVertices;
-    public Mesh scaledSwordMesh;
-
     void Start()
     {
         player = GetComponentInParent<PlayerController>();
@@ -41,9 +36,6 @@ public class SwordController : MonoBehaviour
         swordMeshCollider = GetComponent<MeshCollider>();
 
         currSwordMesh = new Mesh();
-        scaledSwordMesh = new Mesh();
-        baseVertices = new List<Vector3>(197);
-        //meleeEndComboTimer = meleeEndComboTimerDuration;
     }
 
     void Update()
@@ -68,21 +60,21 @@ public class SwordController : MonoBehaviour
                 {
                     swordSoundEffects[0].Play();
                     Debug.Log("First Strike!");
-                    player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
-                    anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash1PushBack, meleeSlash1PushBack, meleeSlash1PushBack));
-                    anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash1Damage);
+                    //player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
+                    //anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash1PushBack, meleeSlash1PushBack, meleeSlash1PushBack));
+                    //anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash1Damage);
                     firstStrike = false;
                     break;
                 }
 
 
             case 2:
-            {
+                {
                     swordSoundEffects[1].Play();
                     Debug.Log("Second Strike!");
-                    player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
-                    anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash2PushBack, meleeSlash2PushBack, meleeSlash2PushBack));
-                    anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash2Damage);
+                    //player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
+                    //anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash2PushBack, meleeSlash2PushBack, meleeSlash2PushBack));
+                    //anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash2Damage);
                     secondStrike = false;
                     break;
                 }
@@ -90,9 +82,9 @@ public class SwordController : MonoBehaviour
                 {
                     swordSoundEffects[2].Play();
                     Debug.Log("Third Strike!");
-                    player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
-                    anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash3PushBack, meleeSlash3PushBack, meleeSlash3PushBack));
-                    anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash3Damage);
+                    //player.gameObject.GetComponent<FuryMeter>().GainFury(1000);
+                    //anObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(meleeSlash3PushBack, meleeSlash3PushBack, meleeSlash3PushBack));
+                    //anObject.GetComponent<ZombieHealth>().takeDamage(meleeSlash3Damage);
                     thirdStrike = false;
 
                     break;
@@ -137,7 +129,7 @@ public class SwordController : MonoBehaviour
         }
     }
 
-    
+
     public void ResetSlashes()
     {
         firstStrike = true;

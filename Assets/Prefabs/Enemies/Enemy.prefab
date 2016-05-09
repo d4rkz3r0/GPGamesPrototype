@@ -935,7 +935,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147984}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1000,12 +1000,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163500}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 157532}
   ObjectPlayer: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
@@ -1026,7 +1026,6 @@ MonoBehaviour:
   targetRange: 20
   decesionTimer: 2
   yPos: 0
-  isPlayerInRange: 0
 --- !u!114 &11471360
 MonoBehaviour:
   m_ObjectHideFlags: 1

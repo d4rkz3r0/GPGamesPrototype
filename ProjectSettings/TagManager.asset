@@ -8,6 +8,7 @@ TagManager:
   - WarriorChargeCollider
   - WarriorWhirlwindCollider
   - WarriorSlamCollider
+  - CameraForward
   layers:
   - Default
   - TransparentFX

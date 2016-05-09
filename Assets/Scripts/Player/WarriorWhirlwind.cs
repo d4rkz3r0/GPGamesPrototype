@@ -5,7 +5,7 @@ public class WarriorWhirlwind : AbilityScript {
 
     public float rotationVel = 720.0f;
     public float actionDuration = 1.0f;
-    public float cooldownDuration = 5.0f;
+    public float cooldownDuration = 0.3f;
     public bool firstFrameActivation;
 
     Quaternion targetRotation;
@@ -78,7 +78,7 @@ public class WarriorWhirlwind : AbilityScript {
         whirlwindCollider.enabled = true;
         firstFrameActivation = false;   
 
-        //anim.Play(Animator.StringToHash("Base Layer.Whirlwind1"));
+        anim.Play(Animator.StringToHash("Base Layer.Whirlwind1"));
 
         playerController.enabled = false;
     }

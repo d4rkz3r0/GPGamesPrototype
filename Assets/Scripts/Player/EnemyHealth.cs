@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour {
         myRigidBudy = GetComponent<Rigidbody>();
      //   HealthText.text = CurHealth + "/" + MaxHealth;
        // GreenHealthbar.fillAmount = CurHealth;
+
     }
 
     // Update is called once per frame

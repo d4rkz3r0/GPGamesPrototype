@@ -68,9 +68,9 @@ public class CameraOrbit : MonoBehaviour
 
         distance = RaytraceCam.distance;
 
-        if (distance > 2.5)
+        if (distance > 5.0)
         {
-            distance = 2.5f;
+            distance = 5.0f;
         }
 
         currentX += Input.GetAxis("Right Stick X Axis") * camSensitivity;
@@ -82,8 +82,8 @@ public class CameraOrbit : MonoBehaviour
     // LateUpdate is called once per frame after Update
     void LateUpdate()
     {
-        Vector3 dir = new Vector3(0.0f, 0.0f, -2.5f);
-        Quaternion rotation = Quaternion.Euler(15.0f, characterTransform.rotation.eulerAngles.y, 0);
+        Vector3 dir = new Vector3(0.0f, 0.0f, -distance);
+        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         camTransform.position = target.transform.position + rotation * dir;
         camTransform.LookAt(target.transform.position);
     }

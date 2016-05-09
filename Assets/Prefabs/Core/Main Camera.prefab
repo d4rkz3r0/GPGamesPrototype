@@ -12,12 +12,26 @@ GameObject:
   - 92: {fileID: 9221058}
   - 124: {fileID: 12401448}
   - 81: {fileID: 8190820}
-  - 114: {fileID: 11420666}
-  - 114: {fileID: 11454956}
-  - 114: {fileID: 11456464}
+  - 114: {fileID: 11412082}
+  - 114: {fileID: 11424204}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &188312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 466466}
+  m_Layer: 0
+  m_Name: Level Object
+  m_TagString: CameraForward
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,11 +42,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164466}
-  m_LocalRotation: {x: -0.082437456, y: 0.7022846, z: -0.082437344, w: -0.70228523}
-  m_LocalPosition: {x: -6.03, y: 1.74, z: -64.05}
+  m_LocalRotation: {x: -0.08243744, y: 0.7022846, z: -0.08243733, w: -0.70228523}
+  m_LocalPosition: {x: -6.0300007, y: 1.74, z: -64.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 466466}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &466466
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 427190}
   m_RootOrder: 0
 --- !u!20 &2053940
 Camera:
@@ -82,47 +109,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164466}
   m_Enabled: 1
---- !u!114 &11420666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49dda610bfc024d45802682dd91697dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Image: {fileID: 2800000, guid: 7dbacd0889bcc33428a984ee09a1c4f2, type: 3}
-  AttackFire: {fileID: 2800000, guid: 63e9dac51efaf6f4991bf3f5d9321628, type: 3}
-  AttackDark: {fileID: 2800000, guid: fd02c086b884bb74f9eb64379c91cffa, type: 3}
-  AttackLighting: {fileID: 2800000, guid: 3559c67477231b64a9e35833460706d1, type: 3}
-  AttackIce: {fileID: 2800000, guid: eca6c1ac147829840a48d2181ffacd48, type: 3}
-  Atk: {fileID: 0}
-  Def: {fileID: 0}
-  VAMP: {fileID: 0}
-  BUFFS: {fileID: 0}
-  Vamp: {fileID: 2800000, guid: f8e18b4ccfac8f04285ec2d30a0ba8d5, type: 3}
-  Defense: {fileID: 2800000, guid: a7fb63991fd75df46b9c722f267fc6fe, type: 3}
-  Attack3: {fileID: 2800000, guid: b4570bd96e853f348b253848c3560b71, type: 3}
-  Attack4: {fileID: 2800000, guid: 84b49811c138b5742b367d5eb15c65c6, type: 3}
---- !u!114 &11454956
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb95852905e94c44843613a764b5f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KillMeter: {fileID: 2800000, guid: 1a35579879dea5f43a5e5565be75aa58, type: 3}
-  EmptyMeter: {fileID: 2800000, guid: 5c372300f27266c4b85fec1123ebdd8c, type: 3}
-  killed: 0
-  progressBar: {fileID: 0}
-  GreenHealthbar: {fileID: 0}
---- !u!114 &11456464
+--- !u!114 &11412082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -136,6 +123,18 @@ MonoBehaviour:
   target: {fileID: 0}
   camTransform: {fileID: 0}
   characterTransform: {fileID: 0}
+--- !u!114 &11424204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164466}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d5d0c7650ad3e45b10a35dd04c16c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockonIntensity: 3
 --- !u!124 &12401448
 Behaviour:
   m_ObjectHideFlags: 1
