@@ -1009,6 +1009,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
+  addedForce: 10
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1025,6 +1026,7 @@ MonoBehaviour:
   meleeRange: 1.5
   targetRange: 20
   decesionTimer: 2
+  detectionRange: 25
   yPos: 0
 --- !u!114 &11471360
 MonoBehaviour:
@@ -1041,6 +1043,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 157532}
   MaxHealth: 4
   CurHealth: 0
+  addedForce: 10
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,7 +1108,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10.085911
+  m_Radius: 1.03
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &13775258
 SkinnedMeshRenderer:
