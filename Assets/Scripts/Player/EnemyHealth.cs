@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class EnemyHealth : MonoBehaviour {
+public class EnemyHealth : MonoBehaviour
+{
 
     public GameObject Player;
     public GameObject ObjectPlayer;
@@ -11,21 +12,22 @@ public class EnemyHealth : MonoBehaviour {
     // public Image GreenHealthbar;
     Rigidbody myRigidBudy;
     bool hitByCharged = false;
+    public float addedForce = 10.0f;
     void Start()
     {
         MaxHealth = 200f;
         CurHealth = MaxHealth;
         myRigidBudy = GetComponent<Rigidbody>();
-     //   HealthText.text = CurHealth + "/" + MaxHealth;
-       // GreenHealthbar.fillAmount = CurHealth;
+        //   HealthText.text = CurHealth + "/" + MaxHealth;
+        // GreenHealthbar.fillAmount = CurHealth;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       // HealthText.text = CurHealth + "/" + MaxHealth;
-       // GreenHealthbar.fillAmount = CurHealth * 0.01f;
+        // HealthText.text = CurHealth + "/" + MaxHealth;
+        // GreenHealthbar.fillAmount = CurHealth * 0.01f;
         SetHealth(CurHealth / MaxHealth);
     }
 
@@ -56,20 +58,19 @@ public class EnemyHealth : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        if (CurHealth < 00)
-        {
-            CurHealth = 200;
-        }
         if (other.tag == "WarriorChargeCollider")
         {
             if (!hitByCharged)
             {
-                Vector3 temp = (other.transform.position - transform.position);
+                Vector3 temp = -(other.transform.position - transform.position);
                 temp.y = 0;
-                myRigidBudy.AddForce(temp.normalized * 2000000);
+                Vector3 leftVector = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
+                temp = temp * 0.25f + leftVector * 0.75f;
+                temp.Normalize();
+                myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
                 CurHealth -= 100;
                 hitByCharged = true;
-                Invoke("ResetCharge", 0.3f); 
+                Invoke("ResetCharge", 0.3f);
             }
         }
         if (other.tag == "WarriorWhirlwindCollider")
@@ -78,7 +79,7 @@ public class EnemyHealth : MonoBehaviour {
             {
                 Vector3 temp = -(transform.forward);
                 temp.y = 0;
-                myRigidBudy.AddForce(temp.normalized * 2000000);
+                myRigidBudy.AddForce(temp.normalized * addedForce);
                 CurHealth -= 80;
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
@@ -88,11 +89,15 @@ public class EnemyHealth : MonoBehaviour {
         {
             if (!hitByCharged)
             {
-                myRigidBudy.AddForce(Vector3.up * 2000000);
+                myRigidBudy.AddForce(Vector3.up * addedForce);
                 CurHealth -= 150;
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
+        }
+        if (CurHealth <= 00)
+        {
+            CurHealth = 200;
         }
     }
     void ResetCharge()

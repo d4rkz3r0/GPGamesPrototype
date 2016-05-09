@@ -20,11 +20,7 @@ public class EnemyController : MonoBehaviour
     Rigidbody myRigid;
     Vector3 slotSpotOuter;
     EnemySlotScript tempSlotScript;
-
-
-
-
-
+    bool canDoStuff = true;
     void Start()
     {
         myAnimation = GetComponent<Animator>();
@@ -35,7 +31,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player)
+        if (Input.GetAxis("D-Pad X Axis") == 1)
+        {
+            Debug.Log("Stuff");
+        }
+        if (player && canDoStuff)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance < 20 && slotSpotOuter == Vector3.zero)
@@ -52,7 +52,9 @@ public class EnemyController : MonoBehaviour
                     slotSpotOuter = tempSlotScript.GetOuterSlotPosition();
                 }
             }
-            transform.LookAt(player.transform.position);
+            Vector3 sameY = player.transform.position;
+            sameY.y = transform.position.y;
+            transform.LookAt(sameY);
             if (distance <= meleeRange)
             {
                 Attack();
@@ -65,7 +67,7 @@ public class EnemyController : MonoBehaviour
             {
                 myAnimation.SetInteger("state", 1);
                 float step = speed * Time.deltaTime;
-                myRigid.velocity = transform.forward * speed;
+                myRigid.velocity = (transform.forward) * speed;
             }
             else if (slotted == -1)
             {
@@ -89,7 +91,6 @@ public class EnemyController : MonoBehaviour
             player = other.gameObject;
             tempSlotScript = player.GetComponent<EnemySlotScript>();
         }
-
     }
     void AttackDecesion()
     {
@@ -141,5 +142,22 @@ public class EnemyController : MonoBehaviour
     {
         slotSpotOuter = Vector3.zero;
         slotted = 0;
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "WarriorChargeCollider")
+        {
+            canDoStuff = false;
+            Invoke("CanAttack", 0.5f);
+        }
+        if (other.tag == "WarriorSlamCollider")
+        {
+            canDoStuff = false;
+            Invoke("CanAttack", 3.0f);
+        }
+    }
+    void CanAttack()
+    {
+        canDoStuff = true;
     }
 }

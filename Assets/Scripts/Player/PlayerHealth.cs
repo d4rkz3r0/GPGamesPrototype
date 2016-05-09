@@ -27,6 +27,10 @@ public class PlayerHealth : MonoBehaviour {
         HealthText.text = CurHealth + "/" + MaxHealth;
         GreenHealthbar.fillAmount = CurHealth * 0.01f;
         SetHealth(CurHealth / MaxHealth);
+
+        if (CurHealth <= 0)
+            Application.LoadLevel(0);
+      
 	}
 
     void DecreaseHealth(float dmg)
