@@ -33,10 +33,10 @@ public class PlayerHealth : MonoBehaviour {
       
 	}
 
-    void DecreaseHealth()
+    public void DecreaseHealth(float dmg)
     {
 
-        CurHealth -= 1f;
+        CurHealth -= dmg;
         
         float temp = CurHealth / MaxHealth;
         SetHealth(temp);

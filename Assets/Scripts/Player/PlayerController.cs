@@ -2,9 +2,9 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof (Animator))]
-[RequireComponent(typeof (Rigidbody))]
-[RequireComponent(typeof (CapsuleCollider))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -56,6 +56,12 @@ public class PlayerController : MonoBehaviour
     //Player Info
     private Vector3 velocity;
     public CharacterClass playerClass = CharacterClass.MeleeWarrior;
+    public int attkBuff_defBuff_vampBuff_onCD_rdy;
+    public float cooldownDuration;
+    public float cooldownTimer;
+    public float activeDuration;
+    public float activeTimer;
+    /* attack = -1; defBuff = 0; vampBuff = 1; onCD = 9; rdy = 10 */
 
     //Player Movement
     public float fMoveSpeed = 4.0f;
@@ -96,6 +102,13 @@ public class PlayerController : MonoBehaviour
     private AbilityScript rightBumperAbility;
     private AbilityScript dodgeAbility;
 
+    //Particle System
+    private ParticleSystem attackParticleSystem;
+    private ParticleSystem defenseParticleSystem;
+    private ParticleSystem vamprisimParticleSystem;
+
+    private PlayerHealth healthManager;
+
     private void Awake()
     {
         //Player
@@ -105,8 +118,13 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<CapsuleCollider>();
 
+        cooldownDuration = 30.0f;
+        activeDuration = 10.0f;
+        activeTimer = cooldownTimer = 0.0f;
+        attkBuff_defBuff_vampBuff_onCD_rdy = 10;
+
         //Weapons
-        paladinSword = transform.FindChild("Sword").gameObject;
+        //paladinSword = transform.FindChild("Sword").gameObject;
 
         if (GetComponent<WarriorSlam>())
             rightTriggerAbility = GetComponent<WarriorSlam>();
@@ -121,12 +139,25 @@ public class PlayerController : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("CameraForward").GetComponent<Transform>())
                 forwardTransform = GameObject.FindGameObjectWithTag("CameraForward").GetComponent<Transform>();
 
+        if (GameObject.FindGameObjectWithTag("AttackBuffParticle"))
+            if (GameObject.FindGameObjectWithTag("AttackBuffParticle").GetComponent<ParticleSystem>())
+                attackParticleSystem = GameObject.FindGameObjectWithTag("AttackBuffParticle").GetComponent<ParticleSystem>();
+        if (GameObject.FindGameObjectWithTag("DefenseBuffParticle"))
+            if (GameObject.FindGameObjectWithTag("DefenseBuffParticle").GetComponent<ParticleSystem>())
+                defenseParticleSystem = GameObject.FindGameObjectWithTag("DefenseBuffParticle").GetComponent<ParticleSystem>();
+        if (GameObject.FindGameObjectWithTag("VampireBuffParticle"))
+            if (GameObject.FindGameObjectWithTag("VampireBuffParticle").GetComponent<ParticleSystem>())
+                vamprisimParticleSystem = GameObject.FindGameObjectWithTag("VampireBuffParticle").GetComponent<ParticleSystem>();
+
+        if (GetComponent<PlayerHealth>())
+            healthManager = GetComponent<PlayerHealth>();
+
     }
 
     private void Start()
     {
         InitializeAttackComboes();
-        CheckWeapon();
+        //CheckWeapon();
         animationSpeed = 1.0f;
         anim.speed = animationSpeed;
     }
@@ -154,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 theory67 = new Vector3((forwardTransform.position).x,
                 cameraTransform.position.y, (forwardTransform.position).z);
-            
+
             cameraForward.SetLookRotation(theory67 - cameraTransform.position, Vector3.up);
 
             //cameraForward = Quaternion.LookRotation(somewhereInFrontOfTheCamera);
@@ -224,9 +255,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           RangedAttackChain();
+            RangedAttackChain();
         }
-        
+
     }
 
 
@@ -273,56 +304,56 @@ public class PlayerController : MonoBehaviour
             switch (meleeAttackCombo.currAttackState)
             {
                 case AttackCombo.AttackState.NotAttacking:
-                {
-                    meleeAttackCombo.EndCombo();
-                    break;
-                }
+                    {
+                        meleeAttackCombo.EndCombo();
+                        break;
+                    }
 
                 case AttackCombo.AttackState.FirstAttack:
-                {
-                    if (AnimatorIsPlaying("Idle2Running"))
                     {
-                        anim.SetTrigger("MSlash1");
-                        meleeAttackCombo.currAttackState = AttackCombo.AttackState.SecondAttack;
+                        if (AnimatorIsPlaying("Idle2Running"))
+                        {
+                            anim.SetTrigger("MSlash1");
+                            meleeAttackCombo.currAttackState = AttackCombo.AttackState.SecondAttack;
+                        }
+                        else
+                        {
+                            meleeAttackCombo.EndCombo();
+                        }
+                        break;
                     }
-                    else
-                    {
-                        meleeAttackCombo.EndCombo();
-                    }
-                    break;
-                }
                 case AttackCombo.AttackState.SecondAttack:
-                {
-                    if (AnimatorIsPlaying("MeleeSlash1"))
                     {
-                        anim.SetTrigger("MSlash2");
-                        meleeAttackCombo.currAttackState = AttackCombo.AttackState.ThirdAttack;
+                        if (AnimatorIsPlaying("MeleeSlash1"))
+                        {
+                            anim.SetTrigger("MSlash2");
+                            meleeAttackCombo.currAttackState = AttackCombo.AttackState.ThirdAttack;
+                        }
+                        else
+                        {
+                            meleeAttackCombo.EndCombo();
+                        }
+                        break;
                     }
-                    else
-                    {
-                        meleeAttackCombo.EndCombo();
-                    }
-                    break;
-                }
                 case AttackCombo.AttackState.ThirdAttack:
-                {
-                    if (AnimatorIsPlaying("MeleeSlash2"))
                     {
-                        anim.SetTrigger("MSlash3");
-                        meleeAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
+                        if (AnimatorIsPlaying("MeleeSlash2"))
+                        {
+                            anim.SetTrigger("MSlash3");
+                            meleeAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
+                        }
+                        else
+                        {
+                            meleeAttackCombo.EndCombo();
+                        }
+                        break;
                     }
-                    else
-                    {
-                        meleeAttackCombo.EndCombo();
-                    }
-                    break;
-                }
 
                 default:
-                {
-                    Debug.Log("Invalid Melee Attack State.");
-                    break;
-                }
+                    {
+                        Debug.Log("Invalid Melee Attack State.");
+                        break;
+                    }
             }
         }
     }
@@ -428,15 +459,53 @@ public class PlayerController : MonoBehaviour
         //Ability Code Here
         if (Input.GetButton("B Button"))
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
-        else if (Input.GetButton("Right Bumper"))
+        else if (Input.GetButton("A Button"))
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
-        else if (Input.GetAxis("Right Trigger") == 1)
+        else if (Input.GetButton("Y Button"))
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
+        
     }
 
     public void UpdateBuffs()
     {
         //Buff Code Here
+        if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
+        {
+            attkBuff_defBuff_vampBuff_onCD_rdy = 0;
+            defenseParticleSystem.Play();
+        }
+        else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
+        {
+            attkBuff_defBuff_vampBuff_onCD_rdy = -1;
+            attackParticleSystem.Play();
+        }
+        else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
+        {
+            attkBuff_defBuff_vampBuff_onCD_rdy = 1;
+            vamprisimParticleSystem.Play();
+        }
+
+        
+        if (attkBuff_defBuff_vampBuff_onCD_rdy == 9)
+        {
+            cooldownTimer += Time.deltaTime;
+
+            if (cooldownTimer > cooldownDuration)
+            {
+                cooldownTimer = 0.0f;
+                attkBuff_defBuff_vampBuff_onCD_rdy = 10;
+            }
+        }
+        else if (attkBuff_defBuff_vampBuff_onCD_rdy != 10)
+        {
+            activeTimer += Time.deltaTime;
+
+            if (activeTimer > activeDuration)
+            {
+                activeTimer = 0.0f;
+                attkBuff_defBuff_vampBuff_onCD_rdy = 9;
+            }
+        }
     }
 
 
@@ -503,15 +572,15 @@ public class PlayerController : MonoBehaviour
         switch (playerClass)
         {
             case CharacterClass.MeleeWarrior:
-            {
-                paladinSword.SetActive(true);
-                break;
-            }
+                {
+                    paladinSword.SetActive(true);
+                    break;
+                }
             case CharacterClass.RangedMage:
-            {
-                paladinSword.SetActive(false);
-                break;
-            }
+                {
+                    paladinSword.SetActive(false);
+                    break;
+                }
         }
     }
 
@@ -540,6 +609,17 @@ public class PlayerController : MonoBehaviour
             rangedAttackCombo.amComboing = false;
             rangedAttackCombo.canStartCombo = true;
             rangedAttackCombo.isComboOver = true;
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.CompareTag("ZombieAttack"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(10.0f);
+            else
+                healthManager.DecreaseHealth(20.0f);
         }
     }
 }
