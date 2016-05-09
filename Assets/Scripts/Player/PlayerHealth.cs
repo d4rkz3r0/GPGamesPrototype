@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour {
 
 
 
-    void ReGenHealth(float _amount)
+    public void ReGenHealth(float _amount)
     {
         CurHealth += _amount;
 

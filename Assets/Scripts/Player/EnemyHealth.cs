@@ -52,6 +52,7 @@ public class EnemyHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        PlayerHealth tempHealth = Player.GetComponent<PlayerHealth>();
         if (other.tag == "WarriorChargeCollider")
         {
             if (!hitByCharged)
@@ -68,6 +69,7 @@ public class EnemyHealth : MonoBehaviour
                 temp.Normalize();
                 myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
                 CurHealth -= 100;
+                tempHealth.ReGenHealth(50);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
@@ -80,6 +82,7 @@ public class EnemyHealth : MonoBehaviour
                 temp.y = 0;
                 myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
                 CurHealth -= 80;
+                tempHealth.ReGenHealth(80);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
@@ -90,6 +93,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 myRigidBudy.AddForce(Vector3.up * addedForce * myRigidBudy.mass);
                 CurHealth -= 150;
+                tempHealth.ReGenHealth(75);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }

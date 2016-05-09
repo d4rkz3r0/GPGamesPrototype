@@ -399,28 +399,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6597598, guid: 291130f1315379047bc88cf375545e93, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471360, guid: 291130f1315379047bc88cf375545e93, type: 2}
-      propertyPath: addedForce
-      value: 625
-      objectReference: {fileID: 0}
-    - target: {fileID: 5446444, guid: 291130f1315379047bc88cf375545e93, type: 2}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 291130f1315379047bc88cf375545e93, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &90477311
@@ -2471,6 +2450,10 @@ Prefab:
       propertyPath: cooldownDuration
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11442078, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1872635954}
     m_RemovedComponents:
     - {fileID: 11483970, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
@@ -3758,6 +3741,10 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1872635954 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111198, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+  m_PrefabInternal: {fileID: 1428192989}
 --- !u!1 &1958553825 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 178946, guid: 743818ec50f84fa4488e5729e40954e2, type: 2}

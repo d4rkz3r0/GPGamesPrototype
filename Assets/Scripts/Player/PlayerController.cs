@@ -612,14 +612,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.collider.CompareTag("ZombieAttack"))
+        if (other.tag == ("ZombieAttack"))
         {
             if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
                 healthManager.DecreaseHealth(10.0f);
             else
                 healthManager.DecreaseHealth(20.0f);
+            other.gameObject.SetActive(false);
         }
     }
 }
