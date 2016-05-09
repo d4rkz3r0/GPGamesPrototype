@@ -10,7 +10,6 @@ public class SwordController : MonoBehaviour
     private MeshCollider swordMeshCollider;
     private Mesh currSwordMesh;
     public AudioSource[] swordSoundEffects;
-
     //External
     private PlayerController player;
 
@@ -36,6 +35,7 @@ public class SwordController : MonoBehaviour
         swordMeshCollider = GetComponent<MeshCollider>();
 
         currSwordMesh = new Mesh();
+        DisableCollider();
     }
 
     void Update()
@@ -138,15 +138,15 @@ public class SwordController : MonoBehaviour
         meleeEndComboTimer = meleeEndComboTimerDuration;
     }
 
-    //public void EnableCollider()
-    //{
-    //    GetComponent<MeshCollider>().enabled = true;
-    //}
+    public void EnableCollider()
+    {
+        swordMeshCollider.enabled = true;
+    }
 
-    //public void DisableCollider()
-    //{
-    //    GetComponent<MeshCollider>().enabled = false;
-    //}
+    public void DisableCollider()
+    {
+        swordMeshCollider.enabled = false;
+    }
 
     //Reduce Enemy HP
     void OnTriggerEnter(Collider other)

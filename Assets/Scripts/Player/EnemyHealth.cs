@@ -30,7 +30,6 @@ public class EnemyHealth : MonoBehaviour
         // GreenHealthbar.fillAmount = CurHealth * 0.01f;
         SetHealth(CurHealth / MaxHealth);
     }
-
     void DecreaseHealth()
     {
 
@@ -40,16 +39,11 @@ public class EnemyHealth : MonoBehaviour
         SetHealth(temp);
 
     }
-
-
-
-
     void ReGenHealth(float _amount)
     {
         CurHealth += _amount;
 
     }
-
     void SetHealth(float health)
     {
 
@@ -94,6 +88,11 @@ public class EnemyHealth : MonoBehaviour
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
+        }
+        if (other.tag == "WarriorSword")
+        {
+            CurHealth -= 50;
+            Invoke("ResetCharge", 0.3f);
         }
         if (CurHealth <= 00)
         {
