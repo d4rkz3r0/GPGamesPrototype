@@ -40,13 +40,13 @@ public class WarriorChargeCollider : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            playerCollider.enabled = false;
+            //playerCollider.enabled = false;
             playerRigidBody.useGravity = false;
             numEnemiesInCollision++;
         }
         else
         {
-            playerCollider.enabled = true;
+            //playerCollider.enabled = true;
             playerRigidBody.useGravity = true;
         }
     }
@@ -58,7 +58,7 @@ public class WarriorChargeCollider : MonoBehaviour
             numEnemiesInCollision--;
             if (numEnemiesInCollision == 0)
             {
-                playerCollider.enabled = true;
+                //playerCollider.enabled = true;
                 playerRigidBody.useGravity = true;
             }
         }

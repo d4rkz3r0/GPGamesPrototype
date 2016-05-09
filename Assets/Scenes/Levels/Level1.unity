@@ -1722,7 +1722,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 0
   scalingMode: 1
   InitialModule:
@@ -3429,7 +3429,7 @@ GameObject:
   - 199: {fileID: 732453048}
   m_Layer: 0
   m_Name: AttackBuff
-  m_TagString: Untagged
+  m_TagString: AttackBuffParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3537,7 +3537,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 0
   scalingMode: 1
   InitialModule:
@@ -5099,6 +5099,7 @@ GameObject:
   - 114: {fileID: 875126235}
   - 114: {fileID: 875126234}
   - 114: {fileID: 875126233}
+  - 114: {fileID: 875126241}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5176,6 +5177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerClass: 0
+  attkBuff_defBuff_vampBuff_onCD_rdy: 0
+  cooldownDuration: 0
+  cooldownTimer: 0
+  activeDuration: 0
+  activeTimer: 0
   fMoveSpeed: 4
   bMoveSpeed: 3
   turnRate: 1
@@ -5227,6 +5233,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &875126241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875126232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53782abe024ec74459ff08ca6a6806fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyBar: {fileID: 0}
+  FullBar: {fileID: 0}
+  Logo: {fileID: 0}
+  MaxMeter: 0
+  Currentmeter: 0
+  furycast: 0
+  GreenHealthbar: {fileID: 1447747844}
+  HealthText: {fileID: 631264078}
 --- !u!1 &885768353
 GameObject:
   m_ObjectHideFlags: 0
@@ -6832,7 +6857,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:
@@ -8556,7 +8581,7 @@ GameObject:
   - 199: {fileID: 1475691811}
   m_Layer: 0
   m_Name: DefenseBuff
-  m_TagString: Untagged
+  m_TagString: DefenseBuffParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8664,7 +8689,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 0
   scalingMode: 1
   InitialModule:
@@ -11727,7 +11752,7 @@ GameObject:
   - 199: {fileID: 1884190444}
   m_Layer: 0
   m_Name: VampireBuff
-  m_TagString: Untagged
+  m_TagString: VampireBuffParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11835,7 +11860,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:
@@ -13785,7 +13810,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 0
   scalingMode: 1
   InitialModule:

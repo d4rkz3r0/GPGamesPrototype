@@ -9,6 +9,12 @@ TagManager:
   - WarriorWhirlwindCollider
   - WarriorSlamCollider
   - CameraForward
+  - Wall
+  - Floor
+  - WarriorSword
+  - AttackBuffParticle
+  - DefenseBuffParticle
+  - VampireBuffParticle
   layers:
   - Default
   - TransparentFX
