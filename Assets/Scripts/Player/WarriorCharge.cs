@@ -15,7 +15,7 @@ public class WarriorCharge : AbilityScript
     CapsuleCollider playerCollider;
     PlayerController playerController;
     public float actionTimer, cooldownTimer;
-    int inUse_ready_onCooldown;
+   public int inUse_ready_onCooldown;
     /* inUse = 1, ready = 0, onCooldown = -1 */
 
     public Quaternion TargetRotation

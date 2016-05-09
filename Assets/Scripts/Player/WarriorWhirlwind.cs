@@ -12,7 +12,7 @@ public class WarriorWhirlwind : AbilityScript {
     BoxCollider whirlwindCollider;
     Transform whirlwindTransform;
     PlayerController playerController;
-    float cooldownTimer;
+  public  float cooldownTimer;
     float actionTimer;
     int inUse_ready_onCooldown;
 

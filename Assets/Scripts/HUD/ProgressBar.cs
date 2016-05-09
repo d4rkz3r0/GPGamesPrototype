@@ -9,7 +9,7 @@ public class ProgressBar : MonoBehaviour {
     int Percent;
     public Texture KillMeter;
     public Texture EmptyMeter;
-   public int killed;
+   public  static int killed;
    public Text progressBar;
    public Image GreenHealthbar;
 	void Start () 

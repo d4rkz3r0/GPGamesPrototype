@@ -9,7 +9,7 @@ public class WarriorSlam : AbilityScript {
 
     SphereCollider slamCollider;
     PlayerController playerController;
-    float cooldownTimer;
+    public float cooldownTimer;
     float actionTimer;
     int inUse_ready_onCooldown;
     bool colliderActivated;

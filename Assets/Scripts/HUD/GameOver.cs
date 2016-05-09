@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
 
@@ -17,6 +17,23 @@ public class GameOver : MonoBehaviour
         {
             WinScreen.enabled = true;
 
+
+        }
+        
+
+        if (Input.GetButton("StartButton") && WinScreen.enabled == true)
+        {
+            Debug.Log(Input.GetButton("StartButton").ToString());
+            SceneManager.LoadScene(0);
+        }
+
+
+
+        Debug.Log((Input.GetButton("SelectButton").ToString()));
+        if (Input.GetButton("SelectButton") && WinScreen.enabled == true)
+        {
+            Application.Quit();
+            
 
         }
     }

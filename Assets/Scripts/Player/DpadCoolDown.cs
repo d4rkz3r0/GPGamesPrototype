@@ -30,7 +30,7 @@ public class DpadCoolDown : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetAxis("D-Pad Y Axis") == 1 && timer >= 300)
+        if (Input.GetAxis("D-Pad Y Axis") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, 1);
@@ -41,7 +41,7 @@ public class DpadCoolDown : MonoBehaviour
            // Debug.Log("I HIT THIS");
         }
 
-        if (Input.GetAxis("D-Pad Y Axis") == -1 && timer >= 300)
+        if (Input.GetAxis("D-Pad Y Axis") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, timer);
@@ -54,7 +54,7 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-        if (Input.GetAxis("D-Pad X Axis") == -1 && timer >= 300)
+        if (Input.GetAxis("D-Pad X Axis") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, timer);
@@ -65,7 +65,7 @@ public class DpadCoolDown : MonoBehaviour
             //Debug.Log("I HIT THIS");
         }
 
-        if (Input.GetAxis("D-Pad X Axis") == 1 && timer >= 300)
+        if (Input.GetAxis("D-Pad X Axis") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, timer);
@@ -83,52 +83,52 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-        if (timer <= 300 && !pressagainbuff)
+        if (GetComponent<PlayerController>().attkBuff_defBuff_vampBuff_onCD_rdy == 9  && !pressagainbuff)
         {
             timer += 1f;
             Buffs.color = new Color(1, 1, 1, 1);
             Vamp.color = new Color(1, 1, 1, timer * 0.003f);
             Atk.color = new Color(1, 1, 1, timer * 0.003f);
             Def.color = new Color(1, 1, 1, timer * 0.003f);
-            if (timer == 300)
+            if (GetComponent<PlayerController>().cooldownTimer >= 30)
                 pressagainbuff = true;
         }
 
 
-        if (timer <= 300 && !pressagainVamp)
+        if (GetComponent<PlayerController>().attkBuff_defBuff_vampBuff_onCD_rdy == 1 && !pressagainVamp)
         {
             timer += 1f;
             Buffs.color = new Color(1, 1, 1, timer * 0.003f);
             Vamp.color = new Color(1, 1, 1,1 );
             Atk.color = new Color(1, 1, 1, timer * 0.003f);
             Def.color = new Color(1, 1, 1, timer * 0.003f);
-            if (timer == 300)
+            if (GetComponent<PlayerController>().cooldownTimer == GetComponent<PlayerController>().cooldownDuration)
                 pressagainVamp = true;
         }
 
 
 
-        if (timer <= 300 && !pressagainAtk)
+        if (GetComponent<PlayerController>().attkBuff_defBuff_vampBuff_onCD_rdy == -1 && !pressagainAtk)
         {
             timer += 1f;
             Buffs.color = new Color(1, 1, 1, timer * 0.003f);
             Vamp.color = new Color(1, 1, 1, timer * 0.003f);
             Atk.color = new Color(1, 1, 1, 1);
             Def.color = new Color(1, 1, 1, timer * 0.003f);
-            if (timer == 300)
+            if (GetComponent<PlayerController>().cooldownTimer == GetComponent<PlayerController>().cooldownDuration)
                 pressagainAtk = true;
         }
 
 
 
-        if (timer <= 300 && !pressagainDef)
+        if (GetComponent<PlayerController>().attkBuff_defBuff_vampBuff_onCD_rdy == 0 && !pressagainDef)
         {
             timer += 1f;
             Buffs.color = new Color(1, 1, 1, timer * 0.003f);
             Vamp.color = new Color(1, 1, 1, timer * 0.003f);
             Atk.color = new Color(1, 1, 1, timer * 0.003f);
             Def.color = new Color(1, 1, 1, 1);
-            if (timer == 300)
+            if (GetComponent<PlayerController>().cooldownTimer == GetComponent<PlayerController>().cooldownDuration)
                 pressagainDef = true;
         }
     }
