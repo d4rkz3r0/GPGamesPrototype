@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class FuryMeter : MonoBehaviour {
 
 	// Use this for initialization
@@ -11,16 +11,16 @@ public class FuryMeter : MonoBehaviour {
     public float MaxMeter;
     public float Currentmeter;
     public int furycast;
-
-
+    public Image GreenHealthbar;
+    public Text HealthText;
     private float  timer;
 	void Start () 
     {
         MaxMeter = 200f;
         Currentmeter = 100f;
         timer = 3000.0f;
-       
-
+        GreenHealthbar.fillAmount = Currentmeter;
+        HealthText.text = Currentmeter + "/" + MaxMeter;
 	}
 	
 	// Update is called once per frame
@@ -39,29 +39,21 @@ public class FuryMeter : MonoBehaviour {
         }
 
         if (Currentmeter > 0)
-        Currentmeter -= 0.1f;
+        {
+            Currentmeter -= 0.1f;
+            GreenHealthbar.fillAmount -= 0.001f;
+        }
+        HealthText.text = Currentmeter + "/" + MaxMeter;
 
 	}
 
 
-    void OnGUI()
+
+    public void GainFury(float amountToGain)
     {
-
-
-        GUI.DrawTexture(new Rect(5, Screen.height - 20, 200, 20), EmptyBar);
-        GUI.DrawTexture(new Rect(5, Screen.height - 20, Currentmeter, 20),FullBar);
-        GUI.Label(new Rect(70, Screen.height - 20, 50, 30), Currentmeter + "/" + MaxMeter);
-
-
-
-        GUI.DrawTexture(new Rect(5, Screen.height - 40, 200, 20), Logo);
-       
-
-
-
-
+        Currentmeter += 0.5f;
+        GreenHealthbar.fillAmount += 0.005f;
     }
-
 
 
 
