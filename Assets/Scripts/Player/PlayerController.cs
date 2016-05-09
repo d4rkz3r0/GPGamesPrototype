@@ -488,7 +488,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool AnimatorIsPlaying(string stateName)
+    public bool AnimatorIsPlaying(string stateName)
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }

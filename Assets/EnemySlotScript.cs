@@ -6,10 +6,20 @@ public class EnemySlotScript : MonoBehaviour
     int slotCount = 0;
     public int maxSlots = 5;
     ArrayList arrayList;
+    Vector3[] outerSlots;
+    int nextAvaibleSlot = 0;
     // Use this for initialization
     void Start()
     {
         arrayList = new ArrayList();
+        outerSlots = new Vector3[40];
+        float degrees = 0;
+        for (int i = 0; i < 40; i++, degrees += 360 / 40)
+        {
+            outerSlots[i].x = Mathf.Cos(degrees * Mathf.Deg2Rad) * 3;
+            outerSlots[i].y = 0;
+            outerSlots[i].z = Mathf.Sin(degrees * Mathf.Deg2Rad) * 3;
+        }
     }
 
     // Update is called once per frame
@@ -32,5 +42,29 @@ public class EnemySlotScript : MonoBehaviour
     {
         arrayList.Remove(_enemy);
         slotCount--;
+    }
+    public Vector3 GetOuterSlotPosition()
+    {
+        if (nextAvaibleSlot == 40)
+        {
+            return Vector3.zero;
+        }
+        Vector3 temp = outerSlots[nextAvaibleSlot];
+        nextAvaibleSlot++;
+        return temp;
+    }
+    void ResetSlots()
+    {
+        arrayList.Clear();
+        slotCount = 0;
+        nextAvaibleSlot = 0;
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Room")
+        {
+            ResetSlots();
+        }
+
     }
 }
