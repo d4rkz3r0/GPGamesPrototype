@@ -6,7 +6,7 @@ public class WarriorCharge : AbilityScript
 
     private const float fowardVel = 20.0f;
     private const float actionDuration = 0.4f;
-    public const float cooldownDuration = 1.5f;
+    public float cooldownDuration = 3.0f;
     public bool firstFrameActivation;
 
     Quaternion targetRotation;
@@ -14,7 +14,7 @@ public class WarriorCharge : AbilityScript
     CapsuleCollider capsuleCollider;
     CapsuleCollider playerCollider;
     PlayerController playerController;
-    float actionTimer, cooldownTimer;
+    public float actionTimer, cooldownTimer;
     int inUse_ready_onCooldown;
     /* inUse = 1, ready = 0, onCooldown = -1 */
 
@@ -74,7 +74,7 @@ public class WarriorCharge : AbilityScript
 
     void Run()
     {
-        if (firstFrameActivation)
+        if (firstFrameActivation && inUse_ready_onCooldown == 0)
             ActivateAction();
         else if (inUse_ready_onCooldown == 1)
         {

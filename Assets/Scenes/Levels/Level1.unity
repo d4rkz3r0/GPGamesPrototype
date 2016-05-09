@@ -1912,6 +1912,54 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9555984, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9f0fde529b5359a45a2c0b1bb0d6e843, type: 2}
+    - target: {fileID: 5482302, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 114714, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_TagString
+      value: VampireBuffParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 157126, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_TagString
+      value: DefenseBuffParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 147194, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_TagString
+      value: AttackBuffParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 19831146, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800078, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19895804, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19851204, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19856792, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800650, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482302, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
