@@ -5264,12 +5264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f76ec46f15aa34799b729b6578cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 875126232}
   ObjectPlayer: {fileID: 0}
-  HealthText: {fileID: 0}
+  HealthText: {fileID: 631264078}
   MaxHealth: 0
   CurHealth: 0
-  GreenHealthbar: {fileID: 0}
+  GreenHealthbar: {fileID: 1447747844}
 --- !u!1 &885768353
 GameObject:
   m_ObjectHideFlags: 0
