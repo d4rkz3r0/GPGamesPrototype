@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviour
     //Weapons
     private GameObject paladinSword;
 
+    //Warrior Spells (Prototype Only)
+    public GameObject fireBall;
+    public GameObject lightningBolt;
+    public Transform abilityPoint;
+
     //Basic Attack Chains
     public AttackCombo meleeAttackCombo;
     public AttackCombo rangedAttackCombo;
@@ -179,7 +184,6 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetFloat("Speed", 0);
         }
-        //transform.Rotate(0.0f, hInput * turnRate, 0.0f);
     }
 
     private void UpdatePlayerClass()
@@ -509,6 +513,18 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    void SpawnFireBall()
+    {
+        Instantiate(fireBall, abilityPoint.position, abilityPoint.rotation);
+    }
+
+    void SpawnLightning()
+    {
+        Instantiate(lightningBolt, abilityPoint.position - new Vector3(3.0f, 0.0f, 0.0f), abilityPoint.rotation);
+        Instantiate(lightningBolt, abilityPoint.position, abilityPoint.rotation);
+        Instantiate(lightningBolt, abilityPoint.position + new Vector3(3.0f, 0.0f, 0.0f), abilityPoint.rotation);
     }
 
     public void ResetCombo()
