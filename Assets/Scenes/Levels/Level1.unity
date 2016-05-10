@@ -13629,7 +13629,8 @@ Prefab:
       propertyPath: attkBuff_defBuff_vampBuff_onCD_rdy
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11483970, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1431422513

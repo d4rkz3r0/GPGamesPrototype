@@ -42,8 +42,7 @@ public class FireBallController : MonoBehaviour
 		//Fireball->Enemy
 		if (other.tag == "Enemy")
         {
-			other.GetComponent<ZombieHealth> ().takeDamage(abilityDamage);
-            Destroy(gameObject);
+			other.GetComponent<EnemyHealth>().CurHealth -= abilityDamage;
         }
     }
 }

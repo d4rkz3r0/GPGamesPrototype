@@ -134,6 +134,18 @@ public class EnemyHealth : MonoBehaviour
                 tempFury.GainFury(20); 
             }
         }
+        else if (other.tag == "Spell")
+        {
+            if (buff != -1)
+                CurHealth -= other.GetComponent<FireBallController>().abilityDamage;
+            else
+                CurHealth -= other.GetComponent<FireBallController>().abilityDamage * 2.0f;
+            if (buff == 1)
+                tempHealth.ReGenHealth(25);
+            Invoke("ResetCharge", 0.75f);
+            hitByCharged = true;
+            tempFury.GainFury(20);
+        }
         if (CurHealth <= 00)
         {
             ProgressBar.killed++;
