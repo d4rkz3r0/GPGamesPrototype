@@ -39,10 +39,6 @@ public class FireBallController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-		//Fireball->Enemy
-		if (other.tag == "Enemy")
-        {
-			other.GetComponent<EnemyHealth>().CurHealth -= abilityDamage;
-        }
+	
     }
 }

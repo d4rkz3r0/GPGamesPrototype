@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
             UpdateAttackChains();
             UpdateAbilites();
         }
-            UpdateBuffs();
+        UpdateBuffs();
     }
 
     private void MovePlayer()
@@ -275,10 +275,10 @@ public class PlayerController : MonoBehaviour
 
         if (meleeAttackCombo.amComboing &&
             !meleeAttackCombo.canStartCombo &&
-            !meleeAttackCombo.isComboOver 
+            !meleeAttackCombo.isComboOver
             && (meleeAttackCombo.currAttackState == AttackCombo.AttackState.SecondAttack
             || meleeAttackCombo.currAttackState == AttackCombo.AttackState.ThirdAttack)
-            && AnimatorIsPlaying("Idle2Running"))
+             && AnimatorIsPlaying("Idle2Running"))
         {
             paladinSword.GetComponent<MeshCollider>().sharedMesh = null;
         }

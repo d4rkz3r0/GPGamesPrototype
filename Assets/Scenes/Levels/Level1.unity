@@ -13541,6 +13541,18 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 658772189}
+    - target: {fileID: 11456682, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: GreenHealthbar
+      value: 
+      objectReference: {fileID: 1127625678}
+    - target: {fileID: 11456682, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: HealthText
+      value: 
+      objectReference: {fileID: 307895335}
+    - target: {fileID: 11449606, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: WinScreen
+      value: 
+      objectReference: {fileID: 1234090745}
     - target: {fileID: 11442078, guid: d953637f4390d7949b2e9880c48160af, type: 2}
       propertyPath: HealthText
       value: 
@@ -13549,6 +13561,18 @@ Prefab:
       propertyPath: GreenHealthbar
       value: 
       objectReference: {fileID: 1447747844}
+    - target: {fileID: 11438326, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: CoolDownPictureAbillity1
+      value: 
+      objectReference: {fileID: 591727275}
+    - target: {fileID: 11438326, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: CoolDownPictureAbillity2
+      value: 
+      objectReference: {fileID: 1518914580}
+    - target: {fileID: 11438326, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: CoolDownPictureAbillity3
+      value: 
+      objectReference: {fileID: 396929637}
     - target: {fileID: 11405120, guid: d953637f4390d7949b2e9880c48160af, type: 2}
       propertyPath: Buffs
       value: 
@@ -13565,72 +13589,7 @@ Prefab:
       propertyPath: Vamp
       value: 
       objectReference: {fileID: 11163317}
-    - target: {fileID: 11438326, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: CoolDownPictureAbillity1
-      value: 
-      objectReference: {fileID: 591727275}
-    - target: {fileID: 11438326, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: CoolDownPictureAbillity2
-      value: 
-      objectReference: {fileID: 1518914580}
-    - target: {fileID: 11438326, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: CoolDownPictureAbillity3
-      value: 
-      objectReference: {fileID: 396929637}
-    - target: {fileID: 11456682, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: GreenHealthbar
-      value: 
-      objectReference: {fileID: 1127625678}
-    - target: {fileID: 11456682, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: HealthText
-      value: 
-      objectReference: {fileID: 307895335}
-    - target: {fileID: 11449606, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: WinScreen
-      value: 
-      objectReference: {fileID: 1234090745}
-    - target: {fileID: 22450388, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.39703247
-      objectReference: {fileID: 0}
-    - target: {fileID: 22450388, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.03970325
-      objectReference: {fileID: 0}
-    - target: {fileID: 22450388, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.79406494
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573992, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_Size.x
-      value: 1.7579811
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573992, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_Center.x
-      value: 0.8210154
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573992, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_Center.z
-      value: -0.000048816204
-      objectReference: {fileID: 0}
-    - target: {fileID: 9555984, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9f0fde529b5359a45a2c0b1bb0d6e843, type: 2}
-    - target: {fileID: 11442078, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1605305101}
-    - target: {fileID: 11483970, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11431362, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: attkBuff_defBuff_vampBuff_onCD_rdy
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11483970, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1431422513
@@ -15972,10 +15931,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
   m_PrefabInternal: {fileID: 1603237338}
---- !u!1 &1605305101 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 111198, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-  m_PrefabInternal: {fileID: 1428192989}
 --- !u!1001 &1605341140
 Prefab:
   m_ObjectHideFlags: 0
