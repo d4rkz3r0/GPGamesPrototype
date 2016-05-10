@@ -32,8 +32,7 @@ public class HandleAnimationEvents : MonoBehaviour
     //[DEBUG]
     //private AnimationClip currAnimationClip;
 
-    // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         //Init
         anim = GetComponent<Animator>();
@@ -90,6 +89,7 @@ public class HandleAnimationEvents : MonoBehaviour
 
         //Grab
         currAnimationClips = anim.runtimeAnimatorController.animationClips;
+
         //[DEBUG]
         //currAnimationClip = currAnimationClips[21];
 
@@ -98,5 +98,10 @@ public class HandleAnimationEvents : MonoBehaviour
         currAnimationClips[20].events = casting1And2AnimationEvents;
         currAnimationClips[21].events = casting3AnimationEvents;
         currAnimationClips[19].events = meleeAnimationEvents;
+
+        if (!anim.isInitialized)
+        {
+            anim.Rebind();
+        }
     }
 }
