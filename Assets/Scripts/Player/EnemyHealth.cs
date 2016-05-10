@@ -92,9 +92,9 @@ public class EnemyHealth : MonoBehaviour
                 temp.y = 0;
                 myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
                 if (buff != -1)
-                    CurHealth -= 80;
+                    CurHealth -= 120;
                 else
-                    CurHealth -= 160;
+                    CurHealth -= 240;
                 if(buff == 1)
                 tempHealth.ReGenHealth(80);
                 hitByCharged = true;
@@ -124,9 +124,9 @@ public class EnemyHealth : MonoBehaviour
                 temp.y = 0;
                 myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
                 if (buff != -1)
-                    CurHealth -= 50;
-                else
                     CurHealth -= 100;
+                else
+                    CurHealth -= 200;
                 if (buff == 1)
                     tempHealth.ReGenHealth(25);
                 Invoke("ResetCharge", 0.75f);

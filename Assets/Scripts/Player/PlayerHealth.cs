@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour {
     public Image GreenHealthbar;
 	void Start () 
     {
-        MaxHealth = 200f;
+        MaxHealth = 500f;
         CurHealth = MaxHealth;
         HealthText.text = CurHealth + "/" + MaxHealth;
         GreenHealthbar.fillAmount = CurHealth;

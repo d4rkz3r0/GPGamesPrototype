@@ -154,7 +154,7 @@ public class EnemyController : MonoBehaviour
         {
             ResetAttack();
             canDoStuff = false;
-            Invoke("CanAttack", 0.5f);
+            Invoke("CanAttack", 1.0f);
         }
         if (other.tag == "WarriorSlamCollider")
         {
@@ -168,7 +168,7 @@ public class EnemyController : MonoBehaviour
         {
             ResetAttack();
             canDoStuff = false;
-            Invoke("CanAttack", 0.5f);
+            Invoke("CanAttack", 1.0f);
         }
     }
     void CanAttack()

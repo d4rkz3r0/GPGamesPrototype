@@ -631,9 +631,9 @@ public class PlayerController : MonoBehaviour
         if (other.tag == ("ZombieAttack"))
         {
             if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
-                healthManager.DecreaseHealth(10.0f);
+                healthManager.DecreaseHealth(2.0f);
             else
-                healthManager.DecreaseHealth(20.0f);
+                healthManager.DecreaseHealth(10.0f);
             other.gameObject.SetActive(false);
         }
     }
