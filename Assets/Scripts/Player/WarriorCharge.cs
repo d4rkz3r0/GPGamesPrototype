@@ -91,7 +91,7 @@ public class WarriorCharge : AbilityScript
             capsuleCollider.enabled = false;
             rBody.useGravity = true;
             playerCollider.enabled = true;
-            playerController.enabled = true;
+            playerController.getInput = true;
         }
         else
         {
@@ -117,7 +117,7 @@ public class WarriorCharge : AbilityScript
         actionTimer = 0.0f;
         inUse_ready_onCooldown = 1;
         capsuleCollider.enabled = true;
-        playerController.enabled = false;
+        playerController.getInput = false;
         firstFrameActivation = false;
     }
 }

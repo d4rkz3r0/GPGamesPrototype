@@ -80,7 +80,7 @@ public class WarriorWhirlwind : AbilityScript {
 
         anim.Play(Animator.StringToHash("Base Layer.Whirlwind1"));
 
-        playerController.enabled = false;
+        playerController.getInput = false;
     }
 
     void FinishAction()
@@ -91,7 +91,7 @@ public class WarriorWhirlwind : AbilityScript {
         cooldownTimer = 0.0f;
         actionTimer = 0.0f;
 
-        playerController.enabled = true;
+        playerController.getInput = true;
     }
 
     void UpdateActionTimer()

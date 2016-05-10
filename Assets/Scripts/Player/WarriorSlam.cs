@@ -73,7 +73,7 @@ public class WarriorSlam : AbilityScript {
 
         anim.Play(Animator.StringToHash("Base Layer.LeapAttack"));
 
-        playerController.enabled = false;
+        playerController.getInput = false;
     }
 
     void FinishAction()
@@ -84,7 +84,7 @@ public class WarriorSlam : AbilityScript {
         actionTimer = 0.0f;
         colliderActivated = false;
 
-        playerController.enabled = true;
+        playerController.getInput = true;
     }
 
     void UpdateCooldownTimer()

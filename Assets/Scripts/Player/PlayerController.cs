@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public float cooldownTimer;
     public float activeDuration;
     public float activeTimer;
+    public bool getInput;
     /* attack = -1; defBuff = 0; vampBuff = 1; onCD = 9; rdy = 10 */
 
     //Player Movement
@@ -123,6 +124,8 @@ public class PlayerController : MonoBehaviour
         activeTimer = cooldownTimer = 0.0f;
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
 
+        getInput = true;
+
         //Weapons
         paladinSword = GameObject.Find("Sword");
 
@@ -164,11 +167,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        MovePlayer();
-        UpdatePlayerClass();
-        UpdateAttackChains();
-        UpdateAbilites();
-        UpdateBuffs();
+        if (getInput)
+        {
+            MovePlayer();
+            UpdatePlayerClass();
+            UpdateAttackChains();
+            UpdateAbilites();
+        }
+            UpdateBuffs();
     }
 
     private void MovePlayer()
