@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<CapsuleCollider>();
 
-        cooldownDuration = 30.0f;
+        cooldownDuration = 10.0f;
         activeDuration = 10.0f;
         activeTimer = cooldownTimer = 0.0f;
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
@@ -491,16 +491,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 0;
+            cooldownDuration = 5.0f;
             defenseParticleSystem.Play();
         }
         else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = -1;
+            cooldownDuration = 10.0f;
             attackParticleSystem.Play();
         }
         else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 1;
+            cooldownDuration = 15.0f;
             vamprisimParticleSystem.Play();
         }
 
