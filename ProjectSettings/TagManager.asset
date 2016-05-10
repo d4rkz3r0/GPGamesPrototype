@@ -17,6 +17,7 @@ TagManager:
   - VampireBuffParticle
   - ZombieAttack
   - Room
+  - Spell
   layers:
   - Default
   - TransparentFX
