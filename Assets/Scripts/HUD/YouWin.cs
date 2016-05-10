@@ -15,7 +15,7 @@ public class YouWin : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-	if(ProgressBar.killed == 234)
+	if(ProgressBar.killed >= 234)
     {
         WinScreen.enabled = true;
 

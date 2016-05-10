@@ -24,10 +24,15 @@ public class PlayerHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+
+        if (CurHealth >= MaxHealth)
+            CurHealth = MaxHealth;
         HealthText.text = CurHealth + "/" + MaxHealth;
         GreenHealthbar.fillAmount = CurHealth * 0.01f;
+        
         SetHealth(CurHealth / MaxHealth);
 
+       
         
             
       

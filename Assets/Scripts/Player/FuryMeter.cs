@@ -52,7 +52,10 @@ public class FuryMeter : MonoBehaviour {
     public void GainFury(float amountToGain)
     {
         Currentmeter += amountToGain;
-        GreenHealthbar.fillAmount += 0.005f;
+        if (Currentmeter >= MaxMeter)
+            Currentmeter = MaxMeter;
+
+        GreenHealthbar.fillAmount += 0.05f;
     }
 
 

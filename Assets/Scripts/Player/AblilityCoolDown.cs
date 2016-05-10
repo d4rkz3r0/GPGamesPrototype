@@ -22,7 +22,7 @@ public class AblilityCoolDown : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.GetButtonDown("B Button") && GetComponent<WarriorCharge>().cooldownTimer == 0)
+        if (Input.GetButtonDown("B Button") && GetComponent<WarriorCharge>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
         timerAblility1 = 0;
 
@@ -32,7 +32,7 @@ public class AblilityCoolDown : MonoBehaviour {
     }
 
 
-        if (Input.GetButtonDown("Y Button") && GetComponent<WarriorSlam>().cooldownTimer == 0)
+        if (Input.GetButtonDown("Y Button") && GetComponent<WarriorSlam>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
         timerAbility2 = 0;
 
@@ -42,7 +42,7 @@ public class AblilityCoolDown : MonoBehaviour {
     }
 
 
-        if (Input.GetButtonDown("A Button") && GetComponent<WarriorWhirlwind>().cooldownTimer == 0)
+        if (Input.GetButtonDown("A Button") && GetComponent<WarriorWhirlwind>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
         timerAblility3 = 0;
 
@@ -75,7 +75,7 @@ public class AblilityCoolDown : MonoBehaviour {
 
 
 
-    if (GetComponent<WarriorWhirlwind>().cooldownTimer <= 0)
+    if (GetComponent<WarriorWhirlwind>().cooldownTimer <= 3)
     {
         timerAblility3 += 1f;
         CoolDownPictureAbillity3.color = new Color(1, 1, 1, timerAblility3 * 0.006f);
