@@ -32,6 +32,7 @@ public class GameOver : MonoBehaviour
         //Debug.Log((Input.GetButton("SelectButton").ToString()));
         if (Input.GetButton("SelectButton") && WinScreen.enabled == true)
         {
+            UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
             
 

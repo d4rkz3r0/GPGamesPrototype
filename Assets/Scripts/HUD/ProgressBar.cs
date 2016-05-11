@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour {
 
 	// Use this for initialization
-    int Total;
-    int Percent;
+    float Total;
+    float Percent;
     public Texture KillMeter;
     public Texture EmptyMeter;
    public  static int killed;
@@ -14,7 +14,7 @@ public class ProgressBar : MonoBehaviour {
    public Image GreenHealthbar;
 	void Start () 
     {
-        Total = 234;
+        Total = 284;
         killed = 0;
         progressBar.text = Percent.ToString();
 	}
@@ -23,9 +23,11 @@ public class ProgressBar : MonoBehaviour {
 	void Update () 
     {
 
-        Percent = (killed * 100) / Total;
-        progressBar.text = Percent.ToString() + "%";
-        GreenHealthbar.fillAmount = Percent * 0.01f;
+        Percent = (killed / Total);
+        GreenHealthbar.fillAmount = Percent;
+        Percent *= 100f;
+        int tempPercent = (int)(Percent);
+        progressBar.text = tempPercent.ToString() + "%";
 	}
 
 

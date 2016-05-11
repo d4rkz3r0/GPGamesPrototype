@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour {
         if (CurHealth >= MaxHealth)
             CurHealth = MaxHealth;
         HealthText.text = CurHealth + "/" + MaxHealth;
-        GreenHealthbar.fillAmount = CurHealth * 0.01f;
+        GreenHealthbar.fillAmount = CurHealth / MaxHealth;
         
         SetHealth(CurHealth / MaxHealth);
 

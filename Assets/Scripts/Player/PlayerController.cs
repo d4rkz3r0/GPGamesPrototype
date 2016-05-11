@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<CapsuleCollider>();
 
-        cooldownDuration = 30.0f;
+        cooldownDuration = 12.0f;
         activeDuration = 10.0f;
         activeTimer = cooldownTimer = 0.0f;
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
