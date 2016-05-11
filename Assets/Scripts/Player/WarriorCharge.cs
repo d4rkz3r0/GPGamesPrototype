@@ -92,6 +92,7 @@ public class WarriorCharge : AbilityScript
             rBody.useGravity = true;
             playerCollider.enabled = true;
             playerController.getInput = true;
+            rBody.velocity = Vector3.zero;
         }
         else
         {

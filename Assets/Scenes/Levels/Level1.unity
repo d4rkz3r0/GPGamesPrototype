@@ -13658,6 +13658,10 @@ Prefab:
       propertyPath: Vamp
       value: 
       objectReference: {fileID: 11163317}
+    - target: {fileID: 9555984, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9f0fde529b5359a45a2c0b1bb0d6e843, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
