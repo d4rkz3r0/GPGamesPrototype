@@ -68,7 +68,6 @@ public class EnemyController : MonoBehaviour
                 else if (slotted == 1 || distance > 7)
                 {
                     myAnimation.SetInteger("state", 1);
-                    float step = speed * Time.deltaTime;
                     myRigid.velocity = (transform.forward) * speed;
                     if (transform.position.y > 0)
                         myRigid.velocity += Vector3.down;
@@ -76,9 +75,8 @@ public class EnemyController : MonoBehaviour
                 else if (slotted == -1)
                 {
                     Vector3 outerSlotVector = (slotSpotOuter + player.transform.position);
-                    if (Vector3.Distance(transform.position, outerSlotVector) > 1)
+                    if (Vector3.Distance(transform.position, outerSlotVector) > 6)
                     {
-                        float step = speed * Time.deltaTime;
                         transform.LookAt(outerSlotVector);
                         outerSlotVector.Normalize();
                         transform.Translate((outerSlotVector) * speed * Time.deltaTime);
@@ -125,13 +123,16 @@ public class EnemyController : MonoBehaviour
     {
         if (!decidedAttack)
         {
-            attackBox.SetActive(true);
+            Invoke("ActivateAttackBox", 0.5f);
             myAnimation.SetInteger("state", 2);
             decidedAttack = true;
             Invoke("ResetAttack", decesionTimer);
         }
     }
-
+    void ActivateAttackBox()
+    {
+        attackBox.SetActive(true);
+    }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -160,7 +161,15 @@ public class EnemyController : MonoBehaviour
             ResetAttack();
             canDoStuff = false;
             if (slotted == 1)
+            {
                 tempSlotScript.RemoveSlot(gameObject);
+                slotted = 0;
+            }
+            else
+            {
+                tempSlotScript.ResetSlots();
+                slotted = 0;
+            }
             Invoke("CanAttack", 2.5f);
         }
         if (other.tag == "WarriorWhirlwindCollider")
@@ -180,5 +189,16 @@ public class EnemyController : MonoBehaviour
             tempSlotScript.RemoveSlot(gameObject);
         else
             tempSlotScript.ResetSlots();
+    }
+    public void RemoveFromSLots()
+    {
+        if (slotted == 1)
+            tempSlotScript.RemoveSlot(gameObject);
+        else
+            tempSlotScript.ResetSlots();
+    }
+    void ResetSlot()
+    {
+        slotted = 0;
     }
 }

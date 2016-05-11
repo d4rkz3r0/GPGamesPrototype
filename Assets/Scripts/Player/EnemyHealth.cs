@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
     PlayerController playerCon;
     public GameObject healthDrop;
     public GameObject[] drops;
-    int animatorInt = 0;
+    EnemyController myController;
     void Start()
     {
         MaxHealth = 200f;
@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         myRigidBudy = GetComponent<Rigidbody>();
         bitchAssPlayer = GameObject.Find("Player");
         playerCon = bitchAssPlayer.GetComponent<PlayerController>();
+        myController = GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
@@ -147,6 +148,10 @@ public class EnemyHealth : MonoBehaviour
         {
             GetComponent<Animator>().SetInteger("state", 3);
             Player.SetActive(false);
+            //Rigidbody temp = GetComponent<Rigidbody>();
+            //temp.useGravity = false;
+            //temp.velocity = Vector3.zero;
+            //GetComponent<BoxCollider>().enabled = false;
             Invoke("Death", 2.0f);
         }
     }
@@ -157,6 +162,7 @@ public class EnemyHealth : MonoBehaviour
     void Death()
     {
         ProgressBar.killed++;
+        myController.RemoveFromSLots();
         Vector3 spawnPos = transform.position + Vector3.up;
         if (Random.value < 0.05f)
             Instantiate(healthDrop, spawnPos, transform.rotation);

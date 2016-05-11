@@ -22,7 +22,7 @@ public class FuryMeter : MonoBehaviour {
         timer = 5.0f;
         GreenHealthbar.fillAmount = Currentmeter;
         HealthText.text = Currentmeter + "/" + MaxMeter;
-        decayRate = 1;
+        decayRate = 0;
 	}
 	
 	// Update is called once per frame

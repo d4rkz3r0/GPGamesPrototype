@@ -5,8 +5,8 @@ public class EnemySlotScript : MonoBehaviour
 {
     int slotCount = 0;
     public int maxSlots = 5;
-    ArrayList arrayList;
-    Vector3[] outerSlots;
+    public ArrayList arrayList;
+    public Vector3[] outerSlots;
     int nextAvaibleSlot = 0;
     // Use this for initialization
     void Start()
@@ -16,9 +16,9 @@ public class EnemySlotScript : MonoBehaviour
         float degrees = 0;
         for (int i = 0; i < 40; i++, degrees += 360 / 40)
         {
-            outerSlots[i].x = Mathf.Cos(degrees * Mathf.Deg2Rad) * 2;
+            outerSlots[i].x = Mathf.Cos(degrees * Mathf.Deg2Rad) * 5;
             outerSlots[i].y = 0;
-            outerSlots[i].z = Mathf.Sin(degrees * Mathf.Deg2Rad) * 2;
+            outerSlots[i].z = Mathf.Sin(degrees * Mathf.Deg2Rad) * 5;
         }
     }
 
@@ -46,15 +46,17 @@ public class EnemySlotScript : MonoBehaviour
     public Vector3 GetOuterSlotPosition()
     {
         if (nextAvaibleSlot == 40)
-        {
             return Vector3.zero;
-        }
         Vector3 temp = outerSlots[nextAvaibleSlot];
         nextAvaibleSlot++;
         return temp;
     }
     public void ResetSlots()
     {
+        foreach (GameObject enemy in arrayList)
+        {
+            enemy.SendMessage("ResetSlot");
+        }
         arrayList.Clear();
         slotCount = 0;
         nextAvaibleSlot = 0;
