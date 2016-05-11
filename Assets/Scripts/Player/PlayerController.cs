@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float cooldownTimer;
     public float activeDuration;
     public float activeTimer;
+
+    public bool alive;
     public bool getInput;
     /* attack = -1; defBuff = 0; vampBuff = 1; onCD = 9; rdy = 10 */
 
@@ -55,6 +57,10 @@ public class PlayerController : MonoBehaviour
     private AbilityScript rightTriggerAbility;
     private AbilityScript rightBumperAbility;
     private AbilityScript dodgeAbility;
+    public int rightBumperCost;
+    public int rightTriggerCost;
+    public int dodgeCost;
+    private FuryMeter furyUpkeep;
 
     //Particle System
     private ParticleSystem attackParticleSystem;
@@ -77,6 +83,12 @@ public class PlayerController : MonoBehaviour
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
 
         getInput = true;
+
+        rightBumperCost = 30;
+        rightTriggerCost = 60;
+        dodgeCost = 15;
+
+        alive = true;
 
         //Weapons
         paladinSword = FindObjectOfType<SwordController>();
@@ -106,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
         if (GetComponent<PlayerHealth>())
             healthManager = GetComponent<PlayerHealth>();
+        if (GetComponent<FuryMeter>())
+            furyUpkeep = GetComponent<FuryMeter>();
 
     }
 
@@ -116,14 +130,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (getInput)
+        if (alive)
         {
-            MovePlayer();
-            UpdatePlayerClass();
-            UpdateAttackChains();
-            UpdateAbilites();
+            if (getInput)
+            {
+                MovePlayer();
+                UpdatePlayerClass();
+                UpdateAttackChains();
+                UpdateAbilites();
+            }
+            UpdateBuffs();
         }
-        UpdateBuffs();
     }
 
     private void MovePlayer()
@@ -228,12 +245,21 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilites()
     {
         //Ability Code Here
-        if (Input.GetButton("B Button"))
+        if (Input.GetButton("B Button") && furyUpkeep.Currentmeter >= dodgeCost)
+        {
+            furyUpkeep.UseFury(dodgeCost);
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
-        else if (Input.GetButton("A Button"))
+        }
+        else if (Input.GetButton("A Button") && furyUpkeep.Currentmeter >= rightBumperCost)
+        {
+            furyUpkeep.UseFury(rightBumperCost);
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
-        else if (Input.GetButton("Y Button"))
+        }
+        else if (Input.GetButton("Y Button") && furyUpkeep.Currentmeter >= rightTriggerCost)
+        {
+            furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
+        }
         
     }
 
@@ -243,16 +269,19 @@ public class PlayerController : MonoBehaviour
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 0;
             defenseParticleSystem.Play();
+            cooldownDuration = 5.0f;
         }
         else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = -1;
             attackParticleSystem.Play();
+            cooldownDuration = 10.0f;
         }
         else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 1;
             vamprisimParticleSystem.Play();
+            cooldownDuration = 15.0f;
         }
 
         if (attkBuff_defBuff_vampBuff_onCD_rdy == 9)

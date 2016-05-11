@@ -6,7 +6,6 @@ public class EnemyController : MonoBehaviour
     Animator myAnimation = null;
     public GameObject attackBox;
     GameObject player = null;
-
     public int speed = 5;
     int slotted = 0;
 
@@ -35,7 +34,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player)
+        if (player && myAnimation.GetInteger("state") != 3)
         {
             float distance = 0;
             distance = Vector3.Distance(transform.position, player.transform.position);
@@ -49,7 +48,7 @@ public class EnemyController : MonoBehaviour
                         slotted = 1;
                         slotSpotOuter = Vector3.one;
                     }
-                    else if(slotted == 0)
+                    else if (slotted == 0)
                     {
                         slotted = -1;
                         slotSpotOuter = tempSlotScript.GetOuterSlotPosition();

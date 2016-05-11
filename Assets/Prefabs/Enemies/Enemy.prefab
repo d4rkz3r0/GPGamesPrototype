@@ -1009,6 +1009,8 @@ MonoBehaviour:
   MaxHealth: 0
   CurHealth: 0
   addedForce: 10
+  healthDrop: {fileID: 0}
+  drops: []
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1038,11 +1040,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 163500}
+  Player: {fileID: 123496}
   ObjectPlayer: {fileID: 157532}
   MaxHealth: 4
   CurHealth: 0
   addedForce: 625
+  healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
+  drops: []
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
