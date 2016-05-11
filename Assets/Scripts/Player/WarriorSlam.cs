@@ -11,7 +11,7 @@ public class WarriorSlam : AbilityScript {
     PlayerController playerController;
     public float cooldownTimer;
     float actionTimer;
-    int inUse_ready_onCooldown;
+    public int inUse_ready_onCooldown;
     bool colliderActivated;
 
     Animator anim;

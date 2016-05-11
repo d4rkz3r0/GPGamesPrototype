@@ -245,17 +245,17 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilites()
     {
         //Ability Code Here
-        if (Input.GetButton("B Button") && furyUpkeep.Currentmeter >= dodgeCost)
+        if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost)
         {
             furyUpkeep.UseFury(dodgeCost);
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
         }
-        else if (Input.GetButton("A Button") && furyUpkeep.Currentmeter >= rightBumperCost)
+        else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost)
         {
             furyUpkeep.UseFury(rightBumperCost);
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
         }
-        else if (Input.GetButton("Y Button") && furyUpkeep.Currentmeter >= rightTriggerCost)
+        else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost)
         {
             furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
