@@ -65,7 +65,14 @@ public class PlayerHealth : MonoBehaviour {
 
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PickUpHealth")
+        {
+            ReGenHealth(50);
+            Destroy(other.gameObject);
+        }
+    }
 }
 
 
- 

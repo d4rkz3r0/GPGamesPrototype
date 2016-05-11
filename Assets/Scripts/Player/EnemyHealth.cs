@@ -15,22 +15,21 @@ public class EnemyHealth : MonoBehaviour
     public float addedForce = 10.0f;
     GameObject bitchAssPlayer;
     PlayerController playerCon;
+    public GameObject healthDrop;
+    public GameObject[] drops;
+    int animatorInt = 0;
     void Start()
     {
         MaxHealth = 200f;
         CurHealth = MaxHealth;
         myRigidBudy = GetComponent<Rigidbody>();
         bitchAssPlayer = GameObject.Find("Player");
-        //   HealthText.text = CurHealth + "/" + MaxHealth;
-        // GreenHealthbar.fillAmount = CurHealth;
         playerCon = bitchAssPlayer.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // HealthText.text = CurHealth + "/" + MaxHealth;
-        // GreenHealthbar.fillAmount = CurHealth * 0.01f;
         SetHealth(CurHealth / MaxHealth);
     }
     void DecreaseHealth()
@@ -49,9 +48,7 @@ public class EnemyHealth : MonoBehaviour
     }
     void SetHealth(float health)
     {
-
         Player.transform.localScale = new Vector3(health, Player.transform.localScale.y, Player.transform.localScale.z);
-
     }
     void OnTriggerEnter(Collider other)
     {
@@ -67,7 +64,7 @@ public class EnemyHealth : MonoBehaviour
                 temp.y = 0;
                 Vector3 dirVec;
                 float angle = Vector3.Dot(Player.transform.forward, temp);
-                if(angle < 0)
+                if (angle < 0)
                     dirVec = Quaternion.AngleAxis(-90, Vector3.up) * transform.forward;
                 else
                     dirVec = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
@@ -95,8 +92,8 @@ public class EnemyHealth : MonoBehaviour
                     CurHealth -= 120;
                 else
                     CurHealth -= 240;
-                if(buff == 1)
-                tempHealth.ReGenHealth(80);
+                if (buff == 1)
+                    tempHealth.ReGenHealth(80);
                 hitByCharged = true;
                 Invoke("ResetCharge", 0.3f);
             }
@@ -131,7 +128,7 @@ public class EnemyHealth : MonoBehaviour
                     tempHealth.ReGenHealth(25);
                 Invoke("ResetCharge", 0.75f);
                 hitByCharged = true;
-                tempFury.GainFury(20); 
+                tempFury.GainFury(20);
             }
         }
         else if (other.tag == "Spell")
@@ -148,12 +145,21 @@ public class EnemyHealth : MonoBehaviour
         }
         if (CurHealth <= 00)
         {
-            ProgressBar.killed++;
-            Destroy(gameObject);
+            GetComponent<Animator>().SetInteger("state", 3);
+            Player.SetActive(false);
+            Invoke("Death", 2.0f);
         }
     }
     void ResetCharge()
     {
         hitByCharged = false;
+    }
+    void Death()
+    {
+        ProgressBar.killed++;
+        Vector3 spawnPos = transform.position + Vector3.up;
+        if (Random.value < 0.05f)
+            Instantiate(healthDrop, spawnPos, transform.rotation);
+        Destroy(gameObject);
     }
 }

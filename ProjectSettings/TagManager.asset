@@ -18,6 +18,7 @@ TagManager:
   - ZombieAttack
   - Room
   - Spell
+  - PickUpHealth
   layers:
   - Default
   - TransparentFX
