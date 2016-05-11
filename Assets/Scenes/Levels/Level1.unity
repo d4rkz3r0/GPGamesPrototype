@@ -13589,6 +13589,10 @@ Prefab:
       propertyPath: Vamp
       value: 
       objectReference: {fileID: 11163317}
+    - target: {fileID: 11427034, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: cooldownTimer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
