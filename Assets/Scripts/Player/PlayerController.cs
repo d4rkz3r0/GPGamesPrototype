@@ -14,45 +14,6 @@ public class PlayerController : MonoBehaviour
         RangedMage
     }
 
-    public class AttackCombo
-    {
-        public enum AttackState
-        {
-            NotAttacking,
-            FirstAttack,
-            SecondAttack,
-            ThirdAttack
-        }
-
-        //Trigger Based
-        public AttackState currAttackState;
-        public bool amComboing = false;
-        public bool canStartCombo = true;
-        public bool isComboOver = true;
-
-        public AttackCombo()
-        {
-            currAttackState = AttackState.NotAttacking;
-        }
-
-        //Helper Funcs
-        public void StartCombo()
-        {
-            amComboing = true;
-            canStartCombo = false;
-            isComboOver = false;
-            currAttackState = AttackState.FirstAttack;
-        }
-
-        public void EndCombo()
-        {
-            amComboing = false;
-            canStartCombo = true;
-            isComboOver = true;
-            currAttackState = AttackState.NotAttacking;
-        }
-    }
-
     //Player Info
     private Vector3 velocity;
     public CharacterClass playerClass = CharacterClass.MeleeWarrior;
@@ -66,11 +27,8 @@ public class PlayerController : MonoBehaviour
 
     //Player Movement
     public float fMoveSpeed = 4.0f;
-    public float bMoveSpeed = 3.0f;
-    public float turnRate = 1.0f;
     float hInput;
     float vInput;
-    private float animationSpeed;
 
     //Camera Information
     private Transform cameraTransform;
@@ -82,21 +40,16 @@ public class PlayerController : MonoBehaviour
     //References
     private Animator anim;
     private RuntimeAnimatorController animRC;
-    private AnimatorStateInfo animInfo;
     private Rigidbody rb;
     private CapsuleCollider coll;
 
     //Weapons
-    private GameObject paladinSword;
+    private SwordController paladinSword;
 
     //Warrior Spells (Prototype Only)
     public GameObject fireBall;
     public GameObject lightningBolt;
     public Transform abilityPoint;
-
-    //Basic Attack Chains
-    public AttackCombo meleeAttackCombo;
-    public AttackCombo rangedAttackCombo;
 
     //Combo Active Abilities
     private AbilityScript rightTriggerAbility;
@@ -115,11 +68,10 @@ public class PlayerController : MonoBehaviour
         //Player
         anim = GetComponent<Animator>();
         animRC = anim.runtimeAnimatorController;
-        animInfo = anim.GetCurrentAnimatorStateInfo(0);
         rb = GetComponent<Rigidbody>();
         coll = GetComponent<CapsuleCollider>();
 
-        cooldownDuration = 12.0f;
+        cooldownDuration = 30.0f;
         activeDuration = 10.0f;
         activeTimer = cooldownTimer = 0.0f;
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
@@ -127,7 +79,7 @@ public class PlayerController : MonoBehaviour
         getInput = true;
 
         //Weapons
-        paladinSword = GameObject.Find("Sword");
+        paladinSword = FindObjectOfType<SwordController>();
 
         if (GetComponent<WarriorSlam>())
             rightTriggerAbility = GetComponent<WarriorSlam>();
@@ -159,10 +111,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        InitializeAttackComboes();
-        //CheckWeapon();
-        animationSpeed = 1.0f;
-        anim.speed = animationSpeed;
+        
     }
 
     private void Update()
@@ -268,209 +217,12 @@ public class PlayerController : MonoBehaviour
 
     public void MeleeAttackChain()
     {
-        if (meleeAttackCombo.currAttackState == AttackCombo.AttackState.NotAttacking && meleeAttackCombo.isComboOver)
-        {
-            ResetCombo();
-        }
-
-        if (meleeAttackCombo.amComboing &&
-            !meleeAttackCombo.canStartCombo &&
-            !meleeAttackCombo.isComboOver
-            && (meleeAttackCombo.currAttackState == AttackCombo.AttackState.SecondAttack
-            || meleeAttackCombo.currAttackState == AttackCombo.AttackState.ThirdAttack)
-             && AnimatorIsPlaying("Idle2Running"))
-        {
-            paladinSword.GetComponent<MeshCollider>().sharedMesh = null;
-        }
-
-        if (Input.GetButtonDown("Attack"))
-        {
-            if (meleeAttackCombo.canStartCombo)
-            {
-                meleeAttackCombo.StartCombo();
-                if (meleeAttackCombo.amComboing)
-                {
-                    UpdateMeleeCombo();
-                }
-                if (!meleeAttackCombo.amComboing && meleeAttackCombo.isComboOver)
-                {
-                    meleeAttackCombo.StartCombo();
-                    if (meleeAttackCombo.amComboing)
-                    {
-                        UpdateMeleeCombo();
-                    }
-                }
-            }
-            else
-            {
-                if (meleeAttackCombo.amComboing)
-                {
-                    //paladinSword.GetComponent<SwordController>().dynamicCollider = false;
-                    UpdateMeleeCombo();
-                }
-            }
-        }
+        
     }
-
-
-    public void UpdateMeleeCombo()
-    {
-        if (meleeAttackCombo.amComboing)
-        {
-            switch (meleeAttackCombo.currAttackState)
-            {
-                case AttackCombo.AttackState.NotAttacking:
-                    {
-                        meleeAttackCombo.EndCombo();
-                        break;
-                    }
-
-                case AttackCombo.AttackState.FirstAttack:
-                    {
-                        if (AnimatorIsPlaying("Idle2Running"))
-                        {
-                            paladinSword.GetComponent<SwordController>().dynamicCollider = true;
-                            anim.SetTrigger("MSlash1");
-                            meleeAttackCombo.currAttackState = AttackCombo.AttackState.SecondAttack;
-                        }
-                        else
-                        {
-                            meleeAttackCombo.EndCombo();
-                        }
-                        break;
-                    }
-                case AttackCombo.AttackState.SecondAttack:
-                    {
-                        if (AnimatorIsPlaying("MeleeSlash1"))
-                        {
-                            paladinSword.GetComponent<SwordController>().dynamicCollider = true;
-                            anim.SetTrigger("MSlash2");
-                            meleeAttackCombo.currAttackState = AttackCombo.AttackState.ThirdAttack;
-                        }
-                        else
-                        {
-                            meleeAttackCombo.EndCombo();
-                        }
-                        break;
-                    }
-                case AttackCombo.AttackState.ThirdAttack:
-                    {
-                        if (AnimatorIsPlaying("MeleeSlash2"))
-                        {
-                            paladinSword.GetComponent<SwordController>().dynamicCollider = true;
-                            anim.SetTrigger("MSlash3");
-                            meleeAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
-                        }
-                        else
-                        {
-                            meleeAttackCombo.EndCombo();
-                        }
-                        break;
-                    }
-
-                default:
-                    {
-                        Debug.Log("Invalid Melee Attack State.");
-                        break;
-                    }
-            }
-        }
-    }
-
+   
     public void RangedAttackChain()
     {
-        if (rangedAttackCombo.currAttackState == AttackCombo.AttackState.NotAttacking && rangedAttackCombo.isComboOver)
-        {
-            ResetCombo();
-        }
-
-        if (Input.GetButtonDown("Attack"))
-        {
-            if (rangedAttackCombo.canStartCombo)
-            {
-                rangedAttackCombo.StartCombo();
-                if (rangedAttackCombo.amComboing)
-                {
-                    UpdateRangedCombo();
-                }
-                if (!rangedAttackCombo.amComboing && rangedAttackCombo.isComboOver)
-                {
-                    rangedAttackCombo.StartCombo();
-                    if (rangedAttackCombo.amComboing)
-                    {
-                        UpdateRangedCombo();
-                    }
-                }
-            }
-            else
-            {
-                if (rangedAttackCombo.amComboing)
-                {
-                    UpdateRangedCombo();
-                }
-            }
-        }
-    }
-
-    public void UpdateRangedCombo()
-    {
-        if (rangedAttackCombo.amComboing)
-        {
-            switch (rangedAttackCombo.currAttackState)
-            {
-                case AttackCombo.AttackState.NotAttacking:
-                    {
-                        rangedAttackCombo.EndCombo();
-                        break;
-                    }
-
-                case AttackCombo.AttackState.FirstAttack:
-                    {
-                        if (AnimatorIsPlaying("Idle2Running"))
-                        {
-                            anim.SetTrigger("RCast1");
-                            rangedAttackCombo.currAttackState = AttackCombo.AttackState.SecondAttack;
-                        }
-                        else
-                        {
-                            rangedAttackCombo.EndCombo();
-                        }
-                        break;
-                    }
-                case AttackCombo.AttackState.SecondAttack:
-                    {
-                        if (AnimatorIsPlaying("RangedCast1"))
-                        {
-                            anim.SetTrigger("RCast2");
-                            rangedAttackCombo.currAttackState = AttackCombo.AttackState.ThirdAttack;
-                        }
-                        else
-                        {
-                            rangedAttackCombo.EndCombo();
-                        }
-                        break;
-                    }
-                case AttackCombo.AttackState.ThirdAttack:
-                    {
-                        if (AnimatorIsPlaying("RangedCast2"))
-                        {
-                            anim.SetTrigger("RCast3");
-                            rangedAttackCombo.currAttackState = AttackCombo.AttackState.NotAttacking;
-                        }
-                        else
-                        {
-                            rangedAttackCombo.EndCombo();
-                        }
-                        break;
-                    }
-
-                default:
-                    {
-                        Debug.Log("Invalid Ranged Attack State.");
-                        break;
-                    }
-            }
-        }
+       
     }
 
     public void UpdateAbilites()
@@ -487,7 +239,6 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateBuffs()
     {
-        //Buff Code Here
         if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 0;
@@ -504,7 +255,6 @@ public class PlayerController : MonoBehaviour
             vamprisimParticleSystem.Play();
         }
 
-        
         if (attkBuff_defBuff_vampBuff_onCD_rdy == 9)
         {
             cooldownTimer += Time.deltaTime;
@@ -529,34 +279,10 @@ public class PlayerController : MonoBehaviour
 
 
     //-Helper Funcs-//
-    private void InitializeAttackComboes()
-    {
-        meleeAttackCombo = new AttackCombo();
-        rangedAttackCombo = new AttackCombo();
-    }
-
     private bool IsWarrior()
     {
         return playerClass == CharacterClass.MeleeWarrior;
     }
-
-    private void CheckWeapon()
-    {
-        switch (playerClass)
-        {
-            case CharacterClass.MeleeWarrior:
-                {
-                    paladinSword.SetActive(true);
-                    break;
-                }
-            case CharacterClass.RangedMage:
-                {
-                    paladinSword.SetActive(false);
-                    break;
-                }
-        }
-    }
-
 
     //-Animation Funcs-//
     private float GetAnimationLength(string animName)
@@ -572,37 +298,12 @@ public class PlayerController : MonoBehaviour
         return -1.0f;
     }
 
-    private void AnimationTester(string animationStateName)
-    {
-        if (Input.GetButtonDown("Ability1"))
-        {
-            anim.Play(Animator.StringToHash("Base Layer." + animationStateName));
-        }
-    }
-
     public bool AnimatorIsPlaying(string stateName)
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }
 
     //-Animation Events-//
-    private void WeaponSwap()
-    {
-        switch (playerClass)
-        {
-            case CharacterClass.MeleeWarrior:
-                {
-                    paladinSword.SetActive(true);
-                    break;
-                }
-            case CharacterClass.RangedMage:
-                {
-                    paladinSword.SetActive(false);
-                    break;
-                }
-        }
-    }
-
     void SpawnFireBall()
     {
         Instantiate(fireBall, abilityPoint.position, abilityPoint.rotation);
@@ -620,15 +321,10 @@ public class PlayerController : MonoBehaviour
         if (IsWarrior())
         {
             paladinSword.GetComponent<SwordController>().ResetSlashes();
-            meleeAttackCombo.amComboing = false;
-            meleeAttackCombo.canStartCombo = true;
-            meleeAttackCombo.isComboOver = true;
         }
         else
         {
-            rangedAttackCombo.amComboing = false;
-            rangedAttackCombo.canStartCombo = true;
-            rangedAttackCombo.isComboOver = true;
+            //Mage Combo Logic Here
         }
     }
 

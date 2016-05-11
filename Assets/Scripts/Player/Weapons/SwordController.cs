@@ -10,8 +10,10 @@ public class SwordController : MonoBehaviour
     private MeshCollider swordMeshCollider;
     private Mesh currSwordMesh;
     public AudioSource[] swordSoundEffects;
+
     //External
     private PlayerController player;
+    private ComboSystem playerComboState;
 
     //Tweakables
     public int meleeSlash1Damage = 1;
@@ -50,9 +52,6 @@ public class SwordController : MonoBehaviour
         {
             DisableCollider();
         }
-
-        
-        
 
         //Melee End Combo SFX Buffer
         if (meleeEndComboTimer > 0.0f) { meleeEndComboTimer -= Time.deltaTime; }
@@ -127,11 +126,6 @@ public class SwordController : MonoBehaviour
                     break;
                 }
         }
-    }
-
-    public void ResetSlash()
-    {
-        DisableCollider();
     }
 
     public void ResetSlashes()
