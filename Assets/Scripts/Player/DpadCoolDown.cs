@@ -30,7 +30,7 @@ public class DpadCoolDown : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetAxis("D-Pad Y Axis") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
+        if (Input.GetAxis("D-Pad Y Axis Xbox One") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, 1);
@@ -41,7 +41,7 @@ public class DpadCoolDown : MonoBehaviour
            // Debug.Log("I HIT THIS");
         }
 
-        if (Input.GetAxis("D-Pad Y Axis") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
+        if (Input.GetAxis("D-Pad Y Axis Xbox One") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, timer);
@@ -54,7 +54,7 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-        if (Input.GetAxis("D-Pad X Axis") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
+        if (Input.GetAxis("D-Pad X Axis  Xbox One") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, timer);
@@ -65,7 +65,7 @@ public class DpadCoolDown : MonoBehaviour
             //Debug.Log("I HIT THIS");
         }
 
-        if (Input.GetAxis("D-Pad X Axis") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
+        if (Input.GetAxis("D-Pad X Axis  Xbox One") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
             timer = 0.0f;
             Buffs.color = new Color(1, 1, 1, timer);
