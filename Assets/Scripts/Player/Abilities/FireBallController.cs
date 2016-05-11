@@ -10,14 +10,12 @@ public class FireBallController : MonoBehaviour
     //Private References
     private Rigidbody rb;
     private PlayerController player;
-    private ZombieHealth enemy;
 
 
 	void Start () 
     {
         rb = GetComponent<Rigidbody>();
         player = FindObjectOfType<PlayerController>();
-        enemy = null;
     
 
         if(player.transform.localScale.x < 0.0f)

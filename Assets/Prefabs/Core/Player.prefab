@@ -874,7 +874,8 @@ GameObject:
   - 114: {fileID: 11456682}
   - 114: {fileID: 11449606}
   - 114: {fileID: 11442078}
-  - 114: {fileID: 11481384}
+  - 114: {fileID: 11465878}
+  - 114: {fileID: 11484094}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -2802,7 +2803,7 @@ Animator:
   m_GameObject: {fileID: 157932}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 55c6f1bada5856e42af1560f4b700443, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9f0fde529b5359a45a2c0b1bb0d6e843, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7a0eb28ce6115ff48b83f153387f00e2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2892,8 +2893,6 @@ MonoBehaviour:
   activeTimer: 0
   getInput: 0
   fMoveSpeed: 4
-  bMoveSpeed: 3
-  turnRate: 1
   fireBall: {fileID: 100444, guid: 50a4476b29da5d742bf2df5af9a74047, type: 2}
   lightningBolt: {fileID: 122128, guid: b12f95d9656fa8d43a2fb4e201c87357, type: 2}
   abilityPoint: {fileID: 483034}
@@ -3071,6 +3070,18 @@ MonoBehaviour:
   actionTimer: 0
   cooldownTimer: 0
   inUse_ready_onCooldown: 0
+--- !u!114 &11465878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfe44212799a394db12ea70816c758f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currAnimationClips: []
 --- !u!114 &11468880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3105,7 +3116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlots: 5
---- !u!114 &11481384
+--- !u!114 &11484094
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3113,9 +3124,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 157932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dfe44212799a394db12ea70816c758f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a80ea220ff97964991ebb7c72e92ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeSlash1AnimationClipSpeed: 1.5
+  MeleeSlash2AnimationClipSpeed: 1.5
+  MeleeSlash3AnimationClipSpeed: 1.5
+  currentAttackState: 1
+  meleeSlash1AttackCounter: 0
+  meleeSlash1AttackTimer: 0
+  mAttack1TimerDuration: 0
+  meleeSlash2AttackCounter: 0
+  meleeSlash2AttackTimer: 0
+  mAttack2TimerDuration: 0
+  meleeSlash3AttackCounter: 0
+  meleeSlash3AttackTimer: 0
+  mAttack3TimerDuration: 0
 --- !u!114 &11485546
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9059,21 +9059,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
   m_PrefabInternal: {fileID: 970701350}
---- !u!1 &971230635 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 157932, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-  m_PrefabInternal: {fileID: 1428192989}
---- !u!114 &971230636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 971230635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dfe44212799a394db12ea70816c758f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &983881393
 Prefab:
   m_ObjectHideFlags: 0
@@ -13673,10 +13658,6 @@ Prefab:
       propertyPath: Vamp
       value: 
       objectReference: {fileID: 11163317}
-    - target: {fileID: 9555984, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7a0eb28ce6115ff48b83f153387f00e2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
