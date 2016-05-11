@@ -103,6 +103,11 @@ public class PlayerController : MonoBehaviour
     private AbilityScript rightBumperAbility;
     private AbilityScript dodgeAbility;
 
+    private FuryMeter furyScript;
+    public int dodgeFuryCost = 10;
+    public int slamFuryCost = 40;
+    public int whirlwindFuryCost = 20;
+
     //Particle System
     private ParticleSystem attackParticleSystem;
     private ParticleSystem defenseParticleSystem;
@@ -123,6 +128,8 @@ public class PlayerController : MonoBehaviour
         activeDuration = 10.0f;
         activeTimer = cooldownTimer = 0.0f;
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
+
+
 
         getInput = true;
 
@@ -154,6 +161,9 @@ public class PlayerController : MonoBehaviour
 
         if (GetComponent<PlayerHealth>())
             healthManager = GetComponent<PlayerHealth>();
+
+        if (GetComponent<FuryMeter>())
+            furyScript = GetComponent<FuryMeter>();
 
     }
 
@@ -476,12 +486,21 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilites()
     {
         //Ability Code Here
-        if (Input.GetButton("B Button"))
+        if (Input.GetButton("B Button") && furyScript.Currentmeter > dodgeFuryCost)
+        {
+            furyScript.Currentmeter -= dodgeFuryCost;
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
-        else if (Input.GetButton("A Button"))
+        }
+        else if (Input.GetButton("A Button") && furyScript.Currentmeter > whirlwindFuryCost)
+        {
+            furyScript.Currentmeter -= whirlwindFuryCost;
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
-        else if (Input.GetButton("Y Button"))
+        }
+        else if (Input.GetButton("Y Button") && furyScript.Currentmeter > slamFuryCost)
+        {
+            furyScript.Currentmeter -= slamFuryCost;
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
+        }
         
     }
 
