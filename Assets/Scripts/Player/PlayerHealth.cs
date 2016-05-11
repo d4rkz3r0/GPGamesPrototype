@@ -2,47 +2,48 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour
+{
 
-	// Use this for initialization
+    // Use this for initialization
 
     //Rect RectangleHealth;
-  public GameObject Player;
+    public GameObject Player;
     public GameObject ObjectPlayer;
     public Text HealthText;
     public float MaxHealth;
     public float CurHealth;
     public Image GreenHealthbar;
-	void Start () 
+    void Start()
     {
         MaxHealth = 500f;
         CurHealth = MaxHealth;
         HealthText.text = CurHealth + "/" + MaxHealth;
         GreenHealthbar.fillAmount = CurHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () 
+    }
+
+    // Update is called once per frame
+    void Update()
     {
 
         if (CurHealth >= MaxHealth)
             CurHealth = MaxHealth;
         HealthText.text = CurHealth + "/" + MaxHealth;
         GreenHealthbar.fillAmount = CurHealth * 0.01f;
-        
+
         SetHealth(CurHealth / MaxHealth);
 
-       
-        
-            
-      
-	}
+
+
+
+
+    }
 
     public void DecreaseHealth(float dmg)
     {
 
         CurHealth -= dmg;
-        
+
         float temp = CurHealth / MaxHealth;
         SetHealth(temp);
 
@@ -58,14 +59,20 @@ public class PlayerHealth : MonoBehaviour {
         SetHealth(temp);
     }
 
-   void SetHealth(float health )
+    void SetHealth(float health)
     {
 
         Player.transform.localScale = new Vector3(health, Player.transform.localScale.y, Player.transform.localScale.z);
 
     }
-
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PickUpHealth")
+        {
+            ReGenHealth(50);
+            Destroy(other.gameObject);
+        }
+    }
 }
 
 
- 
