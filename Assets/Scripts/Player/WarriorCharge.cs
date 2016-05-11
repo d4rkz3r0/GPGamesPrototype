@@ -88,6 +88,7 @@ public class WarriorCharge : AbilityScript
         {
             actionTimer = 0.0f;
             inUse_ready_onCooldown = -1;
+            
             capsuleCollider.enabled = false;
             rBody.useGravity = true;
             playerCollider.enabled = true;
@@ -106,6 +107,7 @@ public class WarriorCharge : AbilityScript
         {
             cooldownTimer = 0.0f;
             inUse_ready_onCooldown = 0;
+            firstFrameActivation = false;
         }
         else
         {
