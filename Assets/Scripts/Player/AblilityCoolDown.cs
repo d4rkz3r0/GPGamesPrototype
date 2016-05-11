@@ -5,13 +5,16 @@ public class AblilityCoolDown : MonoBehaviour {
 
 	// Use this for initialization
 
-    public RawImage CoolDownPictureAbillity1;
-    public RawImage CoolDownPictureAbillity2;
-    public RawImage CoolDownPictureAbillity3;
+    public Image CoolDownPictureAbillity1;
+    public Image CoolDownPictureAbillity2;
+    public Image CoolDownPictureAbillity3;
     public float timerAblility1;
     public float timerAbility2;
     public float timerAblility3;
 
+    int Max3 = 3;
+    int Max2 = 12;
+    float Max1 = 0.3f;
 	void Start () 
     {
         timerAblility1 = 300;
@@ -24,19 +27,19 @@ public class AblilityCoolDown : MonoBehaviour {
     {
         if (Input.GetButtonDown("B Button") && GetComponent<WarriorCharge>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
-        timerAblility1 = 0;
+        timerAblility1 = 1;
 
-        CoolDownPictureAbillity1.color = new Color(1, 1, 1, timerAblility1);
-
-
+        CoolDownPictureAbillity1.color = new Color(1, 1, 1, 0.3f);
+       // CoolDownPictureAbillity1.enabled = true;
+        CoolDownPictureAbillity1.fillAmount = 1f;
     }
 
 
         if (Input.GetButtonDown("Y Button") && GetComponent<WarriorSlam>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
-        timerAbility2 = 0;
-
-        CoolDownPictureAbillity2.color = new Color(1, 1, 1, timerAbility2);
+        CoolDownPictureAbillity2.color = new Color(1, 1, 1, 0.3f);
+        // CoolDownPictureAbillity1.enabled = true;
+        CoolDownPictureAbillity2.fillAmount = 1f;
 
 
     }
@@ -44,29 +47,19 @@ public class AblilityCoolDown : MonoBehaviour {
 
         if (Input.GetButtonDown("A Button") && GetComponent<WarriorWhirlwind>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
-        timerAblility3 = 0;
-
-        CoolDownPictureAbillity3.color = new Color(1, 1, 1, timerAblility3);
-
+        CoolDownPictureAbillity3.color = new Color(1, 1, 1, 0.3f);
+        // CoolDownPictureAbillity1.enabled = true;
+        CoolDownPictureAbillity3.fillAmount = 1f;
 
     }
 
 
-    if (GetComponent<WarriorCharge>().cooldownTimer <= 3)
+    if (GetComponent<WarriorCharge>().cooldownTimer > 0)
     {
-        timerAblility1 += 1f;
-        CoolDownPictureAbillity1.color = new Color(1, 1, 1, timerAblility1 * 0.006f);
-    }
 
+      
 
-
-
-
-
-    if (GetComponent<WarriorSlam>().cooldownTimer <= 3)
-    {
-        timerAbility2 += 1f;
-        CoolDownPictureAbillity2.color = new Color(1, 1, 1, timerAbility2 * 0.006f);
+            CoolDownPictureAbillity1.fillAmount = 1 - (GetComponent<WarriorCharge>().cooldownTimer / Max3);
     }
 
 
@@ -74,11 +67,20 @@ public class AblilityCoolDown : MonoBehaviour {
 
 
 
-
-    if (GetComponent<WarriorWhirlwind>().cooldownTimer <= 3)
+    if (GetComponent<WarriorSlam>().cooldownTimer > 0 )
     {
-        timerAblility3 += 1f;
-        CoolDownPictureAbillity3.color = new Color(1, 1, 1, timerAblility3 * 0.006f);
+        CoolDownPictureAbillity2.fillAmount = 1 - (GetComponent<WarriorSlam>().cooldownTimer / Max2);
+    }
+
+
+
+
+
+
+
+    if (GetComponent<WarriorWhirlwind>().cooldownTimer > 0)
+    {
+        CoolDownPictureAbillity3.fillAmount = 1 - (GetComponent<WarriorWhirlwind>().cooldownTimer / Max1);
     }
        
 	}
