@@ -8,8 +8,8 @@ public class FuryMeter : MonoBehaviour {
     public Texture EmptyBar;
     public Texture FullBar;
     public Texture Logo;
-    public int MaxMeter;
-    public int Currentmeter;
+    public float MaxMeter;
+    public float Currentmeter;
     public int furycast;
     public Image GreenHealthbar;
     public Text HealthText;
@@ -18,7 +18,7 @@ public class FuryMeter : MonoBehaviour {
 	void Start () 
     {
         MaxMeter = 200;
-        Currentmeter = 100;
+        Currentmeter = 200;
         timer = 5.0f;
         GreenHealthbar.fillAmount = Currentmeter;
         HealthText.text = Currentmeter + "/" + MaxMeter;
@@ -28,8 +28,12 @@ public class FuryMeter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        if (Currentmeter >= MaxMeter)
+            Currentmeter = MaxMeter;
 
 
+        GreenHealthbar.fillAmount = (Currentmeter / MaxMeter);
+          HealthText.text = Currentmeter + "/" + MaxMeter;
         timer -= Time.deltaTime;
         
         
@@ -38,6 +42,7 @@ public class FuryMeter : MonoBehaviour {
             Currentmeter -= decayRate;
         }
 
+       
 
 
 
@@ -46,10 +51,7 @@ public class FuryMeter : MonoBehaviour {
 
 
 
-
-        GreenHealthbar.fillAmount = Currentmeter / MaxMeter;
-
-        HealthText.text = Currentmeter + "/" + MaxMeter;
+      ;
 
 	}
 
@@ -72,7 +74,7 @@ public class FuryMeter : MonoBehaviour {
         if (Currentmeter < 0)
             Currentmeter = 0;
 
-        GreenHealthbar.fillAmount = Currentmeter / MaxMeter;
+        GreenHealthbar.fillAmount = 1 - (Currentmeter / MaxMeter);
     }
 
 
