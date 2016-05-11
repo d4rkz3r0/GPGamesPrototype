@@ -17090,6 +17090,8 @@ MonoBehaviour:
   MaxHealth: 0
   CurHealth: 0
   addedForce: 10
+  healthDrop: {fileID: 0}
+  drops: []
 --- !u!114 &1720125535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18988,6 +18990,8 @@ MonoBehaviour:
   MaxHealth: 0
   CurHealth: 0
   addedForce: 10
+  healthDrop: {fileID: 0}
+  drops: []
 --- !u!1001 &1963352205
 Prefab:
   m_ObjectHideFlags: 0
