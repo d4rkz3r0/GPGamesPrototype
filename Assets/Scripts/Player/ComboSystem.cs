@@ -93,7 +93,6 @@ public class ComboSystem : MonoBehaviour
         paladinSword = FindObjectOfType<SwordController>();
         player = FindObjectOfType<PlayerController>();
 
-
         CalcAnimationIntervals();
     }
 

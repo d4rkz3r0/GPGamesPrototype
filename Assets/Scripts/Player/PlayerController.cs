@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     //Weapons
     private SwordController paladinSword;
+    private ComboSystem basicAttackChains;
 
     //Warrior Spells (Prototype Only)
     public GameObject fireBall;
@@ -92,6 +93,9 @@ public class PlayerController : MonoBehaviour
 
         //Weapons
         paladinSword = FindObjectOfType<SwordController>();
+
+        //Basic Attack Chains
+        basicAttackChains = FindObjectOfType<ComboSystem>();
 
         if (GetComponent<WarriorSlam>())
             rightTriggerAbility = GetComponent<WarriorSlam>();
@@ -194,6 +198,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("SwitchClass"))
         {
             anim.Play(Animator.StringToHash("Base Layer.ClassChange"));
+            ResetCombo();
+            basicAttackChains.EndSlash3();
+            basicAttackChains.EndCast3();
 
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.ClassChange"))
             {
@@ -260,7 +267,6 @@ public class PlayerController : MonoBehaviour
             furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
         }
-        
     }
 
     public void UpdateBuffs()
