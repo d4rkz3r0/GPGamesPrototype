@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject Player;
     public GameObject ObjectPlayer;
+    public Canvas DeleteBar;
     //public Text HealthText;
     public float MaxHealth;
     public float CurHealth;
@@ -146,7 +147,7 @@ public class EnemyHealth : MonoBehaviour
         if (CurHealth <= 00)
         {
             GetComponent<Animator>().SetInteger("state", 3);
-            Player.SetActive(false);
+            DeleteBar.enabled = false;
             Invoke("Death", 2.0f);
         }
     }

@@ -2826,6 +2826,10 @@ MonoBehaviour:
   Atk: {fileID: 0}
   Def: {fileID: 0}
   Vamp: {fileID: 0}
+  BuffsCoolDown: {fileID: 0}
+  AtkCoolDown: {fileID: 0}
+  DefCoolDown: {fileID: 0}
+  VampCoolDown: {fileID: 0}
   timer: 0
 --- !u!114 &11409170
 MonoBehaviour:
@@ -2891,11 +2895,15 @@ MonoBehaviour:
   cooldownTimer: 0
   activeDuration: 0
   activeTimer: 0
+  alive: 0
   getInput: 0
   fMoveSpeed: 4
   fireBall: {fileID: 100444, guid: 50a4476b29da5d742bf2df5af9a74047, type: 2}
   lightningBolt: {fileID: 122128, guid: b12f95d9656fa8d43a2fb4e201c87357, type: 2}
   abilityPoint: {fileID: 483034}
+  rightBumperCost: 0
+  rightTriggerCost: 0
+  dodgeCost: 0
 --- !u!114 &11437840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3026,6 +3034,7 @@ MonoBehaviour:
   furycast: 0
   GreenHealthbar: {fileID: 0}
   HealthText: {fileID: 0}
+  decayRate: 0
 --- !u!114 &11463466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3081,7 +3090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfe44212799a394db12ea70816c758f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currAnimationClips: []
 --- !u!114 &11468880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3127,19 +3135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a80ea220ff97964991ebb7c72e92ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMeleeAttackState: 1
   MeleeSlash1AnimationClipSpeed: 1.5
   MeleeSlash2AnimationClipSpeed: 1.5
   MeleeSlash3AnimationClipSpeed: 1.5
-  currentAttackState: 1
-  meleeSlash1AttackCounter: 0
-  meleeSlash1AttackTimer: 0
-  mAttack1TimerDuration: 0
-  meleeSlash2AttackCounter: 0
-  meleeSlash2AttackTimer: 0
-  mAttack2TimerDuration: 0
-  meleeSlash3AttackCounter: 0
-  meleeSlash3AttackTimer: 0
-  mAttack3TimerDuration: 0
+  currentRangedAttackState: 1
+  RangedCast1AnimationClipSpeed: 1
+  RangedCast2AnimationClipSpeed: 1
+  RangedCast3AnimationClipSpeed: 1
 --- !u!114 &11485546
 MonoBehaviour:
   m_ObjectHideFlags: 1
