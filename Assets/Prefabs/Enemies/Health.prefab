@@ -64,6 +64,7 @@ MonoBehaviour:
   addedForce: 10
   healthDrop: {fileID: 0}
   drops: []
+  hitEffect: {fileID: 0}
 --- !u!222 &22208656
 CanvasRenderer:
   m_ObjectHideFlags: 1

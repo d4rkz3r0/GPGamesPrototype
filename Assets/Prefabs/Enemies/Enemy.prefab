@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 154278, guid: edb0451a79c22ca4a83564a13e8c218b, type: 2}
+  Player: {fileID: 123496}
   ObjectPlayer: {fileID: 157532}
   DeleteBar: {fileID: 22388440}
   MaxHealth: 4

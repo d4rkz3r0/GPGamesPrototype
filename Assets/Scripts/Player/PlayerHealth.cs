@@ -134,7 +134,7 @@ public class PlayerHealth : MonoBehaviour
         {
             normHPVal = 1.0f;
         }
-        GamePad.SetVibration(playerIndex, normHPVal, normHPVal);
+        //GamePad.SetVibration(playerIndex, normHPVal, normHPVal);
     }
 
     private IEnumerator ToggleMaterialColor()

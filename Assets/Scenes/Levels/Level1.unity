@@ -12725,10 +12725,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
   m_PrefabInternal: {fileID: 1349255092}
---- !u!1 &1349487776 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 157076, guid: d953637f4390d7949b2e9880c48160af, type: 2}
-  m_PrefabInternal: {fileID: 1428192989}
 --- !u!1 &1353737874
 GameObject:
   m_ObjectHideFlags: 0
@@ -13688,7 +13684,7 @@ Prefab:
     - target: {fileID: 11442078, guid: d953637f4390d7949b2e9880c48160af, type: 2}
       propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 1349487776}
+      objectReference: {fileID: 2041938013}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
@@ -17071,6 +17067,7 @@ MonoBehaviour:
   addedForce: 10
   healthDrop: {fileID: 0}
   drops: []
+  hitEffect: {fileID: 0}
 --- !u!114 &1720125535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19106,6 +19103,7 @@ MonoBehaviour:
   addedForce: 10
   healthDrop: {fileID: 0}
   drops: []
+  hitEffect: {fileID: 0}
 --- !u!1001 &1963352205
 Prefab:
   m_ObjectHideFlags: 0
@@ -19871,6 +19869,10 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
   m_PrefabInternal: {fileID: 2034050033}
+--- !u!1 &2041938013 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111198, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+  m_PrefabInternal: {fileID: 1428192989}
 --- !u!1 &2044744460
 GameObject:
   m_ObjectHideFlags: 0

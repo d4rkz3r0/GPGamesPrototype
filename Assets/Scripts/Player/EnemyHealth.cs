@@ -148,7 +148,7 @@ public class EnemyHealth : MonoBehaviour
                 tempHealth.ReGenHealth(25);
             Invoke("ResetCharge", 0.75f);
             hitByCharged = true;
-            Instantiate(hitEffect, transform.position + (Vector3.up * 3), transform.rotation);
+            Instantiate(hitEffect, transform.position, transform.rotation);
             tempFury.GainFury(20);
         }
         if (CurHealth <= 00)
