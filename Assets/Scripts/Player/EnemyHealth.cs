@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     PlayerController playerCon;
     public GameObject healthDrop;
     public GameObject[] drops;
+    public GameObject hitEffect;
     EnemyController myController;
     void Start()
     {
@@ -79,6 +80,7 @@ public class EnemyHealth : MonoBehaviour
                 if (buff == 1)
                     tempHealth.ReGenHealth(50);
                 hitByCharged = true;
+                Instantiate(hitEffect, transform.position, transform.rotation);
                 Invoke("ResetCharge", 0.3f);
             }
         }
@@ -96,6 +98,7 @@ public class EnemyHealth : MonoBehaviour
                 if (buff == 1)
                     tempHealth.ReGenHealth(80);
                 hitByCharged = true;
+                Instantiate(hitEffect, transform.position, transform.rotation);
                 Invoke("ResetCharge", 0.3f);
             }
         }
@@ -111,6 +114,7 @@ public class EnemyHealth : MonoBehaviour
                 if (buff == 1)
                     tempHealth.ReGenHealth(75);
                 hitByCharged = true;
+                Instantiate(hitEffect, transform.position, transform.rotation);
                 Invoke("ResetCharge", 0.3f);
             }
         }
@@ -129,6 +133,7 @@ public class EnemyHealth : MonoBehaviour
                     tempHealth.ReGenHealth(25);
                 Invoke("ResetCharge", 0.75f);
                 hitByCharged = true;
+                Instantiate(hitEffect, transform.position, transform.rotation);
                 tempFury.GainFury(20);
             }
         }
@@ -142,6 +147,7 @@ public class EnemyHealth : MonoBehaviour
                 tempHealth.ReGenHealth(25);
             Invoke("ResetCharge", 0.75f);
             hitByCharged = true;
+            Instantiate(hitEffect, transform.position + (Vector3.up * 3), transform.rotation);
             tempFury.GainFury(20);
         }
         if (CurHealth <= 00)

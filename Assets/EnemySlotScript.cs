@@ -55,7 +55,8 @@ public class EnemySlotScript : MonoBehaviour
     {
         foreach (GameObject enemy in arrayList)
         {
-            enemy.SendMessage("ResetSlot");
+            if (enemy)
+                enemy.SendMessage("ResetSlot");
         }
         arrayList.Clear();
         slotCount = 0;

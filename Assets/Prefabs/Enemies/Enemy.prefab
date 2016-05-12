@@ -1011,6 +1011,7 @@ MonoBehaviour:
   addedForce: 10
   healthDrop: {fileID: 0}
   drops: []
+  hitEffect: {fileID: 0}
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1047,6 +1048,7 @@ MonoBehaviour:
   addedForce: 625
   healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
   drops: []
+  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
