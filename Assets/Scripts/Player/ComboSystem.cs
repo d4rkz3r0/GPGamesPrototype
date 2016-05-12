@@ -4,46 +4,77 @@
  * [18] - Melee Slash 1 Animation - sword_and_shield_slash_2
  * [17] - Melee Slash 2 Animation - sword_and_shield_slash
  * [19] - Melee Slash 3 Animation - sword_and_shield_slash_3
+ * 
+ * [16] - Casting 1 Animation - sword_and_shield_casting_1
+ * [20] - Casting 2 Animation - sword_and_shield_casting_2
+ * [21] - Casting 3 Animation - sword_and_shield_casting
  */
 
 
 public class ComboSystem : MonoBehaviour
 {
+    //-Melee-//
     //Inspector Variables
+    public int currentMeleeAttackState = 1;
     public float MeleeSlash1AnimationClipSpeed = 1.5f;
     public float MeleeSlash2AnimationClipSpeed = 1.5f;
     public float MeleeSlash3AnimationClipSpeed = 1.5f;
-    public int currentAttackState = 1;
-
-    ////-Melee Basic Attacks-//
-    //public int meleeSlash1AttackCounter = 0;
-    //public float meleeSlash1AttackTimer;
-    //public float mAttack1TimerDuration = 1.117f;
-    //public int meleeSlash2AttackCounter = 0;
-    //public float meleeSlash2AttackTimer;
-    //public float mAttack2TimerDuration = 1.0f;
-    //public int meleeSlash3AttackCounter = 0;
-    //public float meleeSlash3AttackTimer;
-    //public float mAttack3TimerDuration = 1.62222f;
-
 
     //-Melee Basic Attacks-//
-    public int meleeSlash1AttackCounter;
-    public float meleeSlash1AttackTimer;
-    public float mAttack1TimerDuration;
-    public int meleeSlash2AttackCounter;
-    public float meleeSlash2AttackTimer;
-    public float mAttack2TimerDuration;
-    public int meleeSlash3AttackCounter;
-    public float meleeSlash3AttackTimer;
-    public float mAttack3TimerDuration;
+    private int meleeSlash1AttackCounter;
+    private float meleeSlash1AttackTimer;
+    private float mAttack1TimerDuration;
+    private int meleeSlash2AttackCounter;
+    private float meleeSlash2AttackTimer;
+    private float mAttack2TimerDuration;
+    private int meleeSlash3AttackCounter;
+    private float meleeSlash3AttackTimer;
+    private float mAttack3TimerDuration;
 
-    //Opt
-    private bool usedBefore1;
-    private bool usedBefore2;
-    private bool usedBefore3;
-    private bool everStarted;
+    //Opt Melee
+    private bool usedBefore1M;
+    private bool usedBefore2M;
+    private bool usedBefore3M;
+    private bool everStartedM;
 
+    //Animaton State Clip Names
+    private string meleeSlash1ClipName = "sword_and_shield_slash_2";
+    private string meleeSlash2ClipName = "sword_and_shield_slash";
+    private string meleeSlash3ClipName = "sword_and_shield_slash_3";
+
+
+
+    //-Ranged-//
+    //Inspector Variables
+    public int currentRangedAttackState = 1;
+    public float RangedCast1AnimationClipSpeed = 1.0f;
+    public float RangedCast2AnimationClipSpeed = 1.0f;
+    public float RangedCast3AnimationClipSpeed = 1.0f;
+
+    //-Ranged Basic Attacks-//
+    private int rangedCast1AttackCounter;
+    private float rangedCast1AttackTimer;
+    private float rAttack1TimerDuration;
+    private int rangedCast2AttackCounter;
+    private float rangedCast2AttackTimer;
+    private float rAttack2TimerDuration;
+    private int rangedCast3AttackCounter;
+    private float rangedCast3AttackTimer;
+    private float rAttack3TimerDuration;
+
+    //Opt Ranged
+    private bool usedBeforeR1;
+    private bool usedBeforeR2;
+    private bool usedBeforeR3;
+    private bool everStartedR;
+
+    //Animaton State Clip Names
+    private string rangedCast1ClipName = "sword_and_shield_casting_1";
+    private string rangedCast2ClipName = "sword_and_shield_casting_1";
+    private string rangedCast3ClipName = "sword_and_shield_casting";
+
+
+    //-Main-//
     //Valid Button Press
     private float lastPressTimeStamp;
 
@@ -51,11 +82,7 @@ public class ComboSystem : MonoBehaviour
     private Animator anim;
     private RuntimeAnimatorController animRC;
     private SwordController paladinSword;
-
-    //Animaton State Clip Names
-    private string meleeSlash1ClipName = "sword_and_shield_slash_2";
-    private string meleeSlash2ClipName = "sword_and_shield_slash";
-    private string meleeSlash3ClipName = "sword_and_shield_slash_3";
+    private PlayerController player;
 
     private void Start()
     {
@@ -64,148 +91,256 @@ public class ComboSystem : MonoBehaviour
         anim = GetComponent<Animator>();
         animRC = anim.runtimeAnimatorController;
         paladinSword = FindObjectOfType<SwordController>();
+        player = FindObjectOfType<PlayerController>();
+
 
         CalcAnimationIntervals();
     }
 
     private void Update()
     {
-        if (currentAttackState > 3)
+        if (player.playerClass == PlayerController.CharacterClass.MeleeWarrior)
         {
-            currentAttackState = 1;
-        }
-
-        if (currentAttackState == 1)
-        {
-            if (!usedBefore1)
+            if (currentMeleeAttackState > 3)
             {
-                meleeSlash1AttackTimer = mAttack1TimerDuration;
-                usedBefore1 = true;
-            }
-            else
-            {
-                if (meleeSlash1AttackTimer > 0.0f)
-                {
-                    meleeSlash1AttackTimer -= Time.deltaTime;
-                }
-                if (meleeSlash1AttackTimer <= 0.0f)
-                {
-                    meleeSlash1AttackCounter = 0;
-                    usedBefore1 = false;
-                }
+                currentMeleeAttackState = 1;
             }
 
-        }
-        if (currentAttackState == 2)
-        {
-            if (!usedBefore2)
+            if (currentMeleeAttackState == 1)
             {
-                meleeSlash2AttackTimer = mAttack2TimerDuration;
-                usedBefore2 = true;
-            }
-            else
-            {
-                if (meleeSlash2AttackTimer > 0.0f)
+                if (!usedBefore1M)
                 {
-                    meleeSlash2AttackTimer -= Time.deltaTime;
+                    meleeSlash1AttackTimer = mAttack1TimerDuration;
+                    usedBefore1M = true;
                 }
-                if (meleeSlash2AttackTimer <= 0.0f)
+                else
                 {
-                    meleeSlash2AttackCounter = 0;
-                    usedBefore2 = false;
-                }
-            }
-        }
-        if (currentAttackState == 3)
-        {
-            if (!usedBefore3)
-            {
-                meleeSlash3AttackTimer = mAttack3TimerDuration;
-                usedBefore3 = true;
-            }
-            else
-            {
-                if (meleeSlash3AttackTimer > 0.0f)
-                {
-                    meleeSlash3AttackTimer -= Time.deltaTime;
-                }
-                if (meleeSlash3AttackTimer <= 0.0f)
-                {
-                    meleeSlash3AttackCounter = 0;
-                    usedBefore3 = false;
+                    if (meleeSlash1AttackTimer > 0.0f)
+                    {
+                        meleeSlash1AttackTimer -= Time.deltaTime;
+                    }
+                    if (meleeSlash1AttackTimer <= 0.0f)
+                    {
+                        meleeSlash1AttackCounter = 0;
+                        usedBefore1M = false;
+                    }
                 }
             }
-        }
 
-        if (meleeSlash1AttackCounter > 0)
-        {
-            anim.SetBool("MSlash1", true);
-        }
-        else if (meleeSlash1AttackCounter == 0)
-        {
-            anim.SetBool("MSlash1", false);
-        }
-
-        if (meleeSlash2AttackCounter > 0)
-        {
-            anim.SetBool("MSlash2", true);
-        }
-        else if (meleeSlash2AttackCounter == 0)
-        {
-            anim.SetBool("MSlash2", false);
-        }
-
-        if (meleeSlash3AttackCounter > 0)
-        {
-            anim.SetBool("MSlash3", true);
-        }
-        else if (meleeSlash3AttackCounter == 0)
-        {
-            anim.SetBool("MSlash3", false);
-        }
-
-        //if (currentState == 0 && everStarted)
-        //{
-        //    anim.SetBool("MSlash1", false);
-        //    anim.SetBool("MSlash2", false);
-        //    anim.SetBool("MSlash3", false);
-        //}
-
-        if (Input.GetButtonDown("X Button"))
-        {
-            //if (!everStarted || currentState == 0)
-            //{
-            //    currentState++;
-            //    everStarted = true;
-            //}
-            //comboStarted = true;
-
-            float now = Time.time;
-            float timeSinceLastPress = now - lastPressTimeStamp;
-            lastPressTimeStamp = now;
-
-            if (timeSinceLastPress > 0)
+            if (currentMeleeAttackState == 2)
             {
-                if (currentAttackState == 1)
+                if (!usedBefore2M)
                 {
-                    meleeSlash1AttackCounter++;
+                    meleeSlash2AttackTimer = mAttack2TimerDuration;
+                    usedBefore2M = true;
                 }
-                if (currentAttackState == 2)
+                else
                 {
-                    meleeSlash2AttackCounter++;
+                    if (meleeSlash2AttackTimer > 0.0f)
+                    {
+                        meleeSlash2AttackTimer -= Time.deltaTime;
+                    }
+                    if (meleeSlash2AttackTimer <= 0.0f)
+                    {
+                        meleeSlash2AttackCounter = 0;
+                        usedBefore2M = false;
+                    }
                 }
-                if (currentAttackState == 3)
+            }
+
+            if (currentMeleeAttackState == 3)
+            {
+                if (!usedBefore3M)
                 {
-                    meleeSlash3AttackCounter++;
+                    meleeSlash3AttackTimer = mAttack3TimerDuration;
+                    usedBefore3M = true;
                 }
-                currentAttackState++;
+                else
+                {
+                    if (meleeSlash3AttackTimer > 0.0f)
+                    {
+                        meleeSlash3AttackTimer -= Time.deltaTime;
+                    }
+                    if (meleeSlash3AttackTimer <= 0.0f)
+                    {
+                        meleeSlash3AttackCounter = 0;
+                        usedBefore3M = false;
+                    }
+                }
+            }
+
+            if (meleeSlash1AttackCounter > 0)
+            {
+                anim.SetBool("MSlash1", true);
+            }
+            else if (meleeSlash1AttackCounter == 0)
+            {
+                anim.SetBool("MSlash1", false);
+            }
+
+            if (meleeSlash2AttackCounter > 0)
+            {
+                anim.SetBool("MSlash2", true);
+            }
+            else if (meleeSlash2AttackCounter == 0)
+            {
+                anim.SetBool("MSlash2", false);
+            }
+
+            if (meleeSlash3AttackCounter > 0)
+            {
+                anim.SetBool("MSlash3", true);
+            }
+            else if (meleeSlash3AttackCounter == 0)
+            {
+                anim.SetBool("MSlash3", false);
+            }
+
+            if (Input.GetButtonDown("X Button"))
+            {
+                float now = Time.time;
+                float timeSinceLastPress = now - lastPressTimeStamp;
+                lastPressTimeStamp = now;
+
+                if (timeSinceLastPress > 0)
+                {
+                    if (currentMeleeAttackState == 1)
+                    {
+                        meleeSlash1AttackCounter++;
+                    }
+                    if (currentMeleeAttackState == 2)
+                    {
+                        meleeSlash2AttackCounter++;
+                    }
+                    if (currentMeleeAttackState == 3)
+                    {
+                        meleeSlash3AttackCounter++;
+                    }
+                    currentMeleeAttackState++;
+                }
             }
         }
-    }
+        else if(player.playerClass == PlayerController.CharacterClass.RangedMage)
+        {
+            if (currentRangedAttackState > 3)
+            {
+                currentRangedAttackState = 1;
+            }
 
-    public bool AnimatorIsPlaying(string stateName)
-    {
-        return anim.GetCurrentAnimatorStateInfo(0).IsName(stateName);
+            if (currentRangedAttackState == 1)
+            {
+                if (!usedBeforeR1)
+                {
+                    rangedCast1AttackTimer = rAttack1TimerDuration;
+                    usedBeforeR1 = true;
+                }
+                else
+                {
+                    if (rangedCast1AttackTimer > 0.0f)
+                    {
+                        rangedCast1AttackTimer -= Time.deltaTime;
+                    }
+                    if (rangedCast1AttackTimer <= 0.0f)
+                    {
+                        rangedCast1AttackCounter = 0;
+                        usedBeforeR1 = false;
+                    }
+                }
+            }
+
+            if (currentRangedAttackState == 2)
+            {
+                if (!usedBeforeR2)
+                {
+                    rangedCast2AttackTimer = rAttack2TimerDuration;
+                    usedBeforeR2 = true;
+                }
+                else
+                {
+                    if (rangedCast2AttackTimer > 0.0f)
+                    {
+                        rangedCast2AttackTimer -= Time.deltaTime;
+                    }
+                    if (rangedCast2AttackTimer <= 0.0f)
+                    {
+                        rangedCast2AttackCounter = 0;
+                        usedBeforeR2 = false;
+                    }
+                }
+            }
+
+            if (currentRangedAttackState == 3)
+            {
+                if (!usedBeforeR3)
+                {
+                    rangedCast3AttackTimer = rAttack3TimerDuration;
+                    usedBeforeR3 = true;
+                }
+                else
+                {
+                    if (rangedCast3AttackTimer > 0.0f)
+                    {
+                        rangedCast3AttackTimer -= Time.deltaTime;
+                    }
+                    if (rangedCast3AttackTimer <= 0.0f)
+                    {
+                        rangedCast3AttackCounter = 0;
+                        usedBeforeR3 = false;
+                    }
+                }
+            }
+
+            if (rangedCast1AttackCounter > 0)
+            {
+                anim.SetBool("RCast1", true);
+            }
+            else if (rangedCast1AttackCounter == 0)
+            {
+                anim.SetBool("RCast1", false);
+            }
+
+            if (rangedCast2AttackCounter > 0)
+            {
+                anim.SetBool("RCast2", true);
+            }
+            else if (rangedCast2AttackCounter == 0)
+            {
+                anim.SetBool("RCast2", false);
+            }
+
+            if (rangedCast3AttackCounter > 0)
+            {
+                anim.SetBool("RCast3", true);
+            }
+            else if (rangedCast3AttackCounter == 0)
+            {
+                anim.SetBool("RCast3", false);
+            }
+
+            if (Input.GetButtonDown("X Button"))
+            {
+                float now = Time.time;
+                float timeSinceLastPress = now - lastPressTimeStamp;
+                lastPressTimeStamp = now;
+
+                if (timeSinceLastPress > 0)
+                {
+                    if (currentRangedAttackState == 1)
+                    {
+                        rangedCast1AttackCounter++;
+                    }
+                    if (currentRangedAttackState == 2)
+                    {
+                        rangedCast2AttackCounter++;
+                    }
+                    if (currentRangedAttackState == 3)
+                    {
+                        rangedCast3AttackCounter++;
+                    }
+                    currentRangedAttackState++;
+                }
+            }
+        }
     }
 
     public void EndSlash1()
@@ -213,18 +348,20 @@ public class ComboSystem : MonoBehaviour
         meleeSlash1AttackCounter = 0;
 
         anim.SetBool("MSlash1", false);
-        //if(usedBefore1)
-        currentAttackState = 1;
+
+        currentMeleeAttackState = 1;
         FindObjectOfType<SwordController>().dynamicCollider = false;
     }
 
     public void EndSlash2()
     {
+        meleeSlash1AttackCounter = 0;
         meleeSlash2AttackCounter = 0;
 
+        anim.SetBool("MSlash1", false);
         anim.SetBool("MSlash2", false);
-        //if(usedBefore2)
-        currentAttackState = 1;
+
+        currentMeleeAttackState = 1;
         FindObjectOfType<SwordController>().dynamicCollider = false;
     }
 
@@ -233,15 +370,46 @@ public class ComboSystem : MonoBehaviour
         meleeSlash1AttackCounter = 0;
         meleeSlash2AttackCounter = 0;
         meleeSlash3AttackCounter = 0;
-        usedBefore1 = false;
-        usedBefore2 = false;
-        usedBefore3 = false;
-        everStarted = false;
+        usedBefore1M = false;
+        usedBefore2M = false;
+        usedBefore3M = false;
+        everStartedM = false;
         anim.SetBool("MSlash1", false);
         anim.SetBool("MSlash2", false);
         anim.SetBool("MSlash3", false);
-        currentAttackState = 1;
+        currentMeleeAttackState = 1;
         FindObjectOfType<SwordController>().dynamicCollider = false;
+    }
+
+    public void EndCast1()
+    {
+        rangedCast1AttackCounter = 0;
+        anim.SetBool("RCast1", false);
+        currentRangedAttackState = 1;
+    }
+
+    public void EndCast2()
+    {
+        rangedCast1AttackCounter = 0;
+        rangedCast2AttackCounter = 0;
+        anim.SetBool("RCast1", false);
+        anim.SetBool("RCast2", false);
+        currentRangedAttackState = 1;
+    }
+
+    public void EndCast3()
+    {
+        rangedCast1AttackCounter = 0;
+        rangedCast2AttackCounter = 0;
+        rangedCast3AttackCounter = 0;
+        usedBeforeR1 = false;
+        usedBeforeR2 = false;
+        usedBeforeR3 = false;
+        everStartedR = false;
+        anim.SetBool("RCast1", false);
+        anim.SetBool("RCast2", false);
+        anim.SetBool("RCast3", false);
+        currentRangedAttackState = 1;
     }
 
     public void EnableCollider()
@@ -270,5 +438,12 @@ public class ComboSystem : MonoBehaviour
         mAttack2TimerDuration = GetAnimationLength(meleeSlash2ClipName) * meleeSlash2ClipDurationScalar;
         float meleeSlash3ClipDurationScalar = (1.0f / MeleeSlash3AnimationClipSpeed);
         mAttack3TimerDuration = GetAnimationLength(meleeSlash3ClipName) * meleeSlash3ClipDurationScalar;
+
+        float rangedCast1ClipDurationScalar = (1.0f / RangedCast1AnimationClipSpeed);
+        rAttack1TimerDuration = GetAnimationLength(rangedCast1ClipName) * rangedCast1ClipDurationScalar;
+        float rangedCast2ClipDurationScalar = (1.0f / RangedCast2AnimationClipSpeed);
+        rAttack2TimerDuration = GetAnimationLength(rangedCast2ClipName) * rangedCast2ClipDurationScalar;
+        float rangedCast3ClipDurationScalar = (1.0f / RangedCast3AnimationClipSpeed);
+        rAttack3TimerDuration = GetAnimationLength(rangedCast3ClipName) * rangedCast3ClipDurationScalar;
     }
 }
