@@ -34,7 +34,7 @@ public class YouWin : MonoBehaviour {
 
         if(Input.GetButton("SelectButton") && WinScreen.enabled == true)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
 
         }

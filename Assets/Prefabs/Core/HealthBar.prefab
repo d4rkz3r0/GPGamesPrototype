@@ -98,13 +98,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 145804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a05019927ec93640a17dc43fda39a1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 145804}
+  Player: {fileID: 0}
+  ObjectPlayer: {fileID: 0}
+  DeleteBar: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
-  healthBarLenght: 0
+  addedForce: 10
+  healthDrop: {fileID: 0}
+  drops: []
+  hitEffect: {fileID: 0}
 --- !u!114 &11456646
 MonoBehaviour:
   m_ObjectHideFlags: 1
