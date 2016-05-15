@@ -1,0 +1,335 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GoldenTreasure00
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _AFFECTAO_ON _NORMALMAP _PARALLAXMAP _RIMENABLE_ON _USEGLOSSMAP_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 1809455dd42e3a94d8ae91b628d83770, type: 3}
+          m_Scale: {x: 8, y: 9}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 95fc646809655ce46ba9b4417749f9f4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 55b07f9a9dd42a541b22df0918af7db1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 8, y: 9}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMain
+        second:
+          m_Texture: {fileID: 2800000, guid: 95fc646809655ce46ba9b4417749f9f4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 2800000, guid: 4bf9d0e23fbba524c9fcbe1ae12b82e2, type: 3}
+          m_Scale: {x: 4, y: 4}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseDetail
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalDetail
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseMain
+        second:
+          m_Texture: {fileID: 2800000, guid: 1809455dd42e3a94d8ae91b628d83770, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Difuse
+        second:
+          m_Texture: {fileID: 2800000, guid: 1809455dd42e3a94d8ae91b628d83770, type: 3}
+          m_Scale: {x: 4, y: 4}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 2800000, guid: 95fc646809655ce46ba9b4417749f9f4, type: 3}
+          m_Scale: {x: 4, y: 4}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AOclussion
+        second:
+          m_Texture: {fileID: 2800000, guid: 651e6448f4a7a2b4ab7ab13485970fa2, type: 3}
+          m_Scale: {x: 4, y: 4}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CustomAO
+        second:
+          m_Texture: {fileID: 2800000, guid: 651e6448f4a7a2b4ab7ab13485970fa2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _GlossMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 55b07f9a9dd42a541b22df0918af7db1, type: 3}
+          m_Scale: {x: 2, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _HeightMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 55b07f9a9dd42a541b22df0918af7db1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.582
+      data:
+        first:
+          name: _BumpScale
+        second: 0.3
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0.636
+      data:
+        first:
+          name: _EmissionScaleUI
+        second: 0
+      data:
+        first:
+          name: _Gloss
+        second: 0.33
+      data:
+        first:
+          name: _SpecularIntensity
+        second: 5.53
+      data:
+        first:
+          name: _SpecularLevel
+        second: 6.13
+      data:
+        first:
+          name: _RimFresnel
+        second: 5.08
+      data:
+        first:
+          name: _RimLevel
+        second: 2.8571427
+      data:
+        first:
+          name: _DiffusePower
+        second: 1.04
+      data:
+        first:
+          name: _Tiling
+        second: 1
+      data:
+        first:
+          name: _AOStrenght
+        second: 0
+      data:
+        first:
+          name: _NormalSmooth
+        second: 0.43
+      data:
+        first:
+          name: _GlossPower
+        second: 0.46428573
+      data:
+        first:
+          name: _useGlossMap
+        second: 1
+      data:
+        first:
+          name: _OclussionPower
+        second: 4.55
+      data:
+        first:
+          name: _OclussionExp
+        second: 1
+      data:
+        first:
+          name: _SceneAmbient
+        second: 0
+      data:
+        first:
+          name: _Transmisive
+        second: 4
+      data:
+        first:
+          name: _RimEnable
+        second: 1
+      data:
+        first:
+          name: _RimPower
+        second: 1
+      data:
+        first:
+          name: _Heightvalue
+        second: 0.05
+      data:
+        first:
+          name: _ParallaxDepth
+        second: 1
+      data:
+        first:
+          name: _AOAmmount
+        second: 0.71428573
+      data:
+        first:
+          name: _UVTiling
+        second: 10
+      data:
+        first:
+          name: _AffectAO
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _Color
+        second: {r: 0.97794116, g: 0.8661623, b: 0.62559474, a: 1}
+      data:
+        first:
+          name: _EmissionColorUI
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _ColorTint
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecularTint
+        second: {r: 0.61507875, g: 0.61764705, b: 0.43144464, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 0.46323532, g: 0.28611594, b: 0, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: 0.9896552, g: 0.9753155, b: 0.50210446, a: 1}
+      data:
+        first:
+          name: _TransColor
+        second: {r: 0.3275862, g: 0.028904665, b: 0, a: 1}
+      data:
+        first:
+          name: _AOColor
+        second: {r: 0, g: 0, b: 0, a: 1}

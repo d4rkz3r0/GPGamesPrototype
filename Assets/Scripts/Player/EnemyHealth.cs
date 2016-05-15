@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject[] drops;
     public GameObject hitEffect;
     EnemyController myController;
+
     void Start()
     {
         MaxHealth = 200f;

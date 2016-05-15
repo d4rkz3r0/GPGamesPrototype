@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Fabric Burn 01
+  m_Shader: {fileID: 4800000, guid: 24f3b6c285574b541848354d8a981932, type: 3}
+  m_ShaderKeywords: _INVERSE_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: c2719b5f89259984e9be6269a6b22119, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: e1fef9d9b0909bf479120a6cfa444b8c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: e1fef9d9b0909bf479120a6cfa444b8c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Base
+        second:
+          m_Texture: {fileID: 2800000, guid: c2719b5f89259984e9be6269a6b22119, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularRGBGlossA
+        second:
+          m_Texture: {fileID: 2800000, guid: 41053feab4137fb4492c7ca500c7b60e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissiveMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 72603792e79b1614c8b88bb3d24a89ca, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SpecularLevel
+        second: 0
+      data:
+        first:
+          name: _GlossLevel
+        second: 0
+      data:
+        first:
+          name: _RimLevel
+        second: 0.7142857
+      data:
+        first:
+          name: _TransmissionFresnel
+        second: 0
+      data:
+        first:
+          name: _Inverse
+        second: 1
+      data:
+        first:
+          name: _EmissivePower
+        second: 1.4285715
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 0.588, g: 0.588, b: 0.588, a: 1}
+      data:
+        first:
+          name: _ColorTint
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 0.98864096, g: 1, b: 0.17647058, a: 1}
+      data:
+        first:
+          name: _TransmissionColor
+        second: {r: 1, g: 0.08088237, b: 0.08088237, a: 1}
+      data:
+        first:
+          name: _EmissiveColor
+        second: {r: 0.2647059, g: 0.330629, b: 1, a: 1}

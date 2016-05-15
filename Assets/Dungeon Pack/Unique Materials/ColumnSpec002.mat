@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ColumnSpec002
+  m_Shader: {fileID: 4800000, guid: 70e30c1e66c46b044926a8b30e1fd8e8, type: 3}
+  m_ShaderKeywords: _AFFECTAO_ON _RIMENABLE_ON _USEGLOSSMAP_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: a30426fa79c4ab34db154e118891573c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMain
+        second:
+          m_Texture: {fileID: 2800000, guid: 21d2f75fd309c2749b49e58a2795e2ed, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 2800000, guid: 5555a9f2d77896b47abc0625a2d9ab2b, type: 3}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseDetail
+        second:
+          m_Texture: {fileID: 2800000, guid: 1984d55e85b922d408323113d110b02e, type: 3}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalDetail
+        second:
+          m_Texture: {fileID: 2800000, guid: 3dd984abd5814274d8eeb545486eab39, type: 3}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseMain
+        second:
+          m_Texture: {fileID: 2800000, guid: 011d1c2be6b44ed489aede791bb10b85, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Difuse
+        second:
+          m_Texture: {fileID: 2800000, guid: 1984d55e85b922d408323113d110b02e, type: 3}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 2800000, guid: 21d2f75fd309c2749b49e58a2795e2ed, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AOclussion
+        second:
+          m_Texture: {fileID: 2800000, guid: 011d1c2be6b44ed489aede791bb10b85, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: a30426fa79c4ab34db154e118891573c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CustomAO
+        second:
+          m_Texture: {fileID: 2800000, guid: 011d1c2be6b44ed489aede791bb10b85, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _GlossMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 5555a9f2d77896b47abc0625a2d9ab2b, type: 3}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _HeightMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 31caddd63e1839a4886e37697c78ab04, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Gloss
+        second: 0.27
+      data:
+        first:
+          name: _SpecularIntensity
+        second: 1.56
+      data:
+        first:
+          name: _SpecularLevel
+        second: 1.62
+      data:
+        first:
+          name: _RimFresnel
+        second: 1.97
+      data:
+        first:
+          name: _RimLevel
+        second: 3.392857
+      data:
+        first:
+          name: _DiffusePower
+        second: 1
+      data:
+        first:
+          name: _Specularlevel
+        second: 1
+      data:
+        first:
+          name: _Fresnel
+        second: 2
+      data:
+        first:
+          name: _InvertFresnel
+        second: 0
+      data:
+        first:
+          name: _SSLevel
+        second: 1
+      data:
+        first:
+          name: _AOStrenght
+        second: 0.44642857
+      data:
+        first:
+          name: _NormalSmooth
+        second: 0
+      data:
+        first:
+          name: _GlossPower
+        second: 0.8214286
+      data:
+        first:
+          name: _useGlossMap
+        second: 1
+      data:
+        first:
+          name: _OclussionPower
+        second: 2.25
+      data:
+        first:
+          name: _OclussionExp
+        second: 1.05
+      data:
+        first:
+          name: _SceneAmbient
+        second: 1
+      data:
+        first:
+          name: _Transmisive
+        second: 1.15
+      data:
+        first:
+          name: _RimEnable
+        second: 1
+      data:
+        first:
+          name: _RimPower
+        second: 0.52
+      data:
+        first:
+          name: _Heightvalue
+        second: 0.08
+      data:
+        first:
+          name: _ParallaxDepth
+        second: 0.44642857
+      data:
+        first:
+          name: _AOAmmount
+        second: 0.51785713
+      data:
+        first:
+          name: _UVTiling
+        second: 1
+      data:
+        first:
+          name: _AffectAO
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 0.588, g: 0.588, b: 0.588, a: 1}
+      data:
+        first:
+          name: _ColorTint
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecularTint
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _SSColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _TransColor
+        second: {r: 0.5, g: 0.46875, b: 0.375, a: 1}
+      data:
+        first:
+          name: _AOColor
+        second: {r: 0, g: 0, b: 0, a: 1}

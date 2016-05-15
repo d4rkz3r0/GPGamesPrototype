@@ -1,0 +1,1236 @@
+fileFormatVersion: 2
+guid: 68697bd764b97794db68ac707d43e209
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Box004
+    100002: Box005
+    100004: Box006
+    100006: Box007
+    100008: Box008
+    100010: Box009
+    100012: Box010
+    100014: Box011
+    100016: Box012
+    100018: Box013
+    100020: Box014
+    100022: Box015
+    100024: Box016
+    100026: Box017
+    100028: Box018
+    100030: Box019
+    100032: Box020
+    100034: Box021
+    100036: Box022
+    100038: Box023
+    100040: Cylinder002
+    100042: Cylinder003
+    100044: Cylinder004
+    100046: Cylinder005
+    100048: Cylinder006
+    100050: Cylinder007
+    100052: Cylinder008
+    100054: Cylinder009
+    100056: Cylinder010
+    100058: Cylinder011
+    100060: Cylinder012
+    100062: Cylinder013
+    100064: Cylinder014
+    100066: Cylinder015
+    100068: Cylinder016
+    100070: Cylinder017
+    100072: Cylinder018
+    100074: Cylinder019
+    100076: Cylinder020
+    100078: Cylinder021
+    100080: FDirect001
+    100082: FDirect002
+    100084: Plane008
+    100086: //RootNode
+    100088: Sky001
+    100090: Box024
+    100092: Box025
+    100094: Box026
+    100096: Box027
+    100098: Box028
+    100100: Box029
+    100102: Box030
+    100104: Box031
+    100106: Box032
+    100108: Box033
+    100110: Box034
+    100112: Box035
+    100114: Box036
+    100116: Box037
+    100118: Box038
+    100120: Box039
+    100122: Box040
+    100124: Box041
+    100126: Box042
+    100128: Box043
+    100130: Box044
+    100132: Box045
+    100134: Box046
+    100136: Box047
+    100138: Box048
+    100140: Box049
+    100142: Box050
+    100144: Box051
+    100146: Box052
+    100148: Box053
+    100150: Box054
+    100152: Box055
+    100154: Box056
+    100156: Box057
+    100158: Box058
+    100160: Box059
+    100162: Box060
+    100164: Box061
+    100166: Box062
+    100168: Box063
+    100170: Box064
+    100172: Box065
+    100174: Box066
+    100176: Box067
+    100178: Box068
+    100180: Box069
+    100182: Box070
+    100184: Box071
+    100186: Box072
+    100188: Box073
+    100190: Cylinder022
+    100192: Cylinder023
+    100194: Cylinder024
+    100196: Cylinder025
+    100198: Cylinder026
+    100200: Cylinder027
+    100202: Cylinder028
+    100204: Cylinder029
+    100206: Cylinder030
+    100208: Cylinder031
+    100210: Cylinder032
+    100212: Cylinder033
+    100214: Cylinder034
+    100216: Cylinder035
+    100218: Cylinder036
+    100220: Cylinder037
+    100222: Cylinder038
+    100224: Cylinder039
+    100226: Cylinder040
+    100228: Cylinder041
+    100230: Cylinder042
+    100232: Cylinder043
+    100234: Cylinder044
+    100236: Cylinder045
+    100238: Cylinder046
+    100240: Cylinder047
+    100242: Cylinder048
+    100244: Cylinder049
+    100246: Cylinder050
+    100248: Cylinder051
+    100250: Cylinder052
+    100252: Cylinder053
+    100254: Cylinder054
+    100256: Cylinder055
+    100258: Cylinder056
+    100260: Cylinder057
+    100262: Cylinder058
+    100264: Cylinder059
+    100266: Cylinder060
+    100268: Cylinder061
+    100270: Cylinder062
+    100272: Cylinder063
+    100274: Cylinder064
+    100276: Cylinder065
+    100278: Cylinder066
+    100280: Cylinder067
+    100282: Cylinder068
+    100284: Cylinder069
+    100286: Cylinder070
+    100288: Cylinder071
+    400000: Box004
+    400002: Box005
+    400004: Box006
+    400006: Box007
+    400008: Box008
+    400010: Box009
+    400012: Box010
+    400014: Box011
+    400016: Box012
+    400018: Box013
+    400020: Box014
+    400022: Box015
+    400024: Box016
+    400026: Box017
+    400028: Box018
+    400030: Box019
+    400032: Box020
+    400034: Box021
+    400036: Box022
+    400038: Box023
+    400040: Cylinder002
+    400042: Cylinder003
+    400044: Cylinder004
+    400046: Cylinder005
+    400048: Cylinder006
+    400050: Cylinder007
+    400052: Cylinder008
+    400054: Cylinder009
+    400056: Cylinder010
+    400058: Cylinder011
+    400060: Cylinder012
+    400062: Cylinder013
+    400064: Cylinder014
+    400066: Cylinder015
+    400068: Cylinder016
+    400070: Cylinder017
+    400072: Cylinder018
+    400074: Cylinder019
+    400076: Cylinder020
+    400078: Cylinder021
+    400080: FDirect001
+    400082: FDirect002
+    400084: Plane008
+    400086: //RootNode
+    400088: Sky001
+    400090: Box024
+    400092: Box025
+    400094: Box026
+    400096: Box027
+    400098: Box028
+    400100: Box029
+    400102: Box030
+    400104: Box031
+    400106: Box032
+    400108: Box033
+    400110: Box034
+    400112: Box035
+    400114: Box036
+    400116: Box037
+    400118: Box038
+    400120: Box039
+    400122: Box040
+    400124: Box041
+    400126: Box042
+    400128: Box043
+    400130: Box044
+    400132: Box045
+    400134: Box046
+    400136: Box047
+    400138: Box048
+    400140: Box049
+    400142: Box050
+    400144: Box051
+    400146: Box052
+    400148: Box053
+    400150: Box054
+    400152: Box055
+    400154: Box056
+    400156: Box057
+    400158: Box058
+    400160: Box059
+    400162: Box060
+    400164: Box061
+    400166: Box062
+    400168: Box063
+    400170: Box064
+    400172: Box065
+    400174: Box066
+    400176: Box067
+    400178: Box068
+    400180: Box069
+    400182: Box070
+    400184: Box071
+    400186: Box072
+    400188: Box073
+    400190: Cylinder022
+    400192: Cylinder023
+    400194: Cylinder024
+    400196: Cylinder025
+    400198: Cylinder026
+    400200: Cylinder027
+    400202: Cylinder028
+    400204: Cylinder029
+    400206: Cylinder030
+    400208: Cylinder031
+    400210: Cylinder032
+    400212: Cylinder033
+    400214: Cylinder034
+    400216: Cylinder035
+    400218: Cylinder036
+    400220: Cylinder037
+    400222: Cylinder038
+    400224: Cylinder039
+    400226: Cylinder040
+    400228: Cylinder041
+    400230: Cylinder042
+    400232: Cylinder043
+    400234: Cylinder044
+    400236: Cylinder045
+    400238: Cylinder046
+    400240: Cylinder047
+    400242: Cylinder048
+    400244: Cylinder049
+    400246: Cylinder050
+    400248: Cylinder051
+    400250: Cylinder052
+    400252: Cylinder053
+    400254: Cylinder054
+    400256: Cylinder055
+    400258: Cylinder056
+    400260: Cylinder057
+    400262: Cylinder058
+    400264: Cylinder059
+    400266: Cylinder060
+    400268: Cylinder061
+    400270: Cylinder062
+    400272: Cylinder063
+    400274: Cylinder064
+    400276: Cylinder065
+    400278: Cylinder066
+    400280: Cylinder067
+    400282: Cylinder068
+    400284: Cylinder069
+    400286: Cylinder070
+    400288: Cylinder071
+    2300000: Box004
+    2300002: Box005
+    2300004: Box006
+    2300006: Box007
+    2300008: Box008
+    2300010: Box009
+    2300012: Box010
+    2300014: Box011
+    2300016: Box012
+    2300018: Box013
+    2300020: Box014
+    2300022: Box015
+    2300024: Box016
+    2300026: Box017
+    2300028: Box018
+    2300030: Box019
+    2300032: Box020
+    2300034: Box021
+    2300036: Box022
+    2300038: Box023
+    2300040: Cylinder002
+    2300042: Cylinder003
+    2300044: Cylinder004
+    2300046: Cylinder005
+    2300048: Cylinder006
+    2300050: Cylinder007
+    2300052: Cylinder008
+    2300054: Cylinder009
+    2300056: Cylinder010
+    2300058: Cylinder011
+    2300060: Cylinder012
+    2300062: Cylinder013
+    2300064: Cylinder014
+    2300066: Cylinder015
+    2300068: Cylinder016
+    2300070: Cylinder017
+    2300072: Cylinder018
+    2300074: Cylinder019
+    2300076: Cylinder020
+    2300078: Cylinder021
+    2300080: Plane008
+    2300082: Box024
+    2300084: Box025
+    2300086: Box026
+    2300088: Box027
+    2300090: Box028
+    2300092: Box029
+    2300094: Box030
+    2300096: Box031
+    2300098: Box032
+    2300100: Box033
+    2300102: Box034
+    2300104: Box035
+    2300106: Box036
+    2300108: Box037
+    2300110: Box038
+    2300112: Box039
+    2300114: Box040
+    2300116: Box041
+    2300118: Box042
+    2300120: Box043
+    2300122: Box044
+    2300124: Box045
+    2300126: Box046
+    2300128: Box047
+    2300130: Box048
+    2300132: Box049
+    2300134: Box050
+    2300136: Box051
+    2300138: Box052
+    2300140: Box053
+    2300142: Box054
+    2300144: Box055
+    2300146: Box056
+    2300148: Box057
+    2300150: Box058
+    2300152: Box059
+    2300154: Box060
+    2300156: Box061
+    2300158: Box062
+    2300160: Box063
+    2300162: Box064
+    2300164: Box065
+    2300166: Box066
+    2300168: Box067
+    2300170: Box068
+    2300172: Box069
+    2300174: Box070
+    2300176: Box071
+    2300178: Box072
+    2300180: Box073
+    2300182: Cylinder022
+    2300184: Cylinder023
+    2300186: Cylinder024
+    2300188: Cylinder025
+    2300190: Cylinder026
+    2300192: Cylinder027
+    2300194: Cylinder028
+    2300196: Cylinder029
+    2300198: Cylinder030
+    2300200: Cylinder031
+    2300202: Cylinder032
+    2300204: Cylinder033
+    2300206: Cylinder034
+    2300208: Cylinder035
+    2300210: Cylinder036
+    2300212: Cylinder037
+    2300214: Cylinder038
+    2300216: Cylinder039
+    2300218: Cylinder040
+    2300220: Cylinder041
+    2300222: Cylinder042
+    2300224: Cylinder043
+    2300226: Cylinder044
+    2300228: Cylinder045
+    2300230: Cylinder046
+    2300232: Cylinder047
+    2300234: Cylinder048
+    2300236: Cylinder049
+    2300238: Cylinder050
+    2300240: Cylinder051
+    2300242: Cylinder052
+    2300244: Cylinder053
+    2300246: Cylinder054
+    2300248: Cylinder055
+    2300250: Cylinder056
+    2300252: Cylinder057
+    2300254: Cylinder058
+    2300256: Cylinder059
+    2300258: Cylinder060
+    2300260: Cylinder061
+    2300262: Cylinder062
+    2300264: Cylinder063
+    2300266: Cylinder064
+    2300268: Cylinder065
+    2300270: Cylinder066
+    2300272: Cylinder067
+    2300274: Cylinder068
+    2300276: Cylinder069
+    2300278: Cylinder070
+    2300280: Cylinder071
+    3300000: Box004
+    3300002: Box005
+    3300004: Box006
+    3300006: Box007
+    3300008: Box008
+    3300010: Box009
+    3300012: Box010
+    3300014: Box011
+    3300016: Box012
+    3300018: Box013
+    3300020: Box014
+    3300022: Box015
+    3300024: Box016
+    3300026: Box017
+    3300028: Box018
+    3300030: Box019
+    3300032: Box020
+    3300034: Box021
+    3300036: Box022
+    3300038: Box023
+    3300040: Cylinder002
+    3300042: Cylinder003
+    3300044: Cylinder004
+    3300046: Cylinder005
+    3300048: Cylinder006
+    3300050: Cylinder007
+    3300052: Cylinder008
+    3300054: Cylinder009
+    3300056: Cylinder010
+    3300058: Cylinder011
+    3300060: Cylinder012
+    3300062: Cylinder013
+    3300064: Cylinder014
+    3300066: Cylinder015
+    3300068: Cylinder016
+    3300070: Cylinder017
+    3300072: Cylinder018
+    3300074: Cylinder019
+    3300076: Cylinder020
+    3300078: Cylinder021
+    3300080: Plane008
+    3300082: Box024
+    3300084: Box025
+    3300086: Box026
+    3300088: Box027
+    3300090: Box028
+    3300092: Box029
+    3300094: Box030
+    3300096: Box031
+    3300098: Box032
+    3300100: Box033
+    3300102: Box034
+    3300104: Box035
+    3300106: Box036
+    3300108: Box037
+    3300110: Box038
+    3300112: Box039
+    3300114: Box040
+    3300116: Box041
+    3300118: Box042
+    3300120: Box043
+    3300122: Box044
+    3300124: Box045
+    3300126: Box046
+    3300128: Box047
+    3300130: Box048
+    3300132: Box049
+    3300134: Box050
+    3300136: Box051
+    3300138: Box052
+    3300140: Box053
+    3300142: Box054
+    3300144: Box055
+    3300146: Box056
+    3300148: Box057
+    3300150: Box058
+    3300152: Box059
+    3300154: Box060
+    3300156: Box061
+    3300158: Box062
+    3300160: Box063
+    3300162: Box064
+    3300164: Box065
+    3300166: Box066
+    3300168: Box067
+    3300170: Box068
+    3300172: Box069
+    3300174: Box070
+    3300176: Box071
+    3300178: Box072
+    3300180: Box073
+    3300182: Cylinder022
+    3300184: Cylinder023
+    3300186: Cylinder024
+    3300188: Cylinder025
+    3300190: Cylinder026
+    3300192: Cylinder027
+    3300194: Cylinder028
+    3300196: Cylinder029
+    3300198: Cylinder030
+    3300200: Cylinder031
+    3300202: Cylinder032
+    3300204: Cylinder033
+    3300206: Cylinder034
+    3300208: Cylinder035
+    3300210: Cylinder036
+    3300212: Cylinder037
+    3300214: Cylinder038
+    3300216: Cylinder039
+    3300218: Cylinder040
+    3300220: Cylinder041
+    3300222: Cylinder042
+    3300224: Cylinder043
+    3300226: Cylinder044
+    3300228: Cylinder045
+    3300230: Cylinder046
+    3300232: Cylinder047
+    3300234: Cylinder048
+    3300236: Cylinder049
+    3300238: Cylinder050
+    3300240: Cylinder051
+    3300242: Cylinder052
+    3300244: Cylinder053
+    3300246: Cylinder054
+    3300248: Cylinder055
+    3300250: Cylinder056
+    3300252: Cylinder057
+    3300254: Cylinder058
+    3300256: Cylinder059
+    3300258: Cylinder060
+    3300260: Cylinder061
+    3300262: Cylinder062
+    3300264: Cylinder063
+    3300266: Cylinder064
+    3300268: Cylinder065
+    3300270: Cylinder066
+    3300272: Cylinder067
+    3300274: Cylinder068
+    3300276: Cylinder069
+    3300278: Cylinder070
+    3300280: Cylinder071
+    4300000: Plane008
+    4300002: Cylinder002
+    4300004: Box004
+    4300006: Cylinder003
+    4300008: Box005
+    4300010: Cylinder004
+    4300012: Box006
+    4300014: Cylinder005
+    4300016: Box007
+    4300018: Cylinder006
+    4300020: Box008
+    4300022: Cylinder007
+    4300024: Box010
+    4300026: Cylinder008
+    4300028: Box009
+    4300030: Cylinder009
+    4300032: Box011
+    4300034: Cylinder010
+    4300036: Box018
+    4300038: Cylinder011
+    4300040: Box015
+    4300042: Cylinder012
+    4300044: Box016
+    4300046: Cylinder013
+    4300048: Box013
+    4300050: Cylinder014
+    4300052: Box014
+    4300054: Cylinder015
+    4300056: Box017
+    4300058: Cylinder016
+    4300060: Box012
+    4300062: Cylinder017
+    4300064: Box019
+    4300066: Cylinder018
+    4300068: Box021
+    4300070: Cylinder019
+    4300072: Box022
+    4300074: Cylinder020
+    4300076: Box023
+    4300078: Cylinder021
+    4300080: Box020
+    4300082: Cylinder022
+    4300084: Box024
+    4300086: Cylinder023
+    4300088: Box025
+    4300090: Cylinder024
+    4300092: Box026
+    4300094: Cylinder025
+    4300096: Box027
+    4300098: Cylinder026
+    4300100: Box028
+    4300102: Cylinder027
+    4300104: Box029
+    4300106: Cylinder028
+    4300108: Box030
+    4300110: Cylinder029
+    4300112: Box031
+    4300114: Cylinder030
+    4300116: Box034
+    4300118: Cylinder031
+    4300120: Box033
+    4300122: Cylinder032
+    4300124: Box035
+    4300126: Cylinder033
+    4300128: Box037
+    4300130: Cylinder034
+    4300132: Box038
+    4300134: Cylinder035
+    4300136: Box039
+    4300138: Cylinder036
+    4300140: Box040
+    4300142: Cylinder037
+    4300144: Box041
+    4300146: Cylinder038
+    4300148: Box043
+    4300150: Cylinder039
+    4300152: Box032
+    4300154: Cylinder040
+    4300156: Box042
+    4300158: Cylinder041
+    4300160: Box036
+    4300162: Cylinder042
+    4300164: Box044
+    4300166: Cylinder043
+    4300168: Box054
+    4300170: Cylinder044
+    4300172: Box046
+    4300174: Cylinder045
+    4300176: Box045
+    4300178: Cylinder046
+    4300180: Box048
+    4300182: Cylinder047
+    4300184: Box049
+    4300186: Cylinder048
+    4300188: Box050
+    4300190: Cylinder049
+    4300192: Box051
+    4300194: Cylinder050
+    4300196: Box047
+    4300198: Cylinder051
+    4300200: Box052
+    4300202: Cylinder052
+    4300204: Box053
+    4300206: Cylinder053
+    4300208: Box055
+    4300210: Cylinder054
+    4300212: Box056
+    4300214: Cylinder055
+    4300216: Box057
+    4300218: Cylinder056
+    4300220: Box059
+    4300222: Cylinder057
+    4300224: Box061
+    4300226: Cylinder058
+    4300228: Box060
+    4300230: Cylinder059
+    4300232: Box062
+    4300234: Cylinder060
+    4300236: Box063
+    4300238: Cylinder061
+    4300240: Box058
+    4300242: Cylinder062
+    4300244: Box070
+    4300246: Cylinder063
+    4300248: Box069
+    4300250: Cylinder064
+    4300252: Box067
+    4300254: Cylinder065
+    4300256: Box071
+    4300258: Cylinder066
+    4300260: Box072
+    4300262: Cylinder067
+    4300264: Box068
+    4300266: Cylinder068
+    4300268: Box066
+    4300270: Cylinder069
+    4300272: Box073
+    4300274: Cylinder070
+    4300276: Box064
+    4300278: Cylinder071
+    4300280: Box065
+    6400000: Box004
+    6400002: Box005
+    6400004: Box006
+    6400006: Box007
+    6400008: Box008
+    6400010: Box009
+    6400012: Box010
+    6400014: Box011
+    6400016: Box012
+    6400018: Box013
+    6400020: Box014
+    6400022: Box015
+    6400024: Box016
+    6400026: Box017
+    6400028: Box018
+    6400030: Box019
+    6400032: Box020
+    6400034: Box021
+    6400036: Box022
+    6400038: Box023
+    6400040: Cylinder002
+    6400042: Cylinder003
+    6400044: Cylinder004
+    6400046: Cylinder005
+    6400048: Cylinder006
+    6400050: Cylinder007
+    6400052: Cylinder008
+    6400054: Cylinder009
+    6400056: Cylinder010
+    6400058: Cylinder011
+    6400060: Cylinder012
+    6400062: Cylinder013
+    6400064: Cylinder014
+    6400066: Cylinder015
+    6400068: Cylinder016
+    6400070: Cylinder017
+    6400072: Cylinder018
+    6400074: Cylinder019
+    6400076: Cylinder020
+    6400078: Cylinder021
+    6400080: Plane008
+    6400082: Box024
+    6400084: Box025
+    6400086: Box026
+    6400088: Box027
+    6400090: Box028
+    6400092: Box029
+    6400094: Box030
+    6400096: Box031
+    6400098: Box032
+    6400100: Box033
+    6400102: Box034
+    6400104: Box035
+    6400106: Box036
+    6400108: Box037
+    6400110: Box038
+    6400112: Box039
+    6400114: Box040
+    6400116: Box041
+    6400118: Box042
+    6400120: Box043
+    6400122: Box044
+    6400124: Box045
+    6400126: Box046
+    6400128: Box047
+    6400130: Box048
+    6400132: Box049
+    6400134: Box050
+    6400136: Box051
+    6400138: Box052
+    6400140: Box053
+    6400142: Box054
+    6400144: Box055
+    6400146: Box056
+    6400148: Box057
+    6400150: Box058
+    6400152: Box059
+    6400154: Box060
+    6400156: Box061
+    6400158: Box062
+    6400160: Box063
+    6400162: Box064
+    6400164: Box065
+    6400166: Box066
+    6400168: Box067
+    6400170: Box068
+    6400172: Box069
+    6400174: Box070
+    6400176: Box071
+    6400178: Box072
+    6400180: Box073
+    6400182: Cylinder022
+    6400184: Cylinder023
+    6400186: Cylinder024
+    6400188: Cylinder025
+    6400190: Cylinder026
+    6400192: Cylinder027
+    6400194: Cylinder028
+    6400196: Cylinder029
+    6400198: Cylinder030
+    6400200: Cylinder031
+    6400202: Cylinder032
+    6400204: Cylinder033
+    6400206: Cylinder034
+    6400208: Cylinder035
+    6400210: Cylinder036
+    6400212: Cylinder037
+    6400214: Cylinder038
+    6400216: Cylinder039
+    6400218: Cylinder040
+    6400220: Cylinder041
+    6400222: Cylinder042
+    6400224: Cylinder043
+    6400226: Cylinder044
+    6400228: Cylinder045
+    6400230: Cylinder046
+    6400232: Cylinder047
+    6400234: Cylinder048
+    6400236: Cylinder049
+    6400238: Cylinder050
+    6400240: Cylinder051
+    6400242: Cylinder052
+    6400244: Cylinder053
+    6400246: Cylinder054
+    6400248: Cylinder055
+    6400250: Cylinder056
+    6400252: Cylinder057
+    6400254: Cylinder058
+    6400256: Cylinder059
+    6400258: Cylinder060
+    6400260: Cylinder061
+    6400262: Cylinder062
+    6400264: Cylinder063
+    6400266: Cylinder064
+    6400268: Cylinder065
+    6400270: Cylinder066
+    6400272: Cylinder067
+    6400274: Cylinder068
+    6400276: Cylinder069
+    6400278: Cylinder070
+    6400280: Cylinder071
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cylinder002
+        weight: 1
+      - path: Cylinder002/Box004
+        weight: 1
+      - path: Cylinder003
+        weight: 1
+      - path: Cylinder003/Box005
+        weight: 1
+      - path: Cylinder004
+        weight: 1
+      - path: Cylinder004/Box006
+        weight: 1
+      - path: Cylinder005
+        weight: 1
+      - path: Cylinder005/Box007
+        weight: 1
+      - path: Cylinder006
+        weight: 1
+      - path: Cylinder006/Box008
+        weight: 1
+      - path: Cylinder007
+        weight: 1
+      - path: Cylinder007/Box010
+        weight: 1
+      - path: Cylinder008
+        weight: 1
+      - path: Cylinder008/Box009
+        weight: 1
+      - path: Cylinder009
+        weight: 1
+      - path: Cylinder009/Box011
+        weight: 1
+      - path: Cylinder010
+        weight: 1
+      - path: Cylinder010/Box018
+        weight: 1
+      - path: Cylinder011
+        weight: 1
+      - path: Cylinder011/Box015
+        weight: 1
+      - path: Cylinder012
+        weight: 1
+      - path: Cylinder012/Box016
+        weight: 1
+      - path: Cylinder013
+        weight: 1
+      - path: Cylinder013/Box013
+        weight: 1
+      - path: Cylinder014
+        weight: 1
+      - path: Cylinder014/Box014
+        weight: 1
+      - path: Cylinder015
+        weight: 1
+      - path: Cylinder015/Box017
+        weight: 1
+      - path: Cylinder016
+        weight: 1
+      - path: Cylinder016/Box012
+        weight: 1
+      - path: Cylinder017
+        weight: 1
+      - path: Cylinder017/Box019
+        weight: 1
+      - path: Cylinder018
+        weight: 1
+      - path: Cylinder018/Box021
+        weight: 1
+      - path: Cylinder019
+        weight: 1
+      - path: Cylinder019/Box022
+        weight: 1
+      - path: Cylinder020
+        weight: 1
+      - path: Cylinder020/Box023
+        weight: 1
+      - path: Cylinder021
+        weight: 1
+      - path: Cylinder021/Box020
+        weight: 1
+      - path: Cylinder022
+        weight: 1
+      - path: Cylinder022/Box024
+        weight: 1
+      - path: Cylinder023
+        weight: 1
+      - path: Cylinder023/Box025
+        weight: 1
+      - path: Cylinder024
+        weight: 1
+      - path: Cylinder024/Box026
+        weight: 1
+      - path: Cylinder025
+        weight: 1
+      - path: Cylinder025/Box027
+        weight: 1
+      - path: Cylinder026
+        weight: 1
+      - path: Cylinder026/Box028
+        weight: 1
+      - path: Cylinder027
+        weight: 1
+      - path: Cylinder027/Box029
+        weight: 1
+      - path: Cylinder028
+        weight: 1
+      - path: Cylinder028/Box030
+        weight: 1
+      - path: Cylinder029
+        weight: 1
+      - path: Cylinder029/Box031
+        weight: 1
+      - path: Cylinder030
+        weight: 1
+      - path: Cylinder030/Box034
+        weight: 1
+      - path: Cylinder031
+        weight: 1
+      - path: Cylinder031/Box033
+        weight: 1
+      - path: Cylinder032
+        weight: 1
+      - path: Cylinder032/Box035
+        weight: 1
+      - path: Cylinder033
+        weight: 1
+      - path: Cylinder033/Box037
+        weight: 1
+      - path: Cylinder034
+        weight: 1
+      - path: Cylinder034/Box038
+        weight: 1
+      - path: Cylinder035
+        weight: 1
+      - path: Cylinder035/Box039
+        weight: 1
+      - path: Cylinder036
+        weight: 1
+      - path: Cylinder036/Box040
+        weight: 1
+      - path: Cylinder037
+        weight: 1
+      - path: Cylinder037/Box041
+        weight: 1
+      - path: Cylinder038
+        weight: 1
+      - path: Cylinder038/Box043
+        weight: 1
+      - path: Cylinder039
+        weight: 1
+      - path: Cylinder039/Box032
+        weight: 1
+      - path: Cylinder040
+        weight: 1
+      - path: Cylinder040/Box042
+        weight: 1
+      - path: Cylinder041
+        weight: 1
+      - path: Cylinder041/Box036
+        weight: 1
+      - path: Cylinder042
+        weight: 1
+      - path: Cylinder042/Box044
+        weight: 1
+      - path: Cylinder043
+        weight: 1
+      - path: Cylinder043/Box054
+        weight: 1
+      - path: Cylinder044
+        weight: 1
+      - path: Cylinder044/Box046
+        weight: 1
+      - path: Cylinder045
+        weight: 1
+      - path: Cylinder045/Box045
+        weight: 1
+      - path: Cylinder046
+        weight: 1
+      - path: Cylinder046/Box048
+        weight: 1
+      - path: Cylinder047
+        weight: 1
+      - path: Cylinder047/Box049
+        weight: 1
+      - path: Cylinder048
+        weight: 1
+      - path: Cylinder048/Box050
+        weight: 1
+      - path: Cylinder049
+        weight: 1
+      - path: Cylinder049/Box051
+        weight: 1
+      - path: Cylinder050
+        weight: 1
+      - path: Cylinder050/Box047
+        weight: 1
+      - path: Cylinder051
+        weight: 1
+      - path: Cylinder051/Box052
+        weight: 1
+      - path: Cylinder052
+        weight: 1
+      - path: Cylinder052/Box053
+        weight: 1
+      - path: Cylinder053
+        weight: 1
+      - path: Cylinder053/Box055
+        weight: 1
+      - path: Cylinder054
+        weight: 1
+      - path: Cylinder054/Box056
+        weight: 1
+      - path: Cylinder055
+        weight: 1
+      - path: Cylinder055/Box057
+        weight: 1
+      - path: Cylinder056
+        weight: 1
+      - path: Cylinder056/Box059
+        weight: 1
+      - path: Cylinder057
+        weight: 1
+      - path: Cylinder057/Box061
+        weight: 1
+      - path: Cylinder058
+        weight: 1
+      - path: Cylinder058/Box060
+        weight: 1
+      - path: Cylinder059
+        weight: 1
+      - path: Cylinder059/Box062
+        weight: 1
+      - path: Cylinder060
+        weight: 1
+      - path: Cylinder060/Box063
+        weight: 1
+      - path: Cylinder061
+        weight: 1
+      - path: Cylinder061/Box058
+        weight: 1
+      - path: Cylinder062
+        weight: 1
+      - path: Cylinder062/Box070
+        weight: 1
+      - path: Cylinder063
+        weight: 1
+      - path: Cylinder063/Box069
+        weight: 1
+      - path: Cylinder064
+        weight: 1
+      - path: Cylinder064/Box067
+        weight: 1
+      - path: Cylinder065
+        weight: 1
+      - path: Cylinder065/Box071
+        weight: 1
+      - path: Cylinder066
+        weight: 1
+      - path: Cylinder066/Box072
+        weight: 1
+      - path: Cylinder067
+        weight: 1
+      - path: Cylinder067/Box068
+        weight: 1
+      - path: Cylinder068
+        weight: 1
+      - path: Cylinder068/Box066
+        weight: 1
+      - path: Cylinder069
+        weight: 1
+      - path: Cylinder069/Box073
+        weight: 1
+      - path: Cylinder070
+        weight: 1
+      - path: Cylinder070/Box064
+        weight: 1
+      - path: Cylinder071
+        weight: 1
+      - path: Cylinder071/Box065
+        weight: 1
+      - path: FDirect001
+        weight: 1
+      - path: FDirect002
+        weight: 1
+      - path: Plane008
+        weight: 1
+      - path: Sky001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 110
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
