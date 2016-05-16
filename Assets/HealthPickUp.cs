@@ -30,6 +30,7 @@ public class HealthPickUp : MonoBehaviour
         if (myCol)
             myCol.enabled = false;
         Invoke("TurnOn", 1.0f);
+        Destroy(gameObject, 5.0f);
     }
 
 
