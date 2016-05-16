@@ -15261,9 +15261,35 @@ Prefab:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 2041938013}
+    - target: {fileID: 6459658, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d953637f4390d7949b2e9880c48160af, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1428192990 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 157932, guid: d953637f4390d7949b2e9880c48160af, type: 2}
+  m_PrefabInternal: {fileID: 1428192989}
+--- !u!114 &1428192991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1428192990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bff7f616ea880d4587ca36693eba4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicAttkMulitplier: 1
+  whirlWindMultiplier: 0.8
+  chargeMultiplier: 1
+  groundSlamMultiplier: 1.5
+  vampMultiplier: 0.5
+  attackBuffMultiplier: 2
+  defBuffMultiplier: 0.2
 --- !u!1001 &1431422513
 Prefab:
   m_ObjectHideFlags: 0
@@ -16179,6 +16205,10 @@ MonoBehaviour:
   objectsTospawn:
   - {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
   particles: {fileID: 948828310}
+  CurHealth: 0
+  maxHealth: 0
+  baseHitDamage: 0
+  furyGainedOffHit: 0
 --- !u!65 &1501542687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20022,7 +20052,7 @@ MonoBehaviour:
   healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
   healthDropRate: 1
   drops: []
-  dropRate: 0
+  dropRate: 10
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
   dropPosition: {fileID: 1148700632}
 --- !u!65 &1851677840
@@ -21241,6 +21271,10 @@ Prefab:
     - target: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471360, guid: 291130f1315379047bc88cf375545e93, type: 2}
+      propertyPath: MaxHealth
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 291130f1315379047bc88cf375545e93, type: 2}

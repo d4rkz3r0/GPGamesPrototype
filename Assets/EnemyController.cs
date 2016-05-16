@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myHealth.CurHealth < myHealth.MaxHealth)
+        if (myHealth.CurHealth <= 0)
         {
             myAnimation.SetInteger("state", 3);
             RemoveFromSLots();

@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Spawner : MonoBehaviour
+public class StaticSpawnerScript : MonoBehaviour
 {
 
     // Use this for initialization
     public int currWave = 0;
     public int maxWave;
-    public int numPerWave;
     public GameObject[] objectsTospawn;
     Vector3[] spawnPoints;
     public GameObject particles;
-    public float CurHealth, maxHealth;
+    public float CurHealth, maxHealth = 200.0f;
     public float baseHitDamage;
     public int furyGainedOffHit;
     bool invulFrames = false;
@@ -22,9 +21,9 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         CurHealth = maxHealth;
-        spawnPoints = new Vector3[numPerWave];
+        spawnPoints = new Vector3[objectsTospawn.Length];
         float degrees = 0;
-        for (int i = 0; i < numPerWave; i++, degrees += 360 / numPerWave)
+        for (int i = 0; i < objectsTospawn.Length; i++, degrees += 360 / objectsTospawn.Length)
         {
             spawnPoints[i].x = Mathf.Cos(degrees * Mathf.Deg2Rad) * 2;
             spawnPoints[i].y = 0;
@@ -47,10 +46,9 @@ public class Spawner : MonoBehaviour
         if (currWave < maxWave)
         {
             particles.SetActive(true);
-            for (int i = 0; i < numPerWave; i++)
+            for (int i = 0; i < objectsTospawn.Length; i++)
             {
-                int index = Random.Range(0, objectsTospawn.Length);
-                Instantiate(objectsTospawn[index], spawnPoints[i] + transform.position, transform.rotation);
+                Instantiate(objectsTospawn[i], spawnPoints[i] + transform.position, transform.rotation);
             }
             currWave++;
             Invoke("DisableParticles", 0.75f);
@@ -112,9 +110,5 @@ public class Spawner : MonoBehaviour
             Invoke("ResetIFrames", 0.75f);
             playerFury.GainFury(furyGainedOffHit);
         }
-    }
-    void ResetIFrames()
-    {
-        invulFrames = false;
     }
 }

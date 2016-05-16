@@ -1078,7 +1078,7 @@ MonoBehaviour:
   healthBar: {fileID: 123496}
   ObjectPlayer: {fileID: 157532}
   DeleteBar: {fileID: 22388440}
-  MaxHealth: 0
+  MaxHealth: 200
   CurHealth: 0
   baseHitDamage: 100
   furyGainedOffHit: 20

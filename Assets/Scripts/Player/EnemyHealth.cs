@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     Rigidbody myRigidBudy;
     bool invulFrames = false;
     public float addedForce = 10.0f;
-    GameObject bitchAssPlayer;
+    GameObject player;
     PlayerController playerCon;
     public GameObject healthDrop;
     public float healthDropRate = 0.05f;
@@ -24,13 +24,15 @@ public class EnemyHealth : MonoBehaviour
     public GameObject hitEffect;
     FuryMeter playerFury;
     public Transform dropPosition;
+    Multiplier playerMultiplier;
     void Start()
     {
         CurHealth = MaxHealth;
         myRigidBudy = GetComponent<Rigidbody>();
-        bitchAssPlayer = GameObject.Find("Player");
-        playerCon = bitchAssPlayer.GetComponent<PlayerController>();
-        playerFury = bitchAssPlayer.GetComponent<FuryMeter>();
+        player = GameObject.Find("Player");
+        playerCon = player.GetComponent<PlayerController>();
+        playerFury = player.GetComponent<FuryMeter>();
+        playerMultiplier = player.GetComponent<Multiplier>();
     }
 
     // Update is called once per frame
@@ -60,7 +62,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (invulFrames)
             return;
-        PlayerHealth tempHealth = bitchAssPlayer.GetComponent<PlayerHealth>();
+        PlayerHealth tempHealth = player.GetComponent<PlayerHealth>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
         {
@@ -81,12 +83,12 @@ public class EnemyHealth : MonoBehaviour
             temp.Normalize();
             //Add force
             myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
-            if (buff != -1)
-                CurHealth -= baseHitDamage;
-            else
-                CurHealth -= baseHitDamage * 2.0f;
+            float damage = baseHitDamage * playerMultiplier.chargeMultiplier;
+            if (buff == -1)
+                damage *= playerMultiplier.attackBuffMultiplier;
+            CurHealth -= damage;
             if (buff == 1)
-                tempHealth.ReGenHealth(baseHitDamage / 2.0f);
+                tempHealth.ReGenHealth(baseHitDamage * playerMultiplier.vampMultiplier);
             invulFrames = true;
             Instantiate(hitEffect, transform.position, transform.rotation);
             Invoke("ResetIFrames", 0.3f);
@@ -97,11 +99,11 @@ public class EnemyHealth : MonoBehaviour
             Vector3 temp = -(transform.forward);
             temp.y = 0;
             myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
-            float damage = baseHitDamage * 0.8f;
+            float damage = baseHitDamage * playerMultiplier.whirlWindMultiplier;
             if (buff == -1)
-                damage *= 2.0f;
+                damage *= playerMultiplier.attackBuffMultiplier;
             if (buff == 1)
-                tempHealth.ReGenHealth(damage);
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
             Instantiate(hitEffect, transform.position, transform.rotation);
@@ -110,11 +112,11 @@ public class EnemyHealth : MonoBehaviour
         else if (other.tag == "WarriorSlamCollider")
         {
             myRigidBudy.AddForce(Vector3.up * addedForce * myRigidBudy.mass);
-            float damage = baseHitDamage * 1.5f;
+            float damage = baseHitDamage * playerMultiplier.groundSlamMultiplier;
             if (buff == -1)
-                damage *= 2.0f;
+                damage *= playerMultiplier.attackBuffMultiplier;
             if (buff == 1)
-                tempHealth.ReGenHealth(damage);
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
             Instantiate(hitEffect, transform.position, transform.rotation);
@@ -126,11 +128,11 @@ public class EnemyHealth : MonoBehaviour
             Vector3 temp = -(transform.forward);
             temp.y = 0;
             myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
-            float damage = baseHitDamage;
+            float damage = baseHitDamage * playerMultiplier.basicAttkMulitplier;
             if (buff == -1)
-                damage *= 2.0f;
+                damage *= playerMultiplier.attackBuffMultiplier;
             if (buff == 1)
-                tempHealth.ReGenHealth(damage);
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
             Invoke("ResetIFrames", 0.75f);
@@ -166,7 +168,7 @@ public class EnemyHealth : MonoBehaviour
         if (healthDrop)
             if (Random.value < healthDropRate)
                 Instantiate(healthDrop, dropPosition.position, transform.rotation);
-        if (Random.value < dropRate)
+        if (Random.value < dropRate && drops.Length > 0)
         {
             int index = Random.Range(0, drops.Length);
             if (drops[index])
