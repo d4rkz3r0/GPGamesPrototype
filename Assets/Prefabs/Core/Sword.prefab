@@ -1024,9 +1024,7 @@ MonoBehaviour:
   meleeSlash2PushBack: 200
   meleeSlash3Damage: 2
   meleeSlash3PushBack: 200
-  scale: 1
-  baseVertices: []
-  scaledSwordMesh: {fileID: 0}
+  dynamicCollider: 0
 --- !u!137 &13743928
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
