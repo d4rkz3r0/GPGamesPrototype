@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: c99c7b8b30d9c1d4992d30f5fe78c1d9
+timeCreated: 1463076586
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arcus_Geo
+    100002: back
+    100004: InvadoJoints_ct_Head_Joint
+    100006: InvadoJoints_ct_Spine01_Joint
+    100008: InvadoJoints_ct_Spine02_Joint
+    100010: InvadoJoints_ct_Spine03_Joint
+    100012: InvadoJoints_ct_Spine04_Joint
+    100014: InvadoJoints_lt_Ankle_Joint
+    100016: InvadoJoints_lt_Elbow_Joint
+    100018: InvadoJoints_lt_Hip_Joint
+    100020: InvadoJoints_lt_Index01_Joint
+    100022: InvadoJoints_lt_Knee_Joint
+    100024: InvadoJoints_lt_Middle01_Joint
+    100026: InvadoJoints_lt_Middle02_Joint
+    100028: InvadoJoints_lt_Middle03_Joint
+    100030: InvadoJoints_lt_Pinkie01_Joint
+    100032: InvadoJoints_lt_Pinkie02_Joint
+    100034: InvadoJoints_lt_Pinkie03_Joint
+    100036: InvadoJoints_lt_Ring01_Joint
+    100038: InvadoJoints_lt_Ring02_Joint
+    100040: InvadoJoints_lt_Ring03_Joint
+    100042: InvadoJoints_lt_Shoulder_Joint
+    100044: InvadoJoints_lt_Thumb01_Joint
+    100046: InvadoJoints_lt_Thumb02_Joint
+    100048: InvadoJoints_lt_Thumb02_Joint 1
+    100050: InvadoJoints_lt_Thumb03_Joint
+    100052: InvadoJoints_lt_Thumb03_Joint 1
+    100054: InvadoJoints_lt_Wrist_Joint
+    100056: InvadoJoints_rt_Ankle_Joint
+    100058: InvadoJoints_rt_Elbow_Joint
+    100060: InvadoJoints_rt_Hip_Joint
+    100062: InvadoJoints_rt_Index01_Joint
+    100064: InvadoJoints_rt_Knee_Joint
+    100066: InvadoJoints_rt_Middle01_Joint
+    100068: InvadoJoints_rt_Middle02_Joint
+    100070: InvadoJoints_rt_Middle03_Joint
+    100072: InvadoJoints_rt_Pinkie01_Joint
+    100074: InvadoJoints_rt_Pinkie02_Joint
+    100076: InvadoJoints_rt_Pinkie03_Joint
+    100078: InvadoJoints_rt_Ring01_Joint
+    100080: InvadoJoints_rt_Ring02_Joint
+    100082: InvadoJoints_rt_Ring03_Joint
+    100084: InvadoJoints_rt_Shoulder_Joint
+    100086: InvadoJoints_rt_Thumb01_Joint
+    100088: InvadoJoints_rt_Thumb02_Joint
+    100090: InvadoJoints_rt_Thumb02_Joint 1
+    100092: InvadoJoints_rt_Thumb03_Joint
+    100094: InvadoJoints_rt_Thumb03_Joint 1
+    100096: InvadoJoints_rt_Wrist_Joint
+    100098: joint1
+    100100: //RootNode
+    400000: Arcus_Geo
+    400002: back
+    400004: InvadoJoints_ct_Head_Joint
+    400006: InvadoJoints_ct_Spine01_Joint
+    400008: InvadoJoints_ct_Spine02_Joint
+    400010: InvadoJoints_ct_Spine03_Joint
+    400012: InvadoJoints_ct_Spine04_Joint
+    400014: InvadoJoints_lt_Ankle_Joint
+    400016: InvadoJoints_lt_Elbow_Joint
+    400018: InvadoJoints_lt_Hip_Joint
+    400020: InvadoJoints_lt_Index01_Joint
+    400022: InvadoJoints_lt_Knee_Joint
+    400024: InvadoJoints_lt_Middle01_Joint
+    400026: InvadoJoints_lt_Middle02_Joint
+    400028: InvadoJoints_lt_Middle03_Joint
+    400030: InvadoJoints_lt_Pinkie01_Joint
+    400032: InvadoJoints_lt_Pinkie02_Joint
+    400034: InvadoJoints_lt_Pinkie03_Joint
+    400036: InvadoJoints_lt_Ring01_Joint
+    400038: InvadoJoints_lt_Ring02_Joint
+    400040: InvadoJoints_lt_Ring03_Joint
+    400042: InvadoJoints_lt_Shoulder_Joint
+    400044: InvadoJoints_lt_Thumb01_Joint
+    400046: InvadoJoints_lt_Thumb02_Joint
+    400048: InvadoJoints_lt_Thumb02_Joint 1
+    400050: InvadoJoints_lt_Thumb03_Joint
+    400052: InvadoJoints_lt_Thumb03_Joint 1
+    400054: InvadoJoints_lt_Wrist_Joint
+    400056: InvadoJoints_rt_Ankle_Joint
+    400058: InvadoJoints_rt_Elbow_Joint
+    400060: InvadoJoints_rt_Hip_Joint
+    400062: InvadoJoints_rt_Index01_Joint
+    400064: InvadoJoints_rt_Knee_Joint
+    400066: InvadoJoints_rt_Middle01_Joint
+    400068: InvadoJoints_rt_Middle02_Joint
+    400070: InvadoJoints_rt_Middle03_Joint
+    400072: InvadoJoints_rt_Pinkie01_Joint
+    400074: InvadoJoints_rt_Pinkie02_Joint
+    400076: InvadoJoints_rt_Pinkie03_Joint
+    400078: InvadoJoints_rt_Ring01_Joint
+    400080: InvadoJoints_rt_Ring02_Joint
+    400082: InvadoJoints_rt_Ring03_Joint
+    400084: InvadoJoints_rt_Shoulder_Joint
+    400086: InvadoJoints_rt_Thumb01_Joint
+    400088: InvadoJoints_rt_Thumb02_Joint
+    400090: InvadoJoints_rt_Thumb02_Joint 1
+    400092: InvadoJoints_rt_Thumb03_Joint
+    400094: InvadoJoints_rt_Thumb03_Joint 1
+    400096: InvadoJoints_rt_Wrist_Joint
+    400098: joint1
+    400100: //RootNode
+    4300000: Arcus_Geo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Arcus_Geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

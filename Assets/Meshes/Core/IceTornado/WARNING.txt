@@ -1,0 +1,1 @@
+If fbx doesn't load textures correctly they will need to be relinked
