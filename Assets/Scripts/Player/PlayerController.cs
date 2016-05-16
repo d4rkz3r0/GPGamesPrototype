@@ -373,5 +373,14 @@ public class PlayerController : MonoBehaviour
                 healthManager.DecreaseHealth(10.0f);
             other.gameObject.SetActive(false);
         }
+
+        else if (other.CompareTag("OnDeathExplosion"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(35.0f);
+            else
+                healthManager.DecreaseHealth(300.0f);
+            
+        }
     }
 }
