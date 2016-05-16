@@ -350,6 +350,7 @@ public class ComboSystem : MonoBehaviour
 
         currentMeleeAttackState = 1;
         FindObjectOfType<SwordController>().dynamicCollider = false;
+        paladinSword.GetComponent<SwordTrail>().TrailColor = Color.white;
     }
 
     public void EndSlash2()
@@ -362,6 +363,7 @@ public class ComboSystem : MonoBehaviour
 
         currentMeleeAttackState = 1;
         FindObjectOfType<SwordController>().dynamicCollider = false;
+        paladinSword.GetComponent<SwordTrail>().TrailColor = Color.white;
     }
 
     public void EndSlash3()
@@ -378,6 +380,7 @@ public class ComboSystem : MonoBehaviour
         anim.SetBool("MSlash3", false);
         currentMeleeAttackState = 1;
         FindObjectOfType<SwordController>().dynamicCollider = false;
+        paladinSword.GetComponent<SwordTrail>().TrailColor = Color.white;
     }
 
     public void EndCast1()
@@ -413,6 +416,7 @@ public class ComboSystem : MonoBehaviour
 
     public void EnableCollider()
     {
+        paladinSword.GetComponent<SwordTrail>().TrailColor.a = 255.0f;
         paladinSword.dynamicCollider = true;
     }
 

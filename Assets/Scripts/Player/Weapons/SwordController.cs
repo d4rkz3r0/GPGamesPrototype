@@ -6,6 +6,7 @@ using System.Linq;
 public class SwordController : MonoBehaviour
 {
     //References
+    
     private SkinnedMeshRenderer swordMeshRenderer;
     private MeshCollider swordMeshCollider;
     private Mesh currSwordMesh;
@@ -14,6 +15,7 @@ public class SwordController : MonoBehaviour
     //External
     private PlayerController player;
     private ComboSystem playerComboState;
+    private SwordTrail swordTrail;
 
     //Tweakables
     public int meleeSlash1Damage = 1;
@@ -37,7 +39,9 @@ public class SwordController : MonoBehaviour
         player = GetComponentInParent<PlayerController>();
         swordMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         swordMeshCollider = GetComponent<MeshCollider>();
+        swordTrail = GetComponent<SwordTrail>();
 
+        swordTrail.Init();
         currSwordMesh = new Mesh();
         dynamicCollider = false;
     }
@@ -139,6 +143,7 @@ public class SwordController : MonoBehaviour
 
     public void DisableCollider()
     {
+        swordTrail.TrailColor.a = 0.0f;
         swordMeshCollider.sharedMesh = null;
     }
 
@@ -153,17 +158,20 @@ public class SwordController : MonoBehaviour
                 {
                     if (player.AnimatorIsPlaying("MeleeSlash1") && firstStrike)
                     {
+                        swordTrail.TrailColor = Color.red;
                         SwordSlashEnemy(other, 1);
                         firstStrike = false;
                     }
                     else if (player.AnimatorIsPlaying("MeleeSlash2") && secondStrike)
                     {
+                        swordTrail.TrailColor = Color.red;
                         SwordSlashEnemy(other, 2);
                         secondStrike = false;
 
                     }
                     else if (player.AnimatorIsPlaying("MeleeSlash3") && thirdStrike && meleeEndComboTimer < 0.0f)
                     {
+                        swordTrail.TrailColor = Color.red;
                         SwordSlashEnemy(other, 3);
                         thirdStrike = false;
                     }

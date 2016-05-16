@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 
-/*Animation Event Tracker
- * [16] - Casting 1 Animation
- * [20] - Casting 2 Animation
- * [21] - Casting 3 Animation
- * [18] - Melee Slash 1 Animation
- * [17] - Melee Slash 2 Animation
- * [19] - Melee Slash 3 Animation 
+/* Clip Info
+ * [19] - Melee Slash 1 Animation - sword_and_shield_slash_2
+ * [18] - Melee Slash 2 Animation - sword_and_shield_slash
+ * [20] - Melee Slash 3 Animation - sword_and_shield_slash_3
+ * 
+ * [16] - Casting 1 Animation - sword_and_shield_casting_1
+ * [21] - Casting 2 Animation - sword_and_shield_casting_2
+ * [22] - Casting 3 Animation - sword_and_shield_casting
  */
 
 public class HandleAnimationEvents : MonoBehaviour
 {
     private Animator anim;
 
-    private AnimationClip[] currAnimationClips;
+    public AnimationClip[] currAnimationClips;
 
     //-Events-// - Melee
     //Melee 1
@@ -210,18 +211,17 @@ public class HandleAnimationEvents : MonoBehaviour
         casting3AnimationEventList[0] = spawnLightningEvent;
         casting3AnimationEventList[1] = casting3AttackResetEvent;
 
-
         //Grab N' Assign
         currAnimationClips = anim.runtimeAnimatorController.animationClips;
         //-Assign Lists-// - Melee
-        currAnimationClips[18].events = melee1AnimationEvents;
-        currAnimationClips[17].events = melee2AnimationEvents;
-        currAnimationClips[19].events = melee3AnimationEvents;
+        currAnimationClips[19].events = melee1AnimationEvents;
+        currAnimationClips[18].events = melee2AnimationEvents;
+        currAnimationClips[20].events = melee3AnimationEvents;
 
         //-Assign Lists-// - Casting
         currAnimationClips[16].events = casting1AnimationEventList;
-        currAnimationClips[20].events = casting2AnimationEventList;
-        currAnimationClips[21].events = casting3AnimationEventList;
+        currAnimationClips[21].events = casting2AnimationEventList;
+        currAnimationClips[22].events = casting3AnimationEventList;
 
 
         //Animator Warning Fix

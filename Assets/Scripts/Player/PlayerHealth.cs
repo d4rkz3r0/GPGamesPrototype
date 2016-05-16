@@ -13,10 +13,8 @@ public class PlayerHealth : MonoBehaviour
     //Rect RectangleHealth;
     public GameObject HealthBar;
     public GameObject ObjectPlayer;
-    public Text HealthText;
     public float MaxHealth;
     public float CurHealth;
-    public Image GreenHealthbar;
 
 
     //-Player Damage FeedBack-//
@@ -48,8 +46,6 @@ public class PlayerHealth : MonoBehaviour
     {
         MaxHealth = 500f;
         CurHealth = MaxHealth;
-        HealthText.text = CurHealth + "/" + MaxHealth;
-        GreenHealthbar.fillAmount = CurHealth;
     }
 
     void Update()
@@ -62,11 +58,6 @@ public class PlayerHealth : MonoBehaviour
         {
             CurHealth = MaxHealth;
         }
-           
-        HealthText.text = CurHealth + "/" + MaxHealth;
-        GreenHealthbar.fillAmount = CurHealth / MaxHealth;
-
-        SetHealth(CurHealth / MaxHealth);
     }
 
     public void DecreaseHealth(float dmg)
@@ -77,19 +68,12 @@ public class PlayerHealth : MonoBehaviour
 
         CurHealth -= dmg;
         float temp = CurHealth / MaxHealth;
-        SetHealth(temp);
     }
 
     public void ReGenHealth(float _amount)
     {
         CurHealth += _amount;
         float temp = CurHealth / MaxHealth;
-        SetHealth(temp);
-    }
-
-    void SetHealth(float health)
-    {
-        HealthBar.transform.localScale = new Vector3(health, HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
     }
 
     
