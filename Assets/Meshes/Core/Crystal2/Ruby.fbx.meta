@@ -1,68 +1,16 @@
 fileFormatVersion: 2
-guid: d552db4833a94d047905b22c32ca723d
-timeCreated: 1463076586
+guid: 3c9c54e9a6dcc934ab5e45dfa9ce77d6
+timeCreated: 1463422531
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: joint10
-    100004: joint11
-    100006: joint12
-    100008: joint13
-    100010: joint14
-    100012: joint15
-    100014: joint16
-    100016: joint17
-    100018: joint18
-    100020: joint19
-    100022: joint2
-    100024: joint20
-    100026: joint21
-    100028: joint22
-    100030: joint23
-    100032: joint24
-    100034: joint25
-    100036: joint3
-    100038: joint4
-    100040: joint5
-    100042: joint6
-    100044: joint7
-    100046: joint8
-    100048: joint9
-    100050: root
-    100052: Vanguard_3D_Archer
     400000: //RootNode
-    400002: joint10
-    400004: joint11
-    400006: joint12
-    400008: joint13
-    400010: joint14
-    400012: joint15
-    400014: joint16
-    400016: joint17
-    400018: joint18
-    400020: joint19
-    400022: joint2
-    400024: joint20
-    400026: joint21
-    400028: joint22
-    400030: joint23
-    400032: joint24
-    400034: joint25
-    400036: joint3
-    400038: joint4
-    400040: joint5
-    400042: joint6
-    400044: joint7
-    400046: joint8
-    400048: joint9
-    400050: root
-    400052: Vanguard_3D_Archer
-    4300000: Vanguard_3D_Archer
-    7400000: Take 001
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Mesh
     9500000: //RootNode
-    13700000: Vanguard_3D_Archer
   materials:
     importMaterials: 1
     materialName: 0
@@ -87,7 +35,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
