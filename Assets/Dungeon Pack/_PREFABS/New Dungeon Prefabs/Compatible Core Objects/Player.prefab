@@ -2831,6 +2831,7 @@ MonoBehaviour:
   ObjectPlayer: {fileID: 164658}
   MaxHealth: 500
   CurHealth: 0
+  PlayerhealthText: {fileID: 0}
   flashingColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 2.25
   flashInterval: 0.33
@@ -2970,6 +2971,7 @@ MonoBehaviour:
   cooldownTimer: 0
   activeDuration: 0
   activeTimer: 0
+  InShopMenu: 0
   alive: 0
   getInput: 0
   fMoveSpeed: 5
