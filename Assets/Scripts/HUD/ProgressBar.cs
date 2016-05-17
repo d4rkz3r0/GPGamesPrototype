@@ -14,7 +14,7 @@ public class ProgressBar : MonoBehaviour {
    public Image GreenHealthbar;
 	void Start () 
     {
-        Total = 284;
+        Total = 47;
         killed = 0;
         progressBar.text = Percent.ToString();
 	}

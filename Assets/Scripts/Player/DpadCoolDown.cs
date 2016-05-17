@@ -83,8 +83,8 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-            BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
-           BuffsCoolDown.fillAmount = 1f;
+           // BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
+          // BuffsCoolDown.fillAmount = 1f;
 
            pressagainVamp = false;
         }
@@ -106,8 +106,8 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-            BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
-            BuffsCoolDown.fillAmount = 1f;
+           // BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
+            //BuffsCoolDown.fillAmount = 1f;
             pressagainAtk = false;
           
         }
@@ -124,8 +124,8 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-            BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
-            BuffsCoolDown.fillAmount = 1f;
+            //BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
+           // BuffsCoolDown.fillAmount = 1f;
             pressagainDef = false;
           
         }
@@ -151,7 +151,7 @@ public class DpadCoolDown : MonoBehaviour
 
         if (!pressagainVamp && GetComponent<PlayerController>().cooldownTimer > 0)
         {
-            BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max3);
+            //BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max3);
             AtkCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max3);
             DefCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max3);
             //VampCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max2);
@@ -165,7 +165,7 @@ public class DpadCoolDown : MonoBehaviour
         if (!pressagainAtk && GetComponent<PlayerController>().cooldownTimer > 0)
         {
 
-             BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max2);
+            // BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max2);
             DefCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max2);
             VampCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max2);
             if (GetComponent<PlayerController>().cooldownTimer == GetComponent<PlayerController>().cooldownDuration)
@@ -176,7 +176,7 @@ public class DpadCoolDown : MonoBehaviour
 
         if (!pressagainDef && GetComponent<PlayerController>().cooldownTimer > 0)
         {
-            BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
+           // BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
             AtkCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
             //DefCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max3);
             VampCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);

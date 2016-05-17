@@ -16,7 +16,8 @@ public class CameraOrbit : MonoBehaviour
     private float currentX = 0.0f;
     private float currentY = 0.0f;
     private float camSensitivity = 4.0f;
-
+    private int Inverted = 1;
+    
 
     // Use this for initialization
     void Start()
@@ -73,8 +74,8 @@ public class CameraOrbit : MonoBehaviour
             distance = 5.0f;
         }
 
-        currentX += Input.GetAxis("Right Stick X Axis") * camSensitivity;
-        currentY += Input.GetAxis("Right Stick Y Axis") * camSensitivity;
+        currentX += (Input.GetAxis("Right Stick X Axis") * camSensitivity) * Inverted;
+        currentY += (Input.GetAxis("Right Stick Y Axis") * camSensitivity) * Inverted;
 
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
     }
@@ -87,4 +88,33 @@ public class CameraOrbit : MonoBehaviour
         camTransform.position = target.transform.position + rotation * dir;
         camTransform.LookAt(target.transform.position);
     }
+
+
+    public void InceaseSensitivity(float _Amount)
+    {
+        camSensitivity += _Amount;
+    }
+
+    public void DecreaseSensitivity(float _Amount)
+    {
+        camSensitivity -= _Amount;
+    }
+
+
+    public void SetInvertedControls(int _invert)
+    {
+        Inverted = _invert;
+    }
+
+    public int GetInverted()
+    {
+        return Inverted;
+    }
+
+    public float GetSensitivity()
+    {
+
+        return camSensitivity;
+    }
+
 }
