@@ -15,7 +15,7 @@ public class Carisaul : MonoBehaviour
     void Start()
     {
         Atk.text = "ATK+";
-        BUFFS.text = "BUFFS";
+        BUFFS.text = "Item";
         VAMP.text = "VAMP";
         Def.text = "DEF+";
     }

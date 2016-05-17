@@ -46,6 +46,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &122770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496470}
+  m_Layer: 0
+  m_Name: DropPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &123254
 GameObject:
   m_ObjectHideFlags: 1
@@ -778,6 +793,7 @@ Transform:
   - {fileID: 22477256}
   - {fileID: 441444}
   - {fileID: 496014}
+  - {fileID: 496470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &492772
@@ -818,6 +834,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 487982}
   m_RootOrder: 2
+--- !u!4 &496470
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 487982}
+  m_RootOrder: 3
 --- !u!4 &498948
 Transform:
   m_ObjectHideFlags: 1
@@ -1004,7 +1032,7 @@ MonoBehaviour:
   healthBar: {fileID: 154912}
   ObjectPlayer: {fileID: 114402}
   DeleteBar: {fileID: 22321690}
-  MaxHealth: 200
+  MaxHealth: 150
   CurHealth: 0
   baseHitDamage: 100
   furyGainedOffHit: 20
@@ -1013,8 +1041,8 @@ MonoBehaviour:
   healthDropRate: 0.05
   drops: []
   dropRate: 0
-  hitEffect: {fileID: 0}
-  dropPosition: {fileID: 0}
+  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  dropPosition: {fileID: 496470}
 --- !u!114 &11491432
 MonoBehaviour:
   m_ObjectHideFlags: 1

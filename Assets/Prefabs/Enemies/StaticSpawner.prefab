@@ -214,7 +214,7 @@ MonoBehaviour:
   particles: {fileID: 0}
   CurHealth: 0
   maxHealth: 200
-  baseHitDamage: 0
+  baseHitDamage: 75
   furyGainedOffHit: 0
 --- !u!198 &19892000
 ParticleSystem:

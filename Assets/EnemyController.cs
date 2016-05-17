@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
     Vector3 slotSpotOuter;
     EnemySlotScript tempSlotScript;
     bool canDoStuff = true;
+    EnemyHealth myHealth;
     void Start()
     {
         myAnimation = GetComponent<Animator>();
@@ -29,12 +30,18 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");
         if (player)
             tempSlotScript = player.GetComponent<EnemySlotScript>();
+        myHealth = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player && myAnimation.GetInteger("state") != 3)
+        if (myHealth.CurHealth <= 0)
+        {
+            myAnimation.SetInteger("state", 3);
+            RemoveFromSLots();
+        }
+        if (player && myAnimation.GetInteger("state") != 3 && !PauseMenu.InpauseMenu)
         {
             float distance = 0;
             distance = Vector3.Distance(transform.position, player.transform.position);
@@ -121,7 +128,7 @@ public class EnemyController : MonoBehaviour
     }
     void Attack()
     {
-        if (!decidedAttack)
+        if (!decidedAttack && !PauseMenu.InpauseMenu)
         {
             Invoke("ActivateAttackBox", 0.5f);
             myAnimation.SetInteger("state", 2);
@@ -135,7 +142,7 @@ public class EnemyController : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && !PauseMenu.InpauseMenu)
         {
             Vector3 temp = -(other.transform.position - transform.position);
             temp.y = 0;
@@ -156,7 +163,7 @@ public class EnemyController : MonoBehaviour
             canDoStuff = false;
             Invoke("CanAttack", 1.0f);
         }
-        if (other.tag == "WarriorSlamCollider")
+        else if (other.tag == "WarriorSlamCollider")
         {
             ResetAttack();
             canDoStuff = false;
@@ -172,7 +179,7 @@ public class EnemyController : MonoBehaviour
             }
             Invoke("CanAttack", 2.5f);
         }
-        if (other.tag == "WarriorWhirlwindCollider")
+        else if (other.tag == "WarriorWhirlwindCollider")
         {
             ResetAttack();
             canDoStuff = false;
@@ -192,6 +199,7 @@ public class EnemyController : MonoBehaviour
     }
     public void RemoveFromSLots()
     {
+        myAnimation.SetInteger("state", 3);
         if (slotted == 1)
             tempSlotScript.RemoveSlot(gameObject);
         else
