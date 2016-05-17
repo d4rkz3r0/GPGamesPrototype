@@ -15,7 +15,7 @@ public class slowAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveTimer > 0)
+        if (moveTimer > 0 && !PauseMenu.InpauseMenu)
         {
             moveTimer -= Time.deltaTime;
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
