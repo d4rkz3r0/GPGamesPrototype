@@ -3,32 +3,36 @@ using System.Collections;
 using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
-
-    public GameObject Player;
+    public GameObject healthBar;
     public GameObject ObjectPlayer;
     public Canvas DeleteBar;
     //public Text HealthText;
-    public float MaxHealth;
+    public float MaxHealth = 200f;
     public float CurHealth;
+    public float baseHitDamage = 100.00f;
+    public int furyGainedOffHit = 20;
     // public Image GreenHealthbar;
     Rigidbody myRigidBudy;
-    bool hitByCharged = false;
+    bool invulFrames = false;
     public float addedForce = 10.0f;
-    GameObject bitchAssPlayer;
+    GameObject player;
     PlayerController playerCon;
     public GameObject healthDrop;
+    public float healthDropRate = 0.05f;
     public GameObject[] drops;
+    public float dropRate = 1.0f;
     public GameObject hitEffect;
-    EnemyController myController;
-
+    FuryMeter playerFury;
+    public Transform dropPosition;
+    Multiplier playerMultiplier;
     void Start()
     {
-        MaxHealth = 200f;
         CurHealth = MaxHealth;
         myRigidBudy = GetComponent<Rigidbody>();
-        bitchAssPlayer = GameObject.Find("Player");
-        playerCon = bitchAssPlayer.GetComponent<PlayerController>();
-        myController = GetComponent<EnemyController>();
+        player = GameObject.Find("Player");
+        playerCon = player.GetComponent<PlayerController>();
+        playerFury = player.GetComponent<FuryMeter>();
+        playerMultiplier = player.GetComponent<Multiplier>();
     }
 
     // Update is called once per frame
@@ -52,92 +56,88 @@ public class EnemyHealth : MonoBehaviour
     }
     void SetHealth(float health)
     {
-        Player.transform.localScale = new Vector3(health, Player.transform.localScale.y, Player.transform.localScale.z);
+        healthBar.transform.localScale = new Vector3(health, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
     void OnTriggerEnter(Collider other)
     {
-        PlayerHealth tempHealth = bitchAssPlayer.GetComponent<PlayerHealth>();
-        FuryMeter tempFury = bitchAssPlayer.GetComponent<FuryMeter>();
+        if (invulFrames)
+            return;
+        PlayerHealth tempHealth = player.GetComponent<PlayerHealth>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
         {
-            Debug.Log(buff);
-            if (!hitByCharged)
-            {
-                Vector3 temp = -(other.transform.position - transform.position);
-                temp.y = 0;
-                Vector3 dirVec;
-                float angle = Vector3.Dot(Player.transform.forward, temp);
-                if (angle < 0)
-                    dirVec = Quaternion.AngleAxis(-90, Vector3.up) * transform.forward;
-                else
-                    dirVec = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
-                temp = temp * 0.25f + dirVec * 0.75f;
-                temp.Normalize();
-                myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
-                if (buff != -1)
-                    CurHealth -= 100;
-                else
-                    CurHealth -= 200;
-                if (buff == 1)
-                    tempHealth.ReGenHealth(50);
-                hitByCharged = true;
-                Instantiate(hitEffect, transform.position, transform.rotation);
-                Invoke("ResetCharge", 0.3f);
-            }
+            //KnockBack logic
+            //Move in direction oppisote of him
+            Vector3 temp = -(other.transform.position - transform.position);
+            //Keeps y the same so cant go flying
+            temp.y = 0;
+            Vector3 dirVec;
+            //Left or Right?
+            float angle = Vector3.Dot(healthBar.transform.forward, temp);
+            if (angle < 0)
+                dirVec = Quaternion.AngleAxis(-90, Vector3.up) * transform.forward;
+            else
+                dirVec = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
+            //Weigh the direction
+            temp = temp * 0.25f + dirVec * 0.75f;
+            temp.Normalize();
+            //Add force
+            myRigidBudy.AddForce(temp * addedForce * myRigidBudy.mass);
+            float damage = baseHitDamage * playerMultiplier.chargeMultiplier;
+            if (buff == -1)
+                damage *= playerMultiplier.attackBuffMultiplier;
+            CurHealth -= damage;
+            if (buff == 1)
+                tempHealth.ReGenHealth(baseHitDamage * playerMultiplier.vampMultiplier);
+            invulFrames = true;
+            Instantiate(hitEffect, transform.position, transform.rotation);
+            Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorWhirlwindCollider")
         {
-            if (!hitByCharged)
-            {
-                Vector3 temp = -(transform.forward);
-                temp.y = 0;
-                myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
-                if (buff != -1)
-                    CurHealth -= 120;
-                else
-                    CurHealth -= 240;
-                if (buff == 1)
-                    tempHealth.ReGenHealth(80);
-                hitByCharged = true;
-                Instantiate(hitEffect, transform.position, transform.rotation);
-                Invoke("ResetCharge", 0.3f);
-            }
+            //Knock object Back
+            Vector3 temp = -(transform.forward);
+            temp.y = 0;
+            myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
+            float damage = baseHitDamage * playerMultiplier.whirlWindMultiplier;
+            if (buff == -1)
+                damage *= playerMultiplier.attackBuffMultiplier;
+            if (buff == 1)
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
+            CurHealth -= damage;
+            invulFrames = true;
+            Instantiate(hitEffect, transform.position, transform.rotation);
+            Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorSlamCollider")
         {
-            if (!hitByCharged)
-            {
-                myRigidBudy.AddForce(Vector3.up * addedForce * myRigidBudy.mass);
-                if (buff != -1)
-                    CurHealth -= 150;
-                else
-                    CurHealth -= 300;
-                if (buff == 1)
-                    tempHealth.ReGenHealth(75);
-                hitByCharged = true;
-                Instantiate(hitEffect, transform.position, transform.rotation);
-                Invoke("ResetCharge", 0.3f);
-            }
+            myRigidBudy.AddForce(Vector3.up * addedForce * myRigidBudy.mass);
+            float damage = baseHitDamage * playerMultiplier.groundSlamMultiplier;
+            if (buff == -1)
+                damage *= playerMultiplier.attackBuffMultiplier;
+            if (buff == 1)
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
+            CurHealth -= damage;
+            invulFrames = true;
+            Instantiate(hitEffect, transform.position, transform.rotation);
+            Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorSword")
         {
-            if (!hitByCharged)
-            {
-                Vector3 temp = -(transform.forward);
-                temp.y = 0;
-                myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
-                if (buff != -1)
-                    CurHealth -= 100;
-                else
-                    CurHealth -= 200;
-                if (buff == 1)
-                    tempHealth.ReGenHealth(25);
-                Invoke("ResetCharge", 0.75f);
-                hitByCharged = true;
-                Instantiate(hitEffect, transform.position, transform.rotation);
-                tempFury.GainFury(20);
-            }
+            //Knock Back
+            Vector3 temp = -(transform.forward);
+            temp.y = 0;
+            myRigidBudy.AddForce(temp.normalized * addedForce * myRigidBudy.mass * 0.5f);
+            float damage = baseHitDamage * playerMultiplier.basicAttkMulitplier;
+            if (buff == -1)
+                damage *= playerMultiplier.attackBuffMultiplier;
+            if (buff == 1)
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
+            CurHealth -= damage;
+            invulFrames = true;
+            Invoke("ResetIFrames", 0.75f);
+            Instantiate(hitEffect, transform.position, transform.rotation);
+            playerFury.GainFury(furyGainedOffHit);
         }
         else if (other.tag == "Spell")
         {
@@ -147,33 +147,33 @@ public class EnemyHealth : MonoBehaviour
                 CurHealth -= other.GetComponent<FireBallController>().abilityDamage * 2.0f;
             if (buff == 1)
                 tempHealth.ReGenHealth(25);
-            Invoke("ResetCharge", 0.75f);
-            hitByCharged = true;
+            Invoke("ResetIFrames", 0.75f);
+            invulFrames = true;
             Instantiate(hitEffect, transform.position, transform.rotation);
-            tempFury.GainFury(20);
+            playerFury.GainFury(furyGainedOffHit);
         }
-        if (CurHealth <= 00)
+        if (CurHealth <= 0.0f)
         {
-            GetComponent<Animator>().SetInteger("state", 3);
             DeleteBar.enabled = false;
-            //Rigidbody temp = GetComponent<Rigidbody>();
-            //temp.useGravity = false;
-            //temp.velocity = Vector3.zero;
-            //GetComponent<BoxCollider>().enabled = false;
             Invoke("Death", 2.0f);
         }
     }
-    void ResetCharge()
+    void ResetIFrames()
     {
-        hitByCharged = false;
+        invulFrames = false;
     }
     void Death()
     {
         ProgressBar.killed++;
-        myController.RemoveFromSLots();
-        Vector3 spawnPos = transform.position + Vector3.up;
-        if (Random.value < 0.05f)
-            Instantiate(healthDrop, spawnPos, transform.rotation);
+        if (healthDrop)
+            if (Random.value < healthDropRate)
+                Instantiate(healthDrop, dropPosition.position, transform.rotation);
+        if (Random.value < dropRate && drops.Length > 0)
+        {
+            int index = Random.Range(0, drops.Length);
+            if (drops[index])
+                Instantiate(drops[index], dropPosition.position, transform.rotation);
+        }
         Destroy(gameObject);
     }
 }

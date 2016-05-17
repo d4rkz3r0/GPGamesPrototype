@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: 11de2284188585b4ea4ec557e9749286
+timeCreated: 1463076581
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: COG_Joint
+    100002: Head_Joint
+    100004: Jaw_Joint
+    100006: JawEnd_Joint
+    100008: //RootNode
+    100010: Spine10B_Joint
+    100012: Spine11B_Joint
+    100014: Spine1F_Joint
+    100016: Spine2F_Joint
+    100018: Spine3F_Joint
+    100020: Spine4F_Joint
+    100022: Spine5F_Joint
+    100024: Spine6M_Joint
+    100026: Spine7B_Joint
+    100028: Spine8B_Joint
+    100030: Spine9B_Joint
+    100032: TailEnd_Joint
+    100034: TailMid1_Joint
+    100036: TailMid2_Joint
+    100038: TailRoot_Joint
+    100040: waterdragon_Geo
+    400000: COG_Joint
+    400002: Head_Joint
+    400004: Jaw_Joint
+    400006: JawEnd_Joint
+    400008: //RootNode
+    400010: Spine10B_Joint
+    400012: Spine11B_Joint
+    400014: Spine1F_Joint
+    400016: Spine2F_Joint
+    400018: Spine3F_Joint
+    400020: Spine4F_Joint
+    400022: Spine5F_Joint
+    400024: Spine6M_Joint
+    400026: Spine7B_Joint
+    400028: Spine8B_Joint
+    400030: Spine9B_Joint
+    400032: TailEnd_Joint
+    400034: TailMid1_Joint
+    400036: TailMid2_Joint
+    400038: TailRoot_Joint
+    400040: waterdragon_Geo
+    4300000: waterdragon_Geo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: waterdragon_Geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 30
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

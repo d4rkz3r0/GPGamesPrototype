@@ -261,6 +261,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &155360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417192}
+  m_Layer: 2
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &155538
 GameObject:
   m_ObjectHideFlags: 1
@@ -590,6 +605,18 @@ Transform:
   - {fileID: 457658}
   m_Father: {fileID: 446084}
   m_RootOrder: 0
+--- !u!4 &417192
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 453292}
+  m_RootOrder: 4
 --- !u!4 &420324
 Transform:
   m_ObjectHideFlags: 1
@@ -775,14 +802,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157532}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.98, y: 0, z: -58.48}
+  m_LocalRotation: {x: 0, y: 0.9950343, z: 0, w: -0.09953335}
+  m_LocalPosition: {x: -26.4, y: 0, z: -13.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472270}
   - {fileID: 404532}
   - {fileID: 430232}
   - {fileID: 22461586}
+  - {fileID: 417192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &453850
@@ -910,7 +938,7 @@ Rigidbody:
   m_Mass: 311.35
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
@@ -1004,15 +1032,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 157532}
+  healthBar: {fileID: 0}
   ObjectPlayer: {fileID: 0}
   DeleteBar: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
+  baseHitDamage: 100
+  furyGainedOffHit: 20
   addedForce: 10
   healthDrop: {fileID: 0}
+  healthDropRate: 0.05
   drops: []
+  dropRate: 1
   hitEffect: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1042,15 +1075,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 123496}
+  healthBar: {fileID: 123496}
   ObjectPlayer: {fileID: 157532}
   DeleteBar: {fileID: 22388440}
-  MaxHealth: 4
+  MaxHealth: 200
   CurHealth: 0
+  baseHitDamage: 100
+  furyGainedOffHit: 20
   addedForce: 625
   healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
+  healthDropRate: 0.05
   drops: []
+  dropRate: 1
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  dropPosition: {fileID: 417192}
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
