@@ -10,7 +10,6 @@ GameObject:
   - 224: {fileID: 22469202}
   - 222: {fileID: 22208656}
   - 114: {fileID: 11467500}
-  - 114: {fileID: 11478982}
   m_Layer: 2
   m_Name: Health
   m_TagString: Untagged
@@ -45,26 +44,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11478982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154278}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  ObjectPlayer: {fileID: 0}
-  DeleteBar: {fileID: 0}
-  MaxHealth: 0
-  CurHealth: 0
-  addedForce: 10
-  healthDrop: {fileID: 0}
-  drops: []
-  hitEffect: {fileID: 0}
 --- !u!222 &22208656
 CanvasRenderer:
   m_ObjectHideFlags: 1

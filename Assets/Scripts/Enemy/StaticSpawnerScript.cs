@@ -110,5 +110,9 @@ public class StaticSpawnerScript : MonoBehaviour
             Invoke("ResetIFrames", 0.75f);
             playerFury.GainFury(furyGainedOffHit);
         }
+        if (CurHealth <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -20,6 +20,11 @@ TagManager:
   - Spell
   - PickUpHealth
   - OnDeathExplosion
+  - GoldDrop
+  - Selector
+  - ExploderMelee
+  - Arrow
+  - Slow
   layers:
   - Default
   - TransparentFX

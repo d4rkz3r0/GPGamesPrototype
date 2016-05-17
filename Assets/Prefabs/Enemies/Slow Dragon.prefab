@@ -338,7 +338,7 @@ GameObject:
   - 65: {fileID: 6502878}
   m_Layer: 0
   m_Name: Slow Dragon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -442,7 +442,7 @@ Transform:
   - {fileID: 472644}
   - {fileID: 498254}
   m_Father: {fileID: 476392}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &429958
 Transform:
   m_ObjectHideFlags: 1
@@ -539,12 +539,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0.040000916}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0.7, z: 1.4029999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 476392}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!4 &455900
 Transform:
   m_ObjectHideFlags: 1
@@ -644,12 +644,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.512, y: 1.56, z: -64.19021}
+  m_LocalPosition: {x: -0.57506824, y: 3.64, z: 9.306266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 454330}
   - {fileID: 405142}
   - {fileID: 22406496}
+  - {fileID: 454330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &479252
@@ -814,8 +814,11 @@ MonoBehaviour:
   furyGainedOffHit: 20
   addedForce: 10
   healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
+  healthDropRate: 0.05
   drops: []
+  dropRate: 1
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  dropPosition: {fileID: 0}
 --- !u!114 &11482950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -875,7 +878,7 @@ MonoBehaviour:
   attkTimerMin: 2
   attkTimerMax: 3.5
   attackTimer: 3.5
-  attackChance: 0.3
+  attackChance: 1
   speed: 5
   channelTime: 1.5
   innerChannelTimer: 0
@@ -976,7 +979,7 @@ RectTransform:
   m_Children:
   - {fileID: 22465896}
   m_Father: {fileID: 476392}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.028, y: 0.722}
