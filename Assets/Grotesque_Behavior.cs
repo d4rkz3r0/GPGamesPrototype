@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Grotesque_Behavior : MonoBehaviour {
 
-    private enum States { MOVEMENT, ATTACK, EXPLODE, INVALID};
-    private States currentState;
+    public enum States { MOVEMENT, ATTACK, EXPLODE, INVALID};
+    public States currentState;
 
     private float moveSpeed;
     public int currentHealth;
@@ -38,6 +38,9 @@ public class Grotesque_Behavior : MonoBehaviour {
     // Damaging Colliders
     public SphereCollider explosionCollider;
     public BoxCollider attackCollider;
+
+    // Visual Identifiers
+    public GameObject explosionParticleSystemPrefab;
 
     void Start()
     {
@@ -115,7 +118,7 @@ public class Grotesque_Behavior : MonoBehaviour {
         //return States.INVALID;
 
         // Don't leave the explode state
-        if (currentState == States.EXPLODE || currentHealth < 0)
+        if (currentState == States.EXPLODE || currentHealth <= 0)
         {
             currentHealth = -1;
             return States.EXPLODE;
@@ -177,7 +180,7 @@ public class Grotesque_Behavior : MonoBehaviour {
             currentState = States.INVALID;
             inactiveTime = timeSinceLastAttack = 0.0f;
             
-            attackCollider.enabled = false;
+            //attackCollider.enabled = false;
         }
 
         if (!wait_attack)
@@ -209,6 +212,12 @@ public class Grotesque_Behavior : MonoBehaviour {
     void ActivateAttackCollider()
     {
         attackCollider.enabled = true;
+        Invoke("DeactivateAttackCollider", 0.5f);
+    }
+
+    void DeactivateAttackCollider()
+    {
+        attackCollider.enabled = false;
     }
 
     void Explode()
@@ -227,6 +236,7 @@ public class Grotesque_Behavior : MonoBehaviour {
 
             if (!firstFrameActivation)
             {
+                Instantiate(explosionParticleSystemPrefab, transform.position, transform.rotation);
                 explosionCollider.enabled = true;
                 firstFrameActivation = true;
             }
