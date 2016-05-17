@@ -22,7 +22,6 @@ public class slowAttack : MonoBehaviour
         }
         else
         {
-
             Destroy(gameObject, 2.0f);
         }
     }

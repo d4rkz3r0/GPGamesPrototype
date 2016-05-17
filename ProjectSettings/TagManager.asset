@@ -21,6 +21,8 @@ TagManager:
   - PickUpHealth
   - OnDeathExplosion
   - GoldDrop
+  - Arrow
+  - Slow
   layers:
   - Default
   - TransparentFX
