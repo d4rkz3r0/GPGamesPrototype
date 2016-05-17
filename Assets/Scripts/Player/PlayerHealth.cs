@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject ObjectPlayer;
     public float MaxHealth;
     public float CurHealth;
-
+    public Text PlayerhealthText;
 
     //-Player Damage FeedBack-//
     //Rumble
@@ -46,10 +46,12 @@ public class PlayerHealth : MonoBehaviour
     {
         MaxHealth = 500f;
         CurHealth = MaxHealth;
+        PlayerhealthText.text = CurHealth + "/" + MaxHealth;
     }
 
     void Update()
     {
+        PlayerhealthText.text = CurHealth + "/" + MaxHealth;
         UpdateGamePadState();
         UpdateFlashTimer();
 

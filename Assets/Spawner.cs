@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour
     }
     void SpawnEnemies()
     {
-        if (currWave < maxWave)
+        if (currWave < maxWave && !PauseMenu.InpauseMenu)
         {
             particles.SetActive(true);
             for (int i = 0; i < numPerWave; i++)

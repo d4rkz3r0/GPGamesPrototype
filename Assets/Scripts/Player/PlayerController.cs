@@ -22,13 +22,14 @@ public class PlayerController : MonoBehaviour
     public float cooldownTimer;
     public float activeDuration;
     public float activeTimer;
-
+    public bool InShopMenu;
     public bool alive;
     public bool getInput;
     /* attack = -1; defBuff = 0; vampBuff = 1; onCD = 9; rdy = 10 */
 
     //Player Movement
     public float fMoveSpeed = 4.0f;
+    private float fSpeedModifier = 1.0f;
     float hInput;
     float vInput;
 
@@ -70,9 +71,13 @@ public class PlayerController : MonoBehaviour
 
     private PlayerHealth healthManager;
 
+    private SkinnedMeshRenderer[] playerMeshRenderers;
+    private Material[] playerMeshMaterials;
+
     private void Awake()
     {
         //Player
+        InShopMenu = false;
         anim = GetComponent<Animator>();
         animRC = anim.runtimeAnimatorController;
         rb = GetComponent<Rigidbody>();
@@ -153,7 +158,7 @@ public class PlayerController : MonoBehaviour
         vInput = Input.GetAxis("Vertical");
 
         //Find camera direction
-        if (Mathf.Abs(hInput) > 0.1f || Mathf.Abs(vInput) > 0.1f)
+        if (Mathf.Abs(hInput) > 0.1f && !InShopMenu && !PauseMenu.InpauseMenu || Mathf.Abs(vInput) > 0.1f && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             cameraForward = cameraTransform.rotation;
 
@@ -183,7 +188,7 @@ public class PlayerController : MonoBehaviour
             velocity = new Vector3(0.0f, 0.0f, Mathf.Clamp((Mathf.Abs(vInput) + Mathf.Abs(hInput)), 0, 1));
             velocity = transform.TransformDirection(velocity);
 
-            velocity *= fMoveSpeed;
+            velocity *= (fMoveSpeed * fSpeedModifier);
             transform.localPosition += velocity * Time.fixedDeltaTime;
         }
 
@@ -252,17 +257,17 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilites()
     {
         //Ability Code Here
-        if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost)
+        if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             furyUpkeep.UseFury(dodgeCost);
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
         }
-        else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost)
+        else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             furyUpkeep.UseFury(rightBumperCost);
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
         }
-        else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost)
+        else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
@@ -271,19 +276,19 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateBuffs()
     {
-        if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
+        if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 0;
             defenseParticleSystem.Play();
             cooldownDuration = 5.0f;
         }
-        else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
+        else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = -1;
             attackParticleSystem.Play();
             cooldownDuration = 10.0f;
         }
-        else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10)
+        else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 1;
             vamprisimParticleSystem.Play();
@@ -312,6 +317,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void GrabMaterials()
+    {
+        playerMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        playerMeshMaterials = new Material[playerMeshRenderers.Length];
+
+        for (int i = 0; i < playerMeshMaterials.Length; i++)
+        {
+            playerMeshMaterials[i] = playerMeshRenderers[i].material;
+        }
+    }
 
     //-Helper Funcs-//
     private bool IsWarrior()
@@ -363,6 +378,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ResetMoveSpeed()
+    {
+        fSpeedModifier = 1.0f;
+        //foreach (Material meshMaterial in playerMeshMaterials)
+        //{
+        //    meshMaterial.color = Color.white;
+        //}
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == ("ZombieAttack"))
@@ -377,9 +401,9 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("OnDeathExplosion"))
         {
             if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
-                healthManager.DecreaseHealth(35.0f);
+                healthManager.DecreaseHealth(45.0f);
             else
-                healthManager.DecreaseHealth(300.0f);
+                healthManager.DecreaseHealth(400.0f);
             
         }
 
@@ -389,6 +413,31 @@ public class PlayerController : MonoBehaviour
                 healthManager.DecreaseHealth(20.0f);
             else
                 healthManager.DecreaseHealth(100.0f);
+        }
+
+        else if (other.CompareTag("Slow"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(40.0f);
+            else
+                healthManager.DecreaseHealth(200.0f);
+
+            // Slow the player
+            fSpeedModifier = 0.4f;
+            //foreach (Material meshMaterial in playerMeshMaterials)
+            //{
+            //    meshMaterial.color = Color.cyan;
+            //}
+
+            Invoke("ResetMoveSpeed", 1.5f);
+        }
+        
+        else if (other.CompareTag("Arrow"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(5.0f);
+            else
+                healthManager.DecreaseHealth(25.0f);
         }
     }
 }

@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
             myAnimation.SetInteger("state", 3);
             RemoveFromSLots();
         }
-        if (player && myAnimation.GetInteger("state") != 3)
+        if (player && myAnimation.GetInteger("state") != 3 && !PauseMenu.InpauseMenu)
         {
             float distance = 0;
             distance = Vector3.Distance(transform.position, player.transform.position);
@@ -128,7 +128,7 @@ public class EnemyController : MonoBehaviour
     }
     void Attack()
     {
-        if (!decidedAttack)
+        if (!decidedAttack && !PauseMenu.InpauseMenu)
         {
             Invoke("ActivateAttackBox", 0.5f);
             myAnimation.SetInteger("state", 2);
@@ -142,7 +142,7 @@ public class EnemyController : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && !PauseMenu.InpauseMenu)
         {
             Vector3 temp = -(other.transform.position - transform.position);
             temp.y = 0;
