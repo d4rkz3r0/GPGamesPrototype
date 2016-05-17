@@ -430,5 +430,13 @@ public class PlayerController : MonoBehaviour
 
             Invoke("ResetMoveSpeed", 1.5f);
         }
+        
+        else if (other.CompareTag("Arrow"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(5.0f);
+            else
+                healthManager.DecreaseHealth(25.0f);
+        }
     }
 }
