@@ -211,8 +211,7 @@ MonoBehaviour:
   currWave: 0
   maxWave: 10
   numPerWave: 0
-  objectsTospawn:
-  - {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+  objectsTospawn: []
   particles: {fileID: 141028}
   CurHealth: 0
   maxHealth: 200
