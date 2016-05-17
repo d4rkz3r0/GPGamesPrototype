@@ -71,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
     private PlayerHealth healthManager;
 
+    private SkinnedMeshRenderer[] playerMeshRenderers;
+    private Material[] playerMeshMaterials;
+
     private void Awake()
     {
         //Player
@@ -313,6 +316,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void GrabMaterials()
+    {
+        playerMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        playerMeshMaterials = new Material[playerMeshRenderers.Length];
+
+        for (int i = 0; i < playerMeshMaterials.Length; i++)
+        {
+            playerMeshMaterials[i] = playerMeshRenderers[i].material;
+        }
+    }
 
     //-Helper Funcs-//
     private bool IsWarrior()
@@ -367,6 +380,10 @@ public class PlayerController : MonoBehaviour
     void ResetMoveSpeed()
     {
         fSpeedModifier = 1.0f;
+        //foreach (Material meshMaterial in playerMeshMaterials)
+        //{
+        //    meshMaterial.color = Color.white;
+        //}
     }
 
     void OnTriggerEnter(Collider other)
@@ -406,6 +423,11 @@ public class PlayerController : MonoBehaviour
 
             // Slow the player
             fSpeedModifier = 0.4f;
+            //foreach (Material meshMaterial in playerMeshMaterials)
+            //{
+            //    meshMaterial.color = Color.cyan;
+            //}
+
             Invoke("ResetMoveSpeed", 1.5f);
         }
     }
