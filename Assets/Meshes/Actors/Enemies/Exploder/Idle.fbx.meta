@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: 70e9d8986ab23774d82ffae078b77a7a
+timeCreated: 1463502808
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ct_head_Joint
+    100002: ct_neck_Joint
+    100004: ct_spine01_Joint
+    100006: ct_spine02_Joint
+    100008: ct_tail01_Joint
+    100010: ct_tail02_Joint
+    100012: ct_tail03_Joint
+    100014: ct_tail04_Joint
+    100016: GoatImp_Geo
+    100018: //RootNode
+    100020: lt_ankle_Joint
+    100022: lt_elbow_Joint
+    100024: lt_hip_Joint
+    100026: lt_hoof_Joint
+    100028: lt_knee_Joint
+    100030: lt_shoulder_Joint
+    100032: lt_wing01_Joint
+    100034: lt_wing02_Joint
+    100036: lt_wing03_Joint
+    100038: lt_wrist_Joint
+    100040: Root
+    100042: rt_ankle_Joint
+    100044: rt_elbow_Joint
+    100046: rt_hip_Joint
+    100048: rt_hoof_Joint
+    100050: rt_knee_Joint
+    100052: rt_shoulder_Joint
+    100054: rt_wing01_Joint
+    100056: rt_wing02_Joint
+    100058: rt_wing03_Joint
+    100060: rt_wrist_Joint
+    400000: ct_head_Joint
+    400002: ct_neck_Joint
+    400004: ct_spine01_Joint
+    400006: ct_spine02_Joint
+    400008: ct_tail01_Joint
+    400010: ct_tail02_Joint
+    400012: ct_tail03_Joint
+    400014: ct_tail04_Joint
+    400016: GoatImp_Geo
+    400018: //RootNode
+    400020: lt_ankle_Joint
+    400022: lt_elbow_Joint
+    400024: lt_hip_Joint
+    400026: lt_hoof_Joint
+    400028: lt_knee_Joint
+    400030: lt_shoulder_Joint
+    400032: lt_wing01_Joint
+    400034: lt_wing02_Joint
+    400036: lt_wing03_Joint
+    400038: lt_wrist_Joint
+    400040: Root
+    400042: rt_ankle_Joint
+    400044: rt_elbow_Joint
+    400046: rt_hip_Joint
+    400048: rt_hoof_Joint
+    400050: rt_knee_Joint
+    400052: rt_shoulder_Joint
+    400054: rt_wing01_Joint
+    400056: rt_wing02_Joint
+    400058: rt_wing03_Joint
+    400060: rt_wrist_Joint
+    4300000: GoatImp_Geo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: GoatImp_Geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
