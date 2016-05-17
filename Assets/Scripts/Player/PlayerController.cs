@@ -382,5 +382,13 @@ public class PlayerController : MonoBehaviour
                 healthManager.DecreaseHealth(300.0f);
             
         }
+
+        else if (other.CompareTag("ExploderMelee"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(20.0f);
+            else
+                healthManager.DecreaseHealth(100.0f);
+        }
     }
 }

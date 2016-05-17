@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Grotesque_Behavior : MonoBehaviour {
 
-    public enum States { MOVEMENT, ATTACK, EXPLODE, INVALID};
+    public enum States { MOVEMENT, ATTACK, EXPLODE, STUNNED, INVALID};
     public States currentState;
 
     private float moveSpeed;
@@ -11,6 +11,7 @@ public class Grotesque_Behavior : MonoBehaviour {
     private int maxHealth;
 
     public float waitRange;
+    public float stun_length;
     private float attackRange;
     private float distanceFromPlayer;
 
@@ -18,6 +19,7 @@ public class Grotesque_Behavior : MonoBehaviour {
     private bool wait_attack;
     private bool IFrames;
     private bool firstFrameActivation;
+    private bool stunned;
 
     // All timers
     private float timeSinceLastAttack;
@@ -41,6 +43,7 @@ public class Grotesque_Behavior : MonoBehaviour {
 
     // Visual Identifiers
     public GameObject explosionParticleSystemPrefab;
+    private Animator animator;
 
     void Start()
     {
@@ -61,6 +64,9 @@ public class Grotesque_Behavior : MonoBehaviour {
         if (GetComponentInChildren<SphereCollider>())
             explosionCollider = GetComponentInChildren<SphereCollider>();
 
+        if (GetComponent<Animator>())
+            animator = GetComponent<Animator>();
+
         //if (GetComponentInChildren<MeshRenderer>())
         //    warningRadius = GetComponentInChildren<MeshRenderer>();
 
@@ -77,8 +83,9 @@ public class Grotesque_Behavior : MonoBehaviour {
         timeSinceLastAttack = inactiveTime = 0.0f;
         idleChangePoint = Random.value + 0.3f;
         idleDirection = transform.rotation;
+        stun_length = 1.0f;
 
-        IFrames = firstFrameActivation = false;
+        IFrames = firstFrameActivation = stunned = false;
     }
 
     void Update()
@@ -104,6 +111,10 @@ public class Grotesque_Behavior : MonoBehaviour {
                     Explode();
                     break;
                 }
+            case States.STUNNED:
+                {
+                    break;
+                }
             default:
                 {
                     Idle();
@@ -116,6 +127,11 @@ public class Grotesque_Behavior : MonoBehaviour {
     {
         // Testing each state:
         //return States.INVALID;
+        if (currentHealth == 0)
+        {
+            firstFrameActivation = false;
+            animator.Play("Imp_Death");
+        }
 
         // Don't leave the explode state
         if (currentState == States.EXPLODE || currentHealth <= 0)
@@ -123,6 +139,9 @@ public class Grotesque_Behavior : MonoBehaviour {
             currentHealth = -1;
             return States.EXPLODE;
         }
+
+        if (stunned)
+            return States.STUNNED;
 
         // Don't leave the attack state
         if (currentState == States.ATTACK)
@@ -174,12 +193,18 @@ public class Grotesque_Behavior : MonoBehaviour {
     void Attack()
     {
         // Play the animation, wait until the animation is done.
+        if (!firstFrameActivation)
+        {
+            animator.Play("Imp_Attack");
+            firstFrameActivation = true;
+        }
+
         inactiveTime += Time.deltaTime;
         if (inactiveTime > 1.5f)
         {
             currentState = States.INVALID;
             inactiveTime = timeSinceLastAttack = 0.0f;
-            
+            firstFrameActivation = false;
             //attackCollider.enabled = false;
         }
 
@@ -212,12 +237,17 @@ public class Grotesque_Behavior : MonoBehaviour {
     void ActivateAttackCollider()
     {
         attackCollider.enabled = true;
-        Invoke("DeactivateAttackCollider", 0.5f);
+        Invoke("DeactivateAttackCollider", 0.2f);
     }
 
     void DeactivateAttackCollider()
     {
         attackCollider.enabled = false;
+    }
+
+    void RegainControl()
+    {
+        stunned = false;
     }
 
     void Explode()
@@ -226,6 +256,8 @@ public class Grotesque_Behavior : MonoBehaviour {
 
         warningLight.intensity = Mathf.Clamp((((inactiveTime / 4.0f) * 3.0f) * ((inactiveTime / 4.0f) * 3.0f)), 0.0f, 8.0f);
         warningRadius.enabled = true;
+
+        warningRadius.transform.rotation *= Quaternion.AngleAxis(45.0f * Time.deltaTime, Vector3.forward);
         //warningRadius.material.SetColor(0, Color.yellow);
 
         //warningRadius.transform.rotation *= Quaternion.AngleAxis(15.0f, warningRadius.transform.forward);
@@ -267,6 +299,8 @@ public class Grotesque_Behavior : MonoBehaviour {
             }
             else if (other.CompareTag("WarriorChargeCollider"))
             {
+                animator.Play("Imp_Reaction");
+
                 if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
                 {
                     currentHealth -= 100 * 2;
@@ -293,6 +327,10 @@ public class Grotesque_Behavior : MonoBehaviour {
             }
             else if (other.CompareTag("WarriorSlamCollider"))
             {
+                animator.Play("Imp_Reaction");
+                rBody.AddForce(Vector3.up * 100);
+                Invoke("RegainControl", stun_length);
+
                 if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
                 {
                     currentHealth -= 150 * 2;
@@ -318,6 +356,8 @@ public class Grotesque_Behavior : MonoBehaviour {
                 Invoke("IFrameOff", 0.25f);
             }
         }
+
+        
     }
 
     void IFrameOff()

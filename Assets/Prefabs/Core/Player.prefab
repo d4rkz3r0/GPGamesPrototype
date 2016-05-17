@@ -1640,7 +1640,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157932}
   m_LocalRotation: {x: 0, y: 0.004523256, z: 0, w: 0.9999898}
-  m_LocalPosition: {x: 1.07, y: 0, z: -56.683758}
+  m_LocalPosition: {x: -0.21700865, y: 3, z: 1.8223532}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479230}
@@ -2559,7 +2559,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300004, guid: 55c6f1bada5856e42af1560f4b700443, type: 3}
 --- !u!65 &6573992
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2830,6 +2830,7 @@ MonoBehaviour:
   AtkCoolDown: {fileID: 0}
   DefCoolDown: {fileID: 0}
   VampCoolDown: {fileID: 0}
+  ForH: 0
   timer: 0
 --- !u!114 &11409170
 MonoBehaviour:
@@ -2878,6 +2879,7 @@ MonoBehaviour:
   actionDuration: 2
   firstFrameActivation: 0
   cooldownTimer: 0
+  inUse_ready_onCooldown: 0
 --- !u!114 &11431362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2970,12 +2972,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f76ec46f15aa34799b729b6578cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 111198}
+  HealthBar: {fileID: 0}
   ObjectPlayer: {fileID: 157932}
-  HealthText: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
-  GreenHealthbar: {fileID: 0}
+  flashingColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 2.25
+  flashInterval: 0.33
 --- !u!114 &11447176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3090,6 +3093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfe44212799a394db12ea70816c758f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currAnimationClips: []
 --- !u!114 &11468880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3124,6 +3128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlots: 5
+  outerSlots: []
 --- !u!114 &11484094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3159,6 +3164,7 @@ MonoBehaviour:
   cooldownDuration: 0.3
   firstFrameActivation: 0
   cooldownTimer: 0
+  inUse_ready_onCooldown: 0
 --- !u!114 &11492980
 MonoBehaviour:
   m_ObjectHideFlags: 1

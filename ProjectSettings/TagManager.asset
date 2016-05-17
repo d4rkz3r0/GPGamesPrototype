@@ -21,6 +21,8 @@ TagManager:
   - PickUpHealth
   - OnDeathExplosion
   - GoldDrop
+  - Selector
+  - ExploderMelee
   layers:
   - Default
   - TransparentFX
