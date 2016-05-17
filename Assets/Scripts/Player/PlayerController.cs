@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     //Player Movement
     public float fMoveSpeed = 4.0f;
+    private float fSpeedModifier = 1.0f;
     float hInput;
     float vInput;
 
@@ -183,7 +184,7 @@ public class PlayerController : MonoBehaviour
             velocity = new Vector3(0.0f, 0.0f, Mathf.Clamp((Mathf.Abs(vInput) + Mathf.Abs(hInput)), 0, 1));
             velocity = transform.TransformDirection(velocity);
 
-            velocity *= fMoveSpeed;
+            velocity *= (fMoveSpeed * fSpeedModifier);
             transform.localPosition += velocity * Time.fixedDeltaTime;
         }
 
@@ -363,6 +364,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ResetMoveSpeed()
+    {
+        fSpeedModifier = 1.0f;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == ("ZombieAttack"))
@@ -377,9 +383,9 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("OnDeathExplosion"))
         {
             if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
-                healthManager.DecreaseHealth(35.0f);
+                healthManager.DecreaseHealth(45.0f);
             else
-                healthManager.DecreaseHealth(300.0f);
+                healthManager.DecreaseHealth(400.0f);
             
         }
 
@@ -389,6 +395,18 @@ public class PlayerController : MonoBehaviour
                 healthManager.DecreaseHealth(20.0f);
             else
                 healthManager.DecreaseHealth(100.0f);
+        }
+
+        else if (other.CompareTag("Slow"))
+        {
+            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                healthManager.DecreaseHealth(40.0f);
+            else
+                healthManager.DecreaseHealth(200.0f);
+
+            // Slow the player
+            fSpeedModifier = 0.4f;
+            Invoke("ResetMoveSpeed", 1.5f);
         }
     }
 }
