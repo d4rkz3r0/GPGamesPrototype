@@ -347,7 +347,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 499000}
   - 33: {fileID: 3378886}
-  - 64: {fileID: 6401490}
   - 23: {fileID: 2355222}
   - 135: {fileID: 13596810}
   - 114: {fileID: 11487804}
@@ -762,7 +761,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18215202, y: 3.006, z: -11.539545}
+  m_LocalPosition: {x: -1.61, y: 3.64, z: 69.43}
   m_LocalScale: {x: 60, y: 60, z: 60}
   m_Children:
   - {fileID: 492622}
@@ -947,7 +946,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162054}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.001, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0037, z: 0}
   m_LocalScale: {x: 0.16787116, y: 0.16787103, z: 0.16787103}
   m_Children: []
   m_Father: {fileID: 461778}
@@ -970,7 +969,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162054}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1012,18 +1011,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!64 &6401490
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6541818
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1104,7 +1091,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129510}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
@@ -1117,11 +1104,11 @@ MonoBehaviour:
   baseHitDamage: 100
   furyGainedOffHit: 20
   addedForce: 10
-  healthDrop: {fileID: 0}
+  healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
   healthDropRate: 0.05
   drops: []
   dropRate: 1
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
   dropPosition: {fileID: 0}
 --- !u!114 &11433908
 MonoBehaviour:
@@ -1162,7 +1149,7 @@ SphereCollider:
   m_GameObject: {fileID: 162054}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.46
   m_Center: {x: 0, y: -9.313226e-10, z: 0}

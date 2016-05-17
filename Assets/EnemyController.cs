@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour
     Vector3 slotSpotOuter;
     EnemySlotScript tempSlotScript;
     bool canDoStuff = true;
-    EnemyHealth myHealth;
     void Start()
     {
         myAnimation = GetComponent<Animator>();
@@ -30,17 +29,11 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");
         if (player)
             tempSlotScript = player.GetComponent<EnemySlotScript>();
-        myHealth = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (myHealth.CurHealth <= 0)
-        {
-            myAnimation.SetInteger("state", 3);
-            RemoveFromSLots();
-        }
         if (player && myAnimation.GetInteger("state") != 3)
         {
             float distance = 0;
@@ -163,7 +156,7 @@ public class EnemyController : MonoBehaviour
             canDoStuff = false;
             Invoke("CanAttack", 1.0f);
         }
-        else if (other.tag == "WarriorSlamCollider")
+        if (other.tag == "WarriorSlamCollider")
         {
             ResetAttack();
             canDoStuff = false;
@@ -179,7 +172,7 @@ public class EnemyController : MonoBehaviour
             }
             Invoke("CanAttack", 2.5f);
         }
-        else if (other.tag == "WarriorWhirlwindCollider")
+        if (other.tag == "WarriorWhirlwindCollider")
         {
             ResetAttack();
             canDoStuff = false;
@@ -199,7 +192,6 @@ public class EnemyController : MonoBehaviour
     }
     public void RemoveFromSLots()
     {
-        myAnimation.SetInteger("state", 3);
         if (slotted == 1)
             tempSlotScript.RemoveSlot(gameObject);
         else
