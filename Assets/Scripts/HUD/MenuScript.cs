@@ -56,13 +56,14 @@ public class MenuScript : MonoBehaviour
     public List<Image> PurchaseMeterBuff = new List<Image>();
     public List<Image> PurchaseMeterWU = new List<Image>();
     int PriceIncrease = 300;
+    int tempDiscount = 50;
     bool LeaveShop = false;
     public Text YourGold;
     public Text PlayerBossSouls;
     public int InputBuffer = 10;
-
+    public int InPutAButton = 10;
     public static bool InShopMenu = false;
-
+    public bool DiscountVentdor = false;
     void Start()
     {
         #region Setting all the prices for the store
@@ -73,7 +74,7 @@ public class MenuScript : MonoBehaviour
 
         SetGoldPrices(ItemPricing[0], ItemGoldPrices[0]);
         SetGoldPrices(ItemPricing[1], ItemGoldPrices[1]);
-        // Setting the Players Base Gold Upgrades
+       
         SetGoldPrices(PlayerStatsPricing[0], PSGoldPrices[0]);
         SetGoldPrices(PlayerStatsPricing[1], PSGoldPrices[1]);
         SetGoldPrices(PlayerStatsPricing[2], PSGoldPrices[2]);
@@ -93,15 +94,57 @@ public class MenuScript : MonoBehaviour
         selector = 0;
         SubSelector = 0;
         InputBuffer = 15;
+        InPutAButton = 10;
         SelectorImage.color = new Color(1, 1, 1, 0.3f);
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         SelectorImage.transform.position = ItemMenu[0].transform.position;
         PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
+        ThePlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
 
     void Update()
     {
+
+        if (!DiscountVentdor)
+        {
+            SetGoldPrices(ItemPricing[0], ItemGoldPrices[0]);
+            SetGoldPrices(ItemPricing[1], ItemGoldPrices[1]);
+
+            SetGoldPrices(PlayerStatsPricing[0], PSGoldPrices[0]);
+            SetGoldPrices(PlayerStatsPricing[1], PSGoldPrices[1]);
+            SetGoldPrices(PlayerStatsPricing[2], PSGoldPrices[2]);
+
+
+            SetGoldPrices(AblilityPricing[0], ABGoldPrices[0]);
+            SetGoldPrices(AblilityPricing[1], ABGoldPrices[1]);
+            SetGoldPrices(AblilityPricing[2], ABGoldPrices[2]);
+
+
+
+            SetGoldPrices(WeaponUpgradePricing[0], WUGoldPrices[0]);
+
+        }
+        else if(DiscountVentdor)
+        {
+
+              SetGoldPrices(ItemPricing[0], ItemGoldPrices[0]);
+            SetGoldPrices(ItemPricing[1], ItemGoldPrices[1]);
+
+            SetGoldPrices(PlayerStatsPricing[0], PSGoldPrices[0]);
+            SetGoldPrices(PlayerStatsPricing[1], PSGoldPrices[1]);
+            SetGoldPrices(PlayerStatsPricing[2], PSGoldPrices[2]);
+
+
+            SetGoldPrices(AblilityPricing[0], ABGoldPrices[0]);
+            SetGoldPrices(AblilityPricing[1], ABGoldPrices[1]);
+            SetGoldPrices(AblilityPricing[2], ABGoldPrices[2]);
+
+
+
+            SetGoldPrices(WeaponUpgradePricing[0], WUGoldPrices[0]);
+        }
+           
         PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         if (Input.GetButton("B Button") && LeaveShop == true && ExitBuffer <= 0)
@@ -113,7 +156,7 @@ public class MenuScript : MonoBehaviour
         }
             
 
-        if (Input.GetButton("A Button"))
+        if (Input.GetButton("A Button") && InPutAButton <= 0)
         {
             InMenu = true;
             LeaveShop = false;
@@ -121,7 +164,7 @@ public class MenuScript : MonoBehaviour
             RectTransform temp = SubItemMenu[SubSelector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width /2, temp.rect.height / 2);
             SelectorImage.transform.localScale = SubItemMenu[SubSelector].transform.localScale;
-           
+            InPutAButton = 10;
 
 
 
@@ -154,6 +197,7 @@ public class MenuScript : MonoBehaviour
         SubMenuBuffer--;
         ExitBuffer--;
         InputBuffer--;
+        InPutAButton--;
     }
 
 
@@ -161,7 +205,7 @@ public class MenuScript : MonoBehaviour
 
 
 
-
+  
     void SubMenus(List<GameObject> _submenu, ref int _subselector, ref int buffer)
     {
        
@@ -296,8 +340,19 @@ public class MenuScript : MonoBehaviour
 
     void IncreasePrice(ref List<int> Price, Text _Gold, ref int _subselector)
     {
-        Price[_subselector] *= 2;
-       _Gold.text = Price[_subselector] + " " + "Gold";
+        if(DiscountVentdor)
+        {
+
+            Price[_subselector] *= 2;
+            tempDiscount =  Price[_subselector] / 6;
+            _Gold.text = tempDiscount + " " + "Gold";
+        }
+        else
+        {
+            Price[_subselector] *= 2;
+            _Gold.text = Price[_subselector] + " " + "Gold";
+        }
+     
     }
 
     void PurchaseItems(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, GameObject[] ItemMenu)
@@ -416,6 +471,13 @@ public class MenuScript : MonoBehaviour
 
     void SetGoldPrices(int Price, Text Gold)
     {
+        if (DiscountVentdor)
+        {
+            //tempDiscount *= 2;
+            Gold.text =  tempDiscount + " " + "Gold";
+        }
+            
+        else
         Gold.text = Price + " " + "Gold";
 
     }
@@ -433,8 +495,16 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<PlayerHealth>().CurHealth = thePlayer.GetComponent<PlayerHealth>().MaxHealth;
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+           // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, PSGoldPrices[0], ref _subselector);
+            if (DiscountVentdor)
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
+            else
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+
+            if (!DiscountVentdor)
+                SetGoldPrices(Pricing[_subselector], PSGoldPrices[0]);
+
         }
         if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
             _submenu[_subselector].gameObject.name == "Fp" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
@@ -444,9 +514,15 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+           // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing,PSGoldPrices[1], ref _subselector);
+            if (DiscountVentdor)
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
+            else
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
 
+            if (!DiscountVentdor)
+                SetGoldPrices(Pricing[_subselector], PSGoldPrices[1]);
         }
 
 
@@ -459,9 +535,15 @@ public class MenuScript : MonoBehaviour
             Debug.Log(thePlayer.GetComponent<Multiplier>().basicAttkMulitplier);
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+            //ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, PSGoldPrices[2], ref _subselector);
+            if (DiscountVentdor)
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
+            else
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
 
+            if (!DiscountVentdor)
+                SetGoldPrices(Pricing[_subselector], PSGoldPrices[2]);
         }
 
 
@@ -505,8 +587,15 @@ public class MenuScript : MonoBehaviour
            // thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += 1f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
+           // ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
             IncreasePrice(ref WeaponUpgradePricing, WUGoldPrices[0], ref _subselector);
+            if (DiscountVentdor)
+                ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector] / 6;
+            else
+                ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
+
+            if (!DiscountVentdor)
+                SetGoldPrices(WeaponUpgradePricing[_subselector], WUGoldPrices[0]);
 
         }
 
@@ -542,8 +631,15 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<Multiplier>().whirlWindMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+           // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, ABGoldPrices[0], ref _subselector);
+            if (DiscountVentdor)
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
+            else
+                ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+
+            if (!DiscountVentdor)
+                SetGoldPrices(Pricing[_subselector], ABGoldPrices[0]);
         }
         if ( _submenu[_subselector].gameObject.name == "SlamAblilityUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
               ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
@@ -552,8 +648,15 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<Multiplier>().groundSlamMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, ABGoldPrices[1], ref _subselector);
+            if(DiscountVentdor)
+            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
+            else
+            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+
+            if (!DiscountVentdor)
+                SetGoldPrices(Pricing[_subselector], ABGoldPrices[1]);
+            
 
         }
 
@@ -566,9 +669,15 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<Multiplier>().chargeMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
             buffer = 20;
-            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+           // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, ABGoldPrices[2], ref _subselector);
+              if(DiscountVentdor)
+            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
+            else
+            ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
 
+            if (!DiscountVentdor)
+                SetGoldPrices(Pricing[_subselector], ABGoldPrices[2]);
         }
     }
 
@@ -585,6 +694,7 @@ public class MenuScript : MonoBehaviour
             buffer = 20;
             ThePlayer.GetComponent<BossSouls>().BossSoul -= Pricing[_subselector];
             IncreaseBossSoulsPrice(ref BuffPricing, BuGoldPrices[0], ref _subselector);
+
         
         }
         if ( _submenu[_subselector].gameObject.name == "DefBuffUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<BossSouls>().BossSoul > Pricing[_subselector])

@@ -19,10 +19,10 @@ public class BossSouls : MonoBehaviour {
             BossSoul = 0;
 
 
-        if (Input.GetButton("A Button") && Input.GetButton("X Button") && Input.GetButton("Y Button"))
-        {
-            AddToBossSouls(1000);
-        }
+        //if (Input.GetButton("A Button") && Input.GetButton("X Button") && Input.GetButton("Y Button"))
+        //{
+        //    AddToBossSouls(1000);
+        //}
 
     }
 
