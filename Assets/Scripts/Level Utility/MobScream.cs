@@ -25,8 +25,8 @@ public class MobScream : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                Prisoner1GameObject.GetComponent<AudioSource>().Play();
-                Prisoner2GameObject.GetComponent<AudioSource>().PlayDelayed(0.3f);
+                SFXManager.Instance.PlaySFX("ropeStretch1SFX");
+                SFXManager.Instance.PlaySFX("ropeStretch2SFX");
                 GameObject.Find("Room2.5").SetActive(false);
                 eventOver = true;
             }

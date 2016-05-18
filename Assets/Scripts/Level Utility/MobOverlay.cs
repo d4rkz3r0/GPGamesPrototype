@@ -5,8 +5,6 @@ public class MobOverlay : MonoBehaviour
 {
     public GameObject enemyInfoUIOverlay;
     public GameObject mainGameUI;
-    public AudioSource ButtonQuitSFX;
-    public AudioSource enemyCrySFX;
     private bool isGamePaused;
     private bool popUpOverlay;
     private PlayerController player;
@@ -37,7 +35,7 @@ public class MobOverlay : MonoBehaviour
     {
         mainGameUI.SetActive(true);
         enemyInfoUIOverlay.SetActive(false);
-        ButtonQuitSFX.Play();
+        SFXManager.Instance.PlaySFX("overlayPromptSFX");
         isGamePaused = false;
         popUpOverlay = false;
         player.getInput = true;
@@ -46,14 +44,14 @@ public class MobOverlay : MonoBehaviour
 
     public void PlayCry()
     {
-        enemyCrySFX.Play();
+        GetComponent<AudioSource>().Play();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            ButtonQuitSFX.Play();
+            SFXManager.Instance.PlaySFX("overlayPromptSFX");
             popUpOverlay = true;
         }
     }

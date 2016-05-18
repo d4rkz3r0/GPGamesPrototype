@@ -8,16 +8,13 @@ public class FireBallController : MonoBehaviour
     public int abilityDamage;
 
     //Private References
-    private Rigidbody rb;
     private PlayerController player;
 
 
 	void Start () 
     {
-        rb = GetComponent<Rigidbody>();
         player = FindObjectOfType<PlayerController>();
     
-
         if(player.transform.localScale.x < 0.0f)
         {
             abilitySpeed = -abilitySpeed;
@@ -28,7 +25,10 @@ public class FireBallController : MonoBehaviour
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-	}
+
+        //Prototype Hack
+	    SFXManager.Instance.PlaySFX(gameObject.name[0] == 'F' ? "rangedFireballSFX" : "rangedLightningSFX");
+    }
 	
 	void Update () 
     {

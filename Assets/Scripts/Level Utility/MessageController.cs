@@ -76,7 +76,14 @@ public class MessageController : MonoBehaviour
                         "for help, it's too late for them.";
                     break;
                 }
-
+            case 7:
+                {
+                    displayedText.text =
+                        "No-Death Training Room\n" +
+                        "Practice your abilities.\n" +
+                        "Exit the Room, whenever.";
+                    break;
+                }
             default:
                 {
                     break;

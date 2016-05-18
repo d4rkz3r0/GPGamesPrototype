@@ -25,6 +25,7 @@ TagManager:
   - ExploderMelee
   - Arrow
   - Slow
+  - ServiceContainer
   layers:
   - Default
   - TransparentFX

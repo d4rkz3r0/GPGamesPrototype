@@ -71,7 +71,7 @@ public class ModalPanel : MonoBehaviour
         //Free Player
         FindObjectOfType<PlayerController>().getInput = true;
         Time.timeScale = 1.0f;
-        GetComponent<AudioSource>().Play();
+        SFXManager.Instance.PlaySFX("dialogueSelectOptionSFX");
         modalPanelObject.SetActive(false);
     }
 }

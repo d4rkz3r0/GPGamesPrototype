@@ -6,15 +6,12 @@ using System.Linq;
 public class SwordController : MonoBehaviour
 {
     //References
-    
     private SkinnedMeshRenderer swordMeshRenderer;
     private MeshCollider swordMeshCollider;
     private Mesh currSwordMesh;
-    public AudioSource[] swordSoundEffects;
 
     //External
     private PlayerController player;
-    private ComboSystem playerComboState;
     private SwordTrail swordTrail;
 
     //Tweakables
@@ -73,7 +70,7 @@ public class SwordController : MonoBehaviour
         {
             case 1:
                 {
-                    swordSoundEffects[0].Play();
+                    SFXManager.Instance.PlaySFX("swordHitZombie1SFX");
                     firstStrike = false;
                     break;
                 }
@@ -81,47 +78,15 @@ public class SwordController : MonoBehaviour
 
             case 2:
                 {
-                    swordSoundEffects[1].Play();
+                    SFXManager.Instance.PlaySFX("swordHitZombie2SFX");
                     secondStrike = false;
                     break;
                 }
             case 3:
                 {
-                    swordSoundEffects[2].Play();
+                    SFXManager.Instance.PlaySFX("swordHitZombie3SFX");
                     thirdStrike = false;
 
-                    break;
-                }
-            default:
-                {
-                    Debug.Log("Invalid Attack State");
-                    break;
-                }
-        }
-    }
-
-    void SwordSlashWall(int currentAttack)
-    {
-        switch (currentAttack)
-        {
-            case 1:
-                {
-                    swordSoundEffects[6].Play();
-                    firstStrike = false;
-                    break;
-                }
-
-
-            case 2:
-                {
-                    swordSoundEffects[7].Play();
-                    secondStrike = false;
-                    break;
-                }
-            case 3:
-                {
-                    swordSoundEffects[8].Play();
-                    thirdStrike = false;
                     break;
                 }
             default:
@@ -150,8 +115,6 @@ public class SwordController : MonoBehaviour
     //Reduce Enemy HP
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Sword has registered a collision event with: " + other.gameObject.tag + ".");
-
         switch (other.tag)
         {
             case "Enemy":
@@ -173,26 +136,6 @@ public class SwordController : MonoBehaviour
                     {
                         swordTrail.TrailColor = Color.red;
                         SwordSlashEnemy(other, 3);
-                        thirdStrike = false;
-                    }
-                    break;
-                }
-            case "Wall":
-                {
-                    if (player.AnimatorIsPlaying("MeleeSlash1") && firstStrike)
-                    {
-                        SwordSlashWall(1);
-                        firstStrike = false;
-                    }
-                    else if (player.AnimatorIsPlaying("MeleeSlash2") && secondStrike)
-                    {
-                        SwordSlashWall(2);
-                        secondStrike = false;
-
-                    }
-                    else if (player.AnimatorIsPlaying("MeleeSlash3") && thirdStrike && meleeEndComboTimer < 0.0f)
-                    {
-                        SwordSlashWall(3);
                         thirdStrike = false;
                     }
                     break;

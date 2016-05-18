@@ -38,15 +38,6 @@ public class CameraOrbit : MonoBehaviour
             distance = 2.5f;
         }
 
-        if (Input.GetButton("SwitchClass"))
-        {
-            Debug.Log("Left Bumper");
-        }
-        if (Input.GetButton("Right Bumper"))
-        {
-            Debug.Log("Right Bumper");
-        }
-
 
         if (Input.GetButton("SwitchClass") && Input.GetButton("Right Bumper") && Input.GetButtonDown("Y Button"))
         {

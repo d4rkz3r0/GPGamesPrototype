@@ -6,7 +6,8 @@ public class RandomizedAudio : MonoBehaviour {
     public AudioClip[] clipsToPlay;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         int selection = Random.Range(0, clipsToPlay.Length);
         float pitch = Random.Range(.8f, 1.4f);
 
