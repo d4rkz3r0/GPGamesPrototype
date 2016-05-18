@@ -20,10 +20,10 @@ public class PlayerGold : MonoBehaviour
             Gold = 0;
 
 
-        if (Input.GetButton("A Button") && Input.GetButton("X Button") && Input.GetButton("Y Button"))
-        {
-            AddToGold(1000);
-        }
+        //if (Input.GetButton("A Button") && Input.GetButton("X Button") && Input.GetButton("Y Button"))
+        //{
+        //    AddToGold(1000);
+        //}
 
     }
 

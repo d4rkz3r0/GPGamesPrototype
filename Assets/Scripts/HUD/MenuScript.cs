@@ -60,7 +60,7 @@ public class MenuScript : MonoBehaviour
     public Text YourGold;
     public Text PlayerBossSouls;
     public int InputBuffer = 10;
-
+    public int InPutAButton = 10;
     public static bool InShopMenu = false;
 
     void Start()
@@ -93,6 +93,7 @@ public class MenuScript : MonoBehaviour
         selector = 0;
         SubSelector = 0;
         InputBuffer = 15;
+        InPutAButton = 10;
         SelectorImage.color = new Color(1, 1, 1, 0.3f);
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         SelectorImage.transform.position = ItemMenu[0].transform.position;
@@ -113,7 +114,7 @@ public class MenuScript : MonoBehaviour
         }
             
 
-        if (Input.GetButton("A Button"))
+        if (Input.GetButton("A Button") && InPutAButton <= 0)
         {
             InMenu = true;
             LeaveShop = false;
@@ -121,7 +122,7 @@ public class MenuScript : MonoBehaviour
             RectTransform temp = SubItemMenu[SubSelector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width /2, temp.rect.height / 2);
             SelectorImage.transform.localScale = SubItemMenu[SubSelector].transform.localScale;
-           
+            InPutAButton = 10;
 
 
 
@@ -154,6 +155,7 @@ public class MenuScript : MonoBehaviour
         SubMenuBuffer--;
         ExitBuffer--;
         InputBuffer--;
+        InPutAButton--;
     }
 
 
