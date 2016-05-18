@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateGamePadState();
         UpdateFlashTimer();
 
+        HealthBar.fillAmount = CurHealth / MaxHealth;
 
         if (CurHealth >= MaxHealth)
         {
@@ -67,18 +68,12 @@ public class PlayerHealth : MonoBehaviour
         Invoke("DisableRumble", timeUntilDisable);
 		
         FlashPlayerModel();
-
         CurHealth -= dmg;
-        float temp = CurHealth / MaxHealth;
-
-        HealthBar.fillAmount -= CurHealth / MaxHealth;
     }
 
     public void ReGenHealth(float _amount)
     {
         CurHealth += _amount;
-        float temp = CurHealth / MaxHealth;
-        HealthBar.fillAmount += CurHealth / MaxHealth;
     }
 
     
