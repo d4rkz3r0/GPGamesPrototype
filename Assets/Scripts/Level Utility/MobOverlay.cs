@@ -28,6 +28,7 @@ public class MobOverlay : MonoBehaviour
 	        mainGameUI.SetActive(false);
 	        enemyInfoUIOverlay.SetActive(true);
             player.getInput = false;
+            FindObjectOfType<FuryMeter>().Currentmeter = 0.0f;
             Time.timeScale = 0.0f;
         }
     }

@@ -95,17 +95,17 @@ public class MenuScript : MonoBehaviour
         SelectorImage.transform.position = ItemMenu[0].transform.position;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-
-
-
-
-
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         if (Input.GetButton("B Button") && LeaveShop == true && ExitBuffer <= 0)
+        {
             Shop.enabled = false;
+            FindObjectOfType<PlayerController>().getInput = true;
+            enabled = false; //You may need the script running after exit, in case, remove this.
+        }
+            
 
         if (Input.GetButton("A Button"))
         {
@@ -312,8 +312,6 @@ public class MenuScript : MonoBehaviour
             else if (ItemMenu[selector].gameObject.name == "WeaponUpgrades")
                 BuyWeaponUpUrades(_submenu, ref _subselector, ref buffer, Gold, ref thePlayer, InSubMenu,ref PurchaseMeterWU, ref WeaponUpgradePricing);
         }
-
-
     }
 
     void MainShopMenu(GameObject[] ItemMenu, ref int selector, ref int buffer, bool InSubMenu, ref List<GameObject> _submenu)

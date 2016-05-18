@@ -37,6 +37,7 @@ public class ModalPanel : MonoBehaviour
     {
         //Freeze Player
         FindObjectOfType<PlayerController>().getInput = false;
+        FindObjectOfType<FuryMeter>().Currentmeter = 0.0f;
         Time.timeScale = 0.0f;
 
 
