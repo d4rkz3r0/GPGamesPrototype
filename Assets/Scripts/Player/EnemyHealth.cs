@@ -25,6 +25,8 @@ public class EnemyHealth : MonoBehaviour
     FuryMeter playerFury;
     public Transform dropPosition;
     Multiplier playerMultiplier;
+    [SerializeField]
+    int amountOfGOldToDrop = 1000;
     void Start()
     {
         CurHealth = MaxHealth;
@@ -172,7 +174,10 @@ public class EnemyHealth : MonoBehaviour
         {
             int index = Random.Range(0, drops.Length);
             if (drops[index])
-                Instantiate(drops[index], dropPosition.position, transform.rotation);
+            {
+                GameObject gold = (GameObject)Instantiate(drops[index], dropPosition.position, transform.rotation);
+                gold.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = amountOfGOldToDrop;
+            }
         }
         Destroy(gameObject);
     }

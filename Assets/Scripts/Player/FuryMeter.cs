@@ -16,7 +16,7 @@ public class FuryMeter : MonoBehaviour
         timer = 5.0f;
         FuryMeterForegroundImage.fillAmount = Currentmeter;
         FuryMeterTextElement.text = Currentmeter + "/" + MaxMeter;
-        decayRate = 0;
+        decayRate = 1;
 	}
 	
 	// Update is called once per frame

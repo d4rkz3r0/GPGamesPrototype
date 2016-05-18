@@ -26,6 +26,7 @@ TagManager:
   - Arrow
   - Slow
   - ServiceContainer
+  - FireWeaponExplosion
   layers:
   - Default
   - TransparentFX

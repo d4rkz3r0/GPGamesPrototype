@@ -72,8 +72,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerHealth healthManager;
 
-    private SkinnedMeshRenderer[] playerMeshRenderers;
-    private Material[] playerMeshMaterials;
+
+    
 
     private void Awake()
     {
@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("VampireBuffParticle"))
             if (GameObject.FindGameObjectWithTag("VampireBuffParticle").GetComponent<ParticleSystem>())
                 vamprisimParticleSystem = GameObject.FindGameObjectWithTag("VampireBuffParticle").GetComponent<ParticleSystem>();
+        
 
         if (GetComponent<PlayerHealth>())
             healthManager = GetComponent<PlayerHealth>();
@@ -150,6 +151,8 @@ public class PlayerController : MonoBehaviour
                 UpdateAbilites();
             }
             UpdateBuffs();
+
+
         }
     }
 
@@ -317,17 +320,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    void GrabMaterials()
-    {
-        playerMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
-        playerMeshMaterials = new Material[playerMeshRenderers.Length];
-
-        for (int i = 0; i < playerMeshMaterials.Length; i++)
-        {
-            playerMeshMaterials[i] = playerMeshRenderers[i].material;
-        }
-    }
+    
 
     //-Helper Funcs-//
     private bool IsWarrior()
