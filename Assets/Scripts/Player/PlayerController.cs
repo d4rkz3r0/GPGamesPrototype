@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public bool InShopMenu;
     public bool alive;
     public bool getInput;
+    private bool iFrames;
     /* attack = -1; defBuff = 0; vampBuff = 1; onCD = 9; rdy = 10 */
 
     //Player Movement
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         //Player
-        InShopMenu = false;
+        InShopMenu = iFrames = false;
         anim = GetComponent<Animator>();
         animRC = anim.runtimeAnimatorController;
         rb = GetComponent<Rigidbody>();
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
         activeTimer = cooldownTimer = 0.0f;
         attkBuff_defBuff_vampBuff_onCD_rdy = 10;
 
-        getInput = true;
+        getInput =  true;
 
         rightBumperCost = 30;
         rightTriggerCost = 60;
@@ -387,6 +388,11 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
+    void IFramesOff()
+    {
+        iFrames = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == ("ZombieAttack"))
@@ -417,19 +423,24 @@ public class PlayerController : MonoBehaviour
 
         else if (other.CompareTag("Slow"))
         {
-            if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
-                healthManager.DecreaseHealth(40.0f);
-            else
-                healthManager.DecreaseHealth(200.0f);
+            if (!iFrames)
+            {
+                if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
+                    healthManager.DecreaseHealth(40.0f);
+                else
+                    healthManager.DecreaseHealth(200.0f);
 
-            // Slow the player
-            fSpeedModifier = 0.4f;
-            //foreach (Material meshMaterial in playerMeshMaterials)
-            //{
-            //    meshMaterial.color = Color.cyan;
-            //}
+                // Slow the player
+                fSpeedModifier = 0.4f;
+                //foreach (Material meshMaterial in playerMeshMaterials)
+                //{
+                //    meshMaterial.color = Color.cyan;
+                //}
 
-            Invoke("ResetMoveSpeed", 1.5f);
+                iFrames = true;
+                Invoke("IFramesOff", 0.2f);
+                Invoke("ResetMoveSpeed", 1.5f);
+            }
         }
         
         else if (other.CompareTag("Arrow"))
