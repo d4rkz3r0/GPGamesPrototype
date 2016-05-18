@@ -42,6 +42,13 @@ public class DoorToggle : MonoBehaviour
                     noAction = DoNothing;
                     break;
             }
+            case 2:
+            {
+                Debug.Log("I MADE IT HERE");
+                yesAction = OpenShop;
+                noAction = DoNothing;
+                break;
+            }
             default:
             {
                 break;
@@ -87,5 +94,14 @@ public class DoorToggle : MonoBehaviour
     void DoNothing()
     {
         
+    }
+
+
+
+    void OpenShop()
+    {
+        FindObjectOfType<MenuScript>().enabled = true;
+        MenuScript.InShopMenu = true;
+
     }
 }
