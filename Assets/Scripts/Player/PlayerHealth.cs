@@ -63,7 +63,9 @@ public class PlayerHealth : MonoBehaviour
     public void DecreaseHealth(float dmg)
     {
         //Bzzzzzzz
-        RumbleController(dmg / MaxHealth);
+        float timeUntilDisable = RumbleController(dmg / MaxHealth) + 0.5f;
+        Invoke("DisableRumble", timeUntilDisable);
+		
         FlashPlayerModel();
 
         CurHealth -= dmg;
@@ -109,7 +111,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateGamePadState() { prevState = state; state = GamePad.GetState(playerIndex); }
 
-    public void RumbleController(float normHPVal, float duration = DEFAULT_RUMBLE_DURATION)
+    public float RumbleController(float normHPVal, float duration = DEFAULT_RUMBLE_DURATION)
     {
         float percentage = normHPVal * 100.0f;
 
@@ -121,9 +123,15 @@ public class PlayerHealth : MonoBehaviour
         {
             normHPVal = 1.0f;
         }
-        //GamePad.SetVibration(playerIndex, normHPVal, normHPVal);
+        GamePad.SetVibration(playerIndex, normHPVal, normHPVal);
+        return normHPVal;
     }
 
+    public void DisableRumble()
+    {
+        GamePad.SetVibration(playerIndex, 0.0f, 0.0f);
+    }
+	
     private IEnumerator ToggleMaterialColor()
     {
         while (true)
