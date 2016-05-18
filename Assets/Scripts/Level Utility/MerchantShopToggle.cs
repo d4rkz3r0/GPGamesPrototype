@@ -29,6 +29,7 @@ public class MerchantShopToggle : MonoBehaviour
                 {
                     shopOverlay.GetComponent<Canvas>().enabled = true;
                     shopOverlay.GetComponent<MenuScript>().enabled = true;
+                   MenuScript.InShopMenu = true;
                 }
                 shopOverlay.SetActive(true);
             }

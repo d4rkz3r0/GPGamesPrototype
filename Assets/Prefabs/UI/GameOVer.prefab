@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11403724}
   - 114: {fileID: 11462478}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: GameOVer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -60,6 +60,8 @@ public class MenuScript : MonoBehaviour
     public Text YourGold;
     public int InputBuffer = 10;
 
+    public static bool InShopMenu = false;
+
     void Start()
     {
         #region Setting all the prices for the store
@@ -103,6 +105,7 @@ public class MenuScript : MonoBehaviour
         {
             Shop.enabled = false;
             FindObjectOfType<PlayerController>().getInput = true;
+            InShopMenu = false;
             enabled = false; //You may need the script running after exit, in case, remove this.
         }
             
@@ -111,8 +114,11 @@ public class MenuScript : MonoBehaviour
         {
             InMenu = true;
             LeaveShop = false;
+            SelectorImage.transform.position = SubItemMenu[SubSelector].transform.position;
             RectTransform temp = SubItemMenu[SubSelector].gameObject.GetComponent<RectTransform>();
-            SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
+            SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width /2, temp.rect.height / 2);
+            SelectorImage.transform.localScale = SubItemMenu[SubSelector].transform.localScale;
+           
 
 
 
@@ -125,6 +131,7 @@ public class MenuScript : MonoBehaviour
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
             SelectorImage.transform.position = ItemMenu[selector].transform.position;
+            SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
             ExitBuffer = 10;
             AblilityInfo.text = "";
             if (InMenu == false)
@@ -198,8 +205,7 @@ public class MenuScript : MonoBehaviour
             }
 
 
-            //RectTransform temp = _submenu[_subselector].gameObject.GetComponent<RectTransform>();
-            //SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
+
 
             buffer = 10;
             for (int i = 0; i < _submenu.Count; i++)
@@ -341,9 +347,10 @@ public class MenuScript : MonoBehaviour
 
             buffer = 8;
             _submenu.Clear();
+            SelectorImage.transform.position = ItemMenu[selector].transform.position;
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
-            SelectorImage.transform.position = ItemMenu[selector].transform.position;
+            SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
            // SelectorImage.rectTransform = ItemMenu[selector].transform
             for (int i = 0; i < ItemMenu[selector].transform.GetChildCount(); i++)
             {
@@ -375,9 +382,10 @@ public class MenuScript : MonoBehaviour
 
             buffer = 8;
             _submenu.Clear();
+            SelectorImage.transform.position = ItemMenu[selector].transform.position;
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
-            SelectorImage.transform.position = ItemMenu[selector].transform.position;
+            SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
             for (int i = 0; i < ItemMenu[selector].transform.GetChildCount(); i++)
             {
                 _submenu.Add(ItemMenu[selector].transform.GetChild(i).gameObject);
