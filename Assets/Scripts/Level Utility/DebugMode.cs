@@ -29,14 +29,14 @@ public class DebugMode : MonoBehaviour
                 player.transform.position = new Vector3(-0.783f, -1.3f, -17.15963f);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                player.transform.position = new Vector3(-0.1850796f, -2.25f, 63.75215f);
+                player.transform.position = new Vector3(-3.356869f, 23.9999f, -138.8709f);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha5))
 	        {
-	            player.transform.position = new Vector3(-0.1850796f, 3.25f, 63.75215f);
+	            player.transform.position = new Vector3(-31.59203f, -0.55f, -75.29f);
 	        }
         }
 	}

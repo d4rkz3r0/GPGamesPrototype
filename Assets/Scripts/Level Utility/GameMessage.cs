@@ -16,7 +16,7 @@ public class GameMessage : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             MessageController.textSelection = 0;
         }

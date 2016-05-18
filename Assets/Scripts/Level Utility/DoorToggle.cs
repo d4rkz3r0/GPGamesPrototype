@@ -80,7 +80,8 @@ public class DoorToggle : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        //doorToToggle.GetComponent<AnimatedDoor>().openDoor = true;
+        SFXManager.Instance.PlaySFX("warpPortalSFX");
+        doorToToggle.GetComponent<AnimatedDoor>().openDoor = true;
         FindObjectOfType<PlayerController>().transform.position = warpPosition.transform.position;
     }
 
