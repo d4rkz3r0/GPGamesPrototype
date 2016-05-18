@@ -8,6 +8,9 @@ public class Spawner : MonoBehaviour
     public int currWave = 0;
     public int maxWave;
     public int numPerWave;
+    public int invulWave = 3;
+    public float detectionRange = 20.0f;
+    public float timeBetweenWaves = 3.0f;
     public GameObject[] objectsTospawn;
     Vector3[] spawnPoints;
     public GameObject particles;
@@ -19,6 +22,13 @@ public class Spawner : MonoBehaviour
     PlayerController playerCon;
     Multiplier playerMultiplier;
     FuryMeter playerFury;
+    bool playerEntered = false, startedSpawning = false;
+    [SerializeField]
+    int amountOfGoldTODrop = 0;
+    [SerializeField]
+    int dropChanceIncreaseModifier = 5;
+    [SerializeField]
+    GameObject goldDropObject;
     void Start()
     {
         CurHealth = maxHealth;
@@ -34,13 +44,21 @@ public class Spawner : MonoBehaviour
         playerFury = player.GetComponent<FuryMeter>();
         playerMultiplier = player.GetComponent<Multiplier>();
         playerCon = player.GetComponent<PlayerController>();
-        Invoke("SpawnEnemies", 3.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance < detectionRange)
+        {
+            playerEntered = true;
+        }
+        if (playerEntered && !startedSpawning)
+        {
+            startedSpawning = true;
+            Invoke("SpawnEnemies", timeBetweenWaves);
+        }
     }
     void SpawnEnemies()
     {
@@ -50,11 +68,12 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < numPerWave; i++)
             {
                 int index = Random.Range(0, objectsTospawn.Length);
-                Instantiate(objectsTospawn[index], spawnPoints[i] + transform.position, transform.rotation);
+                GameObject mob = (GameObject)Instantiate(objectsTospawn[index], spawnPoints[i] + transform.position, transform.rotation);
+                mob.GetComponent<EnemyHealth>().dropRate = dropChanceIncreaseModifier * currWave;
             }
             currWave++;
             Invoke("DisableParticles", 0.75f);
-            Invoke("SpawnEnemies", 3.0f);
+            Invoke("SpawnEnemies", timeBetweenWaves);
         }
     }
     void DisableParticles()
@@ -63,7 +82,7 @@ public class Spawner : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (invulFrames)
+        if (invulFrames || currWave < invulWave)
             return;
         PlayerHealth tempHealth = player.GetComponent<PlayerHealth>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
@@ -114,6 +133,8 @@ public class Spawner : MonoBehaviour
         }
         if (CurHealth <= 0.0f)
         {
+            GameObject gold = (GameObject)Instantiate(goldDropObject, transform.position, transform.rotation);
+            gold.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = amountOfGoldTODrop + (int)(amountOfGoldTODrop * ((currWave - invulWave) * 0.5f));
             Destroy(gameObject);
         }
     }
