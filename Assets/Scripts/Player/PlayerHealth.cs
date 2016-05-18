@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public float MaxHealth;
     public float CurHealth;
     public Text HPBarText;
-
+    public Image HealthBar;
     //-Player Damage FeedBack-//
     //Rumble
     private GamePadState state;
@@ -68,12 +68,15 @@ public class PlayerHealth : MonoBehaviour
 
         CurHealth -= dmg;
         float temp = CurHealth / MaxHealth;
+
+        HealthBar.fillAmount -= CurHealth / MaxHealth;
     }
 
     public void ReGenHealth(float _amount)
     {
         CurHealth += _amount;
         float temp = CurHealth / MaxHealth;
+        HealthBar.fillAmount += CurHealth / MaxHealth;
     }
 
     
