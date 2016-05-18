@@ -501,8 +501,8 @@ public class MenuScript : MonoBehaviour
             _submenu[_subselector].gameObject.name == "FireUpgrade" && ThePlayer.GetComponent<PlayerGold>().Gold > WeaponUpgradePricing[_subselector])
         {
 
-            thePlayer.GetComponent<FuryMeter>().MaxMeter += 200;
-            thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
+            thePlayer.GetComponent<Multiplier>().fireDamageThing = 2;
+           // thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += 1f;
             buffer = 20;
             ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
