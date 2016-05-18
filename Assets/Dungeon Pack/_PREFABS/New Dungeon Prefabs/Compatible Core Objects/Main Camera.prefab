@@ -15,6 +15,9 @@ GameObject:
   - 114: {fileID: 11465480}
   - 114: {fileID: 11434598}
   - 114: {fileID: 11411222}
+  - 114: {fileID: 11418898}
+  - 114: {fileID: 11484926}
+  - 114: {fileID: 11485228}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -124,6 +127,27 @@ MonoBehaviour:
   target: {fileID: 0}
   camTransform: {fileID: 498526}
   characterTransform: {fileID: 0}
+--- !u!114 &11418898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0489f46f320dfb643b60fe68e0b65be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OptionMenu: {fileID: 0}
+  m_pauseMenu: {fileID: 0}
+  Inverted: {fileID: 0}
+  Sensitivity: {fileID: 0}
+  SelectorImage: {fileID: 0}
+  Options:
+  - {fileID: 0}
+  - {fileID: 0}
+  selector: 0
+  bufferCC: 10
 --- !u!114 &11434598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +173,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WinScreen: {fileID: 0}
+--- !u!114 &11484926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a19231f456574458af936e760ab694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InfoMenu: {fileID: 0}
+  m_pauseMenu: {fileID: 0}
+--- !u!114 &11485228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406f16acf81a7d442aa978c95f521c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pauseMenu: {fileID: 0}
+  OptionsMenus: {fileID: 0}
+  InfoMenu: {fileID: 0}
+  SelectorImage: {fileID: 0}
+  Options:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  selector: 0
+  bufferCC: 10
 --- !u!124 &12406954
 Behaviour:
   m_ObjectHideFlags: 1
