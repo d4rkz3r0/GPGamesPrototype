@@ -38,6 +38,7 @@ public class SFXManager : MonoBehaviour
         {
             Debug.LogWarning("SFXManager: AudioClip Array is Empty!");
         }
+
     }
 
 
@@ -48,7 +49,7 @@ public class SFXManager : MonoBehaviour
 
         if (audioClipFileName != "" && audioClipArrayIndex != -1)
         {
-            Debug.LogError("SFXManager: Invalid use of PlaySFXAtPosition(FileName or Index!)");
+            Debug.LogError("SFXManager: Invalid use of PlaySFX(FileName or Index!)");
         }
 
         if (audioClipFileName != "" && audioClipArrayIndex == -1)

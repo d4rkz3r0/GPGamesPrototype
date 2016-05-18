@@ -261,17 +261,17 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilites()
     {
         //Ability Code Here
-        if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu)
+        if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             furyUpkeep.UseFury(dodgeCost);
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
         }
-        else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu)
+        else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             furyUpkeep.UseFury(rightBumperCost);
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
         }
-        else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu)
+        else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
@@ -280,19 +280,19 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateBuffs()
     {
-        if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu)
+        if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 0;
             defenseParticleSystem.Play();
             cooldownDuration = 5.0f;
         }
-        else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu)
+        else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = -1;
             attackParticleSystem.Play();
             cooldownDuration = 10.0f;
         }
-        else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu)
+        else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             attkBuff_defBuff_vampBuff_onCD_rdy = 1;
             vamprisimParticleSystem.Play();
