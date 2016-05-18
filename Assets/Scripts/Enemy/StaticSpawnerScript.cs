@@ -12,6 +12,7 @@ public class StaticSpawnerScript : MonoBehaviour
     public GameObject particles;
     public float CurHealth, maxHealth = 200.0f;
     public float baseHitDamage;
+    public float timeBetweenWaves;
     public int furyGainedOffHit;
     bool invulFrames = false;
     GameObject player;
@@ -32,6 +33,9 @@ public class StaticSpawnerScript : MonoBehaviour
         player = GameObject.Find("Player");
         playerFury = player.GetComponent<FuryMeter>();
         playerMultiplier = player.GetComponent<Multiplier>();
+
+        timeBetweenWaves = 3.0f;
+
         playerCon = player.GetComponent<PlayerController>();
         Invoke("SpawnEnemies", 3.0f);
     }
@@ -52,7 +56,7 @@ public class StaticSpawnerScript : MonoBehaviour
             }
             currWave++;
             Invoke("DisableParticles", 0.75f);
-            Invoke("SpawnEnemies", 3.0f);
+            Invoke("SpawnEnemies", timeBetweenWaves);
         }
     }
     void DisableParticles()
@@ -114,5 +118,10 @@ public class StaticSpawnerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void ResetIFrames()
+    {
+        invulFrames = false;
     }
 }

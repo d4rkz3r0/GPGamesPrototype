@@ -254,6 +254,7 @@ public class Grotesque_Behavior : MonoBehaviour {
     {
         inactiveTime += Time.deltaTime;
 
+        attackCollider.enabled = false;
         warningLight.intensity = Mathf.Clamp((((inactiveTime / 4.0f) * 3.0f) * ((inactiveTime / 4.0f) * 3.0f)), 0.0f, 8.0f);
         warningRadius.enabled = true;
 

@@ -28,7 +28,13 @@ public class iceAttack : MonoBehaviour
                     spike.SetActive(true);
             }
             myCollider.enabled = true;
+            //Invoke("TurnOffCollider", 0.1f);
             Destroy(gameObject, 0.5f);
         }
+    }
+
+    void TurnOffCollider()
+    {
+        myCollider.enabled = false;
     }
 }
