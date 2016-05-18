@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 422098}
+  - 114: {fileID: 11439830}
+  - 114: {fileID: 11429392}
+  - 54: {fileID: 5423738}
+  - 95: {fileID: 9585556}
+  - 65: {fileID: 6554252}
+  m_Layer: 0
+  m_Name: Slow Dragon
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &110958
 GameObject:
   m_ObjectHideFlags: 1
@@ -49,7 +69,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &122274
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -263,7 +283,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &176766
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -331,18 +351,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476392}
-  - 114: {fileID: 11495780}
-  - 114: {fileID: 11458006}
-  - 54: {fileID: 5499358}
-  - 95: {fileID: 9552852}
-  - 65: {fileID: 6502878}
   m_Layer: 0
   m_Name: Slow Dragon
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &190816
 GameObject:
   m_ObjectHideFlags: 1
@@ -375,7 +390,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &197480
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -441,6 +456,21 @@ Transform:
   m_Children:
   - {fileID: 472644}
   - {fileID: 498254}
+  m_Father: {fileID: 422098}
+  m_RootOrder: 0
+--- !u!4 &422098
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.59, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 405142}
+  - {fileID: 22406496}
+  - {fileID: 454330}
   m_Father: {fileID: 476392}
   m_RootOrder: 0
 --- !u!4 &429958
@@ -543,7 +573,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.7, z: 1.4029999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 476392}
+  m_Father: {fileID: 422098}
   m_RootOrder: 2
 --- !u!4 &455900
 Transform:
@@ -644,12 +674,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57506824, y: 3.64, z: 9.306266}
+  m_LocalPosition: {x: 0, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 405142}
-  - {fileID: 22406496}
-  - {fileID: 454330}
+  - {fileID: 422098}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &479252
@@ -702,12 +730,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 405142}
   m_RootOrder: 1
---- !u!54 &5499358
+--- !u!54 &5423738
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189878}
+  m_GameObject: {fileID: 100556}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -717,25 +745,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!65 &6502878
+--- !u!65 &6554252
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189878}
+  m_GameObject: {fileID: 100556}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.4090911}
   m_Center: {x: 0, y: 0, z: 0.010643005}
---- !u!95 &9552852
+--- !u!95 &9585556
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189878}
+  m_GameObject: {fileID: 100556}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2c5c7d234e8d131468f51baca8a8d189, type: 3}
   m_Controller: {fileID: 9100000, guid: 101a599258ce1e64b94464a9c5a7d531, type: 2}
@@ -767,6 +795,31 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11429392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 122274}
+  ObjectPlayer: {fileID: 176766}
+  DeleteBar: {fileID: 22343300}
+  MaxHealth: 300
+  CurHealth: 0
+  baseHitDamage: 100
+  furyGainedOffHit: 20
+  addedForce: 10
+  healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
+  healthDropRate: 0.05
+  drops: []
+  dropRate: 1
+  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  dropPosition: {fileID: 0}
 --- !u!114 &11431634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,31 +847,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11458006
+--- !u!114 &11439830
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189878}
+  m_GameObject: {fileID: 100556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
+  m_Script: {fileID: 11500000, guid: 53fa7b3978268b94996725af1cbc832e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 122274}
-  ObjectPlayer: {fileID: 176766}
-  DeleteBar: {fileID: 22343300}
-  MaxHealth: 300
-  CurHealth: 0
-  baseHitDamage: 100
-  furyGainedOffHit: 20
-  addedForce: 10
-  healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
-  healthDropRate: 0.05
-  drops: []
-  dropRate: 1
-  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
-  dropPosition: {fileID: 0}
+  attackSpawned: {fileID: 454330}
+  attack: {fileID: 130166, guid: 21b015fc20876aa4ab0adec0657b36da, type: 2}
+  attkTimerMin: 2
+  attkTimerMax: 3.5
+  attackTimer: 3.5
+  attackChance: 1
+  speed: 5
+  channelTime: 1.5
+  innerChannelTimer: 0
+  mouthPos: {fileID: 485082}
 --- !u!114 &11482950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,27 +911,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11495780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53fa7b3978268b94996725af1cbc832e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackSpawned: {fileID: 454330}
-  attack: {fileID: 130166, guid: 21b015fc20876aa4ab0adec0657b36da, type: 2}
-  attkTimerMin: 2
-  attkTimerMax: 3.5
-  attackTimer: 3.5
-  attackChance: 1
-  speed: 5
-  channelTime: 1.5
-  innerChannelTimer: 0
-  mouthPos: {fileID: 485082}
 --- !u!137 &13755986
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -978,7 +1006,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.05, z: 1}
   m_Children:
   - {fileID: 22465896}
-  m_Father: {fileID: 476392}
+  m_Father: {fileID: 422098}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
