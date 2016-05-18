@@ -35,7 +35,7 @@ public class MenuScript : MonoBehaviour
     public List<Text> BuGoldPrices = new List<Text>();
     #endregion
 
-    public Text AblilityInfo;
+    //public Text AblilityInfo;
     public Canvas Shop;
     public Image SelectorImage;
     public Text GoldPrice;
@@ -58,6 +58,7 @@ public class MenuScript : MonoBehaviour
     int PriceIncrease = 300;
     bool LeaveShop = false;
     public Text YourGold;
+    public Text PlayerBossSouls;
     public int InputBuffer = 10;
 
     public static bool InShopMenu = false;
@@ -85,8 +86,8 @@ public class MenuScript : MonoBehaviour
 
 
         SetGoldPrices(WeaponUpgradePricing[0], WUGoldPrices[0]);
-        SetGoldPrices(WeaponUpgradePricing[1], WUGoldPrices[1]);
-        SetGoldPrices(WeaponUpgradePricing[2], WUGoldPrices[2]);
+      //  SetGoldPrices(WeaponUpgradePricing[1], WUGoldPrices[1]);
+       // SetGoldPrices(WeaponUpgradePricing[2], WUGoldPrices[2]);
         #endregion
         ExitBuffer = 0;
         selector = 0;
@@ -95,11 +96,13 @@ public class MenuScript : MonoBehaviour
         SelectorImage.color = new Color(1, 1, 1, 0.3f);
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         SelectorImage.transform.position = ItemMenu[0].transform.position;
+        PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
     }
 
 
     void Update()
     {
+        PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         if (Input.GetButton("B Button") && LeaveShop == true && ExitBuffer <= 0)
         {
@@ -133,7 +136,7 @@ public class MenuScript : MonoBehaviour
             SelectorImage.transform.position = ItemMenu[selector].transform.position;
             SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
             ExitBuffer = 10;
-            AblilityInfo.text = "";
+           // AblilityInfo.text = "";
             if (InMenu == false)
                 LeaveShop = true;
             SubSelector = 0;
@@ -212,7 +215,7 @@ public class MenuScript : MonoBehaviour
             {
                 if (i == _subselector)
                 {
-                    AblilityInfo.text = " ";
+                    //AblilityInfo.text = " ";
                     SelectorImage.transform.position = _submenu[_subselector].transform.position;
                   //  SelectorImage.transform.right = _submenu[_subselector].transform.right;
                    
@@ -277,7 +280,7 @@ public class MenuScript : MonoBehaviour
             {
                 if (i == _subselector)
                 {
-                    AblilityInfo.text = "";
+                    //AblilityInfo.text = "";
                     SelectorImage.transform.position = _submenu[_subselector].transform.position;
 
                     break;
@@ -299,7 +302,7 @@ public class MenuScript : MonoBehaviour
 
     void PurchaseItems(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, GameObject[] ItemMenu)
     {
-        SetInfoText(AblilityInfo, _submenu, ref _subselector, ItemMenu, ref selector);
+        //SetInfoText(AblilityInfo, _submenu, ref _subselector, ItemMenu, ref selector);
       
         if (Input.GetButton("A Button") && InSubMenu == true && InputBuffer <= 0)
         {
@@ -354,6 +357,7 @@ public class MenuScript : MonoBehaviour
            // SelectorImage.rectTransform = ItemMenu[selector].transform
             for (int i = 0; i < ItemMenu[selector].transform.GetChildCount(); i++)
             {
+                if (ItemMenu[selector].transform.GetChild(i).name != "IceUpGrade" && ItemMenu[selector].transform.GetChild(i).name != "LightiningUpgrade")
                 _submenu.Add(ItemMenu[selector].transform.GetChild(i).gameObject);
 
 
@@ -497,12 +501,12 @@ public class MenuScript : MonoBehaviour
             _submenu[_subselector].gameObject.name == "FireUpgrade" && ThePlayer.GetComponent<PlayerGold>().Gold > WeaponUpgradePricing[_subselector])
         {
 
-            thePlayer.GetComponent<FuryMeter>().MaxMeter += 200;
-            thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
-            PurchaseMeter[_subselector].fillAmount += .14f;
+            thePlayer.GetComponent<Multiplier>().fireDamageThing = 2;
+           // thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
+            PurchaseMeter[_subselector].fillAmount += 1f;
             buffer = 20;
             ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
-            IncreasePrice(ref WeaponUpgradePricing, WUGoldPrices[2], ref _subselector);
+            IncreasePrice(ref WeaponUpgradePricing, WUGoldPrices[0], ref _subselector);
 
         }
 
@@ -605,7 +609,7 @@ public class MenuScript : MonoBehaviour
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
             ThePlayer.GetComponent<BossSouls>().BossSoul -= Pricing[_subselector];
-            IncreaseBossSoulsPrice(ref BuffPricing, BuGoldPrices[1], ref _subselector);
+            IncreaseBossSoulsPrice(ref BuffPricing, BuGoldPrices[2], ref _subselector);
 
         }
     }
