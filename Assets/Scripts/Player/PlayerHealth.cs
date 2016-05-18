@@ -10,12 +10,10 @@ public class PlayerHealth : MonoBehaviour
     private const float MIN_DAMAGE_PERCENTAGE = 40.0f;
 
 
-    //Rect RectangleHealth;
-    public GameObject HealthBar;
     public GameObject ObjectPlayer;
     public float MaxHealth;
     public float CurHealth;
-    public Text PlayerhealthText;
+    public Text HPBarText;
 
     //-Player Damage FeedBack-//
     //Rumble
@@ -46,12 +44,12 @@ public class PlayerHealth : MonoBehaviour
     {
         MaxHealth = 500f;
         CurHealth = MaxHealth;
-        PlayerhealthText.text = CurHealth + "/" + MaxHealth;
+        HPBarText.text = CurHealth + "/" + MaxHealth;
     }
 
     void Update()
     {
-        PlayerhealthText.text = CurHealth + "/" + MaxHealth;
+        HPBarText.text = CurHealth + "/" + MaxHealth;
         UpdateGamePadState();
         UpdateFlashTimer();
 

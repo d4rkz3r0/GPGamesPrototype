@@ -1,18 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class FuryMeter : MonoBehaviour {
-
-	// Use this for initialization
-
-    public Texture EmptyBar;
-    public Texture FullBar;
-    public Texture Logo;
+public class FuryMeter : MonoBehaviour
+{
     public float MaxMeter;
     public float Currentmeter;
-    public int furycast;
-    public Image GreenHealthbar;
-    public Text HealthText;
+    public Image FuryMeterForegroundImage;
+    public Text FuryMeterTextElement;
     private float  timer;
     public int decayRate;
 	void Start () 
@@ -20,8 +14,8 @@ public class FuryMeter : MonoBehaviour {
         MaxMeter = 200;
         Currentmeter = 200;
         timer = 5.0f;
-        GreenHealthbar.fillAmount = Currentmeter;
-        HealthText.text = Currentmeter + "/" + MaxMeter;
+        FuryMeterForegroundImage.fillAmount = Currentmeter;
+        FuryMeterTextElement.text = Currentmeter + "/" + MaxMeter;
         decayRate = 0;
 	}
 	
@@ -32,8 +26,8 @@ public class FuryMeter : MonoBehaviour {
             Currentmeter = MaxMeter;
 
 
-        GreenHealthbar.fillAmount = (Currentmeter / MaxMeter);
-          HealthText.text = Currentmeter + "/" + MaxMeter;
+        FuryMeterForegroundImage.fillAmount = (Currentmeter / MaxMeter);
+          FuryMeterTextElement.text = Currentmeter + "/" + MaxMeter;
         timer -= Time.deltaTime;
         
         
@@ -41,18 +35,6 @@ public class FuryMeter : MonoBehaviour {
         {
             Currentmeter -= decayRate;
         }
-
-       
-
-
-
-
-
-
-
-
-      ;
-
 	}
 
 
@@ -63,7 +45,7 @@ public class FuryMeter : MonoBehaviour {
         if (Currentmeter >= MaxMeter)
             Currentmeter = MaxMeter;
 
-        GreenHealthbar.fillAmount = Currentmeter / MaxMeter;
+        FuryMeterForegroundImage.fillAmount = Currentmeter / MaxMeter;
 
         timer = 5.0f;
     }
@@ -74,7 +56,7 @@ public class FuryMeter : MonoBehaviour {
         if (Currentmeter < 0)
             Currentmeter = 0;
 
-        GreenHealthbar.fillAmount = 1 - (Currentmeter / MaxMeter);
+        FuryMeterForegroundImage.fillAmount = 1 - (Currentmeter / MaxMeter);
     }
 
 

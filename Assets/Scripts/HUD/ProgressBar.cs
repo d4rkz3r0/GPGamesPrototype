@@ -2,33 +2,30 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ProgressBar : MonoBehaviour {
+public class ProgressBar : MonoBehaviour
+{
 
 	// Use this for initialization
     float Total;
     float Percent;
-    public Texture KillMeter;
-    public Texture EmptyMeter;
    public  static int killed;
-   public Text progressBar;
-   public Image GreenHealthbar;
+
+   public Text EnemiesKilledText;
+   public Image KillMeter;
 	void Start () 
     {
         Total = 47;
         killed = 0;
-        progressBar.text = Percent.ToString();
+        EnemiesKilledText.text = Percent.ToString();
 	}
-	
-	// Update is called once per frame
+
 	void Update () 
     {
 
         Percent = (killed / Total);
-        GreenHealthbar.fillAmount = Percent;
+        KillMeter.fillAmount = Percent;
         Percent *= 100f;
         int tempPercent = (int)(Percent);
-        progressBar.text = tempPercent.ToString() + "%";
+        EnemiesKilledText.text = tempPercent.ToString() + "%";
 	}
-
-
 }

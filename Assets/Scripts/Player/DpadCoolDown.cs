@@ -7,9 +7,6 @@ public class DpadCoolDown : MonoBehaviour
     // Use this for initialization
 
     public Image Buffs;
-    public RawImage Atk;
-    public RawImage Def;
-    public RawImage Vamp;
 
 
     public Image BuffsCoolDown;

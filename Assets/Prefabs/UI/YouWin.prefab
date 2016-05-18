@@ -10,7 +10,7 @@ GameObject:
   - 224: {fileID: 22406362}
   - 222: {fileID: 22200706}
   - 114: {fileID: 11404404}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 224: {fileID: 22465860}
   - 222: {fileID: 22280078}
   - 114: {fileID: 11426434}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 224: {fileID: 22480056}
   - 222: {fileID: 22297148}
   - 114: {fileID: 11417230}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 224: {fileID: 22469160}
   - 222: {fileID: 22237554}
   - 114: {fileID: 11420490}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,13 +79,13 @@ GameObject:
   - 223: {fileID: 22382136}
   - 114: {fileID: 11421904}
   - 114: {fileID: 11425938}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: YouWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &11404404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -272,7 +272,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184356}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}

@@ -2445,7 +2445,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1, y: -2.49, z: 62.13}
+  m_LocalPosition: {x: -0.55, y: -1.12, z: -11.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417768}
@@ -2827,11 +2827,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f76ec46f15aa34799b729b6578cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 0}
   ObjectPlayer: {fileID: 164658}
   MaxHealth: 500
   CurHealth: 0
-  PlayerhealthText: {fileID: 0}
+  HPBarText: {fileID: 0}
   flashingColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 2.25
   flashInterval: 0.33
@@ -2947,7 +2946,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164658}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f2a1555b24ac774bbca3fac1efa73df, type: 3}
   m_Name: 
@@ -2992,14 +2991,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53782abe024ec74459ff08ca6a6806fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmptyBar: {fileID: 0}
-  FullBar: {fileID: 0}
-  Logo: {fileID: 0}
   MaxMeter: 0
   Currentmeter: 0
-  furycast: 0
-  GreenHealthbar: {fileID: 0}
-  HealthText: {fileID: 0}
+  FuryMeterForegroundImage: {fileID: 0}
+  FuryMeterTextElement: {fileID: 0}
   decayRate: 0
 --- !u!114 &11460132
 MonoBehaviour:
@@ -3083,9 +3078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Buffs: {fileID: 0}
-  Atk: {fileID: 0}
-  Def: {fileID: 0}
-  Vamp: {fileID: 0}
   BuffsCoolDown: {fileID: 0}
   AtkCoolDown: {fileID: 0}
   DefCoolDown: {fileID: 0}

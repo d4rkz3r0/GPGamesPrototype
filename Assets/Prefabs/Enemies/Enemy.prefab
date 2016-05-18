@@ -1004,15 +1004,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 157532}
+  healthBar: {fileID: 0}
   ObjectPlayer: {fileID: 0}
   DeleteBar: {fileID: 0}
   MaxHealth: 0
   CurHealth: 0
+  baseHitDamage: 100
+  furyGainedOffHit: 20
   addedForce: 10
   healthDrop: {fileID: 0}
+  healthDropRate: 0.05
   drops: []
+  dropRate: 1
   hitEffect: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1042,15 +1047,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 123496}
+  healthBar: {fileID: 123496}
   ObjectPlayer: {fileID: 157532}
   DeleteBar: {fileID: 22388440}
   MaxHealth: 4
   CurHealth: 0
+  baseHitDamage: 100
+  furyGainedOffHit: 20
   addedForce: 625
   healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
+  healthDropRate: 0.05
   drops: []
+  dropRate: 1
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  dropPosition: {fileID: 0}
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
