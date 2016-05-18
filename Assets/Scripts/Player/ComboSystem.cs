@@ -86,6 +86,8 @@ public class ComboSystem : MonoBehaviour
 
     private Multiplier multiplierScript;
     public SphereCollider specialEffectCollider;
+    public GameObject psOne;
+    public GameObject psTwo;
     private bool firstFrameActivation;
 
     private void Start()
@@ -203,6 +205,7 @@ public class ComboSystem : MonoBehaviour
                     Invoke("EnableSpecialEffectCollider", 0.3f);
                     Invoke("DissableSpecialEffectCollider", 0.9f);
                     firstFrameActivation = true;
+                    
                 }
             }
             else if (meleeSlash3AttackCounter == 0)
@@ -436,18 +439,22 @@ public class ComboSystem : MonoBehaviour
         paladinSword.GetComponent<SwordTrail>().TrailColor.a = 255.0f;
         paladinSword.dynamicCollider = true;
 
-        
     }
 
     void EnableSpecialEffectCollider()
     {
         specialEffectCollider.enabled = true;
 
+        psOne.SetActive(true);
+        psTwo.SetActive(true);
     }
 
     void DissableSpecialEffectCollider()
     {
         specialEffectCollider.enabled = false;
+
+        psOne.SetActive(false);
+        psTwo.SetActive(false);
     }
 
     private float GetAnimationLength(string animName)
