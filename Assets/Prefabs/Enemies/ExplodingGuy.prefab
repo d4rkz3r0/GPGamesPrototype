@@ -459,7 +459,6 @@ GameObject:
   - 224: {fileID: 22478914}
   - 223: {fileID: 22361048}
   - 114: {fileID: 11487854}
-  - 114: {fileID: 11487492}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -1237,18 +1236,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11487492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96bcac5ebdda159458431caff775071c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
 --- !u!114 &11487804
 MonoBehaviour:
   m_ObjectHideFlags: 1

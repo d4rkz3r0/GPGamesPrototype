@@ -84,6 +84,10 @@ public class ComboSystem : MonoBehaviour
     private SwordController paladinSword;
     private PlayerController player;
 
+    private Multiplier multiplierScript;
+    public SphereCollider specialEffectCollider;
+    private bool firstFrameActivation;
+
     private void Start()
     {
         //-Init-//
@@ -93,7 +97,11 @@ public class ComboSystem : MonoBehaviour
         paladinSword = FindObjectOfType<SwordController>();
         player = FindObjectOfType<PlayerController>();
 
+        if (GetComponent<Multiplier>())
+            multiplierScript = GetComponent<Multiplier>();
+
         CalcAnimationIntervals();
+        firstFrameActivation = false;
     }
 
     private void Update()
@@ -189,10 +197,18 @@ public class ComboSystem : MonoBehaviour
             if (meleeSlash3AttackCounter > 0)
             {
                 anim.SetBool("MSlash3", true);
+
+                if (!firstFrameActivation && multiplierScript.fireDamageThing > 0.0f)
+                {
+                    Invoke("EnableSpecialEffectCollider", 0.3f);
+                    Invoke("DissableSpecialEffectCollider", 0.9f);
+                    firstFrameActivation = true;
+                }
             }
             else if (meleeSlash3AttackCounter == 0)
             {
                 anim.SetBool("MSlash3", false);
+                firstFrameActivation = false;
             }
 
             if (Input.GetButtonDown("X Button"))
@@ -310,6 +326,7 @@ public class ComboSystem : MonoBehaviour
             if (rangedCast3AttackCounter > 0)
             {
                 anim.SetBool("RCast3", true);
+
             }
             else if (rangedCast3AttackCounter == 0)
             {
@@ -418,6 +435,19 @@ public class ComboSystem : MonoBehaviour
     {
         paladinSword.GetComponent<SwordTrail>().TrailColor.a = 255.0f;
         paladinSword.dynamicCollider = true;
+
+        
+    }
+
+    void EnableSpecialEffectCollider()
+    {
+        specialEffectCollider.enabled = true;
+
+    }
+
+    void DissableSpecialEffectCollider()
+    {
+        specialEffectCollider.enabled = false;
     }
 
     private float GetAnimationLength(string animName)
