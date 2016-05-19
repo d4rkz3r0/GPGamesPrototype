@@ -60,8 +60,8 @@ public class MenuScript : MonoBehaviour
     bool LeaveShop = false;
     public Text YourGold;
     public Text PlayerBossSouls;
-    public int InputBuffer = 10;
-    public int InPutAButton = 10;
+    public int InputBuffer = 50;
+    public int InPutAButton = 15;
     public static bool InShopMenu = false;
     public bool DiscountVentdor = false;
     void Start()
@@ -94,7 +94,7 @@ public class MenuScript : MonoBehaviour
         selector = 0;
         SubSelector = 0;
         InputBuffer = 15;
-        InPutAButton = 10;
+        InPutAButton = 20;
         SelectorImage.color = new Color(1, 1, 1, 0.3f);
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         SelectorImage.transform.position = ItemMenu[0].transform.position;
@@ -156,15 +156,21 @@ public class MenuScript : MonoBehaviour
         }
             
 
-        if (Input.GetButton("A Button") && InPutAButton <= 0)
+        if (Input.GetButton("A Button"))
         {
-            InMenu = true;
-            LeaveShop = false;
-            SelectorImage.transform.position = SubItemMenu[SubSelector].transform.position;
-            RectTransform temp = SubItemMenu[SubSelector].gameObject.GetComponent<RectTransform>();
-            SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width /2, temp.rect.height / 2);
-            SelectorImage.transform.localScale = SubItemMenu[SubSelector].transform.localScale;
-            InPutAButton = 10;
+            if(InPutAButton <= 0)
+            {
+                InMenu = true;
+                LeaveShop = false;
+                SelectorImage.transform.position = SubItemMenu[SubSelector].transform.position;
+                RectTransform temp = SubItemMenu[SubSelector].gameObject.GetComponent<RectTransform>();
+                SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width / 2, temp.rect.height / 2);
+                SelectorImage.transform.localScale = SubItemMenu[SubSelector].transform.localScale;
+                InPutAButton = 10;
+                InputBuffer = 5;
+            }
+           
+            
 
 
 
@@ -513,6 +519,8 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<FuryMeter>().MaxMeter += 200;
             thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += .14f;
+            if (PurchaseMeter[_subselector].fillAmount == 1)
+                thePlayer.GetComponent<FuryMeter>().decayRate = 0;
             buffer = 20;
            // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing,PSGoldPrices[1], ref _subselector);

@@ -8,7 +8,7 @@ public class FuryMeter : MonoBehaviour
     public Image FuryMeterForegroundImage;
     public Text FuryMeterTextElement;
     private float  timer;
-    public int decayRate;
+    public float decayRate;
 	void Start () 
     {
         MaxMeter = 200;
@@ -16,7 +16,7 @@ public class FuryMeter : MonoBehaviour
         timer = 5.0f;
         FuryMeterForegroundImage.fillAmount = Currentmeter;
         FuryMeterTextElement.text = Currentmeter + "/" + MaxMeter;
-        decayRate = 1;
+        decayRate =.3f ;
 	}
 	
 	// Update is called once per frame
