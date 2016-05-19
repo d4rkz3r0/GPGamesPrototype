@@ -210,12 +210,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currWave: 0
   maxWave: 0
+  invulWave: 3
+  detectionRange: 20
   objectsTospawn: []
-  particles: {fileID: 0}
+  particles: {fileID: 167122}
   CurHealth: 0
   maxHealth: 200
   baseHitDamage: 75
+  timeBetweenWaves: 3
   furyGainedOffHit: 0
+  amountOfGoldTODrop: 0
+  dropChanceIncreaseModifier: 5
+  goldDropObject: {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
 --- !u!198 &19892000
 ParticleSystem:
   m_ObjectHideFlags: 1
