@@ -166,7 +166,7 @@ public class EnemyHealth : MonoBehaviour
     }
     void Death()
     {
-        ProgressBar.killed++;
+        UpdateKillCount.enemySlayCount++;
         if (healthDrop)
             if (Random.value < healthDropRate)
                 Instantiate(healthDrop, dropPosition.position, transform.rotation);
