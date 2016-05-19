@@ -48,7 +48,8 @@ public class DpadCoolDown : MonoBehaviour
             if(ForH == 1)
             {
 
-                GetComponent<PlayerHealth>().CurHealth += 50;
+                GetComponent<PlayerHealth>().CurHealth += 150;
+                // GetComponent<PlayerHealth>(
                 Buffs.sprite = null;
                 ForH = 0;
                 Buffs.enabled = false;
@@ -58,7 +59,9 @@ public class DpadCoolDown : MonoBehaviour
 
             if (ForH == 2)
             {
-                GetComponent<FuryMeter>().Currentmeter += 50;
+                //GetComponent<FuryMeter>().Currentmeter += 150;
+                float temp  = GetComponent<FuryMeter>().MaxMeter / 6;
+                GetComponent<FuryMeter>().GainFury((int)(temp));
                 Buffs.sprite = null;
                 ForH = 0;
                 Buffs.enabled = false;
