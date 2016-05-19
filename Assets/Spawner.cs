@@ -69,7 +69,9 @@ public class Spawner : MonoBehaviour
             {
                 int index = Random.Range(0, objectsTospawn.Length);
                 GameObject mob = (GameObject)Instantiate(objectsTospawn[index], spawnPoints[i] + transform.position, transform.rotation);
-                mob.GetComponent<EnemyHealth>().dropRate = dropChanceIncreaseModifier * currWave;
+                EnemyHealth tempHealth = mob.GetComponent<EnemyHealth>();
+                if (tempHealth)
+                    tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
             }
             currWave++;
             Invoke("DisableParticles", 0.75f);

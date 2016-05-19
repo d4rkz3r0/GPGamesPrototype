@@ -68,7 +68,9 @@ public class StaticSpawnerScript : MonoBehaviour
             for (int i = 0; i < objectsTospawn.Length; i++)
             {
                 GameObject mob = (GameObject)Instantiate(objectsTospawn[i], spawnPoints[i] + transform.position, transform.rotation);
-                mob.GetComponent<EnemyHealth>().dropRate = dropChanceIncreaseModifier * currWave;
+                EnemyHealth tempHealth = mob.GetComponent<EnemyHealth>();
+                if (tempHealth)
+                    tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
             }
             currWave++;
             Invoke("DisableParticles", 0.75f);
