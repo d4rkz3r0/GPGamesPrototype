@@ -5,6 +5,8 @@ public class CleanUpTutorial : MonoBehaviour
 {
     public GameObject TutorialSection;
     public GameObject DungeonToSpawn;
+    public GameObject SpawnerUIElement;
+
    // public Vector3 DungeonSpawnLocation = new Vector3(-217.5623f, 225.6588f, 511.5936f);
 
 	// Use this for initialization
@@ -24,6 +26,7 @@ public class CleanUpTutorial : MonoBehaviour
         //Instantiate(DungeonToSpawn, DungeonSpawnLocation, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
         if (other.tag == "Player")
         {
+            SpawnerUIElement.SetActive(true);
             DungeonToSpawn.SetActive(true);
             Destroy(TutorialSection);
             MessageController.textSelection = 8;

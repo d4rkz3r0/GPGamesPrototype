@@ -8,11 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422098}
-  - 114: {fileID: 11439830}
-  - 114: {fileID: 11429392}
-  - 54: {fileID: 5423738}
-  - 95: {fileID: 9585556}
-  - 65: {fileID: 6554252}
   m_Layer: 0
   m_Name: Slow Dragon
   m_TagString: Enemy
@@ -351,6 +346,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476392}
+  - 114: {fileID: 11472052}
+  - 114: {fileID: 11475166}
+  - 54: {fileID: 5440772}
+  - 95: {fileID: 9584984}
+  - 65: {fileID: 6507742}
   m_Layer: 0
   m_Name: Slow Dragon
   m_TagString: Untagged
@@ -674,7 +674,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0}
+  m_LocalPosition: {x: 106.96625, y: -0.014746094, z: -145.6195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 422098}
@@ -730,12 +730,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 405142}
   m_RootOrder: 1
---- !u!54 &5423738
+--- !u!54 &5440772
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100556}
+  m_GameObject: {fileID: 189878}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -745,25 +745,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!65 &6554252
+--- !u!65 &6507742
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100556}
+  m_GameObject: {fileID: 189878}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.4090911}
   m_Center: {x: 0, y: 0, z: 0.010643005}
---- !u!95 &9585556
+--- !u!95 &9584984
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100556}
+  m_GameObject: {fileID: 189878}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2c5c7d234e8d131468f51baca8a8d189, type: 3}
   m_Controller: {fileID: 9100000, guid: 101a599258ce1e64b94464a9c5a7d531, type: 2}
@@ -795,31 +795,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11429392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 122274}
-  ObjectPlayer: {fileID: 176766}
-  DeleteBar: {fileID: 22343300}
-  MaxHealth: 300
-  CurHealth: 0
-  baseHitDamage: 100
-  furyGainedOffHit: 20
-  addedForce: 10
-  healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
-  healthDropRate: 0.05
-  drops: []
-  dropRate: 1
-  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
-  dropPosition: {fileID: 0}
 --- !u!114 &11431634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -847,12 +822,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11439830
+--- !u!114 &11472052
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100556}
+  m_GameObject: {fileID: 189878}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53fa7b3978268b94996725af1cbc832e, type: 3}
@@ -868,6 +843,33 @@ MonoBehaviour:
   channelTime: 1.5
   innerChannelTimer: 0
   mouthPos: {fileID: 485082}
+--- !u!114 &11475166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d14949dc6ca04340a838d8332c8389e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 122274}
+  ObjectPlayer: {fileID: 176766}
+  DeleteBar: {fileID: 22343300}
+  MaxHealth: 300
+  CurHealth: 0
+  baseHitDamage: 100
+  furyGainedOffHit: 20
+  addedForce: 10
+  healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
+  healthDropRate: 0.05
+  drops:
+  - {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
+  dropRate: 1
+  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  dropPosition: {fileID: 454330}
+  amountOfGOldToDrop: 1000
 --- !u!114 &11482950
 MonoBehaviour:
   m_ObjectHideFlags: 1

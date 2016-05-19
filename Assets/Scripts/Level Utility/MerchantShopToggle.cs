@@ -8,7 +8,7 @@ public class MerchantShopToggle : MonoBehaviour
     public bool IsDiscountMerchant;
 	void Start ()
     {
-	
+       // IsDiscountMerchant = false;
 	}
 	
 
@@ -27,6 +27,7 @@ public class MerchantShopToggle : MonoBehaviour
                 FindObjectOfType<FuryMeter>().Currentmeter = 0.0f;
                 if (!shopOverlay.GetComponent<Canvas>().enabled)
                 {
+                    Debug.Log("Dude YOU ARE THE DISCOUNT VENDOR");
                     shopOverlay.GetComponent<Canvas>().enabled = true;
                     shopOverlay.GetComponent<MenuScript>().enabled = true;
                    MenuScript.InShopMenu = true;

@@ -787,7 +787,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.83, y: 0.016, z: -74.14}
+  m_LocalPosition: {x: 110.409, y: -0.014746094, z: -143.8988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22477256}
@@ -1039,10 +1039,12 @@ MonoBehaviour:
   addedForce: 10
   healthDrop: {fileID: 114212, guid: fa7b228746c8f684c9bf71fd59418ac4, type: 2}
   healthDropRate: 0.05
-  drops: []
+  drops:
+  - {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
   dropRate: 0
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
   dropPosition: {fileID: 496470}
+  amountOfGOldToDrop: 1000
 --- !u!114 &11491432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1057,7 +1059,7 @@ MonoBehaviour:
   projectile: {fileID: 169912, guid: db107c8de9ddc5140bc3f66bea343d87, type: 2}
   gun: {fileID: 496014}
   movementDistance: 5
-  runChance: 1
+  runChance: 0.33
   attackRange: 20
   attackTimer: 2
   speed: 3

@@ -933,6 +933,7 @@ GameObject:
   - 114: {fileID: 11434294}
   - 114: {fileID: 11443696}
   - 114: {fileID: 11443144}
+  - 114: {fileID: 11427616}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -2763,6 +2764,19 @@ MonoBehaviour:
   firstFrameActivation: 0
   cooldownTimer: 0
   inUse_ready_onCooldown: 0
+--- !u!114 &11427616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1d7fcb60c88e944832258716571628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossSoul: 0
+  OnScreenBossSouls: {fileID: 0}
 --- !u!114 &11431364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2774,7 +2788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3e24816b43ca54d88e298b428c5a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WinScreen: {fileID: 0}
+  LoseScreen: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!114 &11432342
 MonoBehaviour:
   m_ObjectHideFlags: 1

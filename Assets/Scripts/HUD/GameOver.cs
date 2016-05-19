@@ -5,6 +5,7 @@ public class GameOver : MonoBehaviour
 {
 
     public Canvas LoseScreen;
+    public Canvas pauseMenu;
     void Start()
     {
         LoseScreen.enabled = false;
@@ -24,7 +25,9 @@ public class GameOver : MonoBehaviour
         if (Input.GetButton("StartButton") && LoseScreen.enabled == true)
         {
             //Debug.Log(Input.GetButton("StartButton").ToString());
+            pauseMenu.enabled = false;
             SceneManager.LoadScene(0);
+            PauseMenu.InpauseMenu = false;
         }
 
 

@@ -61,9 +61,7 @@ public class ArcherBehavoir : MonoBehaviour
     {
         float currDistance = Vector3.Distance(transform.position, player.transform.position);
         if (moved)
-        {
-            currentState = States.moving;
-        }
+            return;
         else if (currDistance <= movementDistance)
         {
             if (Random.value < runChance)
@@ -74,6 +72,8 @@ public class ArcherBehavoir : MonoBehaviour
             }
             else
             {
+                moved = true;
+                Invoke("HasMoved", 2.0f);
                 currentState = States.attacking;
                 myAnimator.SetInteger("state", 0);
             }
