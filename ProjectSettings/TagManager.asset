@@ -27,6 +27,7 @@ TagManager:
   - Slow
   - ServiceContainer
   - FireWeaponExplosion
+  - Spawner
   layers:
   - Default
   - TransparentFX

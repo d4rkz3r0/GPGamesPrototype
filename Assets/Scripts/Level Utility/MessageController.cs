@@ -84,6 +84,22 @@ public class MessageController : MonoBehaviour
                         "Exit the Room, whenever.";
                     break;
                 }
+            case 8:
+                {
+                    displayedText.text =
+                        "Escape the Dungeon!\n" +
+                        "You MUST destroy Spawners\n" +
+                        "to progress.";
+                    break;
+                }
+            case 9:
+            {
+                displayedText.text =
+                    "You have not defeated\n" +
+                    "all Spawners in this area.\n" +
+                    "Retrace your steps, Hobo.";
+                        break;
+                }
             default:
                 {
                     break;

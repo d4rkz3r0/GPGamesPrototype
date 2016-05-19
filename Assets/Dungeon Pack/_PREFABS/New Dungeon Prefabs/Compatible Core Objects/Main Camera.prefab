@@ -13,7 +13,6 @@ GameObject:
   - 124: {fileID: 12406954}
   - 81: {fileID: 8119922}
   - 114: {fileID: 11465480}
-  - 114: {fileID: 11434598}
   - 114: {fileID: 11411222}
   - 114: {fileID: 11484926}
   - 114: {fileID: 11485228}
@@ -59,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.78, y: 24.88, z: -226.17639}
+  m_LocalPosition: {x: 2.43, y: 24.48, z: -226.17639}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 454276}
@@ -148,19 +147,6 @@ MonoBehaviour:
   - {fileID: 0}
   selector: 0
   bufferCC: 10
---- !u!114 &11434598
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb95852905e94c44843613a764b5f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemiesKilledText: {fileID: 0}
-  KillMeter: {fileID: 0}
 --- !u!114 &11465480
 MonoBehaviour:
   m_ObjectHideFlags: 1

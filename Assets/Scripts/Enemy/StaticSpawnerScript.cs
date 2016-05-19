@@ -132,6 +132,7 @@ public class StaticSpawnerScript : MonoBehaviour
         }
         if (CurHealth <= 0.0f)
         {
+            UpdateKillCountUI();
             GameObject gold = (GameObject)Instantiate(goldDropObject, transform.position, transform.rotation);
             gold.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = amountOfGoldTODrop + (int)(amountOfGoldTODrop * ((currWave - invulWave) * 0.5f));
             Destroy(gameObject);
@@ -141,5 +142,18 @@ public class StaticSpawnerScript : MonoBehaviour
     void ResetIFrames()
     {
         invulFrames = false;
+    }
+
+    void UpdateKillCountUI()
+    {
+        if (UpdateSpawnerKillCount.currentArea == 1)
+        {
+            UpdateSpawnerKillCount.area1SpawnersRemaining--;
+        }
+        if (UpdateSpawnerKillCount.currentArea == 2)
+        {
+            UpdateSpawnerKillCount.area2SpawnersRemaining--;
+        }
+        UpdateSpawnerKillCount.numOfEntireLevelSpawners--;
     }
 }

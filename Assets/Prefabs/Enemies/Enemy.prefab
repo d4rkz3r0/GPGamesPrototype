@@ -108,6 +108,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &132726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406566}
+  m_Layer: 2
+  m_Name: DropPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &134768
 GameObject:
   m_ObjectHideFlags: 1
@@ -562,6 +577,18 @@ Transform:
   - {fileID: 431138}
   m_Father: {fileID: 453292}
   m_RootOrder: 1
+--- !u!4 &406566
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 1.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 453292}
+  m_RootOrder: 4
 --- !u!4 &407030
 Transform:
   m_ObjectHideFlags: 1
@@ -783,6 +810,7 @@ Transform:
   - {fileID: 404532}
   - {fileID: 430232}
   - {fileID: 22461586}
+  - {fileID: 406566}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &453850
@@ -1018,6 +1046,7 @@ MonoBehaviour:
   dropRate: 1
   hitEffect: {fileID: 0}
   dropPosition: {fileID: 0}
+  amountOfGOldToDrop: 1000
 --- !u!114 &11470836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1060,7 +1089,8 @@ MonoBehaviour:
   drops: []
   dropRate: 1
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
-  dropPosition: {fileID: 0}
+  dropPosition: {fileID: 406566}
+  amountOfGOldToDrop: 1000
 --- !u!114 &11488520
 MonoBehaviour:
   m_ObjectHideFlags: 1
