@@ -17,6 +17,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &163740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427434}
+  - 108: {fileID: 10862236}
+  - 95: {fileID: 9539560}
+  - 114: {fileID: 11498862}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &167122
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,6 +86,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &427434
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163740}
+  m_LocalRotation: {x: -0.49999997, y: -0.50000006, z: -0.50000006, w: 0.49999997}
+  m_LocalPosition: {x: 0.04, y: 2.624, z: 0.415}
+  m_LocalScale: {x: 0.9998074, y: 0.9998079, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497934}
+  m_RootOrder: 2
 --- !u!4 &429400
 Transform:
   m_ObjectHideFlags: 1
@@ -103,19 +133,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 497934}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &497934
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181604}
-  m_LocalRotation: {x: 0, y: -0.39421383, z: 0, w: 0.91901875}
-  m_LocalPosition: {x: 12.800002, y: 3, z: -42.699997}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 36.519993, y: 3, z: -16.72}
   m_LocalScale: {x: 1.0001924, y: 1, z: 1.0001928}
   m_Children:
   - {fileID: 429400}
   - {fileID: 441128}
+  - {fileID: 427434}
   - {fileID: 489378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -197,6 +228,56 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9821484, y: 2.9602547, z: 2.049306}
   m_Center: {x: -0.015999794, y: 1.529707, z: 0.025299072}
+--- !u!95 &9539560
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163740}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e731cfd498e63a24ab4a148e5bad084f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &10862236
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163740}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 2
+  m_Color: {r: 0.102724925, g: 0.7352941, b: 0.34266514, a: 1}
+  m_Intensity: 2
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11441728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +292,8 @@ MonoBehaviour:
   currWave: 0
   maxWave: 3
   invulWave: 2
-  detectionRange: 5
+  detectionRange: 10
+  restRate: 30
   objectsTospawn:
   - {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
   - {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
@@ -226,6 +308,20 @@ MonoBehaviour:
   amountOfGoldTODrop: 0
   dropChanceIncreaseModifier: 5
   goldDropObject: {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
+--- !u!114 &11498862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a2e1abb1fbfca499a25a95767a50a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  min: 0.2
+  max: 0.3
+  animationName: Light Animation
 --- !u!198 &19892000
 ParticleSystem:
   m_ObjectHideFlags: 1

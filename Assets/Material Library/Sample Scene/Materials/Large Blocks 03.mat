@@ -76,7 +76,7 @@ Material:
           name: _DetailAlbedoMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 0, y: 0}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -90,6 +90,20 @@ Material:
           name: _SpecGlossMap
         second:
           m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Base
+        second:
+          m_Texture: {fileID: 2800000, guid: 3030c210e5370c94b8e7d53b82405cfb, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularRGBGlossA
+        second:
+          m_Texture: {fileID: 2800000, guid: df407d7364931c94faecceccc53ae627, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -118,20 +132,6 @@ Material:
           name: _DiffuseMain
         second:
           m_Texture: {fileID: 2800000, guid: 3030c210e5370c94b8e7d53b82405cfb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Base
-        second:
-          m_Texture: {fileID: 2800000, guid: 3030c210e5370c94b8e7d53b82405cfb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SpecularRGBGlossA
-        second:
-          m_Texture: {fileID: 2800000, guid: df407d7364931c94faecceccc53ae627, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -196,14 +196,6 @@ Material:
         second: 0
       data:
         first:
-          name: _Gloss
-        second: 0.05
-      data:
-        first:
-          name: _SpecularIntensity
-        second: 1
-      data:
-        first:
           name: _SpecularLevel
         second: 1.4285715
       data:
@@ -218,6 +210,14 @@ Material:
         first:
           name: _TransmissionFresnel
         second: 0.2428699
+      data:
+        first:
+          name: _Gloss
+        second: 0.05
+      data:
+        first:
+          name: _SpecularIntensity
+        second: 1
       data:
         first:
           name: _Tiling
@@ -269,16 +269,16 @@ Material:
         second: {r: 0.66176474, g: 0.66176474, b: 0.66176474, a: 1}
       data:
         first:
-          name: _SpecularTint
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
           name: _RimColor
         second: {r: 0.22794116, g: 0.22794116, b: 0.22794116, a: 1}
       data:
         first:
           name: _TransmissionColor
         second: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 1}
+      data:
+        first:
+          name: _SpecularTint
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _AODifAtenuation

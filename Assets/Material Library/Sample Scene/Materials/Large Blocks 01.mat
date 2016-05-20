@@ -87,13 +87,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Specular
-        second:
-          m_Texture: {fileID: 2800000, guid: e5dc78516dcce93468d0c66de037cd7c, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _DiffuseDetail
         second:
           m_Texture: {fileID: 2800000, guid: 5059577942998b04ab08781c985974d8, type: 3}
@@ -118,6 +111,13 @@ Material:
           name: _CustomAO
         second:
           m_Texture: {fileID: 2800000, guid: 1c0fd1d498dfefb489ae54c5cb9b8f3e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 2800000, guid: e5dc78516dcce93468d0c66de037cd7c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -182,16 +182,16 @@ Material:
         second: 0
       data:
         first:
+          name: _RimLevel
+        second: 7.001879
+      data:
+        first:
           name: _Gloss
         second: 0.13
       data:
         first:
           name: _SpecularIntensity
         second: 1.98
-      data:
-        first:
-          name: _RimLevel
-        second: 7.001879
       data:
         first:
           name: _AOStrenght
@@ -235,12 +235,12 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _SpecularTint
-        second: {r: 0.5441177, g: 0.5441177, b: 0.5441177, a: 1}
-      data:
-        first:
           name: _RimColor
         second: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
+      data:
+        first:
+          name: _SpecularTint
+        second: {r: 0.5441177, g: 0.5441177, b: 0.5441177, a: 1}
       data:
         first:
           name: _AOColor
