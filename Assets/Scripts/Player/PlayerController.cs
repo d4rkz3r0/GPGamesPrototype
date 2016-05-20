@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
             velocity = transform.TransformDirection(velocity);
 
             velocity *= (fMoveSpeed * fSpeedModifier);
-            transform.localPosition += velocity * Time.fixedDeltaTime;
+            transform.localPosition += velocity * Time.deltaTime;
         }
 
         else
