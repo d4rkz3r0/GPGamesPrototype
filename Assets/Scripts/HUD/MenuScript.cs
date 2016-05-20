@@ -99,7 +99,8 @@ public class MenuScript : MonoBehaviour
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         SelectorImage.transform.position = ItemMenu[0].transform.position;
         PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
-        ThePlayer = GameObject.FindGameObjectWithTag("Player");
+        if (GameObject.FindGameObjectWithTag("Player"))
+            ThePlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
 
