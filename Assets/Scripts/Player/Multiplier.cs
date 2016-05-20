@@ -11,6 +11,7 @@ public class Multiplier : MonoBehaviour
     public float attackBuffMultiplier = 2.0f;
     public float defBuffMultiplier = 0.2f;
     public float fireDamageThing = 0.0f;
+    public int AmountOfPoitionBought = 0;
     // Use this for initialization
     void Start()
     {

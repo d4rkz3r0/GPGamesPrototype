@@ -39,6 +39,7 @@ public class MenuScript : MonoBehaviour
     public Canvas Shop;
     public Image SelectorImage;
     public Text GoldPrice;
+    public Text AmountBoughtItems;
     public Image ItemHealthPotion;
     public Image ItemFuryPotion;
     public Image BuffImage;
@@ -62,6 +63,7 @@ public class MenuScript : MonoBehaviour
     public Text PlayerBossSouls;
     public int InputBuffer = 50;
     public int InPutAButton = 15;
+   
     public static bool InShopMenu = false;
     public bool DiscountVentdor = false;
     void Start()
@@ -100,11 +102,14 @@ public class MenuScript : MonoBehaviour
         SelectorImage.transform.position = ItemMenu[0].transform.position;
         PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
         ThePlayer = GameObject.FindGameObjectWithTag("Player");
+        AmountBoughtItems.text = "";
     }
 
 
     void Update()
     {
+
+
 
         if (!DiscountVentdor)
         {
@@ -144,7 +149,9 @@ public class MenuScript : MonoBehaviour
 
             SetGoldPrices(WeaponUpgradePricing[0], WUGoldPrices[0]);
         }
-           
+
+        if (ThePlayer.GetComponent<Multiplier>().AmountOfPoitionBought != 0)
+            AmountBoughtItems.text = "x" + ThePlayer.GetComponent<Multiplier>().AmountOfPoitionBought;
         PlayerBossSouls.text = ThePlayer.GetComponent<BossSouls>().BossSoul.ToString();
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         if (Input.GetButton("B Button") && LeaveShop == true && ExitBuffer <= 0)
@@ -160,6 +167,11 @@ public class MenuScript : MonoBehaviour
         {
             if(InPutAButton <= 0)
             {
+
+              //  if(ThePlayer.GetComponent<PlayerGold>().Gold )
+                if(!InMenu)
+                SFXManager.Instance.PlaySFX("ShopSelectAudio");
+
                 InMenu = true;
                 LeaveShop = false;
                 SelectorImage.transform.position = SubItemMenu[SubSelector].transform.position;
@@ -266,6 +278,7 @@ public class MenuScript : MonoBehaviour
                 if (i == _subselector)
                 {
                     //AblilityInfo.text = " ";
+                    SFXManager.Instance.PlaySFX("ShopMenuSelections");
                     SelectorImage.transform.position = _submenu[_subselector].transform.position;
                   //  SelectorImage.transform.right = _submenu[_subselector].transform.right;
                    
@@ -331,6 +344,7 @@ public class MenuScript : MonoBehaviour
                 if (i == _subselector)
                 {
                     //AblilityInfo.text = "";
+                    SFXManager.Instance.PlaySFX("ShopMenuSelections");
                     SelectorImage.transform.position = _submenu[_subselector].transform.position;
 
                     break;
@@ -415,6 +429,7 @@ public class MenuScript : MonoBehaviour
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
             SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
+            SFXManager.Instance.PlaySFX("ShopMenuSelections");
            // SelectorImage.rectTransform = ItemMenu[selector].transform
             for (int i = 0; i < ItemMenu[selector].transform.GetChildCount(); i++)
             {
@@ -451,6 +466,7 @@ public class MenuScript : MonoBehaviour
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
             SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
+            SFXManager.Instance.PlaySFX("ShopMenuSelections");
             for (int i = 0; i < ItemMenu[selector].transform.GetChildCount(); i++)
             {
                 _submenu.Add(ItemMenu[selector].transform.GetChild(i).gameObject);
@@ -496,7 +512,7 @@ public class MenuScript : MonoBehaviour
         if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
                 _submenu[_subselector].gameObject.name == "Health" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<PlayerHealth>().MaxHealth += 200;
             thePlayer.GetComponent<PlayerHealth>().CurHealth = thePlayer.GetComponent<PlayerHealth>().MaxHealth;
             PurchaseMeter[_subselector].fillAmount += .14f;
@@ -512,10 +528,14 @@ public class MenuScript : MonoBehaviour
                 SetGoldPrices(Pricing[_subselector], PSGoldPrices[0]);
 
         }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
         if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
             _submenu[_subselector].gameObject.name == "Fp" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<FuryMeter>().MaxMeter += 200;
             thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += .14f;
@@ -532,15 +552,19 @@ public class MenuScript : MonoBehaviour
             if (!DiscountVentdor)
                 SetGoldPrices(Pricing[_subselector], PSGoldPrices[1]);
         }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
 
 
 
         if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
           _submenu[_subselector].gameObject.name == "Attack" && ThePlayer.GetComponent<PlayerGold>().Gold > PriceIncrease)
         {
-            Debug.Log(thePlayer.GetComponent<Multiplier>().basicAttkMulitplier);
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().basicAttkMulitplier += .5f;
-            Debug.Log(thePlayer.GetComponent<Multiplier>().basicAttkMulitplier);
+            
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
             //ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
@@ -552,6 +576,10 @@ public class MenuScript : MonoBehaviour
 
             if (!DiscountVentdor)
                 SetGoldPrices(Pricing[_subselector], PSGoldPrices[2]);
+        }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
         }
 
 
@@ -590,7 +618,7 @@ public class MenuScript : MonoBehaviour
         if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
             _submenu[_subselector].gameObject.name == "FireUpgrade" && ThePlayer.GetComponent<PlayerGold>().Gold > WeaponUpgradePricing[_subselector])
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().fireDamageThing = 2;
            // thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += 1f;
@@ -605,6 +633,10 @@ public class MenuScript : MonoBehaviour
             if (!DiscountVentdor)
                 SetGoldPrices(WeaponUpgradePricing[_subselector], WUGoldPrices[0]);
 
+        }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < WeaponUpgradePricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
         }
 
 
@@ -635,7 +667,7 @@ public class MenuScript : MonoBehaviour
 
         if (_submenu[_subselector].gameObject.name == "WhrilWindAblilityUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
         {
-            Debug.Log("I HIT PLAYER WhirlWind");
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().whirlWindMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
             buffer = 20;
@@ -649,10 +681,14 @@ public class MenuScript : MonoBehaviour
             if (!DiscountVentdor)
                 SetGoldPrices(Pricing[_subselector], ABGoldPrices[0]);
         }
+        else
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
         if ( _submenu[_subselector].gameObject.name == "SlamAblilityUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
               ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().groundSlamMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
             buffer = 20;
@@ -667,13 +703,17 @@ public class MenuScript : MonoBehaviour
             
 
         }
+        else
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
 
 
 
         if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 &&
           _submenu[_subselector].gameObject.name == "DashAblilityUpgrade" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().chargeMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
             buffer = 20;
@@ -687,6 +727,10 @@ public class MenuScript : MonoBehaviour
             if (!DiscountVentdor)
                 SetGoldPrices(Pricing[_subselector], ABGoldPrices[2]);
         }
+        else
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
     }
 
 
@@ -697,6 +741,7 @@ public class MenuScript : MonoBehaviour
         if (_submenu[_subselector].gameObject.name == "AtkBuffUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<BossSouls>().BossSoul > Pricing[_subselector])
                
         {
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().attackBuffMultiplier += .5f;
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
@@ -705,10 +750,14 @@ public class MenuScript : MonoBehaviour
 
         
         }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
         if ( _submenu[_subselector].gameObject.name == "DefBuffUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<BossSouls>().BossSoul > Pricing[_subselector])
            
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().defBuffMultiplier = .5f;
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
@@ -716,13 +765,17 @@ public class MenuScript : MonoBehaviour
             IncreaseBossSoulsPrice(ref BuffPricing, BuGoldPrices[1], ref _subselector);
 
         }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
 
 
 
         if (_submenu[_subselector].gameObject.name == "VampBuffUpgrade" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<BossSouls>().BossSoul > Pricing[_subselector])
          
         {
-
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
            thePlayer.GetComponent<Multiplier>().vampMultiplier += .5f;
             PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 20;
@@ -730,28 +783,48 @@ public class MenuScript : MonoBehaviour
             IncreaseBossSoulsPrice(ref BuffPricing, BuGoldPrices[2], ref _subselector);
 
         }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
     }
 
     void BuyItems(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<int> Pricing)
     {
         SelectorImage.transform.position = SubItemMenu[_subselector].transform.position;
-        if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && 
-            _submenu[_subselector].gameObject.name == "HealthPotionImage" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
+        if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 &&
+            _submenu[_subselector].gameObject.name == "HealthPotionImage" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector] && BuffImage.sprite != ItemFuryPotion.sprite)
         {
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             BuffImage.enabled = true;
             BuffImage.sprite = ItemHealthPotion.sprite;
             ThePlayer.GetComponent<DpadCoolDown>().ForH = 1;
             ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
-            
+           
+
+            if(thePlayer.GetComponent<Multiplier>().AmountOfPoitionBought != 5)
+                thePlayer.GetComponent<Multiplier>().AmountOfPoitionBought += 1;
+
+
         }
-        if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 && 
-            _submenu[_subselector].gameObject.name == "FuryPotionImage" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
         {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
+        }
+        if (SelectorImage.transform.position == _submenu[_subselector].transform.position && buffer <= 0 &&
+            _submenu[_subselector].gameObject.name == "FuryPotionImage" && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector] && BuffImage.sprite != ItemHealthPotion.sprite)
+        {
+            SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             BuffImage.enabled = true;
             BuffImage.sprite = ItemFuryPotion.sprite;
             ThePlayer.GetComponent<DpadCoolDown>().ForH = 2;
             ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
-            Debug.Log("I Hit Here In Furry");
+            if (thePlayer.GetComponent<Multiplier>().AmountOfPoitionBought != 5)
+                thePlayer.GetComponent<Multiplier>().AmountOfPoitionBought += 1;
+        }
+        else if (ThePlayer.GetComponent<PlayerGold>().Gold < Pricing[_subselector])
+        {
+            SFXManager.Instance.PlaySFX("ShopErorrSound");
         }
 
     }

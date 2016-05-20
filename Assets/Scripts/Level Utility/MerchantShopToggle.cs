@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MerchantShopToggle : MonoBehaviour
 {
     public GameObject shopOverlay;
+    
     public bool IsDiscountMerchant;
 	void Start ()
     {
@@ -27,6 +28,7 @@ public class MerchantShopToggle : MonoBehaviour
                 FindObjectOfType<FuryMeter>().Currentmeter = 0.0f;
                 if (!shopOverlay.GetComponent<Canvas>().enabled)
                 {
+                    SFXManager.Instance.PlaySFX("What are you buying- Merchant Resident Evil 4");
                     Debug.Log("Dude YOU ARE THE DISCOUNT VENDOR");
                     shopOverlay.GetComponent<Canvas>().enabled = true;
                     shopOverlay.GetComponent<MenuScript>().enabled = true;
@@ -38,6 +40,7 @@ public class MerchantShopToggle : MonoBehaviour
             }
             else
             {
+                SFXManager.Instance.PlaySFX("What are you buying- Merchant Resident Evil 4");
                  FindObjectOfType<PlayerController>().getInput = false;
                 FindObjectOfType<FuryMeter>().Currentmeter = 0.0f;
                 if (!shopOverlay.GetComponent<Canvas>().enabled)
