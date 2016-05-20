@@ -27,6 +27,8 @@ public class EnemyHealth : MonoBehaviour
     Multiplier playerMultiplier;
     [SerializeField]
     int amountOfGOldToDrop = 1000;
+    public StaticSpawnerScript staticSpawner;
+    public Spawner spanwer;
     void Start()
     {
         CurHealth = MaxHealth;
@@ -166,7 +168,11 @@ public class EnemyHealth : MonoBehaviour
     }
     void Death()
     {
-        UpdateKillCount.enemySlayCount++;
+        if (spanwer)
+            spanwer.DecrementCOunt();
+        else if (staticSpawner)
+            staticSpawner.DecrementCOunt();
+            UpdateKillCount.enemySlayCount++;
         if (healthDrop)
             if (Random.value < healthDropRate)
                 Instantiate(healthDrop, dropPosition.position, transform.rotation);

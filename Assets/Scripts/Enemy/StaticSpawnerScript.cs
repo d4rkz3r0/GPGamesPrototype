@@ -30,6 +30,8 @@ public class StaticSpawnerScript : MonoBehaviour
     int dropChanceIncreaseModifier = 5;
     [SerializeField]
     GameObject goldDropObject;
+    int numSpawned = 0;
+    bool once = false;
     void Start()
     {
         CurHealth = maxHealth;
@@ -64,22 +66,30 @@ public class StaticSpawnerScript : MonoBehaviour
     }
     void SpawnEnemies()
     {
-        if (currWave < maxWave)
+        if (numSpawned <= objectsTospawn.Length)
         {
-            particles.SetActive(true);
-            for (int i = 0; i < objectsTospawn.Length; i++)
+            if (currWave < maxWave && !PauseMenu.InpauseMenu)
             {
-                GameObject mob = (GameObject)Instantiate(objectsTospawn[i], spawnPoints[i] + transform.position, transform.rotation);
-                EnemyHealth tempHealth = mob.GetComponent<EnemyHealth>();
-                if (tempHealth)
-                    tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
+                particles.SetActive(true);
+                for (int i = 0; i < objectsTospawn.Length; i++)
+                {
+                    GameObject mob = (GameObject)Instantiate(objectsTospawn[i], spawnPoints[i] + transform.position, transform.rotation);
+                    EnemyHealth tempHealth = mob.GetComponent<EnemyHealth>();
+                    if (tempHealth)
+                    {
+                        tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
+                        tempHealth.staticSpawner = this;
+                    }
+                }
+                currWave++;
+                Invoke("DisableParticles", 0.75f);
+                Invoke("SpawnEnemies", timeBetweenWaves);
             }
-            currWave++;
-            Invoke("DisableParticles", 0.75f);
-            Invoke("SpawnEnemies", timeBetweenWaves);
+            else
+                Invoke("Reset", restRate);
         }
         else
-            Invoke("Reset", restRate);
+            once = false;
     }
     void DisableParticles()
     {
@@ -167,5 +177,15 @@ public class StaticSpawnerScript : MonoBehaviour
         currWave = 0;
         invulWave = 0;
         startedSpawning = false;
+    }
+    public void DecrementCOunt()
+    {
+        bool temp = (numSpawned <= objectsTospawn.Length);
+        numSpawned--;
+        if (numSpawned <= objectsTospawn.Length && !temp && !once)
+        {
+            SpawnEnemies();
+            once = true;
+        }
     }
 }
