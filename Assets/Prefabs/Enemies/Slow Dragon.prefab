@@ -570,7 +570,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197480}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.7, z: 1.4029999}
+  m_LocalPosition: {x: 0, y: -0.3, z: 1.4029999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 422098}
@@ -674,7 +674,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106.96625, y: -0.014746094, z: -145.6195}
+  m_LocalPosition: {x: 1.9087558, y: 30.79, z: -209.9472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 422098}
@@ -740,10 +740,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &6507742
 BoxCollider:
@@ -755,8 +755,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.4090911}
-  m_Center: {x: 0, y: 0, z: 0.010643005}
+  m_Size: {x: 1.7439357, y: 2.5719767, z: 2.577959}
+  m_Center: {x: -0.050214052, y: 0.2626667, z: 0.19050598}
 --- !u!95 &9584984
 Animator:
   serializedVersion: 3
@@ -835,6 +835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpawned: {fileID: 454330}
   attack: {fileID: 130166, guid: 21b015fc20876aa4ab0adec0657b36da, type: 2}
+  minMovementRange: 5
+  maxMovementRange: 10
   attkTimerMin: 2
   attkTimerMax: 3.5
   attackTimer: 3.5
@@ -870,6 +872,8 @@ MonoBehaviour:
   hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
   dropPosition: {fileID: 454330}
   amountOfGOldToDrop: 1000
+  staticSpawner: {fileID: 0}
+  spanwer: {fileID: 0}
 --- !u!114 &11482950
 MonoBehaviour:
   m_ObjectHideFlags: 1
