@@ -28,7 +28,7 @@ GameObject:
   - 198: {fileID: 19862624}
   - 199: {fileID: 19950226}
   m_Layer: 2
-  m_Name: FlameParticle
+  m_Name: FlameParticle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156674}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: -0, y: 0, z: 0.42}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000014901163}
+  m_LocalPosition: {x: 0, y: 0, z: 0.41999993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 454010}
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169912}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 2.1885195, y: 27.21, z: -201.88}
+  m_LocalPosition: {x: 2.5928266, y: 25.838991, z: -201.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447698}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   hitEfftect: {fileID: 149446}
-  trailEffect: {fileID: 156674}
+  trailEffect: {fileID: 0}
   myMesh: {fileID: 2362170}
 --- !u!198 &19862624
 ParticleSystem:
@@ -551,7 +551,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 0
     randomizeRotationDirection: 0
-    gravityModifier: 0
+    gravityModifier: 0.05
     maxNumParticles: 250
     rotation3D: 0
   ShapeModule:
@@ -3171,7 +3171,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 47630d046cab32d44aab30d790a82f76, type: 2}
+  - {fileID: 2100000, guid: b1ca011c5f92d4fd4b5aeac44fd607c6, type: 2}
   - {fileID: 2100000, guid: 47630d046cab32d44aab30d790a82f76, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}

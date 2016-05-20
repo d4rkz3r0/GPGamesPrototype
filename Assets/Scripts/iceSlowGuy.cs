@@ -3,12 +3,13 @@ using System.Collections;
 
 public class iceSlowGuy : MonoBehaviour
 {
-    enum States { moving = 0, cirlce, attackSetUp, attacking, idle, wallInPath, statesMax };
+    enum States { moving = 0, cirlce, attackSetUp, attacking, idle, moveBack, statesMax };
     // Use this for initialization
     public Transform attackSpawned;
     public GameObject attack;
     GameObject player;
-
+    [SerializeField]
+    float minMovementRange = 5.0f, maxMovementRange = 10.0f;
     public float attkTimerMin = 2.0f, attkTimerMax = 3.5f;
     public float attackTimer = 3.5f;
     public float attackChance = 0.3f;
@@ -50,7 +51,7 @@ public class iceSlowGuy : MonoBehaviour
             switch (currentState)
             {
                 case States.moving:
-                    Movement();
+                    MovementForward();
                     break;
                 case States.attackSetUp:
                     AttackStepUp();
@@ -63,8 +64,8 @@ public class iceSlowGuy : MonoBehaviour
                 case States.cirlce:
                     Circle();
                     break;
-                case States.wallInPath:
-                    AvoidWall();
+                case States.moveBack:
+                    MoveBackWard();
                     break;
                 default:
                     Debug.Log("Shit Broke");
@@ -88,7 +89,7 @@ public class iceSlowGuy : MonoBehaviour
         attacked = false;
         attackTimer = Random.Range(attkTimerMin, attkTimerMax);
     }
-    void Movement()
+    void MovementForward()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         Circle();
@@ -113,9 +114,14 @@ public class iceSlowGuy : MonoBehaviour
         {
             return;
         }
-        if (Vector3.Distance(player.transform.position, transform.position) > 10)
+        if (Vector3.Distance(player.transform.position, transform.position) > maxMovementRange)
         {
             currentState = States.moving;
+            return;
+        }
+        if (Vector3.Distance(player.transform.position, transform.position) < minMovementRange)
+        {
+            currentState = States.moveBack;
             return;
         }
         if (attackTimer <= 0)
@@ -135,17 +141,7 @@ public class iceSlowGuy : MonoBehaviour
     }
     void AvoidWall()
     {
-        RaycastHit tempHit;
-        Physics.Raycast(mouthPos.position, (player.transform.position - transform.position).normalized, out tempHit);
-        if (tempHit.transform.tag != "Player")
-        {
-            currentState = States.wallInPath;
-        }
-        else
-        {
-            currentState = States.moving;
-            return;
-        }
+
     }
     void UpdateTimers()
     {
@@ -154,14 +150,11 @@ public class iceSlowGuy : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
-        //if (other.gameObject.tag == "Untagged")
-        //{
-        //    RaycastHit tempHit;
-        //    Physics.Raycast(mouthPos.position, (player.transform.position - transform.position).normalized, out tempHit);
-        //    if (tempHit.transform.tag != "Player")
-        //    {
-        //        currentState = States.wallInPath;
-        //    }
-        //}
+        
+    }
+    void MoveBackWard()
+    {
+        transform.Translate(Vector3.back * speed / 4.0f * Time.deltaTime);
+        Circle();
     }
 }

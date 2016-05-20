@@ -31,6 +31,8 @@ public class Spawner : MonoBehaviour
     int dropChanceIncreaseModifier = 5;
     [SerializeField]
     GameObject goldDropObject;
+    int numSpawned = 0;
+    bool once = false;
     void Start()
     {
         CurHealth = maxHealth;
@@ -64,23 +66,32 @@ public class Spawner : MonoBehaviour
     }
     void SpawnEnemies()
     {
-        if (currWave < maxWave && !PauseMenu.InpauseMenu)
+        if (numSpawned <= numPerWave)
         {
-            particles.SetActive(true);
-            for (int i = 0; i < numPerWave; i++)
+            if (currWave < maxWave && !PauseMenu.InpauseMenu)
             {
-                int index = Random.Range(0, objectsTospawn.Length);
-                GameObject mob = (GameObject)Instantiate(objectsTospawn[index], spawnPoints[i] + transform.position, transform.rotation);
-                EnemyHealth tempHealth = mob.GetComponent<EnemyHealth>();
-                if (tempHealth)
-                    tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
+                particles.SetActive(true);
+                for (int i = 0; i < numPerWave; i++)
+                {
+                    int index = Random.Range(0, objectsTospawn.Length);
+                    GameObject mob = (GameObject)Instantiate(objectsTospawn[index], spawnPoints[i] + transform.position, transform.rotation);
+                    EnemyHealth tempHealth = mob.GetComponent<EnemyHealth>();
+                    if (tempHealth)
+                    {
+                        tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
+                        tempHealth.spanwer = this;
+                    }
+                    numSpawned++;
+                }
+                currWave++;
+                Invoke("DisableParticles", 0.75f);
+                Invoke("SpawnEnemies", timeBetweenWaves);
             }
-            currWave++;
-            Invoke("DisableParticles", 0.75f);
-            Invoke("SpawnEnemies", timeBetweenWaves);
+            else
+                Invoke("Reset", restRate); 
         }
         else
-            Invoke("Reset", restRate);
+            once = false;
     }
     void DisableParticles()
     {
@@ -167,5 +178,15 @@ public class Spawner : MonoBehaviour
         currWave = 0;
         invulWave = 0;
         startedSpawning = false;
+    }
+    public void DecrementCOunt()
+    {
+        bool temp = (numSpawned <= numPerWave);
+        numSpawned--;
+        if (numSpawned <= numPerWave && !temp && !once)
+        {
+            startedSpawning = false;
+            once = true;
+        }
     }
 }
