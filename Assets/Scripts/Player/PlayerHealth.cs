@@ -64,8 +64,8 @@ public class PlayerHealth : MonoBehaviour
     public void DecreaseHealth(float dmg)
     {
         //Bzzzzzzz
-        float timeUntilDisable = RumbleController(dmg / MaxHealth) + 0.5f;
-        Invoke("DisableRumble", timeUntilDisable);
+        //float timeUntilDisable = RumbleController(dmg / MaxHealth) + 0.5f;
+        //Invoke("DisableRumble", timeUntilDisable);
 		
         FlashPlayerModel();
         CurHealth -= dmg;
