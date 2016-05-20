@@ -11,7 +11,7 @@ public class GateTrigger : MonoBehaviour
         {
             if (UpdateSpawnerKillCount.currentArea == 1)
             {
-                if (UpdateSpawnerKillCount.area1SpawnersRemaining == 0)
+                if (UpdateSpawnerKillCount.area1SpawnersRemaining <= 0)
                 {
                     UpdateSpawnerKillCount.currentArea = 2;
                     SFXManager.Instance.PlaySFX("warpPortalSFX");
