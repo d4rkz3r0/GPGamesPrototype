@@ -2738,7 +2738,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.190994, y: 30.94, z: -216.93803}
+  m_LocalPosition: {x: -1.6374152, y: 24.043484, z: -195.56673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 476020}
@@ -7150,7 +7150,7 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
@@ -7475,7 +7475,7 @@ ParticleSystem:
     length: 5
     boxX: 9.125054
     boxY: 1.508127
-    boxZ: 1
+    boxZ: 0.2
     arc: 360
     placementMode: 0
     m_Mesh: {fileID: 0}
@@ -7485,13 +7485,13 @@ ParticleSystem:
     m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
-    randomDirection: 1
+    randomDirection: 0
   EmissionModule:
     enabled: 1
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 250
+      scalar: 25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8615,6 +8615,8 @@ ParticleSystemRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 2c907c722ddf34d509edf8a32522caee, type: 2}
+  - {fileID: 2100000, guid: 2c907c722ddf34d509edf8a32522caee, type: 2}
+  - {fileID: 2100000, guid: ab6d36e9c16ce4fbea9b063c3ee8e129, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

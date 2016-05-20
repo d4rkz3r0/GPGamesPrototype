@@ -13,13 +13,13 @@ public class DpadCoolDown : MonoBehaviour
     public Image AtkCoolDown;
     public Image DefCoolDown;
     public Image VampCoolDown;
-
+    public Text DecreaseAmount;
     public int ForH;
     int Max3 = 15;
     int Max2 = 10;
     int Max1 = 5;
 
-
+    int buffer = 10;
 
     public float timer;
     bool pressagainbuff;
@@ -43,54 +43,75 @@ public class DpadCoolDown : MonoBehaviour
 
         if (Input.GetAxis("D-Pad Y Axis") == 1 && Buffs.sprite != null)
         {
-            
-           pressagainbuff = false;
-            if(ForH == 1)
-            {
 
-                GetComponent<PlayerHealth>().CurHealth += 150;
-                // GetComponent<PlayerHealth>(
-                Buffs.sprite = null;
-                ForH = 0;
-                Buffs.enabled = false;
+            pressagainbuff = false;
+            if (ForH == 1)
+            {
+                if (buffer <= 0)
+                {
+                    GetComponent<Multiplier>().AmountOfPoitionBought -= 1;
+                    DecreaseAmount.text = "x" + GetComponent<Multiplier>().AmountOfPoitionBought;
+                }
+
+                int temp = (int)(GetComponent<PlayerHealth>().MaxHealth / 6);
+                GetComponent<PlayerHealth>().CurHealth += temp;
+                if (GetComponent<Multiplier>().AmountOfPoitionBought <= 0)
+                {
+                    Buffs.sprite = null;
+                    ForH = 0;
+                    Buffs.enabled = false;
+
+                }
+
             }
-          
+
 
 
             if (ForH == 2)
             {
-                //GetComponent<FuryMeter>().Currentmeter += 150;
-                float temp  = GetComponent<FuryMeter>().MaxMeter / 6;
-                GetComponent<FuryMeter>().GainFury((int)(temp));
-                Buffs.sprite = null;
-                ForH = 0;
-                Buffs.enabled = false;
-            }
                 
+                //GetComponent<FuryMeter>().Currentmeter += 150;
+                int temp = (int)(GetComponent<FuryMeter>().MaxMeter / 6);
+                GetComponent<FuryMeter>().GainFury((temp));
+                if (GetComponent<Multiplier>().AmountOfPoitionBought <= 0)
+                {
+                    Buffs.sprite = null;
+                    ForH = 0;
+                    Buffs.enabled = false;
+                }
+                if(buffer <= 0)
+                {
+                    buffer = 4;
+                    GetComponent<Multiplier>().AmountOfPoitionBought -= 1;
+                    DecreaseAmount.text = "x" + GetComponent<Multiplier>().AmountOfPoitionBought;
+                }
+               
+            }
 
-        
+
+
         }
 
         if (Input.GetAxis("D-Pad Y Axis") == -1 && GetComponent<PlayerController>().cooldownTimer <= 0)
         {
 
-             AtkCoolDown.color = new Color(1, 1, 1, 0.5f);
+            AtkCoolDown.color = new Color(1, 1, 1, 0.5f);
             AtkCoolDown.fillAmount = 1f;
-           
+
 
             DefCoolDown.color = new Color(1, 1, 1, 0.5f);
             DefCoolDown.fillAmount = 1f;
 
 
 
-           // BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
-          // BuffsCoolDown.fillAmount = 1f;
+            // BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
+            // BuffsCoolDown.fillAmount = 1f;
 
-           pressagainVamp = false;
+            pressagainVamp = false;
         }
-           
-           // Debug.Log("I HIT THIS");
-        
+
+        // Debug.Log("I HIT THIS");
+
 
 
 
@@ -98,7 +119,7 @@ public class DpadCoolDown : MonoBehaviour
         {
 
             VampCoolDown.color = new Color(1, 1, 1, 0.5f);
-           VampCoolDown.fillAmount = 1f;
+            VampCoolDown.fillAmount = 1f;
 
 
             DefCoolDown.color = new Color(1, 1, 1, 0.5f);
@@ -106,10 +127,10 @@ public class DpadCoolDown : MonoBehaviour
 
 
 
-           // BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
+            // BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
             //BuffsCoolDown.fillAmount = 1f;
             pressagainAtk = false;
-          
+
         }
 
         if (Input.GetAxis("D-Pad X Axis") == 1 && GetComponent<PlayerController>().cooldownTimer <= 0)
@@ -119,15 +140,15 @@ public class DpadCoolDown : MonoBehaviour
             VampCoolDown.fillAmount = 1f;
 
 
-           AtkCoolDown.color = new Color(1, 1, 1, 0.5f);
+            AtkCoolDown.color = new Color(1, 1, 1, 0.5f);
             AtkCoolDown.fillAmount = 1f;
 
 
 
             //BuffsCoolDown.color = new Color(1, 1, 1, 0.5f);
-           // BuffsCoolDown.fillAmount = 1f;
+            // BuffsCoolDown.fillAmount = 1f;
             pressagainDef = false;
-          
+
         }
 
 
@@ -176,12 +197,17 @@ public class DpadCoolDown : MonoBehaviour
 
         if (!pressagainDef && GetComponent<PlayerController>().cooldownTimer > 0)
         {
-           // BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
+            // BuffsCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
             AtkCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
             //DefCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max3);
             VampCoolDown.fillAmount = 1 - (GetComponent<PlayerController>().cooldownTimer / Max1);
             if (GetComponent<PlayerController>().cooldownTimer == GetComponent<PlayerController>().cooldownDuration)
                 pressagainDef = true;
         }
+
+        buffer--;
     }
+
+
+    
 }
