@@ -9,6 +9,8 @@ public class StaticSpawnerScript : MonoBehaviour
     public int maxWave;
     public int invulWave = 3;
     public float detectionRange = 20.0f;
+    [SerializeField]
+    float restRate = 30.0f;
     public GameObject[] objectsTospawn;
     Vector3[] spawnPoints;
     public GameObject particles;
@@ -76,6 +78,8 @@ public class StaticSpawnerScript : MonoBehaviour
             Invoke("DisableParticles", 0.75f);
             Invoke("SpawnEnemies", timeBetweenWaves);
         }
+        else
+            Invoke("Reset", restRate);
     }
     void DisableParticles()
     {
@@ -157,5 +161,11 @@ public class StaticSpawnerScript : MonoBehaviour
             UpdateSpawnerKillCount.area2SpawnersRemaining--;
         }
         UpdateSpawnerKillCount.numOfEntireLevelSpawners--;
+    }
+    void Reset()
+    {
+        currWave = 0;
+        invulWave = 0;
+        startedSpawning = false;
     }
 }

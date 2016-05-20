@@ -175,6 +175,8 @@ public class PlayerController : MonoBehaviour
 
             //cameraForward = Quaternion.LookRotation(somewhereInFrontOfTheCamera);
 
+            //playerForward = Quaternion.Lerp(transform.rotation, cameraForward, Time.deltaTime);
+
             playerForward = cameraForward;
 
 
