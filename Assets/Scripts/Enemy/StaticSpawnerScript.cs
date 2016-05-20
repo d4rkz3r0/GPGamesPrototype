@@ -59,7 +59,7 @@ public class StaticSpawnerScript : MonoBehaviour
         if (playerEntered && !startedSpawning)
         {
             startedSpawning = true;
-            Invoke("SpawnEnemies", timeBetweenWaves);
+            SpawnEnemies();
         }
     }
     void SpawnEnemies()
