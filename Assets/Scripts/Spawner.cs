@@ -31,6 +31,8 @@ public class Spawner : MonoBehaviour
     int dropChanceIncreaseModifier = 5;
     [SerializeField]
     GameObject goldDropObject;
+    [SerializeField]
+    GameObject hitEffect;
     int numSpawned = 0;
     bool once = false;
     void Start()
@@ -101,6 +103,7 @@ public class Spawner : MonoBehaviour
     {
         if (invulFrames || currWave < invulWave)
             return;
+        hitEffect.transform.LookAt(player.transform.position);
         PlayerHealth tempHealth = player.GetComponent<PlayerHealth>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
@@ -112,6 +115,8 @@ public class Spawner : MonoBehaviour
             if (buff == 1)
                 tempHealth.ReGenHealth(baseHitDamage * playerMultiplier.vampMultiplier);
             invulFrames = true;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorWhirlwindCollider")
@@ -123,6 +128,8 @@ public class Spawner : MonoBehaviour
                 tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorSlamCollider")
@@ -134,6 +141,8 @@ public class Spawner : MonoBehaviour
                 tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorSword")
@@ -146,6 +155,8 @@ public class Spawner : MonoBehaviour
             CurHealth -= damage;
             invulFrames = true;
             Invoke("ResetIFrames", 0.75f);
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             playerFury.GainFury(furyGainedOffHit);
         }
         if (CurHealth <= 0.0f)
@@ -188,5 +199,9 @@ public class Spawner : MonoBehaviour
             startedSpawning = false;
             once = true;
         }
+    }
+    void DisableHit()
+    {
+        hitEffect.SetActive(false);
     }
 }
