@@ -6,6 +6,9 @@ public class GameOver : MonoBehaviour
 
     public Canvas LoseScreen;
     public Canvas pauseMenu;
+    public GameObject GoldDropPosition = new GameObject();
+    public GameObject RespawnPosition = new GameObject();
+    public int GoldDrop;
     void Start()
     {
         LoseScreen.enabled = false;
@@ -16,29 +19,26 @@ public class GameOver : MonoBehaviour
     {
         if (GetComponent<PlayerHealth>().CurHealth <= 0)
         {
-            LoseScreen.enabled = true;
 
+            GoldDropPosition.transform.position = transform.position;
+            GoldDropPosition.SetActive(true);
 
+            GoldDropPosition.transform.position = new Vector3(GoldDropPosition.transform.position.x, GoldDropPosition.transform.position.y, GoldDropPosition.transform.position.z);
+          //  GoldDrop = GetComponent<PlayerGold>().Gold;
+          //  GetComponent<PlayerGold>().Gold = 0;
+            DontDestroyOnLoad(GoldDropPosition);
+            
+            //DontDestroyOnLoad(this);
+          //.//  Application.LoadLevel(0);
         }
+
+
         
 
-        if (Input.GetButton("StartButton") && LoseScreen.enabled == true)
-        {
-            //Debug.Log(Input.GetButton("StartButton").ToString());
-            pauseMenu.enabled = false;
-            SceneManager.LoadScene(0);
-            PauseMenu.InpauseMenu = false;
-        }
+        
 
 
 
-        //Debug.Log((Input.GetButton("SelectButton").ToString()));
-        if (Input.GetButton("SelectButton") && LoseScreen.enabled == true)
-        {
-            //UnityEditor.EditorApplication.isPlaying = false;
-            Application.Quit();
-            
-
-        }
+ 
     }
 }
