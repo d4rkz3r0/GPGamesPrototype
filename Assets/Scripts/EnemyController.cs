@@ -36,6 +36,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (myHealth.CurHealth <= 0)
+        {
+            myAnimation.SetInteger("state", 3);
+            RemoveFromSLots();
+            return;
+        }
         if (player && myAnimation.GetInteger("state") != 3 && !PauseMenu.InpauseMenu)
         {
             float distance = 0;
@@ -152,11 +158,6 @@ public class EnemyController : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (myHealth.CurHealth <= 0)
-        {
-            myAnimation.SetInteger("state", 3);
-            RemoveFromSLots();
-        }
         if (other.tag == "WarriorChargeCollider")
         {
             ResetAttack();

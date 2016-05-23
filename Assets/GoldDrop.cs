@@ -52,8 +52,9 @@ public class GoldDrop : MonoBehaviour
             Debug.Log("I HIT HERE ");
             LoadGold = new StreamReader("DeathGold.txt",true);
             string line = LoadGold.ReadLine();
-
-            Theplayer.GetComponent<PlayerGold>().Gold += System.UInt32.Parse(line);
+            LoadGold.Close();
+            int temp = System.Int32.Parse(line);
+           Theplayer.GetComponent<PlayerGold>().Gold += temp;
             this.enabled = false;
             Destroy(this);
 

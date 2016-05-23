@@ -10,7 +10,7 @@ public class SFXManager : MonoBehaviour
     //Main
     private static SFXManager instance;
     public List<AudioClip> audioClipBank;
-    private Dictionary<string, int> audioLookupTable;
+    private Dictionary<string, int> audioLookupTable = new Dictionary<string, int>();
 
     //Field Accessor
     public static SFXManager Instance
@@ -32,7 +32,7 @@ public class SFXManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         if (!GenerateMap())
         {
@@ -80,8 +80,6 @@ public class SFXManager : MonoBehaviour
     //-Helper Funcs-//
     private bool GenerateMap()
     {
-        audioLookupTable = new Dictionary<string, int>();
-
         for (int audioClipIndex = 0; audioClipIndex < audioClipBank.Count; audioClipIndex++)
         {
             if (audioClipBank[audioClipIndex].name != "Null")

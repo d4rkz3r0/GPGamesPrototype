@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickUpPulse : MonoBehaviour {
+public class PickUpPulse : MonoBehaviour
+{
 
     [SerializeField]
     float pulseTime = 1.0f;
@@ -12,15 +13,21 @@ public class PickUpPulse : MonoBehaviour {
     float timer = 0;
     float curSize = 0;
     bool down = true;
+    [SerializeField]
+    GameObject toInstantiate;
+    [SerializeField]
+    bool Gold = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         timer = pulseTime;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (pulseTime == 0)
         {
@@ -39,7 +46,7 @@ public class PickUpPulse : MonoBehaviour {
 
         if (down)
         {
-            timer -= Time.deltaTime; 
+            timer -= Time.deltaTime;
         }
         else
         {
@@ -52,7 +59,30 @@ public class PickUpPulse : MonoBehaviour {
         float test = RenderSettings.haloStrength;
 
         RenderSettings.haloStrength = curSize;
-        
 
-	}
+
+    }
+
+    void OnDestroy()
+    {
+        if (Gold)
+        {
+            GameObject temp = Instantiate(toInstantiate);
+            temp.transform.position = transform.position;
+            temp.transform.rotation = transform.rotation;
+            Destroy(temp, 1);
+
+        }
+        else
+        {
+            GameObject temp = Instantiate(toInstantiate);
+            temp.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
+            temp.transform.position = temp.transform.parent.position;
+            Vector3 tempVec = temp.transform.position;
+            tempVec.y += 1;
+            temp.transform.position = tempVec;
+            Destroy(temp, 1);
+        }
+    }
+
 }

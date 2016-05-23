@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.561406, y: 3.9287135e-16, z: -17.693352}
+  m_LocalPosition: {x: 4.952444, y: 24.65, z: -198.03085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444822}
@@ -152,7 +152,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1735,7 +1735,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.5
+      scalar: 0.25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2067,7 +2067,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 200
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2109,11 +2109,11 @@ ParticleSystem:
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
-    time0: 0.2
+    time0: 0.1
     time1: 0
     time2: 0
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 1
   SizeModule:
     enabled: 1
     curve:
