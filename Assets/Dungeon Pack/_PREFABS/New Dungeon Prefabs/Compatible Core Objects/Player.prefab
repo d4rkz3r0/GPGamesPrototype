@@ -2962,6 +2962,7 @@ MonoBehaviour:
   attackBuffMultiplier: 2
   defBuffMultiplier: 0.2
   fireDamageThing: 0
+  AmountOfPoitionBought: 0
 --- !u!114 &11443696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3104,6 +3105,7 @@ MonoBehaviour:
   AtkCoolDown: {fileID: 0}
   DefCoolDown: {fileID: 0}
   VampCoolDown: {fileID: 0}
+  DecreaseAmount: {fileID: 0}
   ForH: 0
   timer: 0
 --- !u!114 &11487680
