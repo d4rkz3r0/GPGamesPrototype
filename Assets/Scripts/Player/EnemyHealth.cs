@@ -156,6 +156,25 @@ public class EnemyHealth : MonoBehaviour
             Instantiate(hitEffect, transform.position, transform.rotation);
             playerFury.GainFury(furyGainedOffHit);
         }
+        else if (other.tag == "FireWeaponExplosion")
+        {
+            float damage = baseHitDamage * 1.1f;
+            if (buff == -1)
+                damage *= playerMultiplier.attackBuffMultiplier;
+            if (buff == 1)
+                tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
+            CurHealth -= damage;
+            invulFrames = true;
+            Invoke("ResetIFrames", 0.75f);
+            Instantiate(hitEffect, transform.position, transform.rotation);
+        }
+        else if (other.tag == "OnDeathExplosion")
+        {
+            CurHealth -= 400.0f;
+            invulFrames = true;
+            Invoke("ResetIFrames", 0.75f);
+            Instantiate(hitEffect, transform.position, transform.rotation);
+        }
         if (CurHealth <= 0.0f)
         {
             DeleteBar.enabled = false;
