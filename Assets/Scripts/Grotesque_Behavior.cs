@@ -9,6 +9,7 @@ public class Grotesque_Behavior : MonoBehaviour {
     private float moveSpeed;
     public int currentHealth;
     private int maxHealth;
+    private EnemyHealth enemyHealth;
 
     public float waitRange;
     public float stun_length;
@@ -66,6 +67,9 @@ public class Grotesque_Behavior : MonoBehaviour {
 
         if (GetComponent<Animator>())
             animator = GetComponent<Animator>();
+
+        if (GetComponent<EnemyHealth>())
+            enemyHealth = GetComponent<EnemyHealth>();
 
         //if (GetComponentInChildren<MeshRenderer>())
         //    warningRadius = GetComponentInChildren<MeshRenderer>();
@@ -125,6 +129,8 @@ public class Grotesque_Behavior : MonoBehaviour {
 
     States CalculateAction()
     {
+        currentHealth = (int)enemyHealth.CurHealth;
+
         // Testing each state:
         //return States.INVALID;
         if (currentHealth == 0)
@@ -279,86 +285,6 @@ public class Grotesque_Behavior : MonoBehaviour {
     void DestroySelf()
     {
         Destroy(gameObject);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (!IFrames)
-        {
-            if (other.CompareTag("WarriorSword"))
-            {
-                if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
-                {
-                    currentHealth -= 100 * 2;
-                }
-                else
-                {
-                    currentHealth -= 100;
-                }
-                IFrames = true;
-                Invoke("IFrameOff", 0.25f);
-            }
-            else if (other.CompareTag("WarriorChargeCollider"))
-            {
-                animator.Play("Imp_Reaction");
-
-                if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
-                {
-                    currentHealth -= 100 * 2;
-                }
-                else
-                {
-                    currentHealth -= 100;
-                }
-                IFrames = true;
-                Invoke("IFrameOff", 0.25f);
-            }
-            else if (other.CompareTag("WarriorWhirlwindCollider"))
-            {
-                if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
-                {
-                    currentHealth -= 120 * 2;
-                }
-                else
-                {
-                    currentHealth -= 120;
-                }
-                IFrames = true;
-                Invoke("IFrameOff", 0.25f);
-            }
-            else if (other.CompareTag("WarriorSlamCollider"))
-            {
-                animator.Play("Imp_Reaction");
-                rBody.AddForce(Vector3.up * 100);
-                Invoke("RegainControl", stun_length);
-
-                if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
-                {
-                    currentHealth -= 150 * 2;
-                }
-                else
-                {
-                    currentHealth -= 150;
-                }
-                IFrames = true;
-                Invoke("IFrameOff", 0.25f);
-            }
-            else if (other.CompareTag("Spell"))
-            {
-                if (controllerRef.attkBuff_defBuff_vampBuff_onCD_rdy == -1)
-                {
-                    currentHealth -= other.GetComponent<FireBallController>().abilityDamage * 2;
-                }
-                else
-                {
-                    currentHealth -= other.GetComponent<FireBallController>().abilityDamage;
-                }
-                IFrames = true;
-                Invoke("IFrameOff", 0.25f);
-            }
-        }
-
-        
     }
 
     void IFrameOff()

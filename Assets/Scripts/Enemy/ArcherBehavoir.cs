@@ -52,10 +52,13 @@ public class ArcherBehavoir : MonoBehaviour
                     break;
                 default:
                     break;
-            } 
+            }
         }
         else
+        {
             myAnimator.SetInteger("state", 3);
+            Destroy(gameObject, 2.0f);
+        }
     }
     void DeterminState()
     {
