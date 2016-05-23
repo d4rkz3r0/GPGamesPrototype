@@ -30,6 +30,10 @@ public class StaticSpawnerScript : MonoBehaviour
     int dropChanceIncreaseModifier = 5;
     [SerializeField]
     GameObject goldDropObject;
+    [SerializeField]
+    GameObject hitEffect;
+    [SerializeField]
+    GameObject deathAnimation;
     int numSpawned = 0;
     bool once = false;
     void Start()
@@ -99,6 +103,7 @@ public class StaticSpawnerScript : MonoBehaviour
     {
         if (invulFrames || currWave < invulWave)
             return;
+        hitEffect.transform.LookAt(player.transform.position);
         PlayerHealth tempHealth = player.GetComponent<PlayerHealth>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
@@ -110,6 +115,8 @@ public class StaticSpawnerScript : MonoBehaviour
             if (buff == 1)
                 tempHealth.ReGenHealth(baseHitDamage * playerMultiplier.vampMultiplier);
             invulFrames = true;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorWhirlwindCollider")
@@ -121,6 +128,8 @@ public class StaticSpawnerScript : MonoBehaviour
                 tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorSlamCollider")
@@ -132,6 +141,8 @@ public class StaticSpawnerScript : MonoBehaviour
                 tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
             invulFrames = true;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             Invoke("ResetIFrames", 0.3f);
         }
         else if (other.tag == "WarriorSword")
@@ -142,6 +153,8 @@ public class StaticSpawnerScript : MonoBehaviour
             if (buff == 1)
                 tempHealth.ReGenHealth(damage * playerMultiplier.vampMultiplier);
             CurHealth -= damage;
+            hitEffect.SetActive(true);
+            Invoke("DisableHit", 1.0f);
             invulFrames = true;
             Invoke("ResetIFrames", 0.75f);
             playerFury.GainFury(furyGainedOffHit);
@@ -151,6 +164,7 @@ public class StaticSpawnerScript : MonoBehaviour
             UpdateKillCountUI();
             GameObject gold = (GameObject)Instantiate(goldDropObject, transform.position, transform.rotation);
             gold.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = amountOfGoldTODrop + (int)(amountOfGoldTODrop * ((currWave - invulWave) * 0.5f));
+            Instantiate(deathAnimation, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
@@ -187,5 +201,9 @@ public class StaticSpawnerScript : MonoBehaviour
             SpawnEnemies();
             once = true;
         }
+    }
+    void DisableHit()
+    {
+        hitEffect.SetActive(false);
     }
 }

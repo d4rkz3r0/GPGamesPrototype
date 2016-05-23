@@ -33,6 +33,8 @@ public class Spawner : MonoBehaviour
     GameObject goldDropObject;
     [SerializeField]
     GameObject hitEffect;
+    [SerializeField]
+    GameObject deathAnimation;
     int numSpawned = 0;
     bool once = false;
     void Start()
@@ -164,6 +166,7 @@ public class Spawner : MonoBehaviour
             UpdateKillCountUI();
             GameObject gold = (GameObject)Instantiate(goldDropObject, transform.position, transform.rotation);
             gold.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = amountOfGoldTODrop + (int)(amountOfGoldTODrop * ((currWave - invulWave) * 0.5f));
+            Instantiate(deathAnimation, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
