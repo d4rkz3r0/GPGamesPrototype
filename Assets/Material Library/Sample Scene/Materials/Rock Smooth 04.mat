@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Floor Tiles 05
+  m_Name: Rock Smooth 04
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _AFFECTAO_ON _DETAIL_MULX2 _NORMALMAP _PARALLAXMAP
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,35 +19,42 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 3acb63e88453d8a4f9be445e6d6a4cd9, type: 3}
-          m_Scale: {x: 2, y: 2}
+          m_Texture: {fileID: 2800000, guid: f2590fcae644bd04583f79f38dde7fdc, type: 3}
+          m_Scale: {x: 1000, y: 1000}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 4cce7f8e0b3a7bd4189952658c1a9aa5, type: 3}
+          m_Texture: {fileID: 2800000, guid: a4365e086ba6eee4ca213f61290c10d3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 6482f6b0796857b479ee1111392deec0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _DetailNormalMap
         second:
-          m_Texture: {fileID: 2800000, guid: a81ca4f8d9cf07c49874e73db4c34618, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ParallaxMap
         second:
-          m_Texture: {fileID: 2800000, guid: d25c8842c470bc445b4c6e468f249882, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _OcclusionMap
         second:
-          m_Texture: {fileID: 2800000, guid: e733cbc3e13dc5240880cf17c84fdcf6, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -55,7 +62,7 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 2, y: 2}
+          m_Scale: {x: 1000, y: 1000}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -68,8 +75,8 @@ Material:
         first:
           name: _DetailAlbedoMap
         second:
-          m_Texture: {fileID: 2800000, guid: 5ef22d8d7cb4b4842880be2ecf6b41f3, type: 3}
-          m_Scale: {x: 2, y: 2}
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 0, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -80,51 +87,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _NormalMain
+          name: _Base
         second:
-          m_Texture: {fileID: 2800000, guid: 4cce7f8e0b3a7bd4189952658c1a9aa5, type: 3}
+          m_Texture: {fileID: 2800000, guid: f2590fcae644bd04583f79f38dde7fdc, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _DiffuseDetail
+          name: _SpecularRGBGlossA
         second:
-          m_Texture: {fileID: 2800000, guid: c8a9cb8b683da0846921094a05fc07ff, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _NormalDetail
-        second:
-          m_Texture: {fileID: 2800000, guid: 4f5b0193ebcc75349b49cd444fb150c4, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DiffuseMain
-        second:
-          m_Texture: {fileID: 2800000, guid: 3acb63e88453d8a4f9be445e6d6a4cd9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _CustomAO
-        second:
-          m_Texture: {fileID: 2800000, guid: e733cbc3e13dc5240880cf17c84fdcf6, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Specular
-        second:
-          m_Texture: {fileID: 2800000, guid: 3acb63e88453d8a4f9be445e6d6a4cd9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _HeightMap
-        second:
-          m_Texture: {fileID: 2800000, guid: d25c8842c470bc445b4c6e468f249882, type: 3}
+          m_Texture: {fileID: 2800000, guid: 753cb96aa7db77a43962001562aff316, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -143,7 +115,7 @@ Material:
       data:
         first:
           name: _Parallax
-        second: 0.0334
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -151,7 +123,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.37
+        second: 0.309
       data:
         first:
           name: _BumpScale
@@ -175,47 +147,27 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.156
+        second: 0
       data:
         first:
           name: _EmissionScaleUI
         second: 0
       data:
         first:
+          name: _SpecularLevel
+        second: 0.35714287
+      data:
+        first:
+          name: _GlossLevel
+        second: 0.44642857
+      data:
+        first:
           name: _RimLevel
-        second: 8.392857
+        second: 6.607143
       data:
         first:
-          name: _Gloss
-        second: 0.26
-      data:
-        first:
-          name: _SpecularIntensity
-        second: 0.98
-      data:
-        first:
-          name: _AOStrenght
-        second: 0.5535714
-      data:
-        first:
-          name: _Heightvalue
-        second: 0.05
-      data:
-        first:
-          name: _ParallaxDepth
-        second: 1
-      data:
-        first:
-          name: _AOAmmount
-        second: 0.44642854
-      data:
-        first:
-          name: _UVTiling
-        second: 2
-      data:
-        first:
-          name: _AffectAO
-        second: 1
+          name: _TransmissionFresnel
+        second: 0.45715562
     m_Colors:
       data:
         first:
@@ -224,7 +176,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.31617647, g: 0.31617647, b: 0.31617647, a: 1}
+        second: {r: 0.588, g: 0.588, b: 0.588, a: 1}
       data:
         first:
           name: _EmissionColorUI
@@ -236,12 +188,8 @@ Material:
       data:
         first:
           name: _RimColor
-        second: {r: 0.125, g: 0.125, b: 0.125, a: 1}
+        second: {r: 0.2647059, g: 0.2647059, b: 0.2647059, a: 1}
       data:
         first:
-          name: _SpecularTint
-        second: {r: 0.61764705, g: 0.61764705, b: 0.61764705, a: 1}
-      data:
-        first:
-          name: _AOColor
-        second: {r: 0.3897059, g: 0.36441058, b: 0.3323962, a: 1}
+          name: _TransmissionColor
+        second: {r: 1, g: 0.9922921, b: 0.7205882, a: 1}
