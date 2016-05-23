@@ -421,9 +421,9 @@ public class PlayerController : MonoBehaviour
             if (!iFrames)
             {
                 if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
-                    healthManager.DecreaseHealth(40.0f);
+                    healthManager.DecreaseHealth(13.0f);
                 else
-                    healthManager.DecreaseHealth(200.0f);
+                    healthManager.DecreaseHealth(75.0f);
 
                 // Slow the player
                 fSpeedModifier = 0.4f;
