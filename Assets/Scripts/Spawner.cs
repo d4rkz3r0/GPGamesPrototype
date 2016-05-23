@@ -105,7 +105,9 @@ public class Spawner : MonoBehaviour
     {
         if (invulFrames || currWave < invulWave)
             return;
-        hitEffect.transform.LookAt(player.transform.position);
+        Vector3 playerPos = player.transform.position;
+        playerPos.y = hitEffect.transform.position.y;
+        hitEffect.transform.LookAt(playerPos);
         PlayerHealth tempHealth = player.GetComponent<PlayerHealth>();
         int buff = playerCon.attkBuff_defBuff_vampBuff_onCD_rdy;
         if (other.tag == "WarriorChargeCollider")
