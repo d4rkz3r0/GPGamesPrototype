@@ -84,6 +84,7 @@ public class StaticSpawnerScript : MonoBehaviour
                         tempHealth.dropRate = dropChanceIncreaseModifier * currWave;
                         tempHealth.staticSpawner = this;
                     }
+                    numSpawned++;
                 }
                 currWave++;
                 Invoke("DisableParticles", 0.75f);
