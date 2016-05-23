@@ -40,6 +40,7 @@ public class EnemyController : MonoBehaviour
         {
             myAnimation.SetInteger("state", 3);
             RemoveFromSLots();
+            Destroy(gameObject, 2.0f);
             return;
         }
         if (player && myAnimation.GetInteger("state") != 3 && !PauseMenu.InpauseMenu)

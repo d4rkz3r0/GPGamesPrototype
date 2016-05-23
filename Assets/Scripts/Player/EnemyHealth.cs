@@ -185,6 +185,5 @@ public class EnemyHealth : MonoBehaviour
                 gold.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = amountOfGOldToDrop;
             }
         }
-        Destroy(gameObject);
     }
 }

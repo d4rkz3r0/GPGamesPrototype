@@ -70,8 +70,10 @@ public class iceSlowGuy : MonoBehaviour
                 default:
                     Debug.Log("Shit Broke");
                     break;
-            } 
+            }
         }
+        else
+            Destroy(gameObject, 2.0f);
     }
     void AttackStepUp()
     {

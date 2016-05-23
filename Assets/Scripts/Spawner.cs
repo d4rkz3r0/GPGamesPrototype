@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     int amountOfGoldTODrop = 0;
     [SerializeField]
-    int dropChanceIncreaseModifier = 5;
+    float dropChanceIncreaseModifier = 0.05f;
     [SerializeField]
     GameObject goldDropObject;
     [SerializeField]
