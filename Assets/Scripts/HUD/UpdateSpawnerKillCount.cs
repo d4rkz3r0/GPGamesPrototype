@@ -16,8 +16,8 @@ public class UpdateSpawnerKillCount : MonoBehaviour
     public static int currentArea = 1;
     
     //Hardcode Number of Spawners per Area for now.
-    public static int numOfArea1Spawners = 20;
-    public static int numOfArea2Spawners = 25; //To Be Filled In
+    public static int numOfArea1Spawners = 8;
+    public static int numOfArea2Spawners = 0; //To Be Filled In
 
     public static int area1SpawnersRemaining = numOfArea1Spawners;
     public static int area2SpawnersRemaining = numOfArea2Spawners;
