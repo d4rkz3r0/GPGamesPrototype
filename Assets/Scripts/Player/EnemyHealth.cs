@@ -43,6 +43,7 @@ public class EnemyHealth : MonoBehaviour
     void Update()
     {
         SetHealth(CurHealth / MaxHealth);
+        
     }
     void DecreaseHealth()
     {
@@ -191,7 +192,7 @@ public class EnemyHealth : MonoBehaviour
             spanwer.DecrementCOunt();
         else if (staticSpawner)
             staticSpawner.DecrementCOunt();
-        UpdateKillCount.enemySlayCount++;
+            UpdateKillCount.enemySlayCount++;
         if (healthDrop)
             if (Random.value < healthDropRate)
                 Instantiate(healthDrop, dropPosition.position, transform.rotation);

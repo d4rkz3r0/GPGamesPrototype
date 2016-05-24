@@ -14,7 +14,7 @@ public class AblilityCoolDown : MonoBehaviour {
 
     int Max3 = 3;
     int Max2 = 12;
-    float Max1 = 0.3f;
+    float Max1 = 2f;
 	void Start () 
     {
         timerAblility1 = 300;
@@ -27,7 +27,7 @@ public class AblilityCoolDown : MonoBehaviour {
     {
         if (Input.GetButtonDown("B Button") && GetComponent<WarriorCharge>().cooldownTimer == 0 && GetComponent<FuryMeter>().Currentmeter > 0)
     {
-        timerAblility1 = 1;
+      
 
         CoolDownPictureAbillity1.color = new Color(1, 1, 1, 0.3f);
        // CoolDownPictureAbillity1.enabled = true;
