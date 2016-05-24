@@ -69,8 +69,6 @@ public class SwordController : MonoBehaviour
 
     private void SwordSlashEnemy(Collider anObject, int currentAttack)
     {
-        //string prefabName = anObject.name + "(Clone)";
-
         switch (currentAttack)
         {
             case 1:
@@ -79,24 +77,17 @@ public class SwordController : MonoBehaviour
                     {
                         case "Enemy":
                         case "Enemy(Clone)":
-                        {
-                            SFXManager.Instance.PlaySFX("swordHitZombie1SFX");
-                            firstStrike = false;
-                            break;
-                        }
-                        //case "Archer":
-                        //case "Archer(Clone)":
-                        //    {
-                        //        SFXManager.Instance.PlaySFX("swordHitArcher1SFX");
-                        //        firstStrike = false;
-                        //        break;
-                        //    }
+                            {
+                                SFXManager.Instance.PlaySFX("swordHitZombie1SFX");
+                                firstStrike = false;
+                                break;
+                            }
                     }
                     break;
                 }
-                
+
             case 2:
-            {
+                {
                     switch (anObject.name)
                     {
                         case "Enemy":
@@ -108,10 +99,10 @@ public class SwordController : MonoBehaviour
                             }
                     }
                     break;
-            }
+                }
 
             case 3:
-            {
+                {
                     switch (anObject.name)
                     {
                         case "Enemy":
@@ -122,13 +113,8 @@ public class SwordController : MonoBehaviour
                                 break;
                             }
                     }
-                break;
-            }
-
-            default:
-            {
-                break;
-            }
+                    break;
+                }
         }
     }
 
@@ -155,11 +141,6 @@ public class SwordController : MonoBehaviour
                 SFXManager.Instance.PlaySFX("swordMiss3SFX");
                 thirdStrike = false;
 
-                break;
-            }
-            default:
-            {
-                Debug.Log("Invalid Attack State");
                 break;
             }
         }
@@ -190,9 +171,32 @@ public class SwordController : MonoBehaviour
 
                     break;
                 }
-            default:
+        }
+    }
+
+    private void SwordSlashSpawner(Collider anObject, int currentAttack)
+    {
+        switch (currentAttack)
+        {
+            case 1:
                 {
-                    Debug.Log("Invalid Attack State");
+                    SFXManager.Instance.PlaySFX("swordHitSpawnerSFX1");
+                    firstStrike = false;
+                    break;
+                }
+
+
+            case 2:
+                {
+                    SFXManager.Instance.PlaySFX("swordHitSpawnerSFX2");
+                    secondStrike = false;
+                    break;
+                }
+            case 3:
+                {
+                    SFXManager.Instance.PlaySFX("swordHitSpawnerSFX1");
+                    thirdStrike = false;
+
                     break;
                 }
         }
@@ -239,6 +243,30 @@ public class SwordController : MonoBehaviour
                     {
                         swordTrail.TrailColor = Color.red;
                         SwordSlashEnemy(other, 3);
+                        thirdStrike = false;
+                    }
+                    break;
+                }
+            case "Spawner":
+                {
+                    StopOrDeleteMissSFX();
+                    if (player.AnimatorIsPlaying("MeleeSlash1") && firstStrike)
+                    {
+                        swordTrail.TrailColor = Color.magenta;
+                        SwordSlashSpawner(other, 1);
+                        firstStrike = false;
+                    }
+                    else if (player.AnimatorIsPlaying("MeleeSlash2") && secondStrike)
+                    {
+                        swordTrail.TrailColor = Color.magenta;
+                        SwordSlashSpawner(other, 2);
+                        secondStrike = false;
+
+                    }
+                    else if (player.AnimatorIsPlaying("MeleeSlash3") && thirdStrike && meleeEndComboTimer < 0.0f)
+                    {
+                        swordTrail.TrailColor = Color.magenta;
+                        SwordSlashSpawner(other, 3);
                         thirdStrike = false;
                     }
                     break;
