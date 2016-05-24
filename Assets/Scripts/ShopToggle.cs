@@ -41,7 +41,6 @@ public class ShopToggle : MonoBehaviour {
                     break;
                 }
         }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -57,6 +56,12 @@ public class ShopToggle : MonoBehaviour {
                 modalPanel.dialougeChoice(questionToAsk, yesAction, noAction);
             }
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+            FindObjectOfType<PlayerController>().ResetCombo();
     }
 
     void ToggleDoor()
