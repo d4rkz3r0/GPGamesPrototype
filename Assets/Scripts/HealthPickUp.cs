@@ -16,6 +16,12 @@ public class HealthPickUp : MonoBehaviour
     private bool movingUP = true;
     private float totalBounceDistance;
 
+    //Total Hack
+    private bool isGoldDrop = false;
+    private float destroyTimer = 0.0f;
+    public float destroyDuration = 4.5f;
+
+
     void Start()
     {
         //Init
@@ -26,6 +32,13 @@ public class HealthPickUp : MonoBehaviour
         StartCoroutine(SpinPickup());
         StartCoroutine(BouncePickup());
 
+        //Spaghetti
+        if (name[0] == 'G')
+        {
+            isGoldDrop = true;
+            destroyTimer = destroyDuration;
+        }
+
         myCol = GetComponent<SphereCollider>();
         if (myCol)
             myCol.enabled = false;
@@ -35,7 +48,17 @@ public class HealthPickUp : MonoBehaviour
 
     void Update()
     {
-
+        if (isGoldDrop)
+        {
+            if (destroyTimer > 0.0f)
+            {
+                destroyTimer -= Time.deltaTime;
+            }
+            if (destroyTimer <= 0.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private IEnumerator SpinPickup()

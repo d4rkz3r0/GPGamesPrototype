@@ -32,6 +32,11 @@ public class PlayerHealth : MonoBehaviour
     private float flashTimer;
     private bool modelFlashing;
 
+    //Hurt SFX Buffer
+    private float hurtSFXTimer = 0.0f;
+    private float hurtSFXDuration = 3.0f;
+    private bool canPlayHurtSFX = true;
+
 
     void Awake()
     {
@@ -53,6 +58,8 @@ public class PlayerHealth : MonoBehaviour
         UpdateGamePadState();
         UpdateFlashTimer();
 
+        HurtSFXTimerUpdate();
+
         HealthBar.fillAmount = CurHealth / MaxHealth;
 
         if (CurHealth >= MaxHealth)
@@ -66,7 +73,9 @@ public class PlayerHealth : MonoBehaviour
         //Bzzzzzzz
         //float timeUntilDisable = RumbleController(dmg / MaxHealth) + 0.5f;
         //Invoke("DisableRumble", timeUntilDisable);
-		
+
+        int hurtSFXIndex = Random.Range(0, 8);
+        PlayHurtSFX(hurtSFXIndex);
         FlashPlayerModel();
         CurHealth -= dmg;
     }
@@ -81,6 +90,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.tag == "PickUpHealth")
         {
+            SFXManager.Instance.PlaySFX("healthPickUpSFX");
             ReGenHealth(50);
             Destroy(other.gameObject);
         }
@@ -180,5 +190,64 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
- 
+    void HurtSFXTimerUpdate()
+    {
+        if (hurtSFXTimer > 0.0f)
+        {
+            canPlayHurtSFX = false;
+            hurtSFXTimer -= Time.deltaTime;
+        }
+        if (hurtSFXTimer <= 0.0f)
+        {
+            canPlayHurtSFX = true;
+        }
+
+    }
+    void PlayHurtSFX(int hurtSFXIndex)
+    {
+        if (canPlayHurtSFX)
+        {
+            switch (hurtSFXIndex)
+            {
+                case 0:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX1");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 1:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX2");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 2:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX3");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 3:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX4");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 4:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX5");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 5:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX6");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 6:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX7");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 7:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX8");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+                case 8:
+                    SFXManager.Instance.PlaySFX("takeDamageSFX9");
+                    hurtSFXTimer = hurtSFXDuration;
+                    break;
+
+            }
+        }
+
+    }
 }

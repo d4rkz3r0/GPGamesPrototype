@@ -19,7 +19,7 @@ public class GateTrigger : MonoBehaviour
                 }
                 else
                 {
-                    SFXManager.Instance.PlaySFX("meleeZombieHit2SFX");
+                    SFXManager.Instance.PlaySFX("gateDenialSFX");
                     MessageController.textSelection = 9;
                 }
             }
