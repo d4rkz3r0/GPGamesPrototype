@@ -38,7 +38,7 @@ public class iceSlowGuy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myHealth.CurHealth >= 0)
+        if (myHealth.CurHealth > 0)
         {
             if (!attacked)
             {

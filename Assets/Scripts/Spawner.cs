@@ -37,6 +37,8 @@ public class Spawner : MonoBehaviour
     GameObject deathAnimation;
     int numSpawned = 0;
     bool once = false;
+    [SerializeField]
+    Renderer myRenderer;
     void Start()
     {
         CurHealth = maxHealth;
@@ -67,6 +69,10 @@ public class Spawner : MonoBehaviour
             startedSpawning = true;
             SpawnEnemies();
         }
+        if (currWave < invulWave)
+            myRenderer.material.color = new Color(myRenderer.material.color.r, myRenderer.material.color.g, myRenderer.material.color.b, 0.25f);
+        else
+            myRenderer.material.color = new Color(myRenderer.material.color.r, myRenderer.material.color.g, myRenderer.material.color.b, 0);
     }
     void SpawnEnemies()
     {
