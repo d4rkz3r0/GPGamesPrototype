@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 /* Clip Info
+ * [0]  - Class Change - powerUP
  * [19] - Melee Slash 1 Animation - sword_and_shield_slash_2
  * [18] - Melee Slash 2 Animation - sword_and_shield_slash
  * [20] - Melee Slash 3 Animation - sword_and_shield_slash_3
@@ -8,6 +9,8 @@
  * [16] - Casting 1 Animation - sword_and_shield_casting_1
  * [21] - Casting 2 Animation - sword_and_shield_casting_2
  * [22] - Casting 3 Animation - sword_and_shield_casting
+ * [23] - Slam Animation - jumpAttackFixed
+ * [24] - WhirlWind Animation - attack_1 & 2
  */
 
 public class HandleAnimationEvents : MonoBehaviour
@@ -39,6 +42,13 @@ public class HandleAnimationEvents : MonoBehaviour
     //Casting 1 & 2
     private AnimationEvent spawnFireBallEvent;
 
+    //-Events-// - Misc
+    private AnimationEvent classChangeEvent;
+
+    //-Events-// - Abilities
+    private AnimationEvent whirlWindEvent;
+    private AnimationEvent slamEvent;
+
 
     //-Event Lists-// - Melee
     private AnimationEvent[] melee1AnimationEvents;
@@ -52,6 +62,16 @@ public class HandleAnimationEvents : MonoBehaviour
     private AnimationEvent[] casting2AnimationEventList;
     private AnimationEvent[] casting3AnimationEventList;
 
+    //-Event Lists-// - Misc
+    private AnimationEvent[] miscPlayerAnimationEventList;
+
+    //-Event Lists-// - Abilities
+    //WhirlWind
+    private AnimationEvent[] whirlWindAbilityAnimationEventList;
+    //Slam
+    private AnimationEvent[] slamAbilityAnimationEventList;
+
+
     //[DEBUG]
     //private AnimationClip currAnimationClip;
 
@@ -60,6 +80,7 @@ public class HandleAnimationEvents : MonoBehaviour
         //DEBUG
         //currAnimationClips = new AnimationClip[anim.runtimeAnimatorController.animationClips.Length];
         //currAnimationClip = new AnimationClip();
+        //currAnimationClip = currAnimationClips[0];
 
         //Hook
         anim = GetComponent<Animator>();
@@ -86,6 +107,14 @@ public class HandleAnimationEvents : MonoBehaviour
         //Casting 1 & 2
         spawnFireBallEvent = new AnimationEvent();
 
+        //-Init-// - Player Misc Events
+        //Class Change
+        classChangeEvent = new AnimationEvent();
+
+        //-Init-// - Player Ability Events
+        whirlWindEvent = new AnimationEvent();
+        slamEvent = new AnimationEvent();
+
 
         //-Init-// - Melee Lists
         melee1AnimationEvents = new AnimationEvent[2];
@@ -96,6 +125,15 @@ public class HandleAnimationEvents : MonoBehaviour
         casting1AnimationEventList = new AnimationEvent[2];
         casting2AnimationEventList = new AnimationEvent[2];
         casting3AnimationEventList = new AnimationEvent[2];
+
+        //Init-//  - Misc Lists
+        miscPlayerAnimationEventList = new AnimationEvent[1];
+
+        //Init-//  - Ability Lists
+        //WhirlWind
+        whirlWindAbilityAnimationEventList = new AnimationEvent[1];
+        //Slam
+        slamAbilityAnimationEventList = new AnimationEvent[1];
 
 
         //-Build-// - Melee Events
@@ -190,6 +228,35 @@ public class HandleAnimationEvents : MonoBehaviour
         spawnFireBallEvent.stringParameter = "";
         spawnFireBallEvent.time = 0.333333343f;
 
+        //-Build-// - Misc Events
+        classChangeEvent.floatParameter = 0.0f;
+        classChangeEvent.functionName = "ClassChange";
+        classChangeEvent.intParameter = 0;
+        classChangeEvent.messageOptions = SendMessageOptions.RequireReceiver;
+        classChangeEvent.objectReferenceParameter = null;
+        classChangeEvent.stringParameter = "";
+        classChangeEvent.time = 0.1f;
+
+        //-Build-// - Ability Events
+        //WhirlWind
+        whirlWindEvent.floatParameter = 0.0f;
+        whirlWindEvent.functionName = "WhirlWindSFX";
+        whirlWindEvent.intParameter = 0;
+        whirlWindEvent.messageOptions = SendMessageOptions.RequireReceiver;
+        whirlWindEvent.objectReferenceParameter = null;
+        whirlWindEvent.stringParameter = "";
+        whirlWindEvent.time = 0.05f;
+        //Slam
+        slamEvent.floatParameter = 0.0f;
+        slamEvent.functionName = "SlamSFX";
+        slamEvent.intParameter = 0;
+        slamEvent.messageOptions = SendMessageOptions.RequireReceiver;
+        slamEvent.objectReferenceParameter = null;
+        slamEvent.stringParameter = "";
+        slamEvent.time = 1.25f;
+
+
+
 
         //-Build Lists-// - Melee Lists
         //MSlash1List
@@ -211,6 +278,16 @@ public class HandleAnimationEvents : MonoBehaviour
         casting3AnimationEventList[0] = spawnLightningEvent;
         casting3AnimationEventList[1] = casting3AttackResetEvent;
 
+        //-Build Lists-// - Misc List
+        miscPlayerAnimationEventList[0] = classChangeEvent;
+
+        //-Build Lists-// - Ability List
+        //WhirlWindList
+        whirlWindAbilityAnimationEventList[0] = whirlWindEvent;
+        //SlamList
+        slamAbilityAnimationEventList[0] = slamEvent;
+
+
         //Grab N' Assign
         currAnimationClips = anim.runtimeAnimatorController.animationClips;
         //-Assign Lists-// - Melee
@@ -223,6 +300,14 @@ public class HandleAnimationEvents : MonoBehaviour
         currAnimationClips[21].events = casting2AnimationEventList;
         currAnimationClips[22].events = casting3AnimationEventList;
 
+        //-Assign Lists-// - Misc
+        currAnimationClips[0].events = miscPlayerAnimationEventList;
+
+        //-Assign Lists-// - Abilities
+        //WhirlWind
+        currAnimationClips[24].events = whirlWindAbilityAnimationEventList;
+        //Slam
+        currAnimationClips[23].events = slamAbilityAnimationEventList;
 
         //Animator Warning Fix
         if (!anim.isInitialized)

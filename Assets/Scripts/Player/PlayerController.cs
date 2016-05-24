@@ -72,10 +72,14 @@ public class PlayerController : MonoBehaviour
 
     private PlayerHealth healthManager;
 
-
     //Footsteps
     private float footstepTimer = 0.0f;
     private float footstepDuration = 0.5f;
+
+    //Ability Buffers
+    private bool chargeNoFurySFXPlayedOnce;
+    private bool whirlWindNoFurySFXPlayedOnce;
+    private bool slamNoFurySFXPlayedOnce;
 
     private void Awake()
     {
@@ -322,21 +326,47 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateAbilites()
     {
-        //Ability Code Here
+        UpdateAbilityErrorSFX();
         if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             furyUpkeep.UseFury(dodgeCost);
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
+        }
+        else if (Input.GetButton("B Button") && furyUpkeep.Currentmeter < dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
+        {
+            if (!chargeNoFurySFXPlayedOnce)
+            {
+                SFXManager.Instance.PlaySFX("furyNotEnoughSFX1");
+                chargeNoFurySFXPlayedOnce = true;
+            }
+                
         }
         else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             furyUpkeep.UseFury(rightBumperCost);
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
         }
+        else if (Input.GetButton("A Button") && furyUpkeep.Currentmeter < rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
+        {
+            if (!whirlWindNoFurySFXPlayedOnce)
+            {
+                SFXManager.Instance.PlaySFX("furyNotEnoughSFX2");
+                whirlWindNoFurySFXPlayedOnce = true;
+            }
+                
+        }
         else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
             furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
+        }
+        else if (Input.GetButton("Y Button") && furyUpkeep.Currentmeter < rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
+        {
+            if (!slamNoFurySFXPlayedOnce)
+            {
+                SFXManager.Instance.PlaySFX("furyNotEnoughSFX2");
+                slamNoFurySFXPlayedOnce = true;
+            }
         }
     }
 
@@ -422,6 +452,33 @@ public class PlayerController : MonoBehaviour
         Instantiate(lightningBolt, abilityPoint.position + new Vector3(3.0f, 0.0f, 0.0f), abilityPoint.rotation);
     }
 
+    void ClassChange()
+    {
+        SFXManager.Instance.PlaySFX("classChangeSFX");
+    }
+
+    void WhirlWindSFX()
+    {
+        SFXManager.Instance.PlaySFX("castWhirlWindSFX");
+    }
+
+    void SlamSFX()
+    {
+        int randAudioIndex = Random.Range(0, 3);
+        switch (randAudioIndex)
+        {
+            case 0:
+                SFXManager.Instance.PlaySFX("castSlamSFX1");
+                break;
+            case 1:
+                SFXManager.Instance.PlaySFX("castSlamSFX2");
+                break;
+            case 2:
+                SFXManager.Instance.PlaySFX("castSlamSFX3");
+                break;
+        }   
+    }
+
     public void ResetCombo()
     {
         if (IsWarrior())
@@ -446,6 +503,15 @@ public class PlayerController : MonoBehaviour
     void IFramesOff()
     {
         iFrames = false;
+    }
+
+    void UpdateAbilityErrorSFX()
+    {
+        int avgFuryCost = dodgeCost + rightTriggerCost + rightBumperCost / 3;
+        if (furyUpkeep.Currentmeter > avgFuryCost)
+        {
+            whirlWindNoFurySFXPlayedOnce = slamNoFurySFXPlayedOnce = chargeNoFurySFXPlayedOnce = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)

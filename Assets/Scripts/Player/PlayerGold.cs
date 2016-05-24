@@ -41,6 +41,7 @@ public class PlayerGold : MonoBehaviour
     {
         if (other.tag == "GoldDrop")
         {
+            SFXManager.Instance.PlaySFX("collectCoinSFX");
             AddToGold(other.GetComponent<GoldDropScrpit>().amountOfGoldTOGain);
             Destroy(other.gameObject);
         }
