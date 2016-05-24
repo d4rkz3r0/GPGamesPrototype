@@ -1889,10 +1889,11 @@ MonoBehaviour:
   Shop: {fileID: 22391916}
   SelectorImage: {fileID: 11442064}
   GoldPrice: {fileID: 0}
-  AmountBoughtItems: {fileID: 0}
+  AmountBoughtItems: {fileID: 11458382}
   ItemHealthPotion: {fileID: 11449448}
   ItemFuryPotion: {fileID: 11411316}
   BuffImage: {fileID: 0}
+  RandDiscount: 0
   selector: 0
   SubSelector: 0
   buffer: 10
