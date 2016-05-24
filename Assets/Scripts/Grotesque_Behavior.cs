@@ -37,6 +37,7 @@ public class Grotesque_Behavior : MonoBehaviour {
     // Explosion Warning
     public MeshRenderer warningRadius;
     private Light warningLight;
+    private bool startWarningSFX;
 
     // Damaging Colliders
     public SphereCollider explosionCollider;
@@ -258,6 +259,8 @@ public class Grotesque_Behavior : MonoBehaviour {
 
     void Explode()
     {
+        if (!startWarningSFX) { SFXManager.Instance.PlaySFX("exploderDetonateSFX"); startWarningSFX = !startWarningSFX; }
+
         inactiveTime += Time.deltaTime;
 
         attackCollider.enabled = false;
