@@ -31,7 +31,7 @@ public class SwordController : MonoBehaviour
     private float meleeEndComboTimer = 0.15f;
     private float meleeEndComboTimerDuration = 0.15f;
 
-    void Start()
+    private void Start()
     {
         player = GetComponentInParent<PlayerController>();
         swordMeshRenderer = GetComponent<SkinnedMeshRenderer>();
@@ -43,7 +43,7 @@ public class SwordController : MonoBehaviour
         dynamicCollider = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (dynamicCollider)
         {
@@ -55,22 +55,118 @@ public class SwordController : MonoBehaviour
         }
 
         //Melee End Combo SFX Buffer
-        if (meleeEndComboTimer > 0.0f) { meleeEndComboTimer -= Time.deltaTime; }
+        if (meleeEndComboTimer > 0.0f)
+        {
+            meleeEndComboTimer -= Time.deltaTime;
+        }
     }
 
-    void RenderMeshToCollisionMesh()
+    private void RenderMeshToCollisionMesh()
     {
         swordMeshRenderer.BakeMesh(currSwordMesh);
         swordMeshCollider.sharedMesh = currSwordMesh;
     }
 
-    void SwordSlashEnemy(Collider anObject, int currentAttack)
+    private void SwordSlashEnemy(Collider anObject, int currentAttack)
     {
         switch (currentAttack)
         {
             case 1:
                 {
-                    SFXManager.Instance.PlaySFX("swordHitZombie1SFX");
+                    //If we need additional SFX...
+                    switch (anObject.name)
+                    {
+                        case "Enemy":
+                        {
+                            SFXManager.Instance.PlaySFX("swordHitZombie1SFX");
+                            firstStrike = false;
+                            break;
+                        }
+                        //case "Archer":
+                        //{
+                        //    SFXManager.Instance.PlaySFX("swordHitArcher1SFX");
+                        //    firstStrike = false;
+                        //    break;
+                        //}
+                    }
+                    break;
+                }
+                
+            case 2:
+            {
+                    switch (anObject.name)
+                    {
+                        case "Enemy":
+                            {
+                                SFXManager.Instance.PlaySFX("swordHitZombie2SFX");
+                                secondStrike = false;
+                                break;
+                            }
+                    }
+                    break;
+            }
+
+            case 3:
+            {
+                    switch (anObject.name)
+                    {
+                        case "Enemy":
+                            {
+                                SFXManager.Instance.PlaySFX("swordHitZombie3SFX");
+                                thirdStrike = false;
+                                break;
+                            }
+                    }
+                break;
+            }
+
+            default:
+            {
+                break;
+            }
+        }
+    }
+
+    private void SwordSlashMiss(Collider anObject, int currentAttack)
+    {
+        switch (currentAttack)
+        {
+            case 1:
+            {
+                SFXManager.Instance.PlaySFX("swordMiss1SFX");
+                firstStrike = false;
+                break;
+            }
+
+
+            case 2:
+            {
+                SFXManager.Instance.PlaySFX("swordMiss2SFX");
+                secondStrike = false;
+                break;
+            }
+            case 3:
+            {
+                SFXManager.Instance.PlaySFX("swordMiss3SFX");
+                thirdStrike = false;
+
+                break;
+            }
+            default:
+            {
+                Debug.Log("Invalid Attack State");
+                break;
+            }
+        }
+    }
+
+    private void SwordSlashWall(Collider anObject, int currentAttack)
+    {
+        switch (currentAttack)
+        {
+            case 1:
+                {
+                    SFXManager.Instance.PlaySFX("swordHitWall1SFX");
                     firstStrike = false;
                     break;
                 }
@@ -78,13 +174,13 @@ public class SwordController : MonoBehaviour
 
             case 2:
                 {
-                    SFXManager.Instance.PlaySFX("swordHitZombie2SFX");
+                    SFXManager.Instance.PlaySFX("swordHitWall1SFX");
                     secondStrike = false;
                     break;
                 }
             case 3:
                 {
-                    SFXManager.Instance.PlaySFX("swordHitZombie3SFX");
+                    SFXManager.Instance.PlaySFX("swordHitWall3SFX");
                     thirdStrike = false;
 
                     break;
@@ -112,13 +208,15 @@ public class SwordController : MonoBehaviour
         swordMeshCollider.sharedMesh = null;
     }
 
-    //Reduce Enemy HP
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
-        {
+        //Debug.Log(other.gameObject.name);
+
+            switch (other.tag)
+            {
             case "Enemy":
                 {
+                    StopOrDeleteMissSFX();
                     if (player.AnimatorIsPlaying("MeleeSlash1") && firstStrike)
                     {
                         swordTrail.TrailColor = Color.red;
@@ -140,6 +238,62 @@ public class SwordController : MonoBehaviour
                     }
                     break;
                 }
+            case "Wall":
+                {
+                    StopOrDeleteMissSFX();
+                    if (player.AnimatorIsPlaying("MeleeSlash1") && firstStrike)
+                    {
+                        swordTrail.TrailColor = Color.gray;
+                        SwordSlashWall(other, 1);
+                        firstStrike = false;
+                    }
+                    else if (player.AnimatorIsPlaying("MeleeSlash2") && secondStrike)
+                    {
+                        swordTrail.TrailColor = Color.gray;
+                        SwordSlashWall(other, 2);
+                        secondStrike = false;
+
+                    }
+                    else if (player.AnimatorIsPlaying("MeleeSlash3") && thirdStrike && meleeEndComboTimer < 0.0f)
+                    {
+                        swordTrail.TrailColor = Color.gray;
+                        SwordSlashWall(other, 3);
+                        thirdStrike = false;
+                    }
+                    break;
+                }
+            }
+    }
+
+    void StopOrDeleteMissSFX()
+    {
+        GameObject[] missSFXGameObjects = new GameObject[3];
+        missSFXGameObjects[0] = GameObject.Find("SFX Object: swordMiss1SFX");
+        missSFXGameObjects[1] = GameObject.Find("SFX Object: swordMiss2SFX");
+        missSFXGameObjects[2] = GameObject.Find("SFX Object: swordMiss3SFX");
+
+        if (missSFXGameObjects[0])
+        {
+            if (missSFXGameObjects[0].name != "Null")
+            {
+                Destroy(missSFXGameObjects[0]);
+            }
+        }
+
+        if (missSFXGameObjects[1])
+        {
+            if (missSFXGameObjects[1].name != "Null")
+            {
+                Destroy(missSFXGameObjects[1]);
+            }
+        }
+
+        if (missSFXGameObjects[2])
+        {
+            if (missSFXGameObjects[2].name != "Null")
+            {
+                Destroy(missSFXGameObjects[2]);
+            }
         }
     }
 }

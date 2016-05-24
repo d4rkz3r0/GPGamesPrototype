@@ -462,9 +462,11 @@ MonoBehaviour:
   drops:
   - {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
   dropRate: 10
-  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  hitEffect: {fileID: 104944, guid: 3e05eb9f6e625c44bb54f6e29f8bb682, type: 2}
   dropPosition: {fileID: 487698}
   amountOfGOldToDrop: 1000
+  staticSpawner: {fileID: 0}
+  spanwer: {fileID: 0}
 --- !u!114 &11430676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -542,6 +544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpawned: {fileID: 499596}
   attack: {fileID: 130166, guid: 21b015fc20876aa4ab0adec0657b36da, type: 2}
+  minMovementRange: 5
+  maxMovementRange: 10
   attkTimerMin: 2
   attkTimerMax: 3.5
   attackTimer: 3.5

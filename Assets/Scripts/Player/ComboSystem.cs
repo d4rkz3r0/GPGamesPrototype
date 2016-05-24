@@ -90,6 +90,10 @@ public class ComboSystem : MonoBehaviour
     public GameObject psTwo;
     private bool firstFrameActivation;
 
+    private bool MSlash1MissSFXPlayedOnce = false;
+    private bool MSlash2MissSFXPlayedOnce = false;
+    private bool MSlash3MissSFXPlayedOnce = false;
+
     private void Start()
     {
         //-Init-//
@@ -181,24 +185,43 @@ public class ComboSystem : MonoBehaviour
             if (meleeSlash1AttackCounter > 0)
             {
                 anim.SetBool("MSlash1", true);
+
+                if (!MSlash1MissSFXPlayedOnce)
+                {
+                    SFXManager.Instance.PlaySFX("swordMiss1SFX");
+                    MSlash1MissSFXPlayedOnce = true;
+                }
             }
             else if (meleeSlash1AttackCounter == 0)
-            {
+            { 
                 anim.SetBool("MSlash1", false);
+                MSlash1MissSFXPlayedOnce = false;
             }
 
             if (meleeSlash2AttackCounter > 0)
-            {
+            { 
                 anim.SetBool("MSlash2", true);
+                if (!MSlash2MissSFXPlayedOnce)
+                {
+                    SFXManager.Instance.PlaySFX("swordMiss2SFX");
+                    MSlash2MissSFXPlayedOnce = true;
+                }
             }
             else if (meleeSlash2AttackCounter == 0)
             {
                 anim.SetBool("MSlash2", false);
+                MSlash2MissSFXPlayedOnce = false;
             }
 
             if (meleeSlash3AttackCounter > 0)
             {
                 anim.SetBool("MSlash3", true);
+
+                if (!MSlash3MissSFXPlayedOnce)
+                {
+                    SFXManager.Instance.PlaySFX("swordMiss3SFX");
+                    MSlash3MissSFXPlayedOnce = true;
+                }
 
                 if (!firstFrameActivation && multiplierScript.fireDamageThing > 0.0f)
                 {
@@ -210,6 +233,7 @@ public class ComboSystem : MonoBehaviour
             }
             else if (meleeSlash3AttackCounter == 0)
             {
+                MSlash3MissSFXPlayedOnce = false;
                 anim.SetBool("MSlash3", false);
                 firstFrameActivation = false;
             }
@@ -365,7 +389,6 @@ public class ComboSystem : MonoBehaviour
     public void EndSlash1()
     {
         meleeSlash1AttackCounter = 0;
-
         anim.SetBool("MSlash1", false);
 
         currentMeleeAttackState = 1;
