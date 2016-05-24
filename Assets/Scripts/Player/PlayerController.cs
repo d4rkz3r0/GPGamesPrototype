@@ -153,7 +153,6 @@ public class PlayerController : MonoBehaviour
             {
                 MovePlayer();
                 UpdatePlayerClass();
-                UpdateAttackChains();
                 UpdateAbilites();
             }
             UpdateBuffs();
@@ -301,34 +300,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UpdateAttackChains()
-    {
-        if (IsWarrior())
-        {
-            MeleeAttackChain();
-        }
-        else
-        {
-            RangedAttackChain();
-        }
-    }
-
-
-    public void MeleeAttackChain()
-    {
-        
-    }
-   
-    public void RangedAttackChain()
-    {
-       
-    }
-
     public void UpdateAbilites()
     {
         UpdateAbilityErrorSFX();
         if (Input.GetButton("B Button") && ((WarriorCharge)dodgeAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            ResetCombo();
             furyUpkeep.UseFury(dodgeCost);
             ((WarriorCharge)dodgeAbility).firstFrameActivation = true;
         }
@@ -343,6 +320,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            ResetCombo();
             furyUpkeep.UseFury(rightBumperCost);
             ((WarriorWhirlwind)rightBumperAbility).firstFrameActivation = true;
         }
@@ -357,6 +335,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButton("Y Button") && ((WarriorSlam)rightTriggerAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            ResetCombo();
             furyUpkeep.UseFury(rightTriggerCost);
             ((WarriorSlam)rightTriggerAbility).firstFrameActivation = true;
         }
@@ -487,7 +466,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //Mage Combo Logic Here
+            basicAttackChains.EndCast3();
         }
     }
 
