@@ -85,9 +85,8 @@ public class ComboSystem : MonoBehaviour
     private PlayerController player;
 
     private Multiplier multiplierScript;
-    public SphereCollider specialEffectCollider;
-    public GameObject psOne;
-    public GameObject psTwo;
+    public GameObject thePrefab;
+    public Transform theTarget;
     private bool firstFrameActivation;
 
     private bool MSlash1MissSFXPlayedOnce = false;
@@ -225,8 +224,7 @@ public class ComboSystem : MonoBehaviour
 
                 if (!firstFrameActivation && multiplierScript.fireDamageThing > 0.0f)
                 {
-                    Invoke("EnableSpecialEffectCollider", 0.3f);
-                    Invoke("DissableSpecialEffectCollider", 0.9f);
+                    Invoke("EnableSpecialEffectCollider", 0.5f);
                     firstFrameActivation = true;
                     
                 }
@@ -466,18 +464,12 @@ public class ComboSystem : MonoBehaviour
 
     void EnableSpecialEffectCollider()
     {
-        specialEffectCollider.enabled = true;
-
-        psOne.SetActive(true);
-        psTwo.SetActive(true);
+        Instantiate(thePrefab, theTarget.position, theTarget.rotation);
     }
 
     void DissableSpecialEffectCollider()
     {
-        specialEffectCollider.enabled = false;
-
-        psOne.SetActive(false);
-        psTwo.SetActive(false);
+        
     }
 
     private float GetAnimationLength(string animName)
