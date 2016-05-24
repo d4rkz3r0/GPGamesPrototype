@@ -7,9 +7,11 @@ public class SpawnerDeath : MonoBehaviour
     // Use this for initialization
     float scale = 1.0f;
     float rate = 2.0f;
+    [SerializeField]
+    Renderer myRenderer;
     void Start()
     {
-
+        myRenderer.material.color = new Color(myRenderer.material.color.r, myRenderer.material.color.g, myRenderer.material.color.b, 0);
     }
 
     // Update is called once per frame

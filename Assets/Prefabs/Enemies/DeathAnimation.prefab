@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b832508867982ff4a84ee325207a9fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRenderer: {fileID: 2317454}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

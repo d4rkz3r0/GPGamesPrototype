@@ -28,6 +28,7 @@ TagManager:
   - ServiceContainer
   - FireWeaponExplosion
   - Spawner
+  - GoldDropOnDeath
   layers:
   - Default
   - TransparentFX

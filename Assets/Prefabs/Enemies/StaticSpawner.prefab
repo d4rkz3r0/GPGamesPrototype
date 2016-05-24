@@ -366,6 +366,7 @@ MonoBehaviour:
   goldDropObject: {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
   hitEffect: {fileID: 171118}
   deathAnimation: {fileID: 161726, guid: 304a100c4c23b4243b65aa0925b4f3a2, type: 2}
+  myRenderer: {fileID: 2372198}
 --- !u!114 &11498862
 MonoBehaviour:
   m_ObjectHideFlags: 1

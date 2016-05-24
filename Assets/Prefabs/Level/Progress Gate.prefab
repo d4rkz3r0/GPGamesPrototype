@@ -88,7 +88,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!1 &120456
 GameObject:
@@ -391,9 +391,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115794}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -201.77103, y: 0.55700684, z: 15.269997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.50639457, y: 0.034268204, z: 2.782274}
+  m_LocalScale: {x: 0.05266466, y: 0.085670486, z: 0.06079167}
   m_Children:
   - {fileID: 410784}
   m_Father: {fileID: 0}
@@ -916,6 +916,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GateGameObject: {fileID: 101366}
+  hasQuestionComponent: 1
+  questionToAsk: Would you like to visit the Merchant before Proceeding?
+  vendorWarpLocation: {fileID: 0}
+  dungeonStartLocation: {fileID: 0}
 --- !u!114 &11454030
 MonoBehaviour:
   m_ObjectHideFlags: 1
