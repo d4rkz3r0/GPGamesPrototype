@@ -964,7 +964,7 @@ MonoBehaviour:
   drops:
   - {fileID: 139294, guid: c5e9957967ae17a48ba16614ddcdb720, type: 2}
   dropRate: 1
-  hitEffect: {fileID: 104944, guid: 8889d77e307bbab4f8fa4190a5d64195, type: 2}
+  hitEffect: {fileID: 104944, guid: 3f3c5ff137fae454c8604716eac71eca, type: 2}
   dropPosition: {fileID: 454330}
   amountOfGOldToDrop: 1000
   staticSpawner: {fileID: 0}
