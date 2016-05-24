@@ -17,6 +17,7 @@ public class GoldDrop : MonoBehaviour
     //File SaveGold;
     StreamWriter SaveGold;
     StreamReader LoadGold;
+    Vector3 Position;
     void Start()
     {
         Theplayer = GameObject.Find("Player");
@@ -31,19 +32,18 @@ public class GoldDrop : MonoBehaviour
         if (Theplayer.GetComponent<PlayerHealth>().CurHealth <= 0)
         {
 
-            //FloatingBag = GameObject.FindGameObjectWithTag("GoldDropOnDeath");
-            //if (FloatingBag.GetComponent<GoldDrop>().Golddrop > 0)
-            //{
-            //    DestroyObject(FloatingBag);
-
-
-            //}
+          
             Golddrop = Theplayer.GetComponent<PlayerGold>().Gold;
+            Position = transform.position;
             if (File.Exists("DeathGold.txt"))
                 File.Delete("DeathGold.txt");
 
+            if (File.Exists("Location.txt"))
+                File.Delete("Location.txt");
+
             File.WriteAllText("DeathGold.txt", Golddrop.ToString());
-            DontDestroyOnLoad(RespawnPosition);
+            File.WriteAllText("Location.txt", Position.ToString());
+         
 
             Application.LoadLevel(0);
         }

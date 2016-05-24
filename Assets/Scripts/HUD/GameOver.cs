@@ -26,33 +26,23 @@ public class GameOver : MonoBehaviour
     {
         if (GetComponent<PlayerHealth>().CurHealth <= 0)
         {
-            
-            if(GoldDropPosition.GetComponent<GoldDrop>().Golddrop > 0)
-            {
-                Destroy(this);
-            }
 
-            GoldDropPosition.transform.position = transform.position;
-            GoldDropPosition.SetActive(true);
+            GoldDropPosition.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = GetComponent<PlayerGold>().Gold;
+            Instantiate(GoldDropPosition, transform.position, transform.rotation);
+            Invoke("LoadLevel", 0.5f);
 
-            GoldDropPosition.transform.position = new Vector3(GoldDropPosition.transform.position.x, GoldDropPosition.transform.position.y, GoldDropPosition.transform.position.z);
-          //  GoldDrop = GetComponent<PlayerGold>().Gold;
-          //  GetComponent<PlayerGold>().Gold = 0;
-          
-            DontDestroyOnLoad(GoldDropPosition);
-            DeathObjects.Add(GoldDropPosition);
-            DontDestroyOnLoad(DeathObjects[0]);
-            //DontDestroyOnLoad(this);
-            //.//  Application.LoadLevel(0);
+
+
+
         }
-
-
-        
-
-        
 
 
 
  
+    }
+    void LoadLevel()
+    {
+            Application.LoadLevel("Jonathan_Work_Scene");
+        
     }
 }

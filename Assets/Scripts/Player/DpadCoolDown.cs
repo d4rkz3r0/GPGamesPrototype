@@ -49,6 +49,7 @@ public class DpadCoolDown : MonoBehaviour
             {
                 if (buffer <= 0)
                 {
+                    buffer = 4;
                     GetComponent<Multiplier>().AmountOfPoitionBought -= 1;
                     DecreaseAmount.text = "x" + GetComponent<Multiplier>().AmountOfPoitionBought;
                 }
