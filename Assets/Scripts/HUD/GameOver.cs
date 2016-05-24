@@ -29,7 +29,10 @@ public class GameOver : MonoBehaviour
 
             GoldDropPosition.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = GetComponent<PlayerGold>().Gold;
             Instantiate(GoldDropPosition, transform.position, transform.rotation);
-            Invoke("LoadLevel", 0.5f);
+            Invoke("pauseMenu", 0.5f);
+           
+            Application.LoadLevel("Jonathan_Work_Scene");
+
 
 
 
@@ -38,11 +41,10 @@ public class GameOver : MonoBehaviour
 
 
 
- 
+
     }
     void LoadLevel()
     {
-            Application.LoadLevel("Jonathan_Work_Scene");
         
     }
 }
