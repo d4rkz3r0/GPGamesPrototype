@@ -69,25 +69,28 @@ public class SwordController : MonoBehaviour
 
     private void SwordSlashEnemy(Collider anObject, int currentAttack)
     {
+        //string prefabName = anObject.name + "(Clone)";
+
         switch (currentAttack)
         {
             case 1:
                 {
-                    //If we need additional SFX...
                     switch (anObject.name)
                     {
                         case "Enemy":
+                        case "Enemy(Clone)":
                         {
                             SFXManager.Instance.PlaySFX("swordHitZombie1SFX");
                             firstStrike = false;
                             break;
                         }
                         //case "Archer":
-                        //{
-                        //    SFXManager.Instance.PlaySFX("swordHitArcher1SFX");
-                        //    firstStrike = false;
-                        //    break;
-                        //}
+                        //case "Archer(Clone)":
+                        //    {
+                        //        SFXManager.Instance.PlaySFX("swordHitArcher1SFX");
+                        //        firstStrike = false;
+                        //        break;
+                        //    }
                     }
                     break;
                 }
@@ -97,6 +100,7 @@ public class SwordController : MonoBehaviour
                     switch (anObject.name)
                     {
                         case "Enemy":
+                        case "Enemy(Clone)":
                             {
                                 SFXManager.Instance.PlaySFX("swordHitZombie2SFX");
                                 secondStrike = false;
@@ -111,6 +115,7 @@ public class SwordController : MonoBehaviour
                     switch (anObject.name)
                     {
                         case "Enemy":
+                        case "Enemy(Clone)":
                             {
                                 SFXManager.Instance.PlaySFX("swordHitZombie3SFX");
                                 thirdStrike = false;

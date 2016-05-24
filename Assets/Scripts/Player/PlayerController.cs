@@ -73,7 +73,9 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth healthManager;
 
 
-    
+    //Footsteps
+    private float footstepTimer = 0.0f;
+    private float footstepDuration = 0.5f;
 
     private void Awake()
     {
@@ -188,13 +190,16 @@ public class PlayerController : MonoBehaviour
             //float temp = Mathf.Atan2(-1, 1);
 
             anim.SetFloat("Speed", Mathf.Clamp((Mathf.Abs(vInput) + Mathf.Abs(hInput)), 0, 1));
-
+            DetermineFootStepSFX(anim.GetFloat("Speed"));
+            
             transform.rotation = playerForward;
 
             velocity = new Vector3(0.0f, 0.0f, Mathf.Clamp((Mathf.Abs(vInput) + Mathf.Abs(hInput)), 0, 1));
             velocity = transform.TransformDirection(velocity);
 
             velocity *= (fMoveSpeed * fSpeedModifier);
+
+
             transform.localPosition += velocity * Time.deltaTime;
         }
 
@@ -234,6 +239,61 @@ public class PlayerController : MonoBehaviour
                         }
                 }
             }
+        }
+    }
+
+    private void DetermineFootStepSFX(float locomotionAnimatorValue)
+    {
+        if (locomotionAnimatorValue <= 0.0f || !AnimatorIsPlaying("Base Layer.Idle2Running"))
+        {
+            AudioSource footstepAudioSource = new AudioSource();
+
+            if (GameObject.Find("SFX Object: footStep1SFX") != null)
+            {
+                footstepAudioSource = GameObject.Find("SFX Object: footStep1SFX").GetComponent<AudioSource>();
+                if (footstepAudioSource != null)
+                {
+                    footstepAudioSource.Stop();
+                }
+            }
+            else
+            {
+                footstepDuration = 0.0f;
+                PlayFootStepSFX();
+                return;
+            }
+        }
+
+        if (locomotionAnimatorValue > 0.0f && locomotionAnimatorValue <= 0.55f)
+        {
+            footstepDuration = 0.5f;
+            PlayFootStepSFX();
+        }
+        else if (locomotionAnimatorValue > 0.55f)
+        {
+            footstepDuration = 0.339f;
+            PlayFootStepSFX();
+        }
+
+        if (footstepTimer > 0.0f)
+        {
+            footstepTimer -= Time.deltaTime;
+        }
+        if (footstepTimer <= 0.0f)
+        {
+            footstepTimer = 0.0f;
+        }
+    }
+
+    private void PlayFootStepSFX()
+    {
+        if (footstepTimer <= 0.0f)
+        {
+            //Randomize FootStepSFX
+            int randAudioIndex = Random.Range(0, 2);
+            string footStepSFXString = (randAudioIndex != 0 ? "footStep1SFX" : "footStep2SFX");
+            SFXManager.Instance.PlaySFX(footStepSFXString, -1, Random.Range(0.9f, 1.2f), Random.Range(0.85f, 1.15f));
+            footstepTimer = footstepDuration;
         }
     }
 
