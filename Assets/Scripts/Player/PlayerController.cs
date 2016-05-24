@@ -402,7 +402,7 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("OnDeathExplosion"))
         {
             if (attkBuff_defBuff_vampBuff_onCD_rdy == 0)
-                healthManager.DecreaseHealth(45.0f);
+                healthManager.DecreaseHealth(80.0f);
             else
                 healthManager.DecreaseHealth(400.0f);
             
