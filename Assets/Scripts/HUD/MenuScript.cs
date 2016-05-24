@@ -373,7 +373,7 @@ public class MenuScript : MonoBehaviour
                 case 0:
                     {
                         Price[_subselector] *= 1;
-                       Price[_subselector] /= RandDiscount;
+                       //Price[_subselector] /= RandDiscount;
                         tempDiscount = Price[_subselector];
                         _Gold.text = tempDiscount + " " + "Gold";
                         break;
@@ -428,7 +428,7 @@ public class MenuScript : MonoBehaviour
                 case 5:
                     {
                         Price[_subselector] *= 0;
-                        Price[_subselector] /= RandDiscount;
+                       // Price[_subselector] /= RandDiscount;
                         tempDiscount = Price[_subselector];
                         _Gold.text = tempDiscount + " " + "Gold";
                         break;
