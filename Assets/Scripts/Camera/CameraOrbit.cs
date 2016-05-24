@@ -71,6 +71,13 @@ public class CameraOrbit : MonoBehaviour
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
     }
 
+    public void cameraSnap()
+    {
+        currentX = characterTransform.rotation.eulerAngles.y;
+        currentY = 15;
+        distance = 2.5f;
+    }
+
     // LateUpdate is called once per frame after Update
     void LateUpdate()
     {

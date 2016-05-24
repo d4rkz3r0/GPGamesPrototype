@@ -46,8 +46,6 @@ public class UpdateSpawnerKillCount : MonoBehaviour
 	        gameOverYouWin = true;
 
 	    }
-
-
 	}
 
     void UpdateUITextElement()

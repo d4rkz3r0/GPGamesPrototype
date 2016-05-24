@@ -53,6 +53,7 @@ public class ModalPanel : MonoBehaviour
         yesButton.onClick.AddListener(ClosePanel);
 
         //Setup Listeners - No
+        noButton.onClick.AddListener(noEvent);
         noButton.onClick.AddListener(ClosePanel);
 
         //Update Text
