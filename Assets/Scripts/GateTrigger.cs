@@ -36,6 +36,7 @@ public class GateTrigger : MonoBehaviour
                     if (UpdateSpawnerKillCount.area1SpawnersRemaining <= 0)
                     {
                         modalPanel.dialougeChoice(questionToAsk, yesAction, noAction);
+                        GetComponent<BoxCollider>().enabled = false;
                     }
                     else
                     {
@@ -83,6 +84,7 @@ public class GateTrigger : MonoBehaviour
                 UpdateSpawnerKillCount.currentArea = 2;
                 SFXManager.Instance.PlaySFX("warpPortalSFX");
                 GateGameObject.GetComponent<GateScript>().openGate = true;
+                gameObject.SetActive(false);
             }
         }
     }
