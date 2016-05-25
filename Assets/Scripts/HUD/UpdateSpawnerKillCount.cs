@@ -4,37 +4,36 @@ using UnityEngine.UI;
 
 public class UpdateSpawnerKillCount : MonoBehaviour
 {
-    private GameObject[] totalLevelSpawners;
-    //private GameObject[] areaSpawners;
+    //Level Areas
+    public int currentArea = 1;
 
-    float fillBarAmount;
-    public static int currSpawnersKilled = 0;
-    public static int numOfEntireLevelSpawners = 0;
-    public static int numOfAreaSpawnersKilled = 0;
-    public static bool gameOverYouWin = false;
+    //Spawners Level Counts
+    private int defaultNumberOfArea1Spawners = 9;
+    private int defaultNumberOfArea2Spawners = 9;
+    private int defaultNumberOfLevelSpawners = 18;
 
-    public static int currentArea = 1;
-    
-    //Hardcode Number of Spawners per Area for now.
-    public static int numOfArea1Spawners = 9;
-    public static int numOfArea2Spawners = 8; //To Be Filled In
+    public int area1SpawnersRemaining;
+    public int area2SpawnersRemaining;
+    public int numOfEntireLevelSpawners;
 
-    public static int area1SpawnersRemaining = numOfArea1Spawners;
-    public static int area2SpawnersRemaining = numOfArea2Spawners;
-
-
-
+    //Inspector GameObjects
     public Text areaSpawnersRemainingText;
+    public GameObject winScreen;
 
 
 	void Start () 
     {
-        areaSpawnersRemainingText = areaSpawnersRemainingText.GetComponent<Text>();
-        totalLevelSpawners = GameObject.FindGameObjectsWithTag("Spawner");
-	    numOfEntireLevelSpawners = totalLevelSpawners.Length;
+        //Init
+	    area1SpawnersRemaining = defaultNumberOfArea1Spawners;
+	    area2SpawnersRemaining = defaultNumberOfArea2Spawners;
+        numOfEntireLevelSpawners = defaultNumberOfLevelSpawners;
 
-        
-	    
+        //Hook
+        areaSpawnersRemainingText = areaSpawnersRemainingText.GetComponent<Text>();
+
+        //GetLevelSpawnerCount
+      //  GameObject[] totalLevelSpawners = GameObject.FindGameObjectsWithTag("Spawner");
+	   // numOfEntireLevelSpawners = totalLevelSpawners.Length;
 	}
 
 	void Update ()
@@ -43,9 +42,8 @@ public class UpdateSpawnerKillCount : MonoBehaviour
 
 	    if (numOfEntireLevelSpawners == 0)
 	    {
-	        gameOverYouWin = true;
-
-	    }
+            winScreen.SetActive(true);
+        }
 	}
 
     void UpdateUITextElement()

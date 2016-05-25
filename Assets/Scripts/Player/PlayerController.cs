@@ -81,6 +81,11 @@ public class PlayerController : MonoBehaviour
     private bool whirlWindNoFurySFXPlayedOnce;
     private bool slamNoFurySFXPlayedOnce;
 
+    //Buff Buffers
+    private bool defBuffSFXPlayedOnce;
+    private bool atkBuffSFXPlayedOnce;
+    private bool vampBuffSFXPlayedOnce;
+
     private void Awake()
     {
         //Player
@@ -311,12 +316,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButton("B Button") && furyUpkeep.Currentmeter < dodgeCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            if (ModalPanel.Instance().isActiveAndEnabled)
+                return;
+
             if (!chargeNoFurySFXPlayedOnce)
             {
                 SFXManager.Instance.PlaySFX("furyNotEnoughSFX1");
                 chargeNoFurySFXPlayedOnce = true;
-            }
-                
+            }    
         }
         else if (Input.GetButton("A Button") && ((WarriorWhirlwind)rightBumperAbility).inUse_ready_onCooldown == 0 && furyUpkeep.Currentmeter >= rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
@@ -326,6 +333,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButton("A Button") && furyUpkeep.Currentmeter < rightBumperCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            if (ModalPanel.Instance().isActiveAndEnabled)
+                return;
+            
             if (!whirlWindNoFurySFXPlayedOnce)
             {
                 SFXManager.Instance.PlaySFX("furyNotEnoughSFX2");
@@ -341,6 +351,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButton("Y Button") && furyUpkeep.Currentmeter < rightTriggerCost && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            if (ModalPanel.Instance().isActiveAndEnabled)
+                return;
+
             if (!slamNoFurySFXPlayedOnce)
             {
                 SFXManager.Instance.PlaySFX("furyNotEnoughSFX2");
@@ -353,21 +366,49 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            SFXManager.Instance.PlaySFX("defBuffSFX");
             attkBuff_defBuff_vampBuff_onCD_rdy = 0;
             defenseParticleSystem.Play();
             cooldownDuration = 5.0f;
         }
+        else if (Input.GetAxis("D-Pad X Axis") == 1 && attkBuff_defBuff_vampBuff_onCD_rdy == 9 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
+        {
+            if (!defBuffSFXPlayedOnce)
+            {
+                SFXManager.Instance.PlaySFX("buffNotRdy1SFX");
+                defBuffSFXPlayedOnce = true;
+            }
+        }
         else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            SFXManager.Instance.PlaySFX("atkBuffSFX");
+            
             attkBuff_defBuff_vampBuff_onCD_rdy = -1;
             attackParticleSystem.Play();
             cooldownDuration = 10.0f;
         }
+        else if (Input.GetAxis("D-Pad X Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 9 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
+        {
+            if (!atkBuffSFXPlayedOnce)
+            {
+                SFXManager.Instance.PlaySFX("buffNotRdy2SFX");
+                atkBuffSFXPlayedOnce = true;
+            }
+        }
         else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 10 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
         {
+            SFXManager.Instance.PlaySFX("vampBuffSFX");
             attkBuff_defBuff_vampBuff_onCD_rdy = 1;
             vamprisimParticleSystem.Play();
             cooldownDuration = 15.0f;
+        }
+        else if (Input.GetAxis("D-Pad Y Axis") == -1 && attkBuff_defBuff_vampBuff_onCD_rdy == 9 && !InShopMenu && !PauseMenu.InpauseMenu && !MenuScript.InShopMenu)
+        {
+            if (!vampBuffSFXPlayedOnce)
+            {
+                SFXManager.Instance.PlaySFX("buffNotRdy3SFX");
+                vampBuffSFXPlayedOnce = true;
+            }
         }
 
         if (attkBuff_defBuff_vampBuff_onCD_rdy == 9)
@@ -378,6 +419,7 @@ public class PlayerController : MonoBehaviour
             {
                 cooldownTimer = 0.0f;
                 attkBuff_defBuff_vampBuff_onCD_rdy = 10;
+                defBuffSFXPlayedOnce = atkBuffSFXPlayedOnce = vampBuffSFXPlayedOnce = false;
             }
         }
         else if (attkBuff_defBuff_vampBuff_onCD_rdy != 10)

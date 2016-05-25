@@ -44,7 +44,7 @@ public class GoldDrop : MonoBehaviour
             File.WriteAllText("DeathGold.txt", Golddrop.ToString());
             File.WriteAllText("Location.txt", Position.ToString());
          
-
+            
             Application.LoadLevel(0);
         }
 
