@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class WinScreen : MonoBehaviour
 {
-    //private UpdateSpawnerKillCount spawnerCountUI;
     private PlayerController player;
 
     void Awake()
