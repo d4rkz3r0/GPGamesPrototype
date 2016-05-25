@@ -19,7 +19,7 @@ public class DpadCoolDown : MonoBehaviour
     int Max2 = 10;
     int Max1 = 5;
 
-    int buffer = 10;
+   public  float buffer;
 
     public float timer;
     bool pressagainbuff;
@@ -29,6 +29,7 @@ public class DpadCoolDown : MonoBehaviour
 
     void Start()
     {
+        buffer = 0.5f;
         timer = 300.0f;
         pressagainbuff = true;
         pressagainAtk = true;
@@ -49,14 +50,15 @@ public class DpadCoolDown : MonoBehaviour
             {
                 if (buffer <= 0)
                 {
-                    buffer = 4;
+                    buffer = 0.8f;
                     GetComponent<Multiplier>().AmountOfPoitionBought -= 1;
                     DecreaseAmount.text = "x" + GetComponent<Multiplier>().AmountOfPoitionBought;
                 }
 
                 int temp = (int)(GetComponent<PlayerHealth>().MaxHealth / 6);
                 GetComponent<PlayerHealth>().CurHealth += temp;
-                if (GetComponent<Multiplier>().AmountOfPoitionBought <= 0)
+
+                if (GetComponent<Multiplier>().AmountOfPoitionBought == 0)
                 {
                     Buffs.sprite = null;
                     ForH = 0;
@@ -70,7 +72,12 @@ public class DpadCoolDown : MonoBehaviour
 
             if (ForH == 2)
             {
-                
+                if (buffer <= 0)
+                {
+                    buffer = 0.8f;
+                    GetComponent<Multiplier>().AmountOfPoitionBought -= 1;
+                    DecreaseAmount.text = "x" + GetComponent<Multiplier>().AmountOfPoitionBought;
+                }
                 //GetComponent<FuryMeter>().Currentmeter += 150;
                 int temp = (int)(GetComponent<FuryMeter>().MaxMeter / 6);
                 GetComponent<FuryMeter>().GainFury((temp));
@@ -80,12 +87,7 @@ public class DpadCoolDown : MonoBehaviour
                     ForH = 0;
                     Buffs.enabled = false;
                 }
-                if(buffer <= 0)
-                {
-                    buffer = 4;
-                    GetComponent<Multiplier>().AmountOfPoitionBought -= 1;
-                    DecreaseAmount.text = "x" + GetComponent<Multiplier>().AmountOfPoitionBought;
-                }
+             
                
             }
 
@@ -206,7 +208,7 @@ public class DpadCoolDown : MonoBehaviour
                 pressagainDef = true;
         }
 
-        buffer--;
+        buffer -= Time.deltaTime;
     }
 
 

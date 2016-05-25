@@ -47,12 +47,12 @@ public class MenuScript : MonoBehaviour
     bool[] Bought;
     public int selector;
     public int SubSelector;
-    public int buffer = 10;
-    int ExitBuffer = 10;
+    public float buffer = 0.1f;
+    float ExitBuffer = 10;
     public GameObject ThePlayer;
     bool InMenu = false;
-    int PurchaseBuffer = 0;
-    public int SubMenuBuffer = 10;
+    float PurchaseBuffer = 0;
+    public float SubMenuBuffer = 0.1f;
     public List<Image> PurchaseMeter = new List<Image>();
     public List<Image> PurchaseMeterAB = new List<Image>();
     public List<Image> PurchaseMeterBuff = new List<Image>();
@@ -62,8 +62,8 @@ public class MenuScript : MonoBehaviour
     bool LeaveShop = false;
     public Text YourGold;
     public Text PlayerBossSouls;
-    public int InputBuffer = 50;
-    public int InPutAButton = 15;
+    public float InputBuffer;
+    public float InPutAButton;
    
     public static bool InShopMenu = false;
     public bool DiscountVentdor = false;
@@ -96,8 +96,8 @@ public class MenuScript : MonoBehaviour
         ExitBuffer = 0;
         selector = 0;
         SubSelector = 0;
-        InputBuffer = 15;
-        InPutAButton = 20;
+        InputBuffer = 0.0f;
+        InPutAButton =  0.0f;
         SelectorImage.color = new Color(1, 1, 1, 0.3f);
         YourGold.text = ThePlayer.GetComponent<PlayerGold>().Gold.ToString();
         SelectorImage.transform.position = ItemMenu[0].transform.position;
@@ -182,8 +182,8 @@ public class MenuScript : MonoBehaviour
                 RectTransform temp = SubItemMenu[SubSelector].gameObject.GetComponent<RectTransform>();
                 SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width / 2, temp.rect.height / 2);
                 SelectorImage.transform.localScale = SubItemMenu[SubSelector].transform.localScale;
-                InPutAButton = 15;
-                InputBuffer = 5;
+                InPutAButton = 0.5f;
+                InputBuffer = 0.2f;
             }
            
             
@@ -200,7 +200,7 @@ public class MenuScript : MonoBehaviour
             SelectorImage.rectTransform.sizeDelta = new Vector2(temp.rect.width, temp.rect.height);
             SelectorImage.transform.position = ItemMenu[selector].transform.position;
             SelectorImage.transform.localScale = ItemMenu[selector].transform.localScale;
-            ExitBuffer = 10;
+            ExitBuffer = 0.2f;
            // AblilityInfo.text = "";
             if (InMenu == false)
                 LeaveShop = true;
@@ -215,11 +215,11 @@ public class MenuScript : MonoBehaviour
         SubMenus(SubItemMenu, ref SubSelector, ref SubMenuBuffer);
         PurchaseItems(SubItemMenu, ref SubSelector, ref PurchaseBuffer, 0, ref ThePlayer, InMenu, ref PurchaseMeter, ItemMenu);
         PurchaseBuffer--;
-        buffer--;
-        SubMenuBuffer--;
-        ExitBuffer--;
-        InputBuffer--;
-        InPutAButton--;
+        buffer -= Time.deltaTime;
+        SubMenuBuffer -= Time.deltaTime;
+        ExitBuffer -= Time.deltaTime;
+        InputBuffer -= Time.deltaTime;
+        InPutAButton -= Time.deltaTime;
     }
 
 
@@ -228,7 +228,7 @@ public class MenuScript : MonoBehaviour
 
 
   
-    void SubMenus(List<GameObject> _submenu, ref int _subselector, ref int buffer)
+    void SubMenus(List<GameObject> _submenu, ref int _subselector, ref float buffer)
     {
        
         if (Input.GetAxis("Vertical") == -1 && InMenu == true && buffer <= 0)
@@ -276,7 +276,7 @@ public class MenuScript : MonoBehaviour
 
 
 
-            buffer = 10;
+            buffer = 0.3f;
             for (int i = 0; i < _submenu.Count; i++)
             {
                 if (i == _subselector)
@@ -342,7 +342,7 @@ public class MenuScript : MonoBehaviour
 
 
 
-            buffer = 10;
+            buffer = 0.3f;
             for (int i = 0; i < _submenu.Count; i++)
             {
                 if (i == _subselector)
@@ -367,129 +367,12 @@ public class MenuScript : MonoBehaviour
         if(DiscountVentdor)
         {
 
-            switch (RandDiscount)
-            {
+            Price[_subselector] *= 2;
+            Price[_subselector] /= 6;
+            tempDiscount = Price[_subselector];
+            _Gold.text = tempDiscount + " " + "Gold";
+            
 
-                case 0:
-                    {
-                        Price[_subselector] *= 1;
-                       //Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-                    }
-
-
-                case 1:
-                    {
-                        Price[_subselector] *= 2;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-                case 2:
-                    {
-                        Price[_subselector] *= 3;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-                case 3:
-                    {
-                        Price[_subselector] *= 4;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-
-
-
-                case 4:
-                    {
-                        Price[_subselector] *= 5;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-
-
-                case 5:
-                    {
-                        Price[_subselector] *= 0;
-                       // Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-
-                case 6:
-                    {
-                        Price[_subselector] *= 6;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-
-
-                case 7:
-                    {
-                        Price[_subselector] *= 7;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-                case 8:
-                    {
-                        Price[_subselector] *= 9;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-                case 9:
-                    {
-                        Price[_subselector] *= 10;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-                case 10:
-                    {
-                        Price[_subselector] *= 11;
-                        Price[_subselector] /= RandDiscount;
-                        tempDiscount = Price[_subselector];
-                        _Gold.text = tempDiscount + " " + "Gold";
-                        break;
-
-                    }
-
-                default:
-                    break;
-            }
-        
         }
         else
         {
@@ -499,13 +382,13 @@ public class MenuScript : MonoBehaviour
      
     }
 
-    void PurchaseItems(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, GameObject[] ItemMenu)
+    void PurchaseItems(List<GameObject> _submenu, ref int _subselector, ref float buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, GameObject[] ItemMenu)
     {
         //SetInfoText(AblilityInfo, _submenu, ref _subselector, ItemMenu, ref selector);
       
         if (Input.GetButton("A Button") && InSubMenu == true && InputBuffer <= 0)
         {
-            InputBuffer = 10;
+            InputBuffer = 0.5f;
             if (ItemMenu[selector].gameObject.name == "PlayerStats")
             {
 
@@ -522,7 +405,7 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    void MainShopMenu(GameObject[] ItemMenu, ref int selector, ref int buffer, bool InSubMenu, ref List<GameObject> _submenu)
+    void MainShopMenu(GameObject[] ItemMenu, ref int selector, ref float buffer, bool InSubMenu, ref List<GameObject> _submenu)
     {
 
         
@@ -547,7 +430,7 @@ public class MenuScript : MonoBehaviour
 
 
 
-            buffer = 8;
+            buffer = 0.3f;
             _submenu.Clear();
             SelectorImage.transform.position = ItemMenu[selector].transform.position;
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
@@ -584,7 +467,7 @@ public class MenuScript : MonoBehaviour
 
 
 
-            buffer = 8;
+            buffer = 0.3f;
             _submenu.Clear();
             SelectorImage.transform.position = ItemMenu[selector].transform.position;
             RectTransform temp = ItemMenu[selector].gameObject.GetComponent<RectTransform>();
@@ -628,18 +511,18 @@ public class MenuScript : MonoBehaviour
 
     }
 
-    void BuyPlayerStats(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> Pricing)
+    void BuyPlayerStats(List<GameObject> _submenu, ref int _subselector, ref float buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> Pricing)
     {
         Debug.Log("I HIT PLAYER STATS");
        
         SelectorImage.transform.position = SubItemMenu[_subselector].transform.position;
-        if (_submenu[_subselector].gameObject.name == "Health" && buffer <= 0 && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
+        if (_submenu[_subselector].gameObject.name == "Health" && buffer <= 0.0f && PurchaseMeter[_subselector].fillAmount != 1 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector])
         {
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<PlayerHealth>().MaxHealth += 200;
             thePlayer.GetComponent<PlayerHealth>().CurHealth = thePlayer.GetComponent<PlayerHealth>().MaxHealth;
             PurchaseMeter[_subselector].fillAmount += .03f;
-            buffer = 20;
+            buffer = 0.2f;
            // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
            
             if (DiscountVentdor)
@@ -662,7 +545,7 @@ public class MenuScript : MonoBehaviour
             PurchaseMeter[_subselector].fillAmount += .03f;
             if (PurchaseMeter[_subselector].fillAmount == 1)
                 thePlayer.GetComponent<FuryMeter>().decayRate = 0;
-            buffer = 20;
+            buffer = 0.2f;
            // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             
             if (DiscountVentdor)
@@ -686,7 +569,7 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<Multiplier>().basicAttkMulitplier += .5f;
             
             PurchaseMeter[_subselector].fillAmount += .03f;
-            buffer = 20;
+            buffer = 0.2f;
             //ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
          
             if (DiscountVentdor)
@@ -719,7 +602,7 @@ public class MenuScript : MonoBehaviour
 
     }
 
-    void BuyWeaponUpUrades(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> WeaponUpgradePricing)
+    void BuyWeaponUpUrades(List<GameObject> _submenu, ref int _subselector, ref float buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> WeaponUpgradePricing)
     {
 
         SelectorImage.transform.position = SubItemMenu[_subselector].transform.position;
@@ -730,7 +613,7 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<PlayerHealth>().MaxHealth += 200;
             thePlayer.GetComponent<PlayerHealth>().CurHealth = thePlayer.GetComponent<PlayerHealth>().MaxHealth;
             PurchaseMeter[_subselector].fillAmount += .14f;
-            buffer = 20;
+           // buffer = 20;
             ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
             IncreasePrice(ref WeaponUpgradePricing, WUGoldPrices[0], ref _subselector);
         }
@@ -741,8 +624,8 @@ public class MenuScript : MonoBehaviour
             thePlayer.GetComponent<Multiplier>().fireDamageThing = 2;
            // thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
             PurchaseMeter[_subselector].fillAmount += 1f;
-            buffer = 20;
-           // ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
+            buffer = 0.2f;
+            // ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
             IncreasePrice(ref WeaponUpgradePricing, WUGoldPrices[0], ref _subselector);
             if (DiscountVentdor)
                 ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector] / 6;
@@ -766,7 +649,7 @@ public class MenuScript : MonoBehaviour
 
          
             PurchaseMeter[_subselector].fillAmount += .14f;
-            buffer = 20;
+         //   buffer = 20;
             ThePlayer.GetComponent<PlayerGold>().Gold -= WeaponUpgradePricing[_subselector];
             IncreasePrice(ref WeaponUpgradePricing, WUGoldPrices[1], ref _subselector);
             // IncreasePrice(PriceIncrease, GoldPrice);
@@ -779,7 +662,7 @@ public class MenuScript : MonoBehaviour
 
 
    
-    void BuyPlayerAblilitys(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> Pricing)
+    void BuyPlayerAblilitys(List<GameObject> _submenu, ref int _subselector, ref float buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> Pricing)
     {
         Debug.Log(_subselector);
         SelectorImage.transform.position = SubItemMenu[_subselector].transform.position;
@@ -789,8 +672,8 @@ public class MenuScript : MonoBehaviour
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().whirlWindMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
-            buffer = 20;
-           // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+            buffer = 0.2f;
+            // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, ABGoldPrices[0], ref _subselector);
             if (DiscountVentdor)
                 ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
@@ -810,7 +693,7 @@ public class MenuScript : MonoBehaviour
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().groundSlamMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
-            buffer = 20;
+            buffer = 0.2f;
             IncreasePrice(ref Pricing, ABGoldPrices[1], ref _subselector);
             if(DiscountVentdor)
             ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
@@ -835,8 +718,8 @@ public class MenuScript : MonoBehaviour
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().chargeMultiplier += .5f;
             PurchaseMeterAB[_subselector].fillAmount += .14f;
-            buffer = 20;
-           // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
+            buffer = 0.2f;
+            // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
             IncreasePrice(ref Pricing, ABGoldPrices[2], ref _subselector);
               if(DiscountVentdor)
             ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector] / 6;
@@ -853,7 +736,7 @@ public class MenuScript : MonoBehaviour
     }
 
 
-    void BuyPlayeBuffs(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> Pricing)
+    void BuyPlayeBuffs(List<GameObject> _submenu, ref int _subselector, ref float buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<Image> PurchaseMeter, ref List<int> Pricing)
     {
 
         SelectorImage.transform.position = SubItemMenu[_subselector].transform.position;
@@ -908,10 +791,10 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    void BuyItems(List<GameObject> _submenu, ref int _subselector, ref int buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<int> Pricing)
+    void BuyItems(List<GameObject> _submenu, ref int _subselector, ref float buffer, int Gold, ref GameObject thePlayer, bool InSubMenu, ref List<int> Pricing)
     {
         SelectorImage.transform.position = SubItemMenu[_subselector].transform.position;
-        if (_submenu[_subselector].gameObject.name == "HealthPotionImage" && buffer <= 0 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector] && BuffImage.sprite != ItemFuryPotion.sprite)
+        if (_submenu[_subselector].gameObject.name == "HealthPotionImage" && buffer <= 0 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector] && BuffImage.sprite != ItemFuryPotion.sprite && thePlayer.GetComponent<Multiplier>().AmountOfPoitionBought != 5)
         {
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             BuffImage.enabled = true;
@@ -929,7 +812,7 @@ public class MenuScript : MonoBehaviour
         {
             SFXManager.Instance.PlaySFX("ShopErorrSound");
         }
-        if (_submenu[_subselector].gameObject.name == "FuryPotionImage" && buffer <= 0 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector] && BuffImage.sprite != ItemHealthPotion.sprite)
+        if (_submenu[_subselector].gameObject.name == "FuryPotionImage" && buffer <= 0 && ThePlayer.GetComponent<PlayerGold>().Gold > Pricing[_subselector] && BuffImage.sprite != ItemHealthPotion.sprite && thePlayer.GetComponent<Multiplier>().AmountOfPoitionBought != 5)
         {
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             BuffImage.enabled = true;

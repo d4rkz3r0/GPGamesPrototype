@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.IO;
 public class GameOver : MonoBehaviour
 {
 
@@ -29,8 +30,8 @@ public class GameOver : MonoBehaviour
 
             GoldDropPosition.GetComponent<GoldDropScrpit>().amountOfGoldTOGain = GetComponent<PlayerGold>().Gold;
             Instantiate(GoldDropPosition, transform.position, transform.rotation);
-            Invoke("pauseMenu", 0.5f);
-           
+            //  Invoke("pauseMenu", 0.5f);
+            PlayerPrefs.Save();
             Application.LoadLevel("Jonathan_Work_Scene");
 
 
