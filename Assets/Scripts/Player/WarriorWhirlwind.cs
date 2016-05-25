@@ -74,6 +74,8 @@ public class WarriorWhirlwind : AbilityScript {
 
     void ActivateAction()
     {
+        FindObjectOfType<SwordController>().dynamicCollider = false;
+        FindObjectOfType<ComboSystem>().EndSlash3();
         inUse_ready_onCooldown = 1;
         whirlwindCollider.enabled = true;
         firstFrameActivation = false;   

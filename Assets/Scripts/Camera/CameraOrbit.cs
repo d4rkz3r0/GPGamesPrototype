@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CameraOrbit : MonoBehaviour
 {
-
     private const float Y_ANGLE_MAX = 45.0f;
     private const float Y_ANGLE_MIN = -50.0f;
 

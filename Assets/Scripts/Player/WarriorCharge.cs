@@ -117,6 +117,8 @@ public class WarriorCharge : AbilityScript
 
     void ActivateAction()
     {
+		FindObjectOfType<SwordController>().dynamicCollider = false;
+        FindObjectOfType<ComboSystem>().EndSlash3();
         SFXManager.Instance.PlaySFX("castChargeSFX");
         actionTimer = 0.0f;
         inUse_ready_onCooldown = 1;

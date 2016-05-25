@@ -1777,8 +1777,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105368}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0.13, y: 3.3194675, z: 72.72449}
+  m_LocalRotation: {x: 0, y: 0.8232268, z: 0, w: -0.56771266}
+  m_LocalPosition: {x: 34.2, y: 3, z: -35.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438476}
@@ -1920,6 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopOverlay: {fileID: 0}
+  IsDiscountMerchant: 0
 --- !u!137 &13740566
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

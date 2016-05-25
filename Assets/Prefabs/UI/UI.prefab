@@ -131,7 +131,7 @@ GameObject:
   - 222: {fileID: 22254000}
   - 114: {fileID: 11443572}
   m_Layer: 5
-  m_Name: Spawner's Destroyed Label
+  m_Name: Spawner's Remaining Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &127400
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +510,7 @@ GameObject:
   - 114: {fileID: 11440372}
   - 114: {fileID: 11490356}
   m_Layer: 5
-  m_Name: Spawner's Killed Text
+  m_Name: Spawner's Remaining Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,23 +545,6 @@ GameObject:
   - 114: {fileID: 11471666}
   m_Layer: 5
   m_Name: Y_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &155092
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 457358}
-  - 114: {fileID: 11469652}
-  - 114: {fileID: 11420096}
-  m_Layer: 5
-  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,18 +982,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &457358
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155092}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 22437336}
-  m_RootOrder: 1
 --- !u!4 &482054
 Transform:
   m_ObjectHideFlags: 1
@@ -1543,24 +1514,6 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
---- !u!114 &11420096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: A Button
-  m_CancelButton: B Button
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 1
 --- !u!114 &11420574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1660,18 +1613,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11426008}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11425806
@@ -2116,7 +2058,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Spawner''s Destroyed: '
+  m_Text: 'Spawner''s Remaining: '
 --- !u!114 &11446456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2128,7 +2070,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 182790}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!114 &11447744
@@ -2514,20 +2456,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11469652
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 182790}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
 --- !u!114 &11471666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2887,7 +2815,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d400d0b7852f146bc5079b8e74378d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentArea: 1
+  area1SpawnersRemaining: 0
+  area2SpawnersRemaining: 0
+  numOfEntireLevelSpawners: 0
   areaSpawnersRemainingText: {fileID: 11440372}
+  winScreen: {fileID: 0}
 --- !u!114 &11493926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2917,11 +2850,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_SubmitButton: A Button
+  m_CancelButton: B Button
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &11497804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3760,7 +3693,6 @@ RectTransform:
   m_LocalScale: {x: 1.0045152, y: 1.0045152, z: 0.41492766}
   m_Children:
   - {fileID: 22485966}
-  - {fileID: 457358}
   m_Father: {fileID: 22421422}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}

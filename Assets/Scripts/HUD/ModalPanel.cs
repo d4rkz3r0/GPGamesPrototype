@@ -13,7 +13,6 @@ public class ModalPanel : MonoBehaviour
 
     public GameObject modalPanelObject;
 
-
     //Singleton Instance Style
     private static ModalPanel modalPanel;
 
@@ -72,6 +71,7 @@ public class ModalPanel : MonoBehaviour
         //Free Player
         FindObjectOfType<PlayerController>().getInput = true;
         Time.timeScale = 1.0f;
+        
         SFXManager.Instance.PlaySFX("dialogueSelectOptionSFX");
         modalPanelObject.SetActive(false);
     }

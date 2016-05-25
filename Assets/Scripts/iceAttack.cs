@@ -10,9 +10,10 @@ public class iceAttack : MonoBehaviour
     public GameObject[] spikes;
     public BoxCollider myCollider;
     bool activated = false;
+
     void Start()
     {
-        
+        SFXManager.Instance.PlaySFX("iceSpikeAttackSFX");
     }
 
     // Update is called once per frame
@@ -22,6 +23,7 @@ public class iceAttack : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0 && !activated)
         {
+
             foreach (GameObject spike in spikes)
             {
                 if (spike)
