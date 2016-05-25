@@ -76,8 +76,12 @@ public class PickUpPulse : MonoBehaviour
         else
         {
             GameObject temp = Instantiate(toInstantiate);
-            temp.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
-            temp.transform.position = temp.transform.parent.position;
+            if (GameObject.FindGameObjectWithTag("Player").name != "Null")
+            {
+                temp.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
+                temp.transform.position = temp.transform.parent.position;
+            }
+            
             Vector3 tempVec = temp.transform.position;
             tempVec.y += 1;
             temp.transform.position = tempVec;
