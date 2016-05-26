@@ -2055,6 +2055,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[4]
       value: 
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+    - target: {fileID: 11441728, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
   m_IsPrefabParent: 0
@@ -2271,6 +2275,10 @@ Prefab:
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.0003852
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -3321,6 +3329,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[2]
       value: 
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+    - target: {fileID: 11441728, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
   m_IsPrefabParent: 0
@@ -5138,6 +5150,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[3]
       value: 
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+    - target: {fileID: 11441728, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
   m_IsPrefabParent: 0
@@ -6156,6 +6172,10 @@ Prefab:
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -7570,6 +7590,10 @@ Prefab:
       propertyPath: m_TagString
       value: Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 11441728, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
   m_IsPrefabParent: 0
@@ -8511,7 +8535,7 @@ Prefab:
       objectReference: {fileID: 198762, guid: 66c3d5679221d3444bf86655a658f309, type: 2}
     - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: timeBetweenWaves
-      value: 30
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
@@ -8524,6 +8548,10 @@ Prefab:
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0003847
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -11926,6 +11954,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1.0003852
       objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
   m_IsPrefabParent: 0
@@ -13193,7 +13225,7 @@ Prefab:
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
     - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: timeBetweenWaves
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: detectionRange
@@ -13202,6 +13234,10 @@ Prefab:
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -14014,7 +14050,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.046
+      value: -9.045998
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -14022,23 +14058,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -21.812283
+      value: -21.812279
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.009194733
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.91712904
+      value: 0.9148057
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0045278897
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.39859048
+      value: 0.40376416
       objectReference: {fileID: 0}
     - target: {fileID: 436320, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_RootOrder
@@ -14139,6 +14175,10 @@ Prefab:
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -14685,6 +14725,10 @@ Prefab:
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -16057,6 +16101,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[2]
       value: 
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+    - target: {fileID: 11441728, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1047dcdbc067bf4419919ec8818baf5a, type: 2}
   m_IsPrefabParent: 0
@@ -16717,6 +16765,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[8]
       value: 
       objectReference: {fileID: 198762, guid: 66c3d5679221d3444bf86655a658f309, type: 2}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
   m_IsPrefabParent: 0
@@ -18343,6 +18395,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[9]
       value: 
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
   m_IsPrefabParent: 0
@@ -20152,6 +20208,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0003848
       objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
   m_IsPrefabParent: 0
@@ -20844,6 +20904,10 @@ Prefab:
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
@@ -26463,6 +26527,10 @@ Prefab:
       propertyPath: objectsTospawn.Array.data[9]
       value: 
       objectReference: {fileID: 157532, guid: 291130f1315379047bc88cf375545e93, type: 2}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
   m_IsPrefabParent: 0
@@ -27819,6 +27887,10 @@ Prefab:
     - target: {fileID: 131582, guid: 9e333f1658864464582e01d919c791b8, type: 2}
       propertyPath: m_TagString
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480420, guid: 9e333f1658864464582e01d919c791b8, type: 2}
+      propertyPath: amountOfGoldTODrop
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e333f1658864464582e01d919c791b8, type: 2}
