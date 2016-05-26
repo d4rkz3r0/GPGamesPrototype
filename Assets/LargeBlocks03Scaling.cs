@@ -15,6 +15,6 @@ public class LargeBlocks03Scaling : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        mRenderer.material.SetTextureScale("Tiling", new Vector2(transform.localScale.x * xScale, transform.localScale.y * yScale));
+        mRenderer.material.SetTextureScale("_MainTex", new Vector2(transform.localScale.x * xScale, transform.localScale.y * yScale));
 	}
 }
