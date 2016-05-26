@@ -67,6 +67,8 @@ public class WarriorSlam : AbilityScript {
 
     void ActivateAction()
     {
+		FindObjectOfType<SwordController>().dynamicCollider = false;
+        FindObjectOfType<ComboSystem>().EndSlash3();
         inUse_ready_onCooldown = 1;
         cooldownTimer = 0.0f;
         actionTimer = 0.0f;

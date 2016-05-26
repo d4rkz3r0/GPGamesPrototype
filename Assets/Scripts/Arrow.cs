@@ -30,6 +30,7 @@ public class Arrow : MonoBehaviour
         }
         else if (other.tag == "Player")
         {
+            SFXManager.Instance.PlaySFX("arrowExplosionSFX");
             myMesh.enabled = false;
             trailEffect.SetActive(false);   
             hitEfftect.SetActive(true);

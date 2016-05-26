@@ -327,7 +327,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428482}
-  - 65: {fileID: 6542366}
+  - 135: {fileID: 13525616}
   m_Layer: 2
   m_Name: Special Effect Collider
   m_TagString: FireWeaponExplosion
@@ -512,6 +512,23 @@ GameObject:
   m_Layer: 2
   m_Name: LeftHandThumb4
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &139210
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 449554}
+  - 33: {fileID: 3334432}
+  - 61: {fileID: 6103950}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -801,7 +818,6 @@ GameObject:
   - 114: {fileID: 11405120}
   - 114: {fileID: 11438326}
   - 114: {fileID: 11456682}
-  - 114: {fileID: 11449606}
   - 114: {fileID: 11442078}
   - 114: {fileID: 11465878}
   - 114: {fileID: 11484094}
@@ -1527,7 +1543,8 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: -0.00000333786}
   m_LocalScale: {x: 1, y: 1, z: 1.9374955}
-  m_Children: []
+  m_Children:
+  - {fileID: 449554}
   m_Father: {fileID: 428482}
   m_RootOrder: 0
 --- !u!4 &407822
@@ -1689,7 +1706,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157932}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 64, y: 5.61, z: -16.7}
+  m_LocalPosition: {x: 64, y: 8, z: -16.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479230}
@@ -2190,6 +2207,18 @@ Transform:
   - {fileID: 449674}
   m_Father: {fileID: 427236}
   m_RootOrder: 0
+--- !u!4 &449554
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139210}
+  m_LocalRotation: {x: -0.50000024, y: 0.49999982, z: -0.4999999, w: -0.5000001}
+  m_LocalPosition: {x: -0.014, y: -0, z: 0.609}
+  m_LocalScale: {x: 1.0484185, y: 0.6381226, z: 1}
+  m_Children: []
+  m_Father: {fileID: 407756}
+  m_RootOrder: 0
 --- !u!4 &449674
 Transform:
   m_ObjectHideFlags: 1
@@ -2662,6 +2691,13 @@ Transform:
   - {fileID: 412412}
   m_Father: {fileID: 462380}
   m_RootOrder: 1
+--- !u!33 &3334432
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139210}
+  m_Mesh: {fileID: 0}
 --- !u!50 &5020822
 Rigidbody2D:
   serializedVersion: 2
@@ -2694,6 +2730,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!61 &6103950
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139210}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.0031083254, y: -0.0046270667}
+  serializedVersion: 2
+  m_Size: {x: 1.0089403, y: 1.1151711}
 --- !u!64 &6459658
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2706,18 +2756,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 0}
---- !u!65 &6542366
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117994}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6197634, y: 1.7024674, z: 1.5538557}
-  m_Center: {x: 0.03437447, y: 0.35123348, z: -0.2769544}
 --- !u!65 &6573992
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2798,6 +2836,7 @@ MonoBehaviour:
   VampCoolDown: {fileID: 0}
   DecreaseAmount: {fileID: 0}
   ForH: 0
+  buffer: 0
   timer: 0
 --- !u!114 &11417738
 MonoBehaviour:
@@ -2845,7 +2884,7 @@ MonoBehaviour:
   activeTimer: 0
   InShopMenu: 0
   alive: 0
-  getInput: 0
+  getInput: 1
   fMoveSpeed: 5
   fireBall: {fileID: 100444, guid: 50a4476b29da5d742bf2df5af9a74047, type: 2}
   lightningBolt: {fileID: 122128, guid: b12f95d9656fa8d43a2fb4e201c87357, type: 2}
@@ -2892,7 +2931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f76ec46f15aa34799b729b6578cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectPlayer: {fileID: 157932}
   MaxHealth: 500
   CurHealth: 0
   HPBarText: {fileID: 0}
@@ -2900,6 +2938,8 @@ MonoBehaviour:
   flashingColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 2.25
   flashInterval: 0.33
+  lossScreenUIElement: {fileID: 0}
+  disableLossScreenAndCondition: 0
 --- !u!114 &11447176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2911,19 +2951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9f6312eefacaf47b55939aa0c5c9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11449606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d3e24816b43ca54d88e298b428c5a71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoseScreen: {fileID: 0}
-  pauseMenu: {fileID: 0}
 --- !u!114 &11453814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3107,7 +3134,7 @@ MonoBehaviour:
   RangedCast1AnimationClipSpeed: 1
   RangedCast2AnimationClipSpeed: 1
   RangedCast3AnimationClipSpeed: 1
-  specialEffectCollider: {fileID: 0}
+  specialEffectCollider: {fileID: 13525616}
   psOne: {fileID: 159434}
   psTwo: {fileID: 187742}
 --- !u!114 &11485546
@@ -3156,6 +3183,18 @@ SphereCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13525616
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 1.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13603764
 CapsuleCollider:

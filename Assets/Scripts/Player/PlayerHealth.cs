@@ -9,12 +9,12 @@ public class PlayerHealth : MonoBehaviour
     private const float DEFAULT_RUMBLE_DURATION = 0.25f;
     private const float MIN_DAMAGE_PERCENTAGE = 40.0f;
 
-
-    public GameObject ObjectPlayer;
     public float MaxHealth;
     public float CurHealth;
     public Text HPBarText;
     public Image HealthBar;
+    private PlayerController player;
+
     //-Player Damage FeedBack-//
     //Rumble
     private GamePadState state;
@@ -37,6 +37,10 @@ public class PlayerHealth : MonoBehaviour
     private float hurtSFXDuration = 3.0f;
     private bool canPlayHurtSFX = true;
 
+    //Loss Screen
+    public GameObject lossScreenUIElement;
+    public bool disableLossScreenAndCondition;
+
 
     void Awake()
     {
@@ -47,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
+
         MaxHealth = 500f;
         CurHealth = MaxHealth;
         HPBarText.text = CurHealth + "/" + MaxHealth;
@@ -65,6 +71,18 @@ public class PlayerHealth : MonoBehaviour
         if (CurHealth >= MaxHealth)
         {
             CurHealth = MaxHealth;
+        }
+
+        //Toggle this bool to True in the Inspector to remove death for debugging purposes.
+        if (!disableLossScreenAndCondition)
+        {
+            if (CurHealth <= 0.0f)
+            {
+                GetComponent<PlayerController>().enabled = false;
+                GetComponent<Animator>().SetFloat("Speed", 0.0f);
+                lossScreenUIElement.SetActive(true);
+                enabled = false;
+            }
         }
     }
 

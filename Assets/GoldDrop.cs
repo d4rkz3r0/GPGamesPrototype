@@ -8,10 +8,9 @@ public class GoldDrop : MonoBehaviour
     public GameObject Theplayer;
     public GameObject SackofGOld;
     GameObject FloatingBag;
-    // public Canvas LoseScreen;
-    //  public Canvas pauseMenu;
-    //  public GameObject GoldDropPosition = new GameObject();
-    public GameObject RespawnPosition = new GameObject();
+    public Canvas pauseMenu;
+    public GameObject GoldDropPosition;
+    public GameObject RespawnPosition;
     public int Golddrop;
     public int DrppedGold;
     //File SaveGold;
@@ -44,7 +43,7 @@ public class GoldDrop : MonoBehaviour
             File.WriteAllText("DeathGold.txt", Golddrop.ToString());
             File.WriteAllText("Location.txt", Position.ToString());
          
-
+            
             Application.LoadLevel(0);
         }
 

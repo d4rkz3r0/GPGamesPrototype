@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
     int amountOfGOldToDrop = 1000;
     public StaticSpawnerScript staticSpawner;
     public Spawner spanwer;
+    public float variableScale = 1.0f;
     void Start()
     {
         CurHealth = MaxHealth;
@@ -61,7 +62,7 @@ public class EnemyHealth : MonoBehaviour
     }
     void SetHealth(float health)
     {
-        healthBar.transform.localScale = new Vector3(health, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        healthBar.transform.localScale = new Vector3(health * variableScale, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
     void OnTriggerEnter(Collider other)
     {

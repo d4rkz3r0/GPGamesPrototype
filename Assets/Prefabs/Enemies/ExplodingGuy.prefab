@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100980
 GameObject:
   m_ObjectHideFlags: 1
@@ -813,7 +813,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.93565, y: 3, z: -71.66705}
+  m_LocalPosition: {x: 42.934143, y: 3.73, z: -17.994316}
   m_LocalScale: {x: 60, y: 60, z: 60}
   m_Children:
   - {fileID: 492622}
@@ -1194,6 +1194,7 @@ MonoBehaviour:
   amountOfGOldToDrop: 1000
   staticSpawner: {fileID: 0}
   spanwer: {fileID: 0}
+  variableScale: 0.15
 --- !u!114 &11433908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1437,14 +1438,14 @@ RectTransform:
   m_GameObject: {fileID: 174248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.008333334, y: 0.0008333334, z: 0.016666668}
+  m_LocalScale: {x: 0.008333334, y: 0.006, z: 0.016666668}
   m_Children:
   - {fileID: 22437660}
   m_Father: {fileID: 461778}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.030742921}
+  m_AnchoredPosition: {x: 0, y: 0.03496656}
   m_SizeDelta: {x: 1.567, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000

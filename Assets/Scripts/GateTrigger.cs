@@ -15,27 +15,36 @@ public class GateTrigger : MonoBehaviour
     public GameObject vendorWarpLocation;
     public GameObject dungeonStartLocation;
     private CameraOrbit mainCamera;
+    private UpdateSpawnerKillCount spawnerUIElement;
+
+    //Save player's fury
+    private float furyAmountUponEnter;
 
     void Awake()
     {
+        //Init
         modalPanel = ModalPanel.Instance();
         yesAction = MoveToVendor;
         noAction = JustOpenDoor;
 
+        //Hook
         mainCamera = FindObjectOfType<CameraOrbit>();
+        spawnerUIElement = FindObjectOfType<UpdateSpawnerKillCount>();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            furyAmountUponEnter = FindObjectOfType<FuryMeter>().Currentmeter;
             if (hasQuestionComponent)
             {
-                if (UpdateSpawnerKillCount.currentArea == 1)
+                if (spawnerUIElement.currentArea == 1)
                 {
-                    if (UpdateSpawnerKillCount.area1SpawnersRemaining <= 0)
+                    if (spawnerUIElement.area1SpawnersRemaining <= 0)
                     {
                         modalPanel.dialougeChoice(questionToAsk, yesAction, noAction);
+                        spawnerUIElement.currentArea = 2;
                         GetComponent<BoxCollider>().enabled = false;
                     }
                     else
@@ -53,6 +62,7 @@ public class GateTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             MessageController.textSelection = 0;
+            
         }
     }
 
@@ -61,11 +71,11 @@ public class GateTrigger : MonoBehaviour
         SFXManager.Instance.PlaySFX("warpPortalSFX");
 
         GateGameObject.GetComponent<GateScript>().openGate = true;
-
         if (vendorWarpLocation.gameObject.name != "Null")
         {
             FindObjectOfType<PlayerController>().transform.position = vendorWarpLocation.transform.position;
             FindObjectOfType<PlayerController>().transform.localRotation = vendorWarpLocation.transform.localRotation;
+            Invoke("RestoreFury", 0.25f);
             mainCamera.cameraSnap();
         }
 
@@ -77,15 +87,20 @@ public class GateTrigger : MonoBehaviour
 
     void JustOpenDoor()
     {
-        if (UpdateSpawnerKillCount.currentArea == 1)
-        {
-            if (UpdateSpawnerKillCount.area1SpawnersRemaining <= 0)
-            {
-                UpdateSpawnerKillCount.currentArea = 2;
+        //if (spawnerUIElement.currentArea == 1)
+        //{
+        //    if (spawnerUIElement.area1SpawnersRemaining <= 0)
+        //    {
                 SFXManager.Instance.PlaySFX("warpPortalSFX");
                 GateGameObject.GetComponent<GateScript>().openGate = true;
+                Invoke("RestoreFury", 0.25f);
                 gameObject.SetActive(false);
-            }
-        }
+          //  }
+       // }
+    }
+
+    void RestoreFury()
+    {
+        FindObjectOfType<FuryMeter>().Currentmeter = furyAmountUponEnter;
     }
 }

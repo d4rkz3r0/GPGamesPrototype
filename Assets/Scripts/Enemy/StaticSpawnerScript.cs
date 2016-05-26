@@ -38,8 +38,14 @@ public class StaticSpawnerScript : MonoBehaviour
     bool once = false;
     [SerializeField]
     Renderer myRenderer;
+
+    //UI
+    private UpdateSpawnerKillCount spawnerUIElement;
+
     void Start()
     {
+        spawnerUIElement = FindObjectOfType<UpdateSpawnerKillCount>();
+
         CurHealth = maxHealth;
         spawnPoints = new Vector3[objectsTospawn.Length];
         float degrees = 0;
@@ -185,15 +191,15 @@ public class StaticSpawnerScript : MonoBehaviour
 
     void UpdateKillCountUI()
     {
-        if (UpdateSpawnerKillCount.currentArea == 1)
+        if (spawnerUIElement.currentArea == 1)
         {
-            UpdateSpawnerKillCount.area1SpawnersRemaining--;
+            spawnerUIElement.area1SpawnersRemaining--;
         }
-        if (UpdateSpawnerKillCount.currentArea == 2)
+        if (spawnerUIElement.currentArea == 2)
         {
-            UpdateSpawnerKillCount.area2SpawnersRemaining--;
+            spawnerUIElement.area2SpawnersRemaining--;
         }
-        UpdateSpawnerKillCount.numOfEntireLevelSpawners--;
+        spawnerUIElement.numOfEntireLevelSpawners--;
     }
     void Reset()
     {

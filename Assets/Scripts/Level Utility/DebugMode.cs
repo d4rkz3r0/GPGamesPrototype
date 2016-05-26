@@ -24,20 +24,14 @@ public class DebugMode : MonoBehaviour
     {
 	    if (enableDebugMode)
 	    {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                player.transform.position = new Vector3(-0.783f, -1.3f, -17.15963f);
+                FindObjectOfType<GateScript>().openGate = true;
+                //Overkill
+                FindObjectOfType<GateScript>().gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                player.transform.position = new Vector3(-3.356869f, 23.9999f, -138.8709f);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-	        {
-	            player.transform.position = new Vector3(-31.59203f, -0.55f, -75.29f);
-	        }
+            
         }
 	}
 }

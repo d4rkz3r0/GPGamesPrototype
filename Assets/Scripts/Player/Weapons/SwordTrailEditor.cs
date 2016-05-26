@@ -1,25 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
+﻿//using UnityEngine;
+//using System.Collections;
+//using UnityEditor;
 
-[CustomEditor(typeof(SwordTrail))]
-[CanEditMultipleObjects]
-public class SwordTrailEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
+//[CustomEditor(typeof(SwordTrail))]
+//[CanEditMultipleObjects]
+//public class SwordTrailEditor : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("PointStart"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("PointEnd"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("TrailColor"));
+//        EditorGUILayout.PropertyField(serializedObject.FindProperty("PointStart"));
+//        EditorGUILayout.PropertyField(serializedObject.FindProperty("PointEnd"));
+//        EditorGUILayout.PropertyField(serializedObject.FindProperty("TrailColor"));
 
-        if (GUI.changed)
-        {
+//        if (GUI.changed)
+//        {
 
-            serializedObject.ApplyModifiedProperties();
+//            serializedObject.ApplyModifiedProperties();
 
-            EditorUtility.SetDirty(target);
-        }
-    }
-}
+//            EditorUtility.SetDirty(target);
+//        }
+//    }
+//}
 
