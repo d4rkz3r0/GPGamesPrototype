@@ -87,17 +87,16 @@ public class GateTrigger : MonoBehaviour
 
     void JustOpenDoor()
     {
-        if (spawnerUIElement.currentArea == 1)
-        {
-            if (spawnerUIElement.area1SpawnersRemaining <= 0)
-            {
+        //if (spawnerUIElement.currentArea == 1)
+        //{
+        //    if (spawnerUIElement.area1SpawnersRemaining <= 0)
+        //    {
                 SFXManager.Instance.PlaySFX("warpPortalSFX");
                 GateGameObject.GetComponent<GateScript>().openGate = true;
                 Invoke("RestoreFury", 0.25f);
                 gameObject.SetActive(false);
-
-            }
-        }
+          //  }
+       // }
     }
 
     void RestoreFury()

@@ -818,7 +818,6 @@ GameObject:
   - 114: {fileID: 11405120}
   - 114: {fileID: 11438326}
   - 114: {fileID: 11456682}
-  - 114: {fileID: 11449606}
   - 114: {fileID: 11442078}
   - 114: {fileID: 11465878}
   - 114: {fileID: 11484094}
@@ -1706,8 +1705,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0466783, y: 23.609941, z: -199.39578}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 64, y: 8, z: -16.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479230}
@@ -2837,6 +2836,7 @@ MonoBehaviour:
   VampCoolDown: {fileID: 0}
   DecreaseAmount: {fileID: 0}
   ForH: 0
+  buffer: 0
   timer: 0
 --- !u!114 &11417738
 MonoBehaviour:
@@ -2884,7 +2884,7 @@ MonoBehaviour:
   activeTimer: 0
   InShopMenu: 0
   alive: 0
-  getInput: 0
+  getInput: 1
   fMoveSpeed: 5
   fireBall: {fileID: 100444, guid: 50a4476b29da5d742bf2df5af9a74047, type: 2}
   lightningBolt: {fileID: 122128, guid: b12f95d9656fa8d43a2fb4e201c87357, type: 2}
@@ -2931,7 +2931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f76ec46f15aa34799b729b6578cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectPlayer: {fileID: 157932}
   MaxHealth: 500
   CurHealth: 0
   HPBarText: {fileID: 0}
@@ -2939,6 +2938,8 @@ MonoBehaviour:
   flashingColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 2.25
   flashInterval: 0.33
+  lossScreenUIElement: {fileID: 0}
+  disableLossScreenAndCondition: 0
 --- !u!114 &11447176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2950,19 +2951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9f6312eefacaf47b55939aa0c5c9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11449606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d3e24816b43ca54d88e298b428c5a71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoseScreen: {fileID: 0}
-  pauseMenu: {fileID: 0}
 --- !u!114 &11453814
 MonoBehaviour:
   m_ObjectHideFlags: 1

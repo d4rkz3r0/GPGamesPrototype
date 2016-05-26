@@ -12,8 +12,6 @@ GameObject:
   - 92: {fileID: 9221058}
   - 124: {fileID: 12401448}
   - 81: {fileID: 8190820}
-  - 114: {fileID: 11439442}
-  - 114: {fileID: 11490808}
   - 114: {fileID: 11410734}
   m_Layer: 0
   m_Name: Main Camera
@@ -124,34 +122,6 @@ MonoBehaviour:
   target: {fileID: 0}
   camTransform: {fileID: 427190}
   characterTransform: {fileID: 0}
---- !u!114 &11439442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164466}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49dda610bfc024d45802682dd91697dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Atk: {fileID: 0}
-  Def: {fileID: 0}
-  VAMP: {fileID: 0}
-  BUFFS: {fileID: 0}
---- !u!114 &11490808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164466}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb95852905e94c44843613a764b5f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemiesKilledText: {fileID: 0}
-  KillMeter: {fileID: 0}
 --- !u!124 &12401448
 Behaviour:
   m_ObjectHideFlags: 1
