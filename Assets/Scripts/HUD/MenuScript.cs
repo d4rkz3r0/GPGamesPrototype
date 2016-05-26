@@ -521,7 +521,7 @@ public class MenuScript : MonoBehaviour
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<PlayerHealth>().MaxHealth += 200;
             thePlayer.GetComponent<PlayerHealth>().CurHealth = thePlayer.GetComponent<PlayerHealth>().MaxHealth;
-            PurchaseMeter[_subselector].fillAmount += .03f;
+            PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 0.2f;
            // ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
            
@@ -542,7 +542,7 @@ public class MenuScript : MonoBehaviour
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<FuryMeter>().MaxMeter += 200;
             thePlayer.GetComponent<FuryMeter>().Currentmeter = thePlayer.GetComponent<FuryMeter>().MaxMeter;
-            PurchaseMeter[_subselector].fillAmount += .03f;
+            PurchaseMeter[_subselector].fillAmount += .14f;
             if (PurchaseMeter[_subselector].fillAmount == 1)
                 thePlayer.GetComponent<FuryMeter>().decayRate = 0;
             buffer = 0.2f;
@@ -568,7 +568,7 @@ public class MenuScript : MonoBehaviour
             SFXManager.Instance.PlaySFX("ka ching Sound Effect");
             thePlayer.GetComponent<Multiplier>().basicAttkMulitplier += .5f;
             
-            PurchaseMeter[_subselector].fillAmount += .03f;
+            PurchaseMeter[_subselector].fillAmount += .14f;
             buffer = 0.2f;
             //ThePlayer.GetComponent<PlayerGold>().Gold -= Pricing[_subselector];
          
