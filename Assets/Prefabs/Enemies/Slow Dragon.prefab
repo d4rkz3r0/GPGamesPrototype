@@ -354,7 +354,7 @@ GameObject:
   - 65: {fileID: 6507742}
   m_Layer: 0
   m_Name: Slow Dragon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -982,6 +982,7 @@ MonoBehaviour:
   amountOfGOldToDrop: 1000
   staticSpawner: {fileID: 0}
   spanwer: {fileID: 0}
+  variableScale: 1
 --- !u!114 &11482950
 MonoBehaviour:
   m_ObjectHideFlags: 1
