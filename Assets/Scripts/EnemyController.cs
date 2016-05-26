@@ -197,7 +197,13 @@ public class EnemyController : MonoBehaviour
         if (slotted == 1)
             tempSlotScript.RemoveSlot(gameObject);
         else
-            tempSlotScript.ResetSlots();
+        {
+            if (tempSlotScript && !ReferenceEquals(tempSlotScript, null))
+            {
+                tempSlotScript.ResetSlots();
+            }
+        }
+            
     }
     public void RemoveFromSLots()
     {
