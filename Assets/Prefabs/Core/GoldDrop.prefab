@@ -162,6 +162,7 @@ MonoBehaviour:
   RangeMin: 0.25
   toInstantiate: {fileID: 140708, guid: fa0d4ad14053a134b8f4d043fce03fb7, type: 2}
   Gold: 1
+  alwaysValidPlayerReference: {fileID: 0}
 --- !u!114 &11485078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +189,7 @@ MonoBehaviour:
   rotationSpeed: 0.85
   bounceSpeed: 0.75
   bounceDistance: 0.5
+  destroyDuration: 4.5
 --- !u!135 &13544404
 SphereCollider:
   m_ObjectHideFlags: 1

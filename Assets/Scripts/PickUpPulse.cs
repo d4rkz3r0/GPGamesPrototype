@@ -18,6 +18,9 @@ public class PickUpPulse : MonoBehaviour
     [SerializeField]
     bool Gold = true;
 
+
+    public GameObject alwaysValidPlayerReference;
+
     // Use this for initialization
     void Start()
     {
@@ -65,28 +68,29 @@ public class PickUpPulse : MonoBehaviour
 
     void OnDestroy()
     {
-        if (Gold)
+        if (alwaysValidPlayerReference)
         {
-            GameObject temp = Instantiate(toInstantiate);
-            temp.transform.position = transform.position;
-            temp.transform.rotation = transform.rotation;
-            Destroy(temp, 1);
-
-        }
-        else
-        {
-            GameObject temp = Instantiate(toInstantiate);
-            if (GameObject.FindGameObjectWithTag("Player").name != "Null")
+            if (Gold)
             {
-                temp.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
-                temp.transform.position = temp.transform.parent.position;
+                GameObject temp = Instantiate(toInstantiate);
+                temp.transform.position = transform.position;
+                temp.transform.rotation = transform.rotation;
+                Destroy(temp, 1);
+                //if (FindObjectOfType<PlayerHealth>())
+                //{
+                    
+                //}
             }
-            
-            Vector3 tempVec = temp.transform.position;
-            tempVec.y += 1;
-            temp.transform.position = tempVec;
-            Destroy(temp, 1);
+            else
+            {
+                GameObject temp = Instantiate(toInstantiate);
+                temp.transform.parent = alwaysValidPlayerReference.transform;
+                temp.transform.position = temp.transform.parent.position;
+                Vector3 tempVec = temp.transform.position;
+                tempVec.y += 1;
+                temp.transform.position = tempVec;
+                Destroy(temp, 1);
+            }
         }
     }
-
 }
